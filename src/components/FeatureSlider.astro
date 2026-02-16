@@ -264,11 +264,85 @@ const features = [
     4: 0.25    // distancia 4+
   };
 
+  // Asset mapping (Index -> { video, phone })
+  // 0: Chat -> an1.mp4, s1.png
+  // 1: Wallet -> an2.mp4, s2.png
+  // ...
+  const ASSETS = [
+    { video: '/asad/an1.mp4', phone: '/asad/s1.png' }, // 0: Chat
+    { video: '/asad/an2.mp4', phone: '/asad/s2.png' }, // 1: Wallet
+    { video: '/asad/an3.mp4', phone: '/asad/s3.png' }, // 2: Marketplace
+    { video: '/asad/an4.mp4', phone: '/asad/s4.png' }, // 3: Apps
+    { video: '/asad/an5.mp4', phone: '/asad/s5.png' }, // 4: Nutrition
+    { video: '/asad/an6.mp4', phone: '/asad/s6.png' }, // 5: Communities
+    { video: '/asad/an7.mp4', phone: '/asad/s7.png' }, // 6: Music
+    { video: '/asad/an8.mp4', phone: '/asad/s8.png' }, // 7: Mental Health
+    { video: '/asad/an9.mp4', phone: '/asad/s9.png' }  // 8: Finance
+  ];
+
+  // Content mapping (Index -> { titleLine1, titleLine2, subtitle })
+  const CONTENT = [
+    { // 0: Chat
+      titleLine1: 'Todo empieza',
+      titleLine2: 'con una conversación',
+      subtitle: 'Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.'
+    },
+    { // 1: Wallet
+      titleLine1: 'Maneja tus',
+      titleLine2: 'finanzas',
+      subtitle: 'Desde productos locales hasta servicios digitales: todo en una sola comunidad.'
+    },
+    { // 2: Marketplace
+      titleLine1: 'Compra y vende',
+      titleLine2: 'sin salir del chat',
+      subtitle: 'Desde productos locales hasta servicios digitales: todo en una sola comunidad.'
+    },
+    { // 3: Apps
+      titleLine1: 'Una sola app',
+      titleLine2: 'Cientos de soluciones.',
+      subtitle: 'Todo lo que necesitas, en un solo lugar. Como si fuera magia.'
+    },
+    { // 4: Nutrition
+      titleLine1: 'Vive saludable',
+      titleLine2: 'Con los tuyos.',
+      subtitle: 'Comparte recetas, retos saludables y planes de alimentación en tu red.'
+    },
+    { // 5: Communities
+      titleLine1: 'Destácate',
+      titleLine2: 'Crea tu comunidad',
+      subtitle: 'Crea, únete y colabora con personas que comparten tus intereses y valores.'
+    },
+    { // 6: Music
+      titleLine1: 'La música vive',
+      titleLine2: 'Escúchala y comparte.',
+      subtitle: 'Tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar.'
+    },
+    { // 7: Mental Health
+      titleLine1: 'Apoyo real',
+      titleLine2: 'Que inspira confianza.',
+      subtitle: 'Herramientas de bienestar emocional para ti y tu comunidad de apoyo.'
+    },
+    { // 8: Finance
+      titleLine1: 'A.I. Finanzas',
+      titleLine2: 'Tu asesor personal',
+      subtitle: 'Gestión financiera inteligente y personalizada.'
+    }
+  ];
+
   function initSliderInstance(root: HTMLElement): void {
     const track = root.querySelector<HTMLElement>('.slider-track');
     const prevBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]');
     const nextBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Siguiente"]');
     const items = root.querySelectorAll<HTMLElement>('.slider-item');
+    
+    // External elements to update
+    const heroVideo = document.getElementById('home-hero-video') as HTMLVideoElement;
+    const heroPhone = document.getElementById('hero-phone-image') as HTMLImageElement;
+    
+    // Text elements to update
+    const heroTitle1 = document.getElementById('hero-title-line1');
+    const heroTitle2 = document.getElementById('hero-title-line2');
+    const heroSubtitle = document.getElementById('hero-subtitle');
 
     if (!track || !prevBtn || !nextBtn || items.length === 0) return;
 
@@ -359,6 +433,55 @@ const features = [
       // En loop infinito, los botones siempre están activos
       prevBtn.disabled = false;
       nextBtn.disabled = false;
+
+      // Update external assets based on currentIndex
+      if (ASSETS[currentIndex]) {
+        const { video, phone } = ASSETS[currentIndex];
+        
+        // Update Video if changed
+        if (heroVideo) {
+          const currentSrc = heroVideo.querySelector('source')?.src || heroVideo.src;
+          // Check if src allows for diff (full url vs relative)
+          // Simple check: if video.src doesn't contain the filename, update it.
+          // Or just update src attribute directly on video element (modern browsers handle it)
+          if (!heroVideo.src.includes(video)) {
+            heroVideo.src = video;
+            heroVideo.load();
+            heroVideo.play().catch(() => {});
+          }
+        }
+
+        // Update Phone Image if changed
+        if (heroPhone) {
+          if (!heroPhone.src.includes(phone)) {
+             // Add fade effect for smoother transition?
+             heroPhone.style.opacity = '0';
+             setTimeout(() => {
+               heroPhone.src = phone;
+               heroPhone.onload = () => {
+                 heroPhone.style.opacity = '1';
+               };
+               // Force opacity back if onload doesn't fire fast enough?
+               // Better: just set src.
+             }, 200);
+          }
+        }
+      }
+
+      // Update Text Content if changed
+      if (CONTENT[currentIndex]) {
+        const { titleLine1, titleLine2, subtitle } = CONTENT[currentIndex];
+        
+        if (heroTitle1 && heroTitle1.textContent !== titleLine1) {
+          heroTitle1.textContent = titleLine1;
+        }
+        if (heroTitle2 && heroTitle2.textContent !== titleLine2) {
+          heroTitle2.textContent = titleLine2;
+        }
+        if (heroSubtitle && heroSubtitle.textContent !== subtitle) {
+          heroSubtitle.textContent = subtitle;
+        }
+      }
     };
 
     // Navegación circular (loop infinito)
@@ -438,6 +561,17 @@ const features = [
       }
     });
 
+    // Click on slider to scroll (Right to Left / Next)
+    // Avoid double triggering if button clicked (buttons are outside, but check anyway)
+    // Check if dragging happened? Since touchStart/touchEnd are passive, click might fire.
+    // If we want simple click behavior:
+    track.parentElement?.addEventListener('click', (e) => {
+      // Ignore if user clicked a link/button inside card (though there are none currently)
+      // Just trigger next slide
+      nextSlide();
+      resetAutoSlide();
+    });
+
     // Pausar auto-slide cuando el usuario hace hover
     track.parentElement?.addEventListener('mouseenter', stopAutoSlide);
     track.parentElement?.addEventListener('mouseleave', startAutoSlide);
@@ -498,5 +632,11 @@ const features = [
     resizeTimeout = setTimeout(() => {
       initAllSliders();
     }, 250);
+  });
+  
+  // Ensure phone has transition for opacity
+  document.addEventListener('astro:page-load', () => {
+      const p = document.getElementById('hero-phone-image');
+      if(p) p.style.transition = 'opacity 0.3s ease-in-out';
   });
 </script>

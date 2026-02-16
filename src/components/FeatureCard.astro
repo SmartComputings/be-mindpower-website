@@ -28,16 +28,19 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
     <img src="/images/vignette-right.svg" alt="" class="card-vignette card-vignette-right" aria-hidden="true" />
   </div>
 
-  <div class="card-bottom relative rounded-b-[10px] px-2 pt-1 pb-2 sm:px-3 sm:pt-1 sm:pb-4 overflow-hidden">
-    <div class="title-row">
-      <h3 class="card-title text-white">
-        <span data-i18n={titleKey}>{title}</span>
-      </h3>
-      <img 
+  <div class="card-bottom relative rounded-b-[10px] px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 overflow-hidden">
+         <div class="flex justify-end">
+          <img 
         src={logo} 
         alt="Logo"
         class="card-logo"
       />
+         </div>
+    <div class="title-row">
+      <div class="card-title text-white">
+        <span data-i18n={titleKey}>{title}</span>
+      </div>
+
     </div>
 
     <p class="card-description text-white">
@@ -138,6 +141,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
     background: rgba(108, 23, 191, 0.5);
     border: 1px solid rgba(82, 25, 191, 0.5);
     border-top: none;
+    margin-top: 6px;
   }
 
   /* Fila de título y logo - distribuidos en extremos */
@@ -152,9 +156,9 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
 
   .card-title {
     font-family: 'OPTIFutura', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.1;
     flex-shrink: 1;
     min-width: 0;
@@ -162,7 +166,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
 
   @media (min-width: 640px) {
     .card-title {
-      font-size: 24px;
+      font-size: 15px;
     }
   }
 
@@ -181,16 +185,17 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
 
   .card-description {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 10px;
+    font-weight: 300;
+    font-size: 8px;
     line-height: 1.3;
-    max-width: 100%;
-    opacity: 0.9;
+    max-width:80%;
+    opacity: 1;
+    padding-bottom: 10px;
   }
 
   @media (min-width: 640px) {
     .card-description {
-      font-size: 14px;
+      font-size: 10px;
       line-height: 1.4;
     }
   }
@@ -216,15 +221,15 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
   }
 
   .card-vignette-left {
-    left: 0;
+    left: 6px;
     top: 50%;
     transform: translateY(-50%);
     width: 14px;
-    height: auto;
+    height: 30px;
   }
 
   .card-vignette-right {
-    right: -20px;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
     width: auto;
@@ -233,7 +238,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
 
   @media (min-width: 640px) {
     .card-vignette-right {
-      right: -28px;
+      right: -18px;
       height: 100px;
     }
   }
