@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import SupportButton from '../components/SupportButton.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const { title, description = 'BeMind Power', bodyClass = '' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>{title}</title>
+  </head>
+  <body class={bodyClass}>
+    <slot />
+    
+    <!-- Botón flotante de soporte - presente en todas las páginas -->
+    <SupportButton />
+    
+    <script>
+      // Importar stores para inicializarlos
+      import '../stores/language';
+      import '../stores/menu';
+    </script>
+  </body>
+</html>

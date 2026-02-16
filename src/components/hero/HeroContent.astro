@@ -1,0 +1,79 @@
+---
+import HeroLogoText from './HeroLogoText.astro';
+import HeroWelcomeTitle from './HeroWelcomeTitle.astro';
+import HeroTitle from './HeroTitle.astro';
+import HeroDescription from './HeroDescription.astro';
+import HeroStoreButtons from './HeroStoreButtons.astro';
+
+interface Props {
+  welcomeText?: string;
+  mainTitle?: string;
+  description?: string;
+}
+
+const { 
+  welcomeText,
+  mainTitle,
+  description
+} = Astro.props;
+---
+
+<div class="hero-content">
+  <HeroLogoText />
+  <HeroWelcomeTitle text={welcomeText} />
+  <HeroTitle text={mainTitle} />
+  <HeroDescription text={description} />
+  <HeroStoreButtons />
+</div>
+
+<style>
+  .hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: clamp(120px, 15vh, 180px);
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  @media (min-width: 1440px) {
+    .hero-content {
+      padding-top: clamp(140px, 16vh, 200px);
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .hero-content {
+      padding-top: clamp(160px, 17vh, 220px);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content {
+      padding-top: 22vh;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      padding-top: 24vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content {
+      padding-top: 22vh;
+    }
+  }
+
+  /* iPhone SE y pantallas muy pequeñas */
+  @media (max-width: 375px) {
+    .hero-content {
+      padding-top: 20vh;
+    }
+  }
+</style>
