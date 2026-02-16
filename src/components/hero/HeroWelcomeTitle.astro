@@ -4,7 +4,7 @@ interface Props {
   text?: string;
 }
 
-const { text = "Te damos la Bienvenida" } = Astro.props;
+const { text = "Te Damos La Bienvenida" } = Astro.props;
 ---
 
 <div class="hero-welcome-title">{text}</div>
@@ -18,7 +18,7 @@ const { text = "Te damos la Bienvenida" } = Astro.props;
     text-align: center;
     margin: 0 0 clamp(8px, 1vh, 14px) 0;
     padding: 0 5vw;
-    text-transform: uppercase;
+
     letter-spacing: clamp(1.2px, 0.12vw, 2px);
   }
 

@@ -18,61 +18,52 @@ const {
 <style>
   .hero-phone {
     position: absolute;
-    left: 50%;
-    bottom: -42%;
-    transform: translateX(-50%) rotate(var(--rotation, -10deg));
-    width: clamp(340px, 30vw, 450px);
+    left: 0;
+    top: 60%;
+    width: 100%;
+    height: 40%;
     z-index: 25;
     pointer-events: auto;
     cursor: pointer;
     text-decoration: none;
-  }
-
-  /* Laptops medianas (13"-15") */
-  @media (min-width: 1280px) and (max-height: 900px) {
-    .hero-phone {
-      bottom: -48%;
-      width: clamp(320px, 28vw, 420px);
-    }
-  }
-
-  @media (min-width: 1440px) {
-    .hero-phone {
-      width: clamp(400px, 34vw, 550px);
-      bottom: -40%;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .hero-phone {
-      width: clamp(450px, 36vw, 620px);
-      bottom: -36%;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-phone img {
-    width: 100%;
+    /* Apply rotation to image, not container, for better centering control if needed, 
+       or keep on container but ensure width allows centering. 
+       Here we keep structure but use flexbox to center. */
+    width: clamp(600px, 70vw, 1200px);
     height: auto;
+    transform: rotate(var(--rotation, -10deg));
+    max-height: 150%; /* Allow extreme overflow per user request */
+    object-fit: contain;
+  }
+
+  /* Remove conflicting absolute positioning queries */
+  @media (min-width: 1280px) and (max-height: 900px) {
+    .hero-phone img { width: clamp(550px, 60vw, 900px); }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-phone img { width: clamp(700px, 65vw, 1200px); }
+  }
+
+  @media (min-width: 1920px) {
+    .hero-phone img { width: clamp(800px, 70vw, 1400px); }
   }
 
   @media (max-width: 1024px) {
-    .hero-phone {
-      width: min(380px, 35vw);
-      bottom: -24%;
-    }
+    .hero-phone img { width: min(650px, 75vw); }
   }
 
   @media (max-width: 768px) {
-    .hero-phone {
-      width: min(340px, 55vw);
-      bottom: -24%;
-    }
+    .hero-phone img { width: min(550px, 90vw); }
   }
 
   @media (max-width: 480px) {
-    .hero-phone {
-      width: min(300px, 65vw);
-      bottom: -20%;
-    }
+    .hero-phone img { width: min(450px, 95vw); }
   }
 </style>

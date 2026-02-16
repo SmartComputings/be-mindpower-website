@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import SupportButton from '../components/SupportButton.astro';
 
 interface Props {
   title: string;
@@ -34,8 +33,7 @@ const { title, description = 'BeMind Power', bodyClass = '' } = Astro.props;
   <body class={bodyClass}>
     <slot />
     
-    <!-- Botón flotante de soporte - presente en todas las páginas -->
-    <SupportButton />
+    <!-- SupportButton removed: floating support button hidden globally -->
     
     <script>
       // Importar stores para inicializarlos

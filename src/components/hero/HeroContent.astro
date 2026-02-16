@@ -29,32 +29,24 @@ const {
 <style>
   .hero-content {
     position: absolute;
-    inset: 0;
+    top: 12%;
+    left: 0;
+    width: 100%;
+    height: 46%;
     z-index: 15;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: clamp(120px, 15vh, 180px);
-    padding-left: 5vw;
-    padding-right: 5vw;
+    justify-content: center;
+    padding: 0 5vw;
   }
 
-  @media (min-width: 1440px) {
-    .hero-content {
-      padding-top: clamp(140px, 16vh, 200px);
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .hero-content {
-      padding-top: clamp(160px, 17vh, 220px);
-    }
-  }
-
+  /* Reduce specificity or remove specialized padding for other breakpoints 
+     since we want 50% height centered globally */
+     
   @media (max-width: 1024px) {
     .hero-content {
-      padding-top: 22vh;
+      padding-top: 0;
     }
   }
 

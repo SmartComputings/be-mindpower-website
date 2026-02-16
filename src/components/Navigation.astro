@@ -7,8 +7,8 @@ const { currentPath = '/' } = Astro.props;
 
 const navItems = [
   { label: 'Inicio', href: '/' },
-  { label: 'Sobre nosotros', href: '/about' },
-  { label: 'Contacto', href: '/contact' },
+  { label: 'Sobre nosotros', href: '/' },
+  { label: 'Contacto', href: '/' },
 ];
 
 const languages = [
@@ -25,38 +25,17 @@ const languages = [
         <a
           href={item.href}
           class:list={[
-            "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
-            "hover:text-white",
-            currentPath === item.href 
-              ? "text-white bg-white/10 backdrop-blur-sm" 
-              : "text-white/70",
+            "px-4 py-2 text-sm font-medium transition-colors duration-300",
+            currentPath === item.href ? "text-white" : "text-white/70",
             `stagger-${index + 1}`
           ]}
         >
           {item.label}
-          {currentPath === item.href && (
-            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-indigo-400 rounded-full"></span>
-          )}
         </a>
       </li>
     ))}
   </ul>
-  
-  <!-- Language Selector -->
-  <div class="hidden md:flex items-center gap-1 ml-4">
-    {languages.map((lang) => (
-      <button
-        class:list={[
-          "px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-300",
-          lang.active 
-            ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" 
-            : "text-white/50 hover:text-white/80 hover:bg-white/5"
-        ]}
-      >
-        {lang.label}
-      </button>
-    ))}
-  </div>
+
   
   <!-- Mobile Menu Button -->
   <button 
@@ -104,10 +83,8 @@ const languages = [
       {languages.map((lang) => (
         <button
           class:list={[
-            "px-6 py-2 text-lg font-medium rounded-full transition-all",
-            lang.active 
-              ? "bg-indigo-500 text-white" 
-              : "text-white/60 hover:text-white border border-white/20"
+            "px-6 py-2 text-lg font-medium transition-colors",
+            lang.active ? "text-white" : "text-white/60 hover:text-white"
           ]}
         >
           {lang.label}

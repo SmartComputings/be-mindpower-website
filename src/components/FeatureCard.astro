@@ -28,7 +28,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
     <img src="/images/vignette-right.svg" alt="" class="card-vignette card-vignette-right" aria-hidden="true" />
   </div>
 
-  <div class="card-bottom relative rounded-b-[10px] p-2 sm:p-3 pb-3 sm:pb-4 overflow-hidden">
+  <div class="card-bottom relative rounded-b-[10px] px-2 pt-1 pb-2 sm:px-3 sm:pt-1 sm:pb-4 overflow-hidden">
     <div class="title-row">
       <h3 class="card-title text-white">
         <span data-i18n={titleKey}>{title}</span>
@@ -80,7 +80,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
   /* CONTENEDOR DE IMAGEN (sobresale ligeramente hacia arriba) */
   .card-image-container {
     position: absolute;
-    top: 0;
+    top: 28px;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
@@ -88,12 +88,26 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    height: 120px;
+  }
+
+  @media (max-width: 380px) {
+    .card-image-container {
+      top: 22px;
+    }
+  }
+
+  @media (min-width: 381px) and (max-width: 479px) {
+    .card-image-container {
+      top: 24px;
+    }
   }
 
   @media (min-width: 640px) {
     .card-image-container {
-      top: 0;
+      top: 44px;
       width: 100%;
+      height: 200px;
     }
   }
 
@@ -202,7 +216,7 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
   }
 
   .card-vignette-left {
-    left: -4px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 14px;

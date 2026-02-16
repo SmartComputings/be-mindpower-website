@@ -1,7 +1,7 @@
 ---
 // Página marketplace: columna izquierda + hero/slider a la derecha (desktop); apilado en móvil.
 import Layout from '../layouts/Layout.astro';
-import HomeHeader from '../components/HomeHeader.astro';
+import Header from '../components/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import FeatureSlider from '../components/FeatureSlider.astro';
 import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftContent.astro';
@@ -9,7 +9,7 @@ import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftCon
 
 <Layout title="BeMind Power - Marketplace" description="BeMind Power: marketplace y bienestar con tecnología inmersiva." bodyClass="marketplace-page">
   <div class="marketplace-page-wrap relative min-h-[100dvh] w-full">
-    <HomeHeader />
+    <Header />
 
     <!-- Layout Desktop: usa HomeHero normal con MarketplaceLeftContent -->
     <div class="marketplace-desktop-layout">

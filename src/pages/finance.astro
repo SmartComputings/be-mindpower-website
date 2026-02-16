@@ -1,7 +1,7 @@
 ---
 // Página finance: columna izquierda (Figma 1537-5119) + hero/slider a la derecha (desktop); apilado en móvil.
 import Layout from '../layouts/Layout.astro';
-import HomeHeader from '../components/HomeHeader.astro';
+import Header from '../components/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import FeatureSlider from '../components/FeatureSlider.astro';
 import FinanceLeftContent from '../components/finance/FinanceLeftContent.astro';
@@ -9,7 +9,7 @@ import FinanceLeftContent from '../components/finance/FinanceLeftContent.astro';
 
 <Layout title="BeMind Power - Finance" description="BeMind Power: finanzas y bienestar con tecnología inmersiva." bodyClass="finance-page">
   <div class="finance-page-wrap relative min-h-[100dvh] w-full">
-    <HomeHeader />
+    <Header />
 
     <!-- Layout Desktop: usa HomeHero normal con FinanceLeftContent -->
     <div class="finance-desktop-layout">

@@ -120,10 +120,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'features.music.description': 'Your personalized soundtrack.',
     'features.music.cta': 'Listen to\nyour music',
     'home.hero.title': 'It all starts with a conversation',
-    'home.hero.titleLine1': 'It all starts',
-    'home.hero.titleLine2': 'with a conversation',
-    'home.hero.subtitle': 'From there: pay, sell, heal or listen to music. Without leaving the chat.',
-    'home.hero.cta': 'See More'
+    'home.hero.titleLine1': 'Todo empieza',
+    'home.hero.titleLine2': 'con una conversación',
+    'home.hero.subtitle': 'Y desde ahí: paga, vende, sana o escucha música.Sin salir del chat. ',
+    'home.hero.cta': 'Ver Más'
   },
   pt: {
     'nav.home': 'Início',
