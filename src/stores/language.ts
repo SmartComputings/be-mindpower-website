@@ -68,7 +68,25 @@ const translations: Record<Lang, Record<string, string>> = {
     'home.hero.titleLine1': 'Todo empieza',
     'home.hero.titleLine2': 'con una conversación',
     'home.hero.subtitle': 'Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.',
-    'home.hero.cta': 'Ver Más'
+    'home.hero.cta': 'Ver Más',
+    'chat.detail.title': 'Imagina tu chat con superpoderes',
+    'chat.detail.subtitle': 'No solo escribes: compartes fotos, llamas, mandas archivos y hasta dinero sin salir de la conversación.',
+    'chat.detail.feature1': 'Chats privados y seguros',
+    'chat.detail.feature2': 'Pagos en el mismo chat',
+    'chat.detail.feature3': 'Llamadas y videollamadas HD',
+    'chat.detail.feature4': 'Grupos con miles de miembros',
+    'wallet.detail.title': 'Tu billetera en el bolsillo, lista en segundos.',
+    'wallet.detail.subtitle': 'Envía y recibe dinero en un clic. Convierte monedas, paga con QR, o recarga tu cuenta en cualquier momento.',
+    'wallet.detail.feature1': 'Envíos instantáneos',
+    'wallet.detail.feature2': 'Pagos con QR y NFC',
+    'wallet.detail.feature3': 'Multimoneda (USD, EUR, COP, cripto)',
+    'wallet.detail.feature4': 'Total transparencia en comisiones',
+    'marketplace.detail.title': 'Todo lo que quieras, en un solo mercado.',
+    'marketplace.detail.subtitle': 'Desde un celular hasta comida a domicilio. Compra con confianza, con pagos rápidos y sin comisiones ocultas.',
+    'marketplace.detail.feature1': 'Precios globales, entregas locales',
+    'marketplace.detail.feature2': 'Compra directo desde un chat o QR',
+    'marketplace.detail.feature3': 'Integración con Wallet multimoneda',
+    'marketplace.detail.feature4': 'Tiendas y negocios en tu ciudad'
   },
   en: {
     'nav.home': 'Home',
@@ -95,6 +113,24 @@ const translations: Record<Lang, Record<string, string>> = {
     'features.chat.title': 'Chat',
     'features.chat.description': 'Comunication segura, instantanea e inteligente.',
     'features.chat.cta': 'Discover the\nnew chat',
+    'chat.detail.title': 'Imagine your chat with superpowers',
+    'chat.detail.subtitle': 'You don\'t just write: share photos, call, send files and even money without leaving the conversation.',
+    'chat.detail.feature1': 'Private and secure chats',
+    'chat.detail.feature2': 'Payments within the chat',
+    'chat.detail.feature3': 'HD calls and video calls',
+    'chat.detail.feature4': 'Groups with thousands of members',
+    'wallet.detail.title': 'Your wallet in your pocket, ready in seconds.',
+    'wallet.detail.subtitle': 'Send and receive money in a click. Convert currencies, pay with QR, or top up your account at any time.',
+    'wallet.detail.feature1': 'Instant transfers',
+    'wallet.detail.feature2': 'QR and NFC payments',
+    'wallet.detail.feature3': 'Multi-currency (USD, EUR, COP, crypto)',
+    'wallet.detail.feature4': 'Total transparency in fees',
+    'marketplace.detail.title': 'Everything you want, in a single market.',
+    'marketplace.detail.subtitle': 'From a cell phone to food delivery. Buy with confidence, with fast payments and no hidden fees.',
+    'marketplace.detail.feature1': 'Global prices, local deliveries',
+    'marketplace.detail.feature2': 'Buy directly from a chat or QR',
+    'marketplace.detail.feature3': 'Integration with multi-currency Wallet',
+    'marketplace.detail.feature4': 'Stores and businesses in your city',
     'features.streaming.title': 'Streaming',
     'features.streaming.description': 'High-quality live content without interruptions.',
     'features.streaming.cta': 'Discover the\nnew streaming',
@@ -304,7 +340,7 @@ const detectBrowserLang = (): Lang => {
   if (typeof window === 'undefined') return 'en';
   const browserLang = navigator.languages?.[0] || navigator.language || 'en';
   const langCode = browserLang.toLowerCase().split('-')[0];
-  
+
   if (langCode === 'es') return 'es';
   if (langCode === 'pt') return 'pt';
   if (langCode === 'zh') return 'zh';
@@ -353,7 +389,7 @@ if (typeof window !== 'undefined') {
     // Actualizar lang del documento (mantener siempre LTR)
     document.documentElement.lang = lang;
     document.documentElement.dir = 'ltr';
-    
+
     // Actualizar todos los elementos con data-i18n
     document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');

@@ -6,9 +6,10 @@ interface Props {
   description: string;
   titleKey?: string;
   descriptionKey?: string;
+  link?: string;
 }
 
-const { image, logo, title, description, titleKey, descriptionKey } = Astro.props;
+const { image, logo, title, description, titleKey, descriptionKey, link } = Astro.props;
 ---
 
 <div class="feature-card group relative flex flex-col overflow-visible cursor-pointer transition-all duration-500 hover:scale-105">
@@ -50,6 +51,8 @@ const { image, logo, title, description, titleKey, descriptionKey } = Astro.prop
 
   <!-- Efecto de brillo en hover -->
   <div class="absolute inset-0 rounded-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glow-effect"></div>
+  
+  { Astro.props.link && <a href={Astro.props.link} class="absolute inset-0 z-20" aria-label={title}></a> }
 </div>
 
 <style>
