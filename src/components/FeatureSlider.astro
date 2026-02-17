@@ -44,7 +44,8 @@ const features = [
     title: 'Apps',
     description: 'Una sola puerta a cientos de soluciones.',
     titleKey: 'features.apps.title',
-    descriptionKey: 'features.apps.description'
+    descriptionKey: 'features.apps.description',
+    link: '/detailsPages/apps'
   },
   {
     image: '/images/nutrition.svg',
@@ -52,7 +53,8 @@ const features = [
     title: 'Nutrition',
     description: 'Alimentación inteligente para tu bienestar.',
     titleKey: 'features.nutrition.title',
-    descriptionKey: 'features.nutrition.description'
+    descriptionKey: 'features.nutrition.description',
+    link: '/detailsPages/nutrition'
   },
   {
     image: '/images/Community.svg',
@@ -332,6 +334,19 @@ const features = [
     }
   ];
 
+  // Links mapping (Index -> link)
+  const LINKS = [
+    '/detailsPages/chat',       // 0: Chat
+    '/detailsPages/wallet',     // 1: Wallet
+    '/detailsPages/marketplace',// 2: Marketplace
+    '/detailsPages/apps',       // 3: Apps
+    '/detailsPages/nutrition', // 4: Nutrition
+    '/detailsPages/communities', // 5: Communities
+    null, // 6: Music
+    null, // 7: Mental Health
+    null  // 8: Finance
+  ];
+
   function initSliderInstance(root: HTMLElement): void {
     const track = root.querySelector<HTMLElement>('.slider-track');
     const prevBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]');
@@ -346,6 +361,7 @@ const features = [
     const heroTitle1 = document.getElementById('hero-title-line1');
     const heroTitle2 = document.getElementById('hero-title-line2');
     const heroSubtitle = document.getElementById('hero-subtitle');
+    const heroCta = document.getElementById('hero-cta-button');
 
     if (!track || !prevBtn || !nextBtn || items.length === 0) return;
 
@@ -483,6 +499,21 @@ const features = [
         }
         if (heroSubtitle && heroSubtitle.textContent !== subtitle) {
           heroSubtitle.textContent = subtitle;
+        }
+      }
+
+      // Update CTA Link
+      if (heroCta) {
+        const link = LINKS[currentIndex];
+        if (link) {
+          heroCta.setAttribute('href', link);
+        } else {
+          // Fallback or keep current? Maybe fallback to '#' or root?
+          // For now, let's just leave it or set to '#' to avoid broken links if user clicks
+          // But 'ver más' implies there is something to see. 
+          // If no link, maybe we should hide it? But design might require it.
+          // Let's default to specific section or just '#'
+          heroCta.setAttribute('href', '#');
         }
       }
     };
