@@ -19,8 +19,8 @@ const phoneImg = '/images/smartphonesalud.png';
       </div>
 
       <!-- Left Content: Smartphone -->
-      <div class="relative z-10 w-full max-w-[280px] md:max-w-[700px] flex justify-center mb-10 md:mb-0">
-        <img src={phoneImg} alt="Wallet Interface" class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph" transition:animate="slide" />
+      <div class="relative z-10 w-full max-w-[280px] md:max-w-[600px] flex justify-center mb-10 md:mb-0 phone-detail-container">
+        <img src={phoneImg} alt="Wallet Interface" class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph" />
       </div>
 
       <!-- Right Content: Text & Buttons -->
@@ -64,13 +64,29 @@ const phoneImg = '/images/smartphonesalud.png';
     </main>
 
     <!-- Back Arrow Icon -->
-    <a href="/chat" class="absolute top-[120px] md:top-[180px] left-4 md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
+    <a href="/chat" class="back-arrow absolute top-[120px] md:top-[180px] left-4 md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </a>
   </div>
 </Layout>
+
+<script>
+  // Detect back arrow clicks
+  document.addEventListener('click', (e) => {
+    const backArrow = (e.target as HTMLElement).closest('.back-arrow');
+    if (backArrow) {
+      document.documentElement.setAttribute('data-nav-back', 'true');
+      
+      // Disable image transition specifically for back navigation
+      const phoneImg = document.querySelector('.phone-detail-container img');
+      if (phoneImg) {
+        (phoneImg as HTMLElement).style.viewTransitionName = 'none';
+      }
+    }
+  });
+</script>
 
 <style>
   .apps-store-btn {
