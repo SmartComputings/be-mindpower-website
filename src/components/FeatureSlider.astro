@@ -291,8 +291,8 @@ const features = [
       subtitle: 'Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.'
     },
     { // 1: Wallet
-      titleLine1: 'Maneja tus',
-      titleLine2: 'finanzas',
+      titleLine1: 'Maneja tus finanzas',
+      titleLine2: 'sin salir del chat',
       subtitle: 'Desde productos locales hasta servicios digitales: todo en una sola comunidad.'
     },
     { // 2: Marketplace
@@ -367,9 +367,9 @@ const features = [
 
     const getGap = (): number => {
       const w = window.innerWidth;
-      if (w < 380) return 8;
-      if (w < 640) return 12;
-      return 24;
+      if (w < 380) return -10;
+      if (w < 640) return -15;
+      return -20;
     };
 
     // Calcular distancia circular (para loop infinito)
