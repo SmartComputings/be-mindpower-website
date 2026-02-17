@@ -92,4 +92,27 @@
       min-height: 200px;
     }
   }
+
+  /* ── Entrance Animation ── */
+  .home-hero-slider-layer {
+    animation: zoomOut 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    transform-origin: center bottom;
+  }
+
+  @keyframes zoomOut {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero-slider-layer {
+      animation: none !important;
+    }
+  }
 </style>

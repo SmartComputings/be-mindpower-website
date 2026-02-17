@@ -347,6 +347,32 @@ const features = [
     null  // 8: Finance
   ];
 
+  // Video preloading cache
+  const videoPreloadCache = new Map<string, boolean>();
+  
+  function preloadVideo(videoSrc: string): void {
+    if (videoPreloadCache.has(videoSrc)) return;
+    
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.src = videoSrc;
+    video.load();
+    videoPreloadCache.set(videoSrc, true);
+  }
+
+  function preloadNextVideos(currentIndex: number, totalItems: number): void {
+    // Preload next 2 videos in the sequence
+    const nextIndex1 = (currentIndex + 1) % totalItems;
+    const nextIndex2 = (currentIndex + 2) % totalItems;
+    
+    if (ASSETS[nextIndex1]?.video) {
+      preloadVideo(ASSETS[nextIndex1].video);
+    }
+    if (ASSETS[nextIndex2]?.video) {
+      preloadVideo(ASSETS[nextIndex2].video);
+    }
+  }
+
   function initSliderInstance(root: HTMLElement): void {
     const track = root.querySelector<HTMLElement>('.slider-track');
     const prevBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]');
@@ -372,6 +398,7 @@ const features = [
     const initialIndex = rawInitial !== null ? Math.max(0, parseInt(rawInitial, 10) % items.length) : 0;
     let currentIndex = initialIndex;
     const totalItems = items.length;
+    let isFirstUpdate = true;
 
     const getCardWidth = (): number => {
       const w = window.innerWidth;
@@ -457,48 +484,120 @@ const features = [
       if (ASSETS[currentIndex]) {
         const { video, phone } = ASSETS[currentIndex];
         
-        // Update Video if changed
+        // Update Video if changed - INSTANT sync with slider
         if (heroVideo) {
-          const currentSrc = heroVideo.querySelector('source')?.src || heroVideo.src;
-          // Check if src allows for diff (full url vs relative)
-          // Simple check: if video.src doesn't contain the filename, update it.
-          // Or just update src attribute directly on video element (modern browsers handle it)
-          if (!heroVideo.src.includes(video)) {
+          // Extract filename from current video src for comparison
+          const currentVideoSrc = heroVideo.src || '';
+          const currentFileName = currentVideoSrc.split('/').pop()?.split('?')[0] || '';
+          const newFileName = video.split('/').pop()?.split('?')[0] || '';
+          
+          // Only update if the video file is actually different
+          if (currentFileName !== newFileName) {
+            const wasPlaying = !heroVideo.paused;
+            
+            // Instantly update video source - no delay to match slider timing
+            heroVideo.style.transition = 'opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            heroVideo.style.opacity = '0.4';
+            
+            // Change source immediately
             heroVideo.src = video;
             heroVideo.load();
-            heroVideo.play().catch(() => {});
+            
+            // Fade in as soon as ready
+            const onCanPlay = () => {
+              heroVideo.removeEventListener('canplay', onCanPlay);
+              heroVideo.style.opacity = '0.85';
+              
+              // Auto-play new video (will fallback to muted if blocked)
+              if (wasPlaying) {
+                heroVideo.play().catch(err => {
+                  // If blocked, try muted
+                  heroVideo.muted = true;
+                  heroVideo.play().catch(() => {});
+                });
+              }
+            };
+            
+            heroVideo.addEventListener('canplay', onCanPlay, { once: true });
+            
+            // Fallback: restore opacity even if video doesn't load quickly
+            setTimeout(() => {
+              if (heroVideo.style.opacity !== '0.85') {
+                heroVideo.style.opacity = '0.85';
+                heroVideo.removeEventListener('canplay', onCanPlay);
+              }
+            }, 800);
           }
         }
 
-        // Update Phone Image if changed
+        // Update Phone Image if changed - sync with slider timing
         if (heroPhone) {
           if (!heroPhone.src.includes(phone)) {
-             // Add fade effect for smoother transition?
-             heroPhone.style.opacity = '0';
-             setTimeout(() => {
-               heroPhone.src = phone;
-               heroPhone.onload = () => {
-                 heroPhone.style.opacity = '1';
-               };
-               // Force opacity back if onload doesn't fire fast enough?
-               // Better: just set src.
-             }, 200);
+            if (isFirstUpdate) {
+              // No animation on initial load — just set the image
+              heroPhone.src = phone;
+            } else {
+              // Instant fade out and change - match slider timing
+              heroPhone.style.transition = 'opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+              heroPhone.style.opacity = '0';
+              
+              // Change image immediately after fade starts
+              setTimeout(() => {
+                heroPhone.src = phone;
+                heroPhone.onload = () => {
+                  // Fade in with same timing as slider
+                  heroPhone.style.opacity = '1';
+                };
+              }, 100);
+            }
           }
         }
       }
 
-      // Update Text Content if changed
+      // Update Text Content if changed - sync with slider timing
       if (CONTENT[currentIndex]) {
         const { titleLine1, titleLine2, subtitle } = CONTENT[currentIndex];
-        
-        if (heroTitle1 && heroTitle1.textContent !== titleLine1) {
-          heroTitle1.textContent = titleLine1;
-        }
-        if (heroTitle2 && heroTitle2.textContent !== titleLine2) {
-          heroTitle2.textContent = titleLine2;
-        }
-        if (heroSubtitle && heroSubtitle.textContent !== subtitle) {
-          heroSubtitle.textContent = subtitle;
+        const textChanged = (heroTitle1 && heroTitle1.textContent !== titleLine1) ||
+                           (heroTitle2 && heroTitle2.textContent !== titleLine2) ||
+                           (heroSubtitle && heroSubtitle.textContent !== subtitle);
+
+        if (textChanged && !isFirstUpdate) {
+          // Quick fade out - match slider timing
+          const titleEls = [heroTitle1, heroTitle2].filter(Boolean) as HTMLElement[];
+          const subtitleEl = heroSubtitle;
+
+          titleEls.forEach(el => {
+            el.style.transition = 'opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            el.style.opacity = '0';
+          });
+          if (subtitleEl) {
+            subtitleEl.style.transition = 'opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            subtitleEl.style.opacity = '0';
+          }
+
+          setTimeout(() => {
+            // Set new text
+            if (heroTitle1) heroTitle1.textContent = titleLine1;
+            if (heroTitle2) heroTitle2.textContent = titleLine2;
+            if (heroSubtitle) heroSubtitle.textContent = subtitle;
+
+            // Fade in quickly
+            requestAnimationFrame(() => {
+              titleEls.forEach(el => {
+                el.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                el.style.opacity = '1';
+              });
+              if (subtitleEl) {
+                subtitleEl.style.transition = 'opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                subtitleEl.style.opacity = '1';
+              }
+            });
+          }, 150);
+        } else {
+          // First update or no change — set directly
+          if (heroTitle1 && heroTitle1.textContent !== titleLine1) heroTitle1.textContent = titleLine1;
+          if (heroTitle2 && heroTitle2.textContent !== titleLine2) heroTitle2.textContent = titleLine2;
+          if (heroSubtitle && heroSubtitle.textContent !== subtitle) heroSubtitle.textContent = subtitle;
         }
       }
 
@@ -516,6 +615,11 @@ const features = [
           heroCta.setAttribute('href', '#');
         }
       }
+
+      isFirstUpdate = false;
+      
+      // Preload next videos for smooth transitions
+      preloadNextVideos(currentIndex, totalItems);
     };
 
     // Navegación circular (loop infinito)
@@ -600,10 +704,16 @@ const features = [
     // Check if dragging happened? Since touchStart/touchEnd are passive, click might fire.
     // If we want simple click behavior:
     track.parentElement?.addEventListener('click', (e) => {
-      // Ignore if user clicked a link/button inside card (though there are none currently)
-      // Just trigger next slide
-      nextSlide();
-      resetAutoSlide();
+      // Bounce animation: Move right first (wind up)
+      track.style.transition = 'transform 0.15s ease-out';
+      track.style.transform = 'translateX(20px)';
+
+      setTimeout(() => {
+        // Then trigger next slide (scroll left) and reset track
+        nextSlide();
+        resetAutoSlide();
+        track.style.transform = 'translateX(0)';
+      }, 150);
     });
 
     // Pausar auto-slide cuando el usuario hace hover
@@ -668,9 +778,11 @@ const features = [
     }, 250);
   });
   
-  // Ensure phone has transition for opacity
+  // Ensure phone is ready for transitions
   document.addEventListener('astro:page-load', () => {
       const p = document.getElementById('hero-phone-image');
-      if(p) p.style.transition = 'opacity 0.3s ease-in-out';
+      if(p) {
+        p.style.transition = 'transform 0.5s cubic-bezier(0, 0, 0.2, 1), opacity 0.5s ease';
+      }
   });
 </script>
