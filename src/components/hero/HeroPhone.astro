@@ -12,7 +12,7 @@ const {
 ---
 
 <a href="/chat" class="hero-phone" style={`--rotation: ${rotation}deg`} aria-label="Ir al chat">
-  <img id="hero-phone-image" src={src} alt="Teléfono BeMind" />
+  <img id="hero-phone-image" src={src} alt="Teléfono BeMind" style={`width: clamp(1100px, 95vw, 2200px); max-width: none;`} />
 </a>
 
 <style>
@@ -21,7 +21,7 @@ const {
     left: 0;
     top: 60%;
     width: 100%;
-    height: 40%;
+    height: 50%;
     z-index: 25;
     pointer-events: auto;
     cursor: pointer;
@@ -35,7 +35,7 @@ const {
     /* Apply rotation to image, not container, for better centering control if needed, 
        or keep on container but ensure width allows centering. 
        Here we keep structure but use flexbox to center. */
-    width: clamp(600px, 70vw, 1200px);
+    width: clamp(900px, 95vw, 1800px);
     height: auto;
     transform: rotate(var(--rotation, -10deg));
     max-height: 150%; /* Allow extreme overflow per user request */
@@ -44,26 +44,26 @@ const {
 
   /* Remove conflicting absolute positioning queries */
   @media (min-width: 1280px) and (max-height: 900px) {
-    .hero-phone img { width: clamp(550px, 60vw, 900px); }
+    .hero-phone img { width: clamp(800px, 85vw, 1400px); }
   }
 
   @media (min-width: 1440px) {
-    .hero-phone img { width: clamp(700px, 65vw, 1200px); }
+    .hero-phone img { width: clamp(1000px, 90vw, 1800px); }
   }
 
   @media (min-width: 1920px) {
-    .hero-phone img { width: clamp(800px, 70vw, 1400px); }
+    .hero-phone img { width: clamp(1200px, 95vw, 2000px); }
   }
 
   @media (max-width: 1024px) {
-    .hero-phone img { width: min(650px, 75vw); }
+    .hero-phone img { width: min(900px, 90vw); }
   }
 
   @media (max-width: 768px) {
-    .hero-phone img { width: min(550px, 90vw); }
+    .hero-phone img { width: min(750px, 100vw); }
   }
 
   @media (max-width: 480px) {
-    .hero-phone img { width: min(450px, 95vw); }
+    .hero-phone img { width: min(650px, 110vw); }
   }
 </style>

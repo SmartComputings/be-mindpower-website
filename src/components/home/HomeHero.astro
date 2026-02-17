@@ -16,13 +16,14 @@ interface Props {
   titleLine2Key?: string;
   subtitleKey?: string;
   ctaKey?: string;
+  autoplayVideo?: boolean;
 }
 
-const { videoSrc, phoneSrc, titleLine1, titleLine2, subtitle, ctaText, ctaHref, titleLine1Key, titleLine2Key, subtitleKey, ctaKey } = Astro.props;
+const { videoSrc, phoneSrc, titleLine1, titleLine2, subtitle, ctaText, ctaHref, titleLine1Key, titleLine2Key, subtitleKey, ctaKey, autoplayVideo = false } = Astro.props;
 ---
 
 <div class="home-hero">
-  <HomeHeroBackground videoSrc={videoSrc} />
+  <HomeHeroBackground videoSrc={videoSrc} autoplayVideo={autoplayVideo} />
   <HomeHeroSliderLayer>
     <slot />
   </HomeHeroSliderLayer>
