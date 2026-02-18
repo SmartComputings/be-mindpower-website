@@ -7,7 +7,7 @@ interface Props {
 const { text = "<strong>Aquí no solo tienes una app.</strong> Tienes tu red sin complicaciones: escribe, compra, paga, explora y transforma tu día… con la claridad de <strong>Be Mind Power.</strong>" } = Astro.props;
 ---
 
-<p class="hero-description" set:html={text} />
+<p id="hero-subtitle" class="hero-description" set:html={text} />
 
 <style>
   .hero-description {
