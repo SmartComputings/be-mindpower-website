@@ -3,92 +3,148 @@ interface Props {
   currentPath?: string;
 }
 
-const { currentPath = '/' } = Astro.props;
+const { currentPath = "/" } = Astro.props;
 
 const navItems = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Sobre nosotros', href: '/sobre-nosotros' },
-  { label: 'Contacto', href: '/contacto' },
+  { label: "Inicio", href: "/" },
+  { label: "Sobre nosotros", href: "/sobre-nosotros" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 const languages = [
-  { label: 'English', code: 'en' },
-  { label: 'Español', code: 'es', active: true },
+  { label: "English", code: "en" },
+  { label: "Español", code: "es", active: true },
 ];
 ---
 
 <nav class="relative flex items-center gap-8">
   <!-- Main Navigation -->
   <ul class="hidden md:flex items-center gap-2">
-    {navItems.map((item, index) => (
-      <li>
-        <a
-          href={item.href}
-          class:list={[
-            "px-4 py-2 text-base font-medium transition-colors duration-300",
-            currentPath === item.href ? "text-white" : "text-white/70",
-            `stagger-${index + 1}`
-          ]}
-        >
-          {item.label}
-        </a>
-      </li>
-    ))}
+    {
+      navItems.map((item, index) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "px-4 py-2 text-base font-medium transition-colors duration-300",
+              currentPath === item.href ? "text-white" : "text-white/70",
+              `stagger-${index + 1}`,
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 
-  
   <!-- Mobile Menu Button -->
-  <button 
+  <button
     id="mobile-menu-btn"
     class="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
     aria-label="Abrir menú"
   >
-    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    <svg
+      class="w-10 h-10"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
 
   <!-- Mobile Menu Dropdown -->
-  <div 
-    id="mobile-menu" 
-    class="absolute top-full right-0 mt-2 w-56 hidden origin-top-right z-50"
+  <div
+    id="mobile-menu"
+    class="absolute top-full right-[-60px] mt-2 w-56 hidden origin-top-right z-50"
   >
-    <div class="bg-[#120C28] backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-2 animate-in fade-in zoom-in-95 duration-200">
+    <div
+      class="bg-[#13045D]/100 rounded-2xl w-40  p-2 animate-menu-pop"
+    >
       <ul class="flex flex-col w-full">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class:list={[
-                "flex items-center w-full px-4 py-3 text-base font-medium rounded-xl transition-colors",
-                "text-white/90 hover:bg-white/10 hover:text-white"
-              ]}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "flex items-center w-full px-4 py-2 text-sm font-[16px] rounded-xl transition-colors",
+                  "text-white/90 hover:bg-white/10 hover:text-white",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
-      
-      <!-- Languages (Compact) -->
-      <div class="mt-2 pt-2 border-t border-white/10 flex flex-col gap-1">
-         {languages.map((lang) => (
-            <button
-            class:list={[
-                "text-left px-4 py-2 text-sm font-medium rounded-xl transition-colors w-full",
-                lang.active ? "text-white bg-white/5" : "text-white/50 hover:text-white hover:bg-white/5"
-            ]}
-            >
-            {lang.label}
-            </button>
-        ))}
-      </div>
     </div>
   </div>
 </nav>
 
-<script type="module" lang="ts">
-  import { initNavigationMenu } from '../scripts/navigation';
+<script>
+  const initNavigationMenu = () => {
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMenuBtn = document.getElementById("close-menu-btn");
+
+    if (!mobileMenuBtn || !mobileMenu) return;
+
+    const toggleMenu = (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle("hidden");
+    };
+
+    const closeMenu = () => {
+      if (!mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+    };
+
+    mobileMenuBtn.addEventListener("click", toggleMenu);
+
+    if (closeMenuBtn) {
+      closeMenuBtn.addEventListener("click", closeMenu);
+    }
+
+    // Close on link click
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileMenu.contains(event.target) &&
+        !mobileMenuBtn.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
+  };
 
   initNavigationMenu();
 </script>
+
+<style>
+  @keyframes menu-pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  .animate-menu-pop {
+    animation: menu-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
