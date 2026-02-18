@@ -4,10 +4,10 @@ interface Props {
   text?: string;
 }
 
-const { text = "Aquí no solo tienes una app. Tienes tu red sin complicaciones: escribe, compra, paga, explora y transforma tu día… con la claridad de Be Mind Power." } = Astro.props;
+const { text = "<strong>Aquí no solo tienes una app.</strong> Tienes tu red sin complicaciones: escribe, compra, paga, explora y transforma tu día… con la claridad de <strong>Be Mind Power.</strong>" } = Astro.props;
 ---
 
-<p class="hero-description">{text}</p>
+<p class="hero-description" set:html={text} />
 
 <style>
   .hero-description {
@@ -42,28 +42,28 @@ const { text = "Aquí no solo tienes una app. Tienes tu red sin complicaciones: 
 
   @media (max-width: 768px) {
     .hero-description {
-      font-size: clamp(12px, 2.3vw, 16px);
+      font-size: 16px;
       line-height: 1.4;
       max-width: 600px;
-      margin-bottom: 3vh;
+      margin-bottom: 2vh;
     }
   }
 
   @media (max-width: 480px) {
     .hero-description {
-      font-size: 12px;
+      font-size: 14px;
       padding: 0 6vw;
       line-height: 1.35;
-      margin-bottom: 2.8vh;
+      margin-bottom: 2vh;
     }
   }
 
   /* iPhone SE y pantallas muy pequeñas */
   @media (max-width: 375px) {
     .hero-description {
-      font-size: 11px;
+      font-size: 13px;
       line-height: 1.3;
-      margin-bottom: 2.5vh;
+      margin-bottom: 2vh;
       padding: 0 7vw;
     }
   }

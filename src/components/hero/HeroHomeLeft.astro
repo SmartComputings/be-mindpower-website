@@ -101,13 +101,13 @@ const {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 70px;
+    min-height: 64px;
     padding: 0 2rem;
     width: min(262px, 18vw);
     background: #1929ff;
     color: #fff;
-    font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
-    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
     font-size: clamp(14px, 1.15vw, 20px);
     letter-spacing: 0.02em;
     border-radius: 999px;
@@ -134,12 +134,12 @@ const {
     align-items: center;
     justify-content: center;
     width: min(262px, 18vw);
-    height: 70px;
+    height: 64px;
     padding: 0 20px;
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50px;
-    box-shadow: 5px 5px 20px 0px #371BBE, -5px -5px 20px 0px #1929FF;
+    box-shadow: 2.11px 2.11px 8.43px 0px #371BBE, -2.11px -2.11px 8.43px 0px #1929FF;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
   }
@@ -159,7 +159,7 @@ const {
   @media (min-width: 769px) {
     .hero-home-badges .store-btn {
       width: min(262px, 18vw);
-      height: 70px;
+      height: 64px;
       padding: 0 24px;
     }
 
@@ -184,7 +184,7 @@ const {
     }
 
     .hero-home-cta {
-      min-height: 64px;
+      min-height: 56px;
       width: min(240px, 70vw);
       font-size: clamp(13px, 1.1vw, 18px);
     }
@@ -207,9 +207,16 @@ const {
     }
 
     .hero-home-cta {
-      min-height: 56px;
-      width: min(220px, 75vw);
+      min-height: 44px;
+      width: 200px !important;
+      max-width: 200px !important;
       font-size: 15px;
+      font-weight: 400;
+    }
+
+    .hero-home-badges .store-btn {
+      width: 200px;
+      height: 44px;
     }
   }
 
@@ -228,11 +235,14 @@ const {
     }
 
     .hero-home-cta {
-      min-height: 52px;
-      width: min(200px, 85vw);
+      min-height: 42px;
+      width: 200px !important;
+      max-width: 200px !important;
       font-size: 14px;
       padding: 0 1.5rem;
+      font-weight: 400;
     }
+  
 
     .hero-home-badges {
       gap: 10px;
@@ -240,13 +250,13 @@ const {
 
     .hero-home-badges .store-btn {
       width: 200px;
-      height: 52px;
+      height: 42px;
       padding: 0 16px;
-      min-height: 48px;
+      min-height: 42px;
     }
 
     .hero-home-badges .store-btn img {
-      height: 28px;
+      height: 26px;
     }
   }
 </style>
