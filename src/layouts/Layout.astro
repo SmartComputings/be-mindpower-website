@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -28,7 +29,44 @@ const { title, description = 'BeMind Power', bodyClass = '' } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <ViewTransitions />
     <title>{title}</title>
+    
+    <style is:global>
+      /* Custom view transition animations for phone-morph */
+      ::view-transition-old(phone-morph),
+      ::view-transition-new(phone-morph) {
+        /* Use default morph animation for forward navigation - 
+           browser smoothly moves phone from old position to new position */
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Forward navigation: slide from right */
+      html:not([data-nav-back]) ::view-transition-old(phone-morph) {
+        animation-name: slideOutLeft;
+      }
+
+      html:not([data-nav-back]) ::view-transition-new(phone-morph) {
+        animation-name: slideInFromRight;
+      }
+
+      /* Back navigation: no animation, instant switch */
+      html[data-nav-back] ::view-transition-old(phone-morph),
+      html[data-nav-back] ::view-transition-new(phone-morph) {
+        animation: none;
+      }
+
+      @keyframes slideOutLeft {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-100px); opacity: 0; }
+      }
+
+      @keyframes slideInFromRight {
+        from { transform: translateX(100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    </style>
   </head>
   <body class={bodyClass}>
     <slot />
@@ -39,6 +77,33 @@ const { title, description = 'BeMind Power', bodyClass = '' } = Astro.props;
       // Importar stores para inicializarlos
       import '../stores/language';
       import '../stores/menu';
+    </script>
+
+    <script>
+      // Global navigation direction detection for view transitions
+      document.addEventListener('astro:before-preparation', (event) => {
+        const targetUrl = new URL(event.to);
+        const currentUrl = new URL(event.from);
+        
+        // Check if navigating back (from any details page to its parent)
+        const isBackNavigation = 
+          (currentUrl.pathname.includes('/details') && !targetUrl.pathname.includes('/details')) ||
+          (currentUrl.pathname.split('/').length > targetUrl.pathname.split('/').length);
+        
+        if (isBackNavigation) {
+          document.documentElement.setAttribute('data-nav-back', 'true');
+        } else {
+          document.documentElement.removeAttribute('data-nav-back');
+        }
+      });
+
+      // Clean up after navigation completes
+      document.addEventListener('astro:after-swap', () => {
+        // Keep the attribute during the transition, remove after a short delay
+        setTimeout(() => {
+          document.documentElement.removeAttribute('data-nav-back');
+        }, 100);
+      });
     </script>
   </body>
 </html>

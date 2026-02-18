@@ -21,7 +21,7 @@ const { phoneSrc = "/images/smartphone_2%201.png", titleLine1, titleLine2, subti
 <div class="home-hero-overlay">
   <HeroHomeLeft titleLine1={titleLine1} titleLine2={titleLine2} subtitle={subtitle} ctaText={ctaText} ctaHref={ctaHref} titleLine1Key={titleLine1Key} titleLine2Key={titleLine2Key} subtitleKey={subtitleKey} ctaKey={ctaKey} />
   <div class="home-hero-phone-wrap">
-    <img id="hero-phone-image" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone" />
+    <img id="hero-phone-image" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone" transition:name="phone-morph" />
   </div>
 </div>
 
@@ -49,12 +49,18 @@ const { phoneSrc = "/images/smartphone_2%201.png", titleLine1, titleLine2, subti
     pointer-events: auto;
   }
 
+  /* Entrance animations */
+  .home-hero-overlay :global(.hero-home-left) {
+    animation: slideFromLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
   .home-hero-phone-wrap {
     flex: 0 0 auto;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
     margin-top: 0;
+    animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
   .home-hero-smartphone {
@@ -131,6 +137,36 @@ const { phoneSrc = "/images/smartphone_2%201.png", titleLine1, titleLine2, subti
 
     .home-hero-overlay :global(.hero-home-left) {
       min-height: min(280px, 42vh);
+    }
+  }
+
+  /* ── Entrance Keyframes ── */
+  @keyframes slideFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero-overlay :global(.hero-home-left),
+    .home-hero-phone-wrap {
+      animation: none !important;
     }
   }
 </style>

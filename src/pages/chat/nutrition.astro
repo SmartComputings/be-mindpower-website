@@ -4,52 +4,49 @@ import Header from '../../components/Header.astro';
 
 // Images
 const bannerImg = '/images/chat/banner.png';
-const phoneImg = '/images/aifinance.png';
-const googlePlay = '/images/chat/googleplay.png';
-const appleStore = '/images/chat/apple.png';
+const phoneImg = '/images/smartphonenutriction.png';
 ---
 
-<Layout title="BeMind Power - Music Details" description="Tu música personalizada" bodyClass="chat-detail-page">
-  <div class="chat-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]">
+<Layout title="BeMind Power - Nutrition" description="Alimentación inteligente para tu bienestar" bodyClass="nutrition-detail-page">
+  <div class="nutrition-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]">
     <Header />
     
-    <main class="relative w-full min-h-screen pt-4 px-4 md:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 z-10">
+    <main class="relative w-full min-h-screen pt-24 pb-12 px-4 md:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 z-10">
       
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
           <img src={bannerImg} alt="" class="w-full h-full object-cover" />
-         
       </div>
 
       <!-- Left Content: Smartphone -->
-      <div class="relative z-10 w-full max-w-[280px] md:max-w-[600px] flex justify-center mt-20 md:mb-0">
-        <img src={phoneImg} alt="App Interface" class="w-full h-auto " />
+      <div class="relative z-10 w-full max-w-[280px] md:max-w-[600px] flex justify-center mb-10 md:mb-0 phone-detail-container">
+        <img src={phoneImg} alt="Nutrition Interface" class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph" />
       </div>
 
       <!-- Right Content: Text & Buttons -->
       <div class="relative z-10 w-full max-w-2xl text-white flex flex-col items-center md:items-start md:ml-16 text-center md:text-left px-4 md:px-0">
         
         <h1 class="mb-6 tracking-tight text-white" style="font-family: 'OPTIFutura-ExtraBlackCond', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; font-weight: 500; letter-spacing: 0;">
-          <span data-i18n="music.detail.title">La música que amas, contigo</span>
+          <span data-i18n="nutrition.detail.title">Vive saludable con los tuyos</span>
         </h1>
         
         <p class="mb-8 max-w-xl text-white" style="font-family: 'Neometric', sans-serif; font-size: clamp(18px, 3vw, 32px); line-height: 1.2; font-weight: 600; letter-spacing: -0.04em;">
-          <span data-i18n="music.detail.subtitle">Escucha, comparte y guarda tus playlists. Comparte lo que suena en tu app con un solo clic</span>
+          <span data-i18n="nutrition.detail.subtitle">Comparte recetas, retos saludables y planes de alimentación en tu red.</span>
         </p>
 
         <!-- Features List -->
         <ul class="space-y-3 mb-10 w-full flex flex-col items-center md:items-start" style="font-family: 'Neometric', sans-serif; font-size: clamp(16px, 2vw, 24px); line-height: 100%; font-weight: 400; letter-spacing: 0;">
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="music.detail.feature1">Canciones y podcasts en streaming</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature1">Planes personalizados de nutrición</span>
             </li>
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="music.detail.feature2">Comparte música en tus chats</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature2">Recetas saludables compartidas</span>
             </li>
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="music.detail.feature3">Playlists colaborativas</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature3">Seguimiento de objetivos</span>
             </li>
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="music.detail.feature4">Integración con tus actividades diarias</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature4">Comunidad de salud y bienestar</span>
             </li>
         </ul>
 
@@ -67,7 +64,7 @@ const appleStore = '/images/chat/apple.png';
     </main>
 
     <!-- Back Arrow Icon -->
-    <a href="/chat" class="absolute top-[130px] md:top-[200px] left-4 md:left-40         z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
+    <a href="/chat" class="back-arrow absolute top-[120px] md:top-[180px] left-4 md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -75,38 +72,23 @@ const appleStore = '/images/chat/apple.png';
   </div>
 </Layout>
 
+<script>
+  // Detect back arrow clicks
+  document.addEventListener('click', (e) => {
+    const backArrow = (e.target as HTMLElement).closest('.back-arrow');
+    if (backArrow) {
+      document.documentElement.setAttribute('data-nav-back', 'true');
+      
+      // Disable image transition specifically for back navigation
+      const phoneImg = document.querySelector('.phone-detail-container img');
+      if (phoneImg) {
+        (phoneImg as HTMLElement).style.viewTransitionName = 'none';
+      }
+    }
+  });
+</script>
+
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    100% { transform: translateX(200%); }
-  }
-
-  .animate-shimmer {
-    animation: shimmer 1.5s infinite;
-  }
-  
-  .store-btn {
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  }
-
-  /* Apps Buttons Styles */
-  @keyframes blink-shadow {
-    0%, 100% {
-      box-shadow: 0 4px 14px rgba(38, 4, 209, 0.7), 0 -4px 14px rgba(25, 41, 255, 0.9);
-    }
-    50% {
-      box-shadow: 0 4px 25px rgba(38, 4, 209, 1), 0 -4px 25px rgba(25, 41, 255, 1);
-    }
-  }
-
   .apps-store-btn {
       display: inline-flex;
       align-items: center;
@@ -120,13 +102,11 @@ const appleStore = '/images/chat/apple.png';
       box-shadow: 0 4px 14px rgba(38, 4, 209, 0.7), 0 -4px 14px rgba(25, 41, 255, 0.9);
       text-decoration: none;
       transition: transform 0.2s;
-      animation: blink-shadow 2s infinite;
     }
 
     .apps-store-btn:hover,
     .apps-store-btn:active {
       transform: scale(1.05);
-      animation: none; /* Stop blinking on hover */
       box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
     }
 

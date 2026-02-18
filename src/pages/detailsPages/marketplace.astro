@@ -22,7 +22,7 @@ const appleStore = '/images/chat/apple.png';
 
       <!-- Left Content: Smartphone -->
       <div class="relative z-10 w-full max-w-[280px] md:max-w-[750px] mt-10 md:mt-20 flex justify-center">
-        <img src={phoneImg} alt="Marketplace Interface" class="w-full h-auto drop-shadow-2xl" />
+        <img src={phoneImg} alt="Marketplace Interface" class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph" transition:animate="slide" />
       </div>
 
       <!-- Right Content: Text & Buttons -->
@@ -66,7 +66,7 @@ const appleStore = '/images/chat/apple.png';
     </main>
 
     <!-- Back Arrow Icon -->
-    <a href="/" class="absolute top-[120px] md:top-[180px] left-4 font-bold md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
+    <a href="/chat" class="absolute top-[120px] md:top-[180px] left-4 font-bold md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
