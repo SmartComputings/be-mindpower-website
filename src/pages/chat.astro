@@ -40,7 +40,12 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="chat-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: textos + botones -->
+      <!-- Slider arriba (matching Figma order) -->
+      <div class="chat-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={0} />
+      </div>
+
+      <!-- Contenido inferior: textos + botones -->
       <div class="chat-mobile-content">
         <!-- Textos -->
         <div class="chat-mobile-text">
@@ -53,7 +58,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
 
         <!-- Botones -->
         <div class="chat-mobile-buttons">
-          <a href="/chat/details" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
           <div class="chat-badges">
             <a href="#" class="chat-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -62,12 +66,8 @@ import FeatureSlider from '../components/FeatureSlider.astro';
               <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
             </a>
           </div>
+          <a href="/chat/details" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
         </div>
-      </div>
-
-      <!-- Slider abajo -->
-      <div class="chat-mobile-slider" id="slider">
-        <FeatureSlider initialIndex={0} />
       </div>
     </div>
   </div>
@@ -162,7 +162,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       z-index: 2;
     }
 
-    /* === CONTENIDO SUPERIOR (textos + botones) — 60% del espacio === */
+    /* === CONTENIDO INFERIOR (textos + botones) — 50% del espacio === */
     .chat-mobile-content {
       position: relative;
       z-index: 10;
@@ -170,7 +170,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex: 6;
+      flex: 5;
       min-height: 0;
       padding: 0 5%;
       gap: clamp(1rem, 2.5vh, 1.5rem);
@@ -283,12 +283,12 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       object-fit: contain;
     }
 
-    /* === SLIDER ABAJO — 40% del espacio === */
+    /* === SLIDER ARRIBA — 50% del espacio === */
     .chat-mobile-slider {
       position: relative;
       z-index: 5;
       width: 100%;
-      flex: 4;
+      flex: 5;
       min-height: 0;
       display: flex;
       align-items: center;
