@@ -19,10 +19,12 @@ const {
 ---
 
 <div class="hero-content">
-  <HeroLogoText />
-  <HeroWelcomeTitle text={welcomeText} />
-  <HeroTitle text={mainTitle} />
-  <HeroDescription text={description} />
+  <div class="hero-text-group">
+    <HeroLogoText />
+    <HeroWelcomeTitle text={welcomeText} />
+    <HeroTitle text={mainTitle} />
+    <HeroDescription text={description} />
+  </div>
   <HeroStoreButtons />
 </div>
 
@@ -41,9 +43,6 @@ const {
     padding: 0 5vw;
   }
 
-  /* Reduce specificity or remove specialized padding for other breakpoints 
-     since we want 50% height centered globally */
-     
   @media (max-width: 1024px) {
     .hero-content {
       padding-top: 0;
@@ -52,20 +51,43 @@ const {
 
   @media (max-width: 768px) {
     .hero-content {
-      padding-top: 24vh;
+      top: 14%;
+      height: 82%;
+      padding: 0 8vw;
+      justify-content: space-between;
+      padding-bottom: 4vh;
+      z-index: 30;
+      pointer-events: none;
     }
   }
 
   @media (max-width: 480px) {
     .hero-content {
-      padding-top: 22vh;
+      top: 15%;
+      height: 83%;
+      padding-bottom: 3vh;
     }
   }
 
   /* iPhone SE y pantallas muy pequeñas */
   @media (max-width: 375px) {
     .hero-content {
-      padding-top: 20vh;
+      top: 12%;
+      height: 84%;
+      padding-bottom: 2.5vh;
+    }
+  }
+
+  .hero-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text-group {
+      padding-top: 6vh;
     }
   }
 </style>

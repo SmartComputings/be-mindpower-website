@@ -26,34 +26,38 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="chat-mobile-bg">
         <video
+          id="home-hero-video"
           class="chat-mobile-video"
           autoplay
-          muted
           muted
           loop
           playsinline
           preload="auto"
         >
-          <source src="https://pub-d1d8eb4932844ef19f969720eed8b94a.r2.dev/1%20(8).mp4" type="video/mp4" />
+          <source src="/asad/an1.mp4" type="video/mp4" />
         </video>
         <div class="chat-mobile-overlay"></div>
         <div class="chat-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: textos + botones -->
+      <!-- Slider arriba (matching Figma order) -->
+      <div class="chat-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={0} />
+      </div>
+
+      <!-- Contenido inferior: textos + botones -->
       <div class="chat-mobile-content">
         <!-- Textos -->
         <div class="chat-mobile-text">
           <h1 class="chat-title">
-            <span class="chat-title-line1" data-i18n="home.hero.titleLine1">Todo empieza</span>
-            <span class="chat-title-line2" data-i18n="home.hero.titleLine2">con una conversación</span>
+            <span id="hero-title-line1" class="chat-title-line1" data-i18n="home.hero.titleLine1">Todo empieza</span>
+            <span id="hero-title-line2" class="chat-title-line2" data-i18n="home.hero.titleLine2">con una conversación</span>
           </h1>
-          <p class="chat-subtitle" data-i18n="home.hero.subtitle">Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.</p>
+          <p id="hero-subtitle" class="chat-subtitle" data-i18n="home.hero.subtitle">Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.</p>
         </div>
 
         <!-- Botones -->
         <div class="chat-mobile-buttons">
-          <a href="/chat/details" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
           <div class="chat-badges">
             <a href="#" class="chat-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -62,12 +66,8 @@ import FeatureSlider from '../components/FeatureSlider.astro';
               <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
             </a>
           </div>
+          <a id="hero-cta-button" href="/chat/details" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
         </div>
-      </div>
-
-      <!-- Slider abajo -->
-      <div class="chat-mobile-slider" id="slider">
-        <FeatureSlider initialIndex={0} />
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
 
 <style is:global>
   body.chat-page {
-    background: #000000;
+    background: #0C0147;
     overflow-x: hidden;
   }
 
@@ -114,27 +114,29 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       box-sizing: border-box;
       padding-top: calc(70px + env(safe-area-inset-top));
       padding-bottom: max(1rem, env(safe-area-inset-bottom));
+      gap: 0;
     }
 
     /* Video de fondo */
     .chat-mobile-bg {
       position: fixed;
-      inset: 0;
+      top:10%;
+      left: 0;
+      width: 100%;
+      height: 40vh;
+      
       z-index: 0;
       overflow: hidden;
     }
 
     .chat-mobile-video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       opacity: 0.85;
     }
 
@@ -162,17 +164,18 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       z-index: 2;
     }
 
-    /* === CONTENIDO SUPERIOR (textos + botones) — 60% del espacio === */
+    /* === CONTENIDO INFERIOR (textos + botones) — 70% del espacio === */
     .chat-mobile-content {
       position: relative;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      flex: 6;
+      justify-content: flex-end;
+      flex: 10;
       min-height: 0;
       padding: 0 5%;
+      padding-bottom: 3vh;
       gap: clamp(1rem, 2.5vh, 1.5rem);
     }
 
@@ -186,33 +189,33 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       color: #fff;
       display: flex;
       flex-direction: column;
-      gap: clamp(0.25rem, 0.8vh, 0.5rem);
-      margin: 0 0 clamp(0.6rem, 1.5vh, 1rem) 0;
+      gap: clamp(0.15rem, 0.5vh, 0.3rem);
+      margin: 0 0 clamp(0.4rem, 1vh, 0.7rem) 0;
       line-height: 1.1;
     }
 
     .chat-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
-      font-size: clamp(28px, 8vw, 44px);
-      font-weight: 900;
+      font-family: 'Neometric', 'Inter', sans-serif;
+      font-size: clamp(20px, 5.5vw, 30px);
+      font-weight: 400;
       letter-spacing: 0.01em;
     }
 
     .chat-title-line2 {
       font-family: 'Neometric', 'Inter', sans-serif;
-      font-size: clamp(16px, 4.5vw, 26px);
-      font-weight: 700;
+      font-size: clamp(14px, 3.8vw, 18px);
+      font-weight: 400;
       letter-spacing: 0.01em;
     }
 
     .chat-subtitle {
-      color: rgba(255, 255, 255, 0.7);
+      color: #ffffff;
       font-family: 'Neometric', 'Inter', sans-serif;
-      font-size: clamp(12px, 3vw, 15px);
+      font-size: clamp(11px, 2.8vw, 13px);
       font-weight: 400;
       line-height: 1.4;
       margin: 0 auto;
-      max-width: 88%;
+      max-width: 80%;
     }
 
     /* === BOTONES === */
@@ -228,13 +231,13 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(34px, 4vh, 40px);
       padding: 0 2rem;
-      width: min(280px, 72vw);
+      width: min(250px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
-      font-weight: 900;
+      font-family: 'Neometric', 'Inter', sans-serif;
+      font-weight: 400;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
@@ -260,7 +263,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       align-items: center;
       justify-content: center;
       width: min(260px, 68vw);
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(34px, 4vh, 40px);
       padding: 0 18px;
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -277,21 +280,21 @@ import FeatureSlider from '../components/FeatureSlider.astro';
     }
 
     .chat-store-btn img {
-      height: clamp(24px, 3.8vh, 32px);
+      height: clamp(30px, 4.5vh, 38px);
       width: auto;
       max-width: 100%;
       object-fit: contain;
     }
 
-    /* === SLIDER ABAJO — 40% del espacio === */
+    /* === SLIDER ARRIBA — 30% del espacio === */
     .chat-mobile-slider {
       position: relative;
       z-index: 5;
       width: 100%;
-      flex: 4;
+      flex: 40;
       min-height: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       padding: 0 2%;
       overflow: visible;

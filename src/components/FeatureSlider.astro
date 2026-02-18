@@ -379,15 +379,27 @@ const features = [
     const nextBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Siguiente"]');
     const items = root.querySelectorAll<HTMLElement>('.slider-item');
     
-    // External elements to update
-    const heroVideo = document.getElementById('home-hero-video') as HTMLVideoElement;
-    const heroPhone = document.getElementById('hero-phone-image') as HTMLImageElement;
+    // Find the layout scope for this slider (mobile vs desktop)
+    const layoutScope = root.closest('.chat-mobile-layout') || 
+                         root.closest('.chat-desktop-layout') || 
+                         root.closest('.home-hero') || 
+                         document;
     
-    // Text elements to update
-    const heroTitle1 = document.getElementById('hero-title-line1');
-    const heroTitle2 = document.getElementById('hero-title-line2');
-    const heroSubtitle = document.getElementById('hero-subtitle');
-    const heroCta = document.getElementById('hero-cta-button');
+    // External elements to update (scoped to the correct layout)
+    const heroVideo = layoutScope.querySelector('#home-hero-video') as HTMLVideoElement ||
+                      document.getElementById('home-hero-video') as HTMLVideoElement;
+    const heroPhone = layoutScope.querySelector('#hero-phone-image') as HTMLImageElement ||
+                      document.getElementById('hero-phone-image') as HTMLImageElement;
+    
+    // Text elements to update (scoped)
+    const heroTitle1 = layoutScope.querySelector('#hero-title-line1') as HTMLElement ||
+                       document.getElementById('hero-title-line1');
+    const heroTitle2 = layoutScope.querySelector('#hero-title-line2') as HTMLElement ||
+                       document.getElementById('hero-title-line2');
+    const heroSubtitle = layoutScope.querySelector('#hero-subtitle') as HTMLElement ||
+                         document.getElementById('hero-subtitle');
+    const heroCta = layoutScope.querySelector('#hero-cta-button') as HTMLElement ||
+                    document.getElementById('hero-cta-button');
 
     if (!track || !prevBtn || !nextBtn || items.length === 0) return;
 
