@@ -1,13 +1,17 @@
 ---
-// App Store / Google Play
+// App Store / Google Play + Ver Más button
 interface Props {
   appStoreUrl?: string;
   googlePlayUrl?: string;
+  ctaUrl?: string;
+  ctaText?: string;
 }
 
 const { 
   appStoreUrl = "#", 
-  googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat&hl=es_US"
+  googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat&hl=es_US",
+  ctaUrl = "/chat",
+  ctaText = "Ver Más"
 } = Astro.props;
 ---
 
@@ -18,6 +22,7 @@ const {
   <a href={googlePlayUrl} class="store-btn" aria-label="Get it on Google Play">
     <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
   </a>
+  <a id="hero-cta-button" href={ctaUrl} class="ver-mas-btn">{ctaText}</a>
 </div>
 
 <style>
@@ -59,6 +64,35 @@ const {
     width: auto;
     object-fit: contain;
     margin-left: 5px; /* Visual correction to center content */
+  }
+
+  .ver-mas-btn {
+    display: none; /* Hidden by default (desktop) */
+  }
+
+  @media (max-width: 768px) {
+    .ver-mas-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 38px;
+      background: #1929ff;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      border-radius: 387.19px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+
+    .ver-mas-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(25, 41, 255, 0.5);
+    }
   }
 
   @media (min-width: 1440px) {
@@ -142,6 +176,11 @@ const {
     .store-btn img {
       height: 25px;
     }
+
+    .ver-mas-btn {
+      height: 30px;
+      font-size: 13px;
+    }
   }
 
   /* iPhone SE y pantallas muy pequeñas */
@@ -159,6 +198,11 @@ const {
 
     .store-btn img {
       height: 22px;
+    }
+
+    .ver-mas-btn {
+      height: 30px;
+      font-size: 12px;
     }
   }
 </style>
