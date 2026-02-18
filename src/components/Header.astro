@@ -17,20 +17,23 @@ const { currentPath, backgroundImage = '/asad/headerbg.png' } = Astro.props;
     class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"
   ></div>
 
-  <div class="relative max-w-[80%] mx-auto px-4">
+  <div class="relative w-full md:max-w-[80%] mx-auto px-4">
     <div class="flex items-center justify-center">
       <div 
-        class="w-full bg-cover bg-center rounded-full px-8 py-3 border border-white/10 shadow-[0_8px_40px_rgba(18,12,40,0.6)] backdrop-blur-md"
-        style={`background-image: url('${backgroundImage}');`}
+        class="w-full bg-none md:bg-cover md:bg-center md:rounded-full px-0 md:px-8 py-3 md:border md:border-white/10 md:shadow-[0_8px_40px_rgba(18,12,40,0.6)] md:backdrop-blur-md header-container"
+        style={`--bg-image: url('${backgroundImage}');`}
       >
-        <div class="flex items-center justify-between max-w-[1400px] mx-auto">
+        <div class="flex items-center justify-between w-full md:w-auto max-w-[1400px] mx-auto">
           <div class="flex items-center flex-1">
             <a href="/" class="flex items-center gap-2.5 no-underline shrink-0" aria-label="BeMind Power - Inicio">
-              <img src="/images/logos/Logo_Be-Mind%20night.svg" alt="BeMind Power" class="h-10 w-auto" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="/images/logos/Logo_Be-Mind%20night.png" />
+                <img src="/images/logos/Logo_Be-Mind%20night.svg" alt="BeMind Power" class="h-14 md:h-10 w-auto" />
+              </picture>
             </a>
           </div>
 
-          <div class="flex-1 flex items-center justify-center">
+          <div class="flex-0 md:flex-1 flex items-center justify-end md:justify-center">
             <Navigation currentPath={currentPath} />
           </div>
 
