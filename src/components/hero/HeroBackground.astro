@@ -5,18 +5,11 @@
 <div class="hero-background">
   <div class="hero-bg-base"></div>
   
-  <!-- Background video -->
-  <video
-    id="home-hero-video"
-    class="hero-bg-video"
-    autoplay
-    loop
-    muted
-    playsinline
-    preload="auto"
-  >
-    <source src="/asad/an1.mp4" type="video/mp4" />
-  </video>
+  <!-- Background Image (Responsive) -->
+  <picture class="hero-bg-image">
+    <source media="(max-width: 768px)" srcset="/asad/welcomebgr.png" />
+    <img src="/asad/welcomebg.png" alt="BeMind Power Background" />
+  </picture>
   
   <div class="hero-glow"></div>
 </div>
@@ -39,27 +32,25 @@
     opacity: 0.98;
   }
   
-  .hero-bg-video {
+  .hero-bg-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-bg-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: 1;
-    opacity: 0.75;
-    transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity: 0.8; /* Slight opacity to blend with base */
   }
 
   @media (max-width: 768px) {
-    .hero-bg-video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
+    .hero-bg-image img {
+      object-position: top center;
     }
   }
 
@@ -104,43 +95,4 @@
   }
 </style>
 
-<script>
-  // Initialize background video  
-  function initHeroBackgroundVideo(): void {
-    const video = document.getElementById('home-hero-video') as HTMLVideoElement;
-    if (!video) return;
 
-    const playVideo = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          video.muted = true;
-          video.play().catch(() => {});
-        });
-      }
-    };
-
-    // Ensure video loops smoothly
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.play().catch(() => {});
-    });
-
-    if (video.readyState >= 2) {
-      playVideo();
-    } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
-    }
-    
-    // Ensure opacity transition is set
-    video.style.transition = 'opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroBackgroundVideo);
-  } else {
-    initHeroBackgroundVideo();
-  }
-  
-  document.addEventListener('astro:page-load', initHeroBackgroundVideo);
-</script>
