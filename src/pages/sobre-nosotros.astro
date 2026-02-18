@@ -81,6 +81,12 @@ import Header from '../components/Header.astro';
     opacity: 0.98;
   }
 
+  @media (max-width: 1024px) {
+    .about-bg-base {
+      background-image: url('/asad/contactbgr.png');
+    }
+  }
+
   .about-glow {
     position: absolute;
     top: 50%;
@@ -191,7 +197,12 @@ import Header from '../components/Header.astro';
     }
 
     .about-logo img {
-      width: 70px;
+      width: 200px;
+    }
+
+    .about-description {
+      color: #ffffff;
+      font-weight: 400;
     }
 
     .about-glow {
@@ -242,6 +253,14 @@ import Header from '../components/Header.astro';
     .about-description,
     .about-glow {
       animation: none !important;
+    }
+  }
+</style>
+
+<style is:global>
+  @media (max-width: 768px) {
+    .sobre-nosotros-page header a[href="/"] {
+      display: none !important;
     }
   }
 </style>
