@@ -17,7 +17,7 @@ const languages = [
 ];
 ---
 
-<nav class="flex items-center gap-8">
+<nav class="relative flex items-center gap-8">
   <!-- Main Navigation -->
   <ul class="hidden md:flex items-center gap-2">
     {navItems.map((item, index) => (
@@ -47,56 +47,45 @@ const languages = [
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
-</nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-  <!-- Backdrop -->
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="menu-backdrop"></div>
-  
-  <!-- Menu Container (Card) -->
-  <div class="relative w-full max-w-[320px] bg-[#1a0b50] rounded-[40px] border border-white/10 shadow-2xl p-10 flex flex-col items-center animate-in fade-in zoom-in duration-300">
-    <button 
-      id="close-menu-btn"
-      class="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors"
-      aria-label="Cerrar menú"
-    >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    
-    <ul class="flex flex-col items-start w-full gap-6 mt-4">
-      {navItems.map((item) => (
-        <li class="w-full">
-          <a
-            href={item.href}
+  <!-- Mobile Menu Dropdown -->
+  <div 
+    id="mobile-menu" 
+    class="absolute top-full right-0 mt-2 w-56 hidden origin-top-right z-50"
+  >
+    <div class="bg-[#120C28] backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-2 animate-in fade-in zoom-in-95 duration-200">
+      <ul class="flex flex-col w-full">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                "flex items-center w-full px-4 py-3 text-base font-medium rounded-xl transition-colors",
+                "text-white/90 hover:bg-white/10 hover:text-white"
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <!-- Languages (Compact) -->
+      <div class="mt-2 pt-2 border-t border-white/10 flex flex-col gap-1">
+         {languages.map((lang) => (
+            <button
             class:list={[
-              "text-[22px] font-medium transition-colors block w-full",
-              "text-white hover:text-indigo-300"
+                "text-left px-4 py-2 text-sm font-medium rounded-xl transition-colors w-full",
+                lang.active ? "text-white bg-white/5" : "text-white/50 hover:text-white hover:bg-white/5"
             ]}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-    
-    <!-- Languages (Optional - Keep small or hide if not in screenshot? Keeping for functionality but styling subtly) -->
-    <div class="flex gap-4 mt-8 w-full border-t border-white/10 pt-6 justify-start">
-      {languages.map((lang) => (
-        <button
-          class:list={[
-            "text-sm font-medium transition-colors",
-            lang.active ? "text-white" : "text-white/50 hover:text-white"
-          ]}
-        >
-          {lang.label}
-        </button>
-      ))}
+            >
+            {lang.label}
+            </button>
+        ))}
+      </div>
     </div>
   </div>
-</div>
+</nav>
 
 <script type="module" lang="ts">
   import { initNavigationMenu } from '../scripts/navigation';
