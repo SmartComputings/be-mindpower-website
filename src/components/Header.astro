@@ -25,10 +25,10 @@ const { currentPath, backgroundImage = '/asad/headerbg.png' } = Astro.props;
       >
         <div class="flex items-center justify-between w-full md:w-auto max-w-[1400px] mx-auto">
           <div class="flex items-center flex-1">
-            <a href="/" class="flex items-center gap-2.5 no-underline shrink-0" aria-label="BeMind Power - Inicio">
+            <a href="/" class="ml-28 md:ml-0 flex items-center gap-2.5 no-underline shrink-0" aria-label="BeMind Power - Inicio">
               <picture>
                 <source media="(max-width: 768px)" srcset="/images/logos/Logo_Be-Mind%20night.png" />
-                <img src="/images/logos/Logo_Be-Mind%20night.svg" alt="BeMind Power" class="h-14 md:h-10 w-auto" />
+                <img src="/images/logos/Logo_Be-Mind%20night.svg" alt="BeMind Power" class="h-16 md:h-10 w-auto" />
               </picture>
             </a>
           </div>
@@ -37,9 +37,9 @@ const { currentPath, backgroundImage = '/asad/headerbg.png' } = Astro.props;
             <Navigation currentPath={currentPath} />
           </div>
 
-          <div class="flex-1 flex items-center justify-end gap-3">
-            <a href="/" class="hidden sm:inline-block px-9 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#ff4fb8] to-[#a43cff] hover:opacity-95">Registro</a>
-            <a href="/" class="hidden sm:inline-block px-11 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#2aa6ff] to-[#235bff] hover:opacity-95">Login</a>
+          <div class="hidden sm:flex flex-1 items-center justify-end gap-3">
+            <a href="/registro" class="hidden sm:inline-block px-9 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#ff4fb8] to-[#a43cff] hover:opacity-95">Registro</a>
+            <a href="/login" class="hidden sm:inline-block px-11 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#2aa6ff] to-[#235bff] hover:opacity-95">Login</a>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ const { currentPath, backgroundImage = '/asad/headerbg.png' } = Astro.props;
 </header>
 
 <script type="module" lang="ts">
-  import { initHeaderScroll } from '../scripts/header';
+  import { initHeaderScroll } from '../scripts/header.ts';
 
   initHeaderScroll();
 </script>
