@@ -29,6 +29,41 @@ const { title, description = 'BeMind Power', bodyClass = '' } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical slider assets -->
+    <link rel="preload" href="/asad/s1.png" as="image" />
+    <link rel="preload" href="/asad/s2.png" as="image" />
+    <link rel="preload" href="/asad/s3.png" as="image" />
+    <link rel="preload" href="/asad/s4.png" as="image" />
+    <link rel="preload" href="/asad/s5.png" as="image" />
+    <link rel="preload" href="/asad/s6.png" as="image" />
+    <link rel="preload" href="/asad/s7.png" as="image" />
+    <link rel="preload" href="/asad/s8.png" as="image" />
+    <link rel="preload" href="/asad/s9.png" as="image" />
+    <link rel="preload" href="/asad/an1.mp4" as="video" />
+    <link rel="preload" href="/asad/an2.mp4" as="video" />
+    <link rel="preload" href="/asad/an3.mp4" as="video" />
+    <link rel="preload" href="/asad/an4.mp4" as="video" />
+    <link rel="preload" href="/asad/an5.mp4" as="video" />
+    <link rel="preload" href="/asad/an6.mp4" as="video" />
+    <link rel="preload" href="/asad/an7.mp4" as="video" />
+    <link rel="preload" href="/asad/an8.mp4" as="video" />
+    <link rel="preload" href="/asad/an9.mp4" as="video" />
+    
+    <!-- Preload slider card images -->
+    <link rel="preload" href="/images/Chat.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/wallet.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/marketplace.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/apps.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/nutrition.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/Community.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/musica.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/mental.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/AiFinanzas.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/logohorizontal.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/vignette-left.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/images/vignette-right.svg" as="image" type="image/svg+xml" />
+    
     <ViewTransitions />
     <title>{title}</title>
     

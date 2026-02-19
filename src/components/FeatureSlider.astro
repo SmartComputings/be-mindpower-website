@@ -349,6 +349,7 @@ const features = [
 
   // Video preloading cache
   const videoPreloadCache = new Map<string, boolean>();
+  const imagePreloadCache = new Map<string, boolean>();
   
   function preloadVideo(videoSrc: string): void {
     if (videoPreloadCache.has(videoSrc)) return;
@@ -358,6 +359,42 @@ const features = [
     video.src = videoSrc;
     video.load();
     videoPreloadCache.set(videoSrc, true);
+  }
+
+  function preloadImage(imageSrc: string): void {
+    if (imagePreloadCache.has(imageSrc)) return;
+    
+    const img = new Image();
+    img.src = imageSrc;
+    imagePreloadCache.set(imageSrc, true);
+  }
+
+  // Slider card images
+  const CARD_IMAGES = [
+    '/images/Chat.svg',
+    '/images/wallet.svg',
+    '/images/marketplace.svg',
+    '/images/apps.svg',
+    '/images/nutrition.svg',
+    '/images/Community.svg',
+    '/images/musica.svg',
+    '/images/mental.svg',
+    '/images/AiFinanzas.svg',
+    '/images/logohorizontal.svg',
+    '/images/vignette-left.svg',
+    '/images/vignette-right.svg'
+  ];
+
+  // Preload ALL assets upfront to prevent lag
+  function preloadAllAssets(): void {
+    // Preload phone images and videos
+    ASSETS.forEach(asset => {
+      if (asset.video) preloadVideo(asset.video);
+      if (asset.phone) preloadImage(asset.phone);
+    });
+    
+    // Preload slider card images
+    CARD_IMAGES.forEach(src => preloadImage(src));
   }
 
   function preloadNextVideos(currentIndex: number, totalItems: number): void {
@@ -771,6 +808,9 @@ const features = [
   }
 
   function runInit(): void {
+    // Preload all assets immediately
+    preloadAllAssets();
+    
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         initAllSliders();
@@ -785,6 +825,9 @@ const features = [
   }
 
   document.addEventListener('astro:page-load', () => {
+    // Preload assets on page navigation
+    preloadAllAssets();
+    
     document.querySelectorAll('[data-feature-slider] .slider-track').forEach((el) => {
       el.removeAttribute('data-initialized');
     });
