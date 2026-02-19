@@ -360,30 +360,16 @@ const features = [
     videoPreloadCache.set(videoSrc, true);
   }
 
-  // Image preloading cache
-  const imagePreloadCache = new Map<string, boolean>();
-
-  function preloadImage(src: string): void {
-    if (imagePreloadCache.has(src)) return;
-    const img = new Image();
-    img.src = src;
-    imagePreloadCache.set(src, true);
-  }
-
-  function preloadAllImages(): void {
-    ASSETS.forEach(asset => {
-        if (asset.phone) preloadImage(asset.phone);
-    });
-  }
-
-  function preloadNextAssets(currentIndex: number, totalItems: number): void {
-    // Preload next 3 videos for smoother experience (Images are already preloaded)
-    for (let i = 1; i <= 3; i++) {
-        const nextIndex = (currentIndex + i) % totalItems;
-        const asset = ASSETS[nextIndex];
-        if (asset && asset.video) {
-            preloadVideo(asset.video);
-        }
+  function preloadNextVideos(currentIndex: number, totalItems: number): void {
+    // Preload next 2 videos in the sequence
+    const nextIndex1 = (currentIndex + 1) % totalItems;
+    const nextIndex2 = (currentIndex + 2) % totalItems;
+    
+    if (ASSETS[nextIndex1]?.video) {
+      preloadVideo(ASSETS[nextIndex1].video);
+    }
+    if (ASSETS[nextIndex2]?.video) {
+      preloadVideo(ASSETS[nextIndex2].video);
     }
   }
 
@@ -402,10 +388,8 @@ const features = [
     // External elements to update (scoped to the correct layout)
     const heroVideo = layoutScope.querySelector('#home-hero-video') as HTMLVideoElement ||
                       document.getElementById('home-hero-video') as HTMLVideoElement;
-    const heroPhoneCurrent = layoutScope.querySelector('#hero-phone-image') as HTMLImageElement ||
+    const heroPhone = layoutScope.querySelector('#hero-phone-image') as HTMLImageElement ||
                       document.getElementById('hero-phone-image') as HTMLImageElement;
-    const heroPhoneNext = layoutScope.querySelector('#hero-phone-next') as HTMLImageElement ||
-                      document.getElementById('hero-phone-next') as HTMLImageElement;
     
     // Text elements to update (scoped)
     const heroTitle1 = layoutScope.querySelector('#hero-title-line1') as HTMLElement ||
@@ -416,10 +400,6 @@ const features = [
                          document.getElementById('hero-subtitle');
     const heroCta = layoutScope.querySelector('#hero-cta-button') as HTMLElement ||
                     document.getElementById('hero-cta-button');
-
-    // Optimize phone animation
-    if (heroPhoneCurrent) heroPhoneCurrent.style.willChange = 'opacity, transform';
-    if (heroPhoneNext) heroPhoneNext.style.willChange = 'opacity, transform';
 
     if (!track || !prevBtn || !nextBtn || items.length === 0) return;
 
@@ -563,69 +543,36 @@ const features = [
         }
 
         // Update Phone Image if changed - sync with slider timing
-        // Double buffering logic for smooth transition
-        const heroPhoneCurrent = (layoutScope.querySelector('#hero-phone-image') || document.getElementById('hero-phone-image')) as HTMLImageElement;
-        const heroPhoneNext = (layoutScope.querySelector('#hero-phone-next') || document.getElementById('hero-phone-next')) as HTMLImageElement;
-
-        if (heroPhoneCurrent && heroPhoneNext) {
-            // Check if we need to update
-            // We look at the "active" one's src to see if it matches current phone
-            // Actually, we should track which one is currently "active" via class
-            
-            let activeImg = heroPhoneCurrent.classList.contains('active') ? heroPhoneCurrent : heroPhoneNext;
-            let nextImg = activeImg === heroPhoneCurrent ? heroPhoneNext : heroPhoneCurrent;
-            
-            // If active image already has the correct src, do nothing
-             if (!activeImg.src.includes(phone)) {
-                if (isFirstUpdate) {
-                    // Initial load
-                    activeImg.src = phone;
-                    activeImg.style.opacity = '1';
-                    activeImg.style.transform = 'translateY(0)';
-                    
-                    nextImg.style.opacity = '0';
-                    nextImg.style.transform = 'translateY(0)';
-                } else {
-                    // Prepare Next Image (It's already "there" behind, just needs src update)
-                    nextImg.src = phone;
-                    nextImg.style.transition = 'none'; // Instant reset
-                    nextImg.style.opacity = '0'; // Start hidden
-                    nextImg.style.transform = 'translateY(0) scale(0.95)'; // Slightly smaller for depth effect? Or just 0
-                    // User said "next image should look like already present", so scale(1) translateY(0) behind is best.
-                     nextImg.style.transform = 'translateY(0) scale(1)';
-                    
-                    // Force reflow
-                    void nextImg.offsetWidth;
-                    
-                    // Animate!
-                    // 1. Current Image: Exits UP and OUT (Slower)
-                    activeImg.style.transition = 'transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-in 0.3s';
-                    activeImg.style.transform = 'translateY(-150vh)';
-                    activeImg.style.opacity = '0';
-                    activeImg.style.zIndex = '10'; // On top while exiting
-                    activeImg.classList.remove('active');
-                    
-                    // 2. Next Image: Immediate Appear (behind)
-                    // The user wants it to look "already present", so we show it immediately behind the exiting one.
-                    nextImg.style.transition = 'none';
-                    nextImg.style.opacity = '1';
-                    nextImg.style.transform = 'translateY(0)';
-                    nextImg.style.zIndex = '9'; // Behind
-                    nextImg.classList.add('active');
-                    
-                    // Cleanup old image after animation
-                     setTimeout(() => {
-                        activeImg.style.transition = 'none';
-                        activeImg.style.transform = 'translateY(0)';
-                        activeImg.style.zIndex = '0';
-                    }, 1500);
-                }
-             }
-        } else if (heroPhoneCurrent) {
-           // Fallback for single image (if overlay update failed)
-           if (!heroPhoneCurrent.src.includes(phone)) {
-             heroPhoneCurrent.src = phone;
-           }
+        if (heroPhone) {
+          if (!heroPhone.src.includes(phone)) {
+            if (isFirstUpdate) {
+              // No animation on initial load — just set the image
+              heroPhone.src = phone;
+            } else {
+              // Exit animation: slide out from top
+              heroPhone.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 1, 1), opacity 0.35s cubic-bezier(0.4, 0, 1, 1)';
+              heroPhone.style.transform = 'translateY(-100%)';
+              heroPhone.style.opacity = '0';
+              
+              // Change image after exit animation
+              setTimeout(() => {
+                heroPhone.src = phone;
+                
+                // Prepare for enter animation (start from below)
+                heroPhone.style.transition = 'none';
+                heroPhone.style.transform = 'translateY(30%)';
+                
+                // Enter animation: slide in from bottom
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    heroPhone.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                    heroPhone.style.transform = 'translateY(0)';
+                    heroPhone.style.opacity = '1';
+                  });
+                });
+              }, 350); // Match exit animation duration
+            }
+          }
         }
       }
 
@@ -693,8 +640,8 @@ const features = [
 
       isFirstUpdate = false;
       
-      // Preload next assets (videos and images) for smooth transitions
-      preloadNextAssets(currentIndex, totalItems);
+      // Preload next videos for smooth transitions
+      preloadNextVideos(currentIndex, totalItems);
     };
 
     // Navegación circular (loop infinito)
@@ -824,8 +771,11 @@ const features = [
   }
 
   function runInit(): void {
-    preloadAllImages();
-    initAllSliders();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        initAllSliders();
+      });
+    });
   }
 
   if (document.readyState === 'loading') {
