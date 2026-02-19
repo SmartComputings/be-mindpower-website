@@ -21,7 +21,10 @@ const { phoneSrc = "/images/smartphone_2%201.png", titleLine1, titleLine2, subti
 <div class="home-hero-overlay">
   <HeroHomeLeft titleLine1={titleLine1} titleLine2={titleLine2} subtitle={subtitle} ctaText={ctaText} ctaHref={ctaHref} titleLine1Key={titleLine1Key} titleLine2Key={titleLine2Key} subtitleKey={subtitleKey} ctaKey={ctaKey} />
   <div class="home-hero-phone-wrap">
-    <img id="hero-phone-image" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone" transition:name="phone-morph" />
+    <div class="relative w-full h-full"> 
+      <img id="hero-phone-image" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone active absolute inset-0 z-10" />
+      <img id="hero-phone-next" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone next absolute inset-0 z-0 opacity-0" />
+    </div>
   </div>
 </div>
 
@@ -61,14 +64,17 @@ const { phoneSrc = "/images/smartphone_2%201.png", titleLine1, titleLine2, subti
     justify-content: flex-end;
     margin-top: 0;
     animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    position: relative;
+    width: min(579px, 33.5vw);
+    height: min(908px, 81.3vh);
   }
 
   .home-hero-smartphone {
-    width: min(579px, 33.5vw);
-    height: auto;
-    max-height: min(908px, 81.3vh);
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     object-position: top right;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   }
 
   @media (max-width: 1024px) {
