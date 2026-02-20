@@ -14,7 +14,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
     <div class="chat-desktop-layout">
       <HomeHero 
         videoSrc="https://pub-d1d8eb4932844ef19f969720eed8b94a.r2.dev/1%20(8).mp4"
-        ctaHref="/chat/details"
+        ctaHref="/app/chatdetails"
         autoplayVideo={true}
       >
         <FeatureSlider initialIndex={0} />
@@ -59,6 +59,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <!-- Botones -->
         <div class="chat-mobile-buttons">
           <div class="chat-badges">
+              <a id="hero-cta-button" href="/app/chatdetails" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
             <a href="#" class="chat-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
             </a>
@@ -66,7 +67,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
               <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
             </a>
           </div>
-          <a id="hero-cta-button" href="/chat/details" class="chat-cta" data-i18n="home.hero.cta">Ver Más</a>
+      
         </div>
       </div>
     </div>
