@@ -1,32 +1,32 @@
 ---
-// Página marketplace: columna izquierda + hero/slider a la derecha (desktop); apilado en móvil.
+// Página Marketplace: contenido específico de Marketplace con hero slider.
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import FeatureSlider from '../components/FeatureSlider.astro';
-import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftContent.astro';
 ---
 
 <Layout title="BeMind Power - Marketplace" description="BeMind Power: marketplace y bienestar con tecnología inmersiva." bodyClass="marketplace-page">
   <div class="marketplace-page-wrap relative min-h-[100dvh] w-full">
-    <Header />
+    <Header currentPath="/marketplace" />
 
-    <!-- Layout Desktop: usa HomeHero normal con MarketplaceLeftContent -->
+    <!-- Layout Desktop: usa HomeHero con video y phone de Marketplace, slider inicia en Marketplace (index 2) -->
     <div class="marketplace-desktop-layout">
-      <div class="marketplace-bg absolute inset-0 z-0">
-        <HomeHero
-          videoSrc="https://pub-d1d8eb4932844ef19f969720eed8b94a.r2.dev/marketplace.mp4"
-          phoneSrc="/images/smartphone3 1.png"
-        >
-          <FeatureSlider initialIndex={2} />
-        </HomeHero>
-      </div>
-      <div class="marketplace-layout">
-        <MarketplaceLeftContent />
-        <div class="marketplace-right" aria-hidden="true">
-          <!-- Slider ya está dentro de HomeHero; esta columna solo ocupa espacio en desktop -->
-        </div>
-      </div>
+      <HomeHero
+        videoSrc="/asad/an3.mp4"
+        phoneSrc="/asad/s3.png"
+        titleLine1="Compra y vende"
+        titleLine2="sin salir del chat"
+        subtitle="Desde productos locales hasta servicios digitales: todo en una sola comunidad."
+        ctaText="Ver Más"
+        ctaHref="/app/marketplacedetails"
+        titleLine1Key="marketplace.hero.titleLine1"
+        titleLine2Key="marketplace.hero.titleLine2"
+        subtitleKey="marketplace.hero.subtitle"
+        ctaKey="marketplace.hero.cta"
+      >
+        <FeatureSlider initialIndex={2} />
+      </HomeHero>
     </div>
 
     <!-- Layout Mobile: estructura separada para mejor control -->
@@ -40,7 +40,7 @@ import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftCon
           playsinline
           preload="auto"
         >
-          <source src="https://pub-d1d8eb4932844ef19f969720eed8b94a.r2.dev/marketplace.mp4" type="video/mp4" />
+          <source src="/asad/an3.mp4" type="video/mp4" />
         </video>
         <div class="marketplace-mobile-overlay"></div>
         <div class="marketplace-mobile-glow"></div>
@@ -57,7 +57,7 @@ import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftCon
         </div>
 
         <div class="marketplace-mobile-buttons">
-          <a href="#slider" class="marketplace-m-cta">Ver Más</a>
+          <a href="/app/marketplacedetails" class="marketplace-m-cta">Ver Más</a>
           <div class="marketplace-m-badges">
             <a href="#" class="marketplace-m-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -83,57 +83,11 @@ import MarketplaceLeftContent from '../components/marketplace/MarketplaceLeftCon
     overflow-x: hidden;
   }
 
-  /* Desktop: mostrar layout normal, ocultar mobile */
   .marketplace-desktop-layout {
     display: block;
-  }
-
-  .marketplace-desktop-layout .marketplace-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     z-index: 0;
-  }
-
-  /* Desktop: dos columnas — izquierda contenido, derecha deja espacio al hero/slider */
-  body.marketplace-page .marketplace-layout {
-    position: relative;
-    z-index: 10;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    padding: 0 6%;
-    padding-top: max(80px, 10vh);
-    padding-bottom: 2rem;
-    box-sizing: border-box;
-    pointer-events: none;
-  }
-
-  body.marketplace-page .marketplace-layout .marketplace-left {
-    flex: 0 1 auto;
-    max-width: 55%;
-    pointer-events: auto;
-  }
-
-  body.marketplace-page .marketplace-layout .marketplace-right {
-    flex: 1 1 auto;
-    min-width: 0;
-    min-height: 400px;
-    pointer-events: none;
-  }
-
-  /* Ocultar el bloque izquierdo original del hero (HeroHomeLeft) en /marketplace */
-  body.marketplace-page .home-hero-overlay .hero-home-left {
-    display: none !important;
-  }
-
-  /* Mantener la imagen del teléfono siempre a la derecha en /marketplace */
-  body.marketplace-page .home-hero-overlay .home-hero-phone-wrap {
-    margin-left: auto;
-    flex: 0 0 auto;
   }
 
   .marketplace-mobile-layout {

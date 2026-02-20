@@ -56,7 +56,7 @@ const navItems = [
 
       <div class="lg:hidden flex flex-col w-full mobile-nav-container">
       <div class="flex items-center justify-between w-full mobile-nav-row">
-        <a href="/" class="flex items-center gap-2 no-underline mobile-logo-link">
+        <a href="/" class="flex items-center gap-2 no-underline mobile-logo-link shrink-0">
           <img
             src="/images/logos/Logo_Be-Mind%20night.svg"
             alt="BeMind Power"
@@ -64,9 +64,14 @@ const navItems = [
           />
         </a>
         
+        <!-- Centered title placeholder for page name -->
+        <div class="flex-1 flex items-center justify-center mobile-center-title">
+          <span class="text-white font-semibold text-sm tracking-wide" data-i18n="nav.pageTitle"></span>
+        </div>
+        
         <button
           id="hamburger-btn"
-          class="hamburger-button"
+          class="hamburger-button shrink-0"
           type="button"
           aria-label="Abrir menú"
           aria-controls="mobile-menu"
@@ -353,8 +358,24 @@ const navItems = [
     }
 
     .mobile-logo-img {
-      height: 30px;
+      height: 22px;
       width: auto;
+    }
+    
+    .mobile-center-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      max-width: 160px;
+      text-align: center;
+    }
+    
+    .mobile-center-title span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
     }
 
     .hamburger-button {
@@ -424,8 +445,12 @@ const navItems = [
     }
 
     .mobile-logo-img {
-      height: 34px;
+      height: 26px;
       width: auto;
+    }
+    
+    .mobile-center-title {
+      max-width: 200px;
     }
 
     .hamburger-button {

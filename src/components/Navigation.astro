@@ -7,6 +7,15 @@ const { currentPath = "/" } = Astro.props;
 
 const navItems = [
   { label: "Inicio", href: "/" },
+  { label: "Chat", href: "/chat" },
+  { label: "Wallet", href: "/wallet" },
+  { label: "Marketplace", href: "/marketplace" },
+  { label: "Apps", href: "/apps" },
+  { label: "Nutrición", href: "/nutrition" },
+  { label: "Comunidad", href: "/communities" },
+  { label: "Música", href: "/musica" },
+  { label: "Salud Mental", href: "/salud-mental" },
+  { label: "Finanzas", href: "/finance" },
   { label: "Sobre nosotros", href: "/sobre-nosotros" },
   { label: "Contacto", href: "/contacto" },
 ];
@@ -19,15 +28,15 @@ const languages = [
 
 <nav class="relative flex items-center gap-8">
   <!-- Main Navigation -->
-  <ul class="hidden min-[900px]:flex items-center gap-2">
+  <ul class="hidden min-[900px]:flex items-center gap-1">
     {
       navItems.map((item, index) => (
         <li>
           <a
             href={item.href}
             class:list={[
-              "px-4 py-2 text-base font-medium transition-colors duration-300",
-              currentPath === item.href ? "text-white" : "text-white/70",
+              "px-2 py-2 text-xs font-normal transition-colors duration-300 whitespace-nowrap",
+              currentPath === item.href ? "text-white border-b-2 border-white" : "text-white/70 hover:text-white",
               `stagger-${index + 1}`,
             ]}
           >
@@ -88,7 +97,7 @@ const languages = [
 
     if (!mobileMenuBtn || !mobileMenu) return;
 
-    const toggleMenu = (e) => {
+    const toggleMenu = (e: Event) => {
       e.stopPropagation();
       mobileMenu.classList.toggle("hidden");
     };

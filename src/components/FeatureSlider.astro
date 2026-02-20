@@ -109,22 +109,21 @@ const features = [
           </div>
         ))}
       </div>
-    </div>
-
-    <div class="slider-nav flex items-center justify-center gap-4 sm:gap-6 mt-4 sm:mt-6">
+      
+      <!-- Navigation arrows positioned on sides -->
       <button 
-        class="nav-btn w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center text-white/60 hover:text-white transition-all"
+        class="nav-btn nav-btn-left absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white transition-all z-20"
         aria-label="Anterior"
       >
-        <svg class="w-5 h-5 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button 
-        class="nav-btn w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center text-white/60 hover:text-white transition-all"
+        class="nav-btn nav-btn-right absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white transition-all z-20"
         aria-label="Siguiente"
       >
-        <svg class="w-5 h-5 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -154,6 +153,20 @@ const features = [
     position: relative;
     width: 100%;
     height: 100%;
+  }
+
+  .nav-btn {
+    background: none
+   
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
   }
 
   .nav-btn:disabled {
@@ -228,19 +241,41 @@ const features = [
     }
   }
 
-  /* Móvil / táctil: ocultar flechas (no deben ocupar espacio) */
-  @media (hover: none) and (pointer: coarse) {
-    .slider-nav {
-      display: none !important;
+  /* Desktop: hide side arrows, show centered ones */
+  @media (min-width: 900px) {
+    .nav-btn-left,
+    .nav-btn-right {
+      display: none;
+    }
+  }
+
+  /* Mobile: show side arrows */
+  @media (max-width: 899px) {
+    .nav-btn-left {
+      left: 0.5rem;
     }
 
-    .slider-wrapper {
-      padding-bottom: 0;
+    .nav-btn-right {
+      right: 0.5rem;
+    }
+
+    .nav-btn:active {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    .nav-btn-left:active {
+      transform: translateY(-50%) scale(0.9);
+    }
+
+    .nav-btn-right:active {
+      transform: translateY(-50%) scale(0.9);
     }
   }
 </style>
 
 <script>
+  // Track auto-slide intervals per slider element to prevent duplicates
+  const sliderIntervals = new WeakMap<HTMLElement, ReturnType<typeof setInterval>>();
 
   // Escalas según distancia desde la tarjeta activa (más pronunciadas como en Figma)
   const SCALES = {
@@ -347,6 +382,19 @@ const features = [
   '/app/financedetails'  // 8: Finance
   ];
 
+  // Titles mapping for navbar (Index -> title)
+  const TITLES = [
+    'Todo empieza',           // 0: Chat
+    'Maneja tus finanzas',         // 1: Wallet
+    'Compra y vende',    // 2: Marketplace
+    'Una sola app',           // 3: Apps
+    'Vive saludable',      // 4: Nutrition
+    'Destácate',    // 5: Communities
+    'La música vive',         // 6: Music
+    'Apoyo real',   // 7: Mental Health
+    'A.I. Finanzas'   // 8: Finance
+  ];
+
   // Video preloading cache
   const videoPreloadCache = new Map<string, boolean>();
   const imagePreloadCache = new Map<string, boolean>();
@@ -412,31 +460,35 @@ const features = [
 
   function initSliderInstance(root: HTMLElement): void {
     const track = root.querySelector<HTMLElement>('.slider-track');
-    const prevBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]');
-    const nextBtn = root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Siguiente"]');
+    const container = root.querySelector<HTMLElement>('.slider-container');
+    const prevBtn = container?.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]') ||
+                    root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Anterior"]');
+    const nextBtn = container?.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Siguiente"]') ||
+                    root.querySelector<HTMLButtonElement>('.nav-btn[aria-label="Siguiente"]');
     const items = root.querySelectorAll<HTMLElement>('.slider-item');
     
     // Find the layout scope for this slider (mobile vs desktop)
     const layoutScope = root.closest('.chat-mobile-layout') || 
                          root.closest('.chat-desktop-layout') || 
                          root.closest('.home-hero') || 
-                         document;
+                         root;
     
-    // External elements to update (scoped to the correct layout)
-    const heroVideo = layoutScope.querySelector('#home-hero-video') as HTMLVideoElement ||
-                      document.getElementById('home-hero-video') as HTMLVideoElement;
-    const heroPhone = layoutScope.querySelector('#hero-phone-image') as HTMLImageElement ||
-                      document.getElementById('hero-phone-image') as HTMLImageElement;
+    // External elements to update (scoped to the correct layout - NO FALLBACK to avoid cross-layout updates)
+    const heroVideo = layoutScope.querySelector('#home-hero-video') as HTMLVideoElement | null;
+    const heroPhone = layoutScope.querySelector('#hero-phone-image') as HTMLImageElement | null;
     
-    // Text elements to update (scoped)
-    const heroTitle1 = layoutScope.querySelector('#hero-title-line1') as HTMLElement ||
-                       document.getElementById('hero-title-line1');
-    const heroTitle2 = layoutScope.querySelector('#hero-title-line2') as HTMLElement ||
-                       document.getElementById('hero-title-line2');
-    const heroSubtitle = layoutScope.querySelector('#hero-subtitle') as HTMLElement ||
-                         document.getElementById('hero-subtitle');
-    const heroCta = layoutScope.querySelector('#hero-cta-button') as HTMLElement ||
-                    document.getElementById('hero-cta-button');
+    // Text elements to update (scoped - NO FALLBACK)
+    const heroTitle1 = layoutScope.querySelector('#hero-title-line1') as HTMLElement | null;
+    const heroTitle2 = layoutScope.querySelector('#hero-title-line2') as HTMLElement | null;
+    const heroSubtitle = layoutScope.querySelector('#hero-subtitle') as HTMLElement | null;
+    const heroCta = layoutScope.querySelector('#hero-cta-button') as HTMLElement | null;
+    
+    // Mobile navbar title element (outside layout scope - in header)
+    // Only update navbar title if this slider is in mobile layout
+    const isInMobileLayout = root.closest('.chat-mobile-layout') !== null;
+    const mobilePageTitle = isInMobileLayout 
+      ? document.querySelector('#mobile-page-title') as HTMLElement
+      : null;
 
     if (!track || !prevBtn || !nextBtn || items.length === 0) return;
 
@@ -448,6 +500,7 @@ const features = [
     let currentIndex = initialIndex;
     const totalItems = items.length;
     let isFirstUpdate = true;
+    let navbarTitleTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const getCardWidth = (): number => {
       const w = window.innerWidth;
@@ -675,6 +728,36 @@ const features = [
         }
       }
 
+      // Update Mobile Navbar Title
+      if (mobilePageTitle && TITLES[currentIndex]) {
+        const newTitle = TITLES[currentIndex];
+        if (mobilePageTitle.textContent !== newTitle) {
+          // Cancel any pending title update to avoid double-updates
+          if (navbarTitleTimeout) {
+            clearTimeout(navbarTitleTimeout);
+            navbarTitleTimeout = null;
+          }
+
+          if (isFirstUpdate) {
+            // First load - set directly
+            mobilePageTitle.textContent = newTitle;
+          } else {
+            // Delay header title change until after slider transform transition
+            // Slider items use a 0.5s transition; sync header update to that.
+            mobilePageTitle.style.transition = 'opacity 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            mobilePageTitle.style.opacity = '0';
+
+            navbarTitleTimeout = setTimeout(() => {
+              navbarTitleTimeout = null;
+              mobilePageTitle.textContent = newTitle;
+              requestAnimationFrame(() => {
+                mobilePageTitle.style.opacity = '1';
+              });
+            }, 520); // wait slightly more than slider transition (500ms)
+          }
+        }
+      }
+
       isFirstUpdate = false;
       
       // Preload next videos for smooth transitions
@@ -713,26 +796,58 @@ const features = [
       startAutoSlide();
     };
 
-    // Event listeners
-    prevBtn.addEventListener('click', () => {
+    // Event listeners for main buttons (if present)
+    prevBtn?.addEventListener('click', () => {
       prevSlide();
       resetAutoSlide();
     });
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn?.addEventListener('click', () => {
       nextSlide();
       resetAutoSlide();
     });
 
+    // Also wire side arrows (explicit) so side buttons always work
+    const sidePrev = container?.querySelector<HTMLButtonElement>('.nav-btn-left');
+    const sideNext = container?.querySelector<HTMLButtonElement>('.nav-btn-right');
+
+    if (sidePrev && sidePrev !== prevBtn) {
+      sidePrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevSlide();
+        resetAutoSlide();
+      });
+    }
+
+    if (sideNext && sideNext !== nextBtn) {
+      sideNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextSlide();
+        resetAutoSlide();
+      });
+    }
+
     // Soporte para gestos táctiles
     let touchStartX = 0;
+    let touchStartedOnButton = false;
 
     track.parentElement?.addEventListener('touchstart', (e: TouchEvent) => {
+      // Track if touch started on a button to ignore it in touchend
+      const target = e.target as HTMLElement | null;
+      touchStartedOnButton = !!(target && target.closest && target.closest('button, a'));
+      if (touchStartedOnButton) return;
+      
       touchStartX = e.changedTouches[0].screenX;
       stopAutoSlide();
     }, { passive: true });
 
     track.parentElement?.addEventListener('touchend', (e: TouchEvent) => {
+      // Ignore if touch started on a button (let click handler deal with it)
+      if (touchStartedOnButton) {
+        touchStartedOnButton = false;
+        return;
+      }
+      
       const touchEndX = e.changedTouches[0].screenX;
       const diff = touchStartX - touchEndX;
       
@@ -763,6 +878,10 @@ const features = [
     // Check if dragging happened? Since touchStart/touchEnd are passive, click might fire.
     // If we want simple click behavior:
     track.parentElement?.addEventListener('click', (e) => {
+      // Ignore clicks that originate from buttons/links (arrows/CTAs)
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest && target.closest('button, a')) return;
+
       // Bounce animation: Move right first (wind up)
       track.style.transition = 'transform 0.15s ease-out';
       track.style.transform = 'translateX(20px)';
@@ -794,12 +913,17 @@ const features = [
     // Inicializar todos los sliders visibles en la página
     const sliders = document.querySelectorAll<HTMLElement>('[data-feature-slider]');
     sliders.forEach((slider) => {
-      // Solo inicializar si el slider es visible
-      const style = window.getComputedStyle(slider);
-      const parentStyle = slider.parentElement ? window.getComputedStyle(slider.parentElement) : null;
-      const isVisible = style.display !== 'none' && 
-                       style.visibility !== 'hidden' && 
-                       (!parentStyle || parentStyle.display !== 'none');
+      // Check if any ancestor has display:none (more thorough check)
+      let el: HTMLElement | null = slider;
+      let isVisible = true;
+      while (el) {
+        const style = window.getComputedStyle(el);
+        if (style.display === 'none' || style.visibility === 'hidden') {
+          isVisible = false;
+          break;
+        }
+        el = el.parentElement;
+      }
       
       if (isVisible) {
         initSliderInstance(slider);
