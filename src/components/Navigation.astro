@@ -7,26 +7,7 @@ interface Props {
 
 const { currentPath = "/" } = Astro.props;
 
-<<<<<<< HEAD
-const navItems = [
-  { label: "Inicio", href: "/" },
-  { label: "Chat", href: "/chat" },
-  { label: "Wallet", href: "/wallet" },
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Apps", href: "/apps" },
-  { label: "Nutrición", href: "/nutrition" },
-  { label: "Comunidad", href: "/communities" },
-  { label: "Música", href: "/musica" },
-  { label: "Salud Mental", href: "/salud-mental" },
-  { label: "Finanzas", href: "/finance" },
-  { label: "Sobre nosotros", href: "/sobre-nosotros" },
-  { label: "Contacto", href: "/contacto" },
-];
 
-const languages = [
-  { label: "English", code: "en" },
-  { label: "Español", code: "es", active: true },
-=======
 const mainNavItems = [
   { key: 'nav.home', label: "Inicio", href: "/" },
 ];
@@ -50,7 +31,6 @@ const contactItem = { key: 'nav.contact', label: "Contacto", href: "/contacto" }
 const footerNavItems = [
   aboutItem,
   contactItem,
->>>>>>> 9f285196ae732608d6ce4d6758c0ee3f9e5156e2
 ];
 ---
 
@@ -68,7 +48,7 @@ const footerNavItems = [
               `stagger-${index + 1}`,
             ]}
           >
-            {item.label}
+            {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
           </a>
         </li>
       ))
@@ -221,7 +201,7 @@ const footerNavItems = [
         </li>
 
         <li class="h-px bg-white/10 my-1 mx-2"></li>
-   
+        <li class="h-px bg-white/10 my-1 mx-2"></li>
 
         <!-- Language Switcher -->
         <li class="mt-2">

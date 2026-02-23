@@ -19,9 +19,17 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.home': 'Inicio',
     'nav.about': 'Sobre nosotros',
     'nav.contact': 'Contacto',
-<<<<<<< HEAD
-=======
+
     'nav.features': 'Funcionalidades',
+    'nav.chat': 'Chat',
+    'nav.wallet': 'Wallet',
+    'nav.marketplace': 'Marketplace',
+    'nav.apps': 'Apps',
+    'nav.nutrition': 'Nutrición',
+    'nav.communities': 'Comunidades',
+    'nav.musica': 'Música',
+    'nav.salud-mental': 'Salud Mental',
+    'nav.finance': 'Finanzas',
     'about.title': 'Creemos en una vida digital<br />más simple.',
     'about.subtitle': 'Construimos un ecosistema que conecta personas, negocios y servicios en una sola app.',
     'about.description': 'Nuestro equipo está formado por creadores, ingenieros y diseñadores que comparten una misma visión: hacer que cada mensaje, pago o interacción sea más fácil y seguro.',
@@ -31,7 +39,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'Correo electrónico',
     'contact.message': 'Mensaje',
     'contact.submit': 'Enviar',
->>>>>>> 9f285196ae732608d6ce4d6758c0ee3f9e5156e2
+
     'skip': 'Omitir Intro',
     'menu.open': 'Abrir menú',
     'menu.close': 'Cerrar menú',
@@ -137,9 +145,17 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.home': 'Home',
     'nav.about': 'About us',
     'nav.contact': 'Contact',
-<<<<<<< HEAD
-=======
+
     'nav.features': 'Features',
+    'nav.chat': 'Chat',
+    'nav.wallet': 'Wallet',
+    'nav.marketplace': 'Marketplace',
+    'nav.apps': 'Apps',
+    'nav.nutrition': 'Nutrition',
+    'nav.communities': 'Communities',
+    'nav.musica': 'Music',
+    'nav.salud-mental': 'Mental Health',
+    'nav.finance': 'Finance',
     'about.title': 'We believe in a simpler<br />digital life.',
     'about.subtitle': 'We build an ecosystem that connects people, businesses and services in a single app.',
     'about.description': 'Our team consists of creators, engineers and designers who share the same vision: making every message, payment or interaction easier and safer.',
@@ -149,7 +165,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'Email',
     'contact.message': 'Message',
     'contact.submit': 'Send',
->>>>>>> 9f285196ae732608d6ce4d6758c0ee3f9e5156e2
+
     'skip': 'Skip Intro',
     'menu.open': 'Open menu',
     'menu.close': 'Close menu',
@@ -254,6 +270,15 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.about': 'Sobre nós',
     'nav.contact': 'Contato',
     'nav.features': 'Recursos',
+    'nav.chat': 'Chat',
+    'nav.wallet': 'Wallet',
+    'nav.marketplace': 'Marketplace',
+    'nav.apps': 'Apps',
+    'nav.nutrition': 'Nutrição',
+    'nav.communities': 'Comunidades',
+    'nav.musica': 'Música',
+    'nav.salud-mental': 'Saúde Mental',
+    'nav.finance': 'Finanças',
     'about.title': 'Acreditamos em uma vida digital<br />mais simples.',
     'about.subtitle': 'Construímos um ecossistema que conecta pessoas, negócios et serviços em um único aplicativo.',
     'about.description': 'Nossa equipe é formada por criadores, engenheiros e designers que compartilham a mesma visão: tornar cada mensagem, pagamento ou interação mais fácil e segura.',
@@ -318,9 +343,17 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.home': '首页',
     'nav.about': '关于我们',
     'nav.contact': '联系我们',
-<<<<<<< HEAD
-=======
+
     'nav.features': '功能',
+    'nav.chat': '聊天',
+    'nav.wallet': '钱包',
+    'nav.marketplace': '市场',
+    'nav.apps': '应用',
+    'nav.nutrition': '营养',
+    'nav.communities': '社区',
+    'nav.musica': '音乐',
+    'nav.salud-mental': '心理健康',
+    'nav.finance': '金融',
     'about.title': '我们相信更简单的<br />数字生活。',
     'about.subtitle': '我们构建了一个在单一应用程序中连接人、业务和服务的生态系统。',
     'about.description': '我们的团队由创作者、工程师和设计师组成，他们有着共同的愿景：使每条消息、付款或交互变得更加轻松和安全。',
@@ -330,7 +363,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': '电子邮件',
     'contact.message': '信息',
     'contact.submit': '发送',
->>>>>>> 9f285196ae732608d6ce4d6758c0ee3f9e5156e2
+
     'skip': '跳过介绍',
     'menu.open': '打开菜单',
     'menu.close': '关闭菜单',
@@ -386,9 +419,17 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.home': 'الرئيسية',
     'nav.about': 'من نحن',
     'nav.contact': 'اتصل بنا',
-<<<<<<< HEAD
-=======
+
     'nav.features': 'المميزات',
+    'nav.chat': 'الدردشة',
+    'nav.wallet': 'المحفظة',
+    'nav.marketplace': 'السوق',
+    'nav.apps': 'التطبيقات',
+    'nav.nutrition': 'التغذية',
+    'nav.communities': 'المجتمعات',
+    'nav.musica': 'الموسيقى',
+    'nav.salud-mental': 'الصحة النفسية',
+    'nav.finance': 'المالية',
     'about.title': 'نحن نؤمن بحياة رقمية<br />أكثر بساطة.',
     'about.subtitle': 'نحن نبني نظاماً يربط الأشخاص والشركات والخدمات في تطبيق واحد.',
     'about.description': 'يتكون فريقنا من مبدعين ومهندسين ومصممين يتشاركون نفس الرؤية: جعل كل رسالة أو دفعة أو تفاعل أسهل وأكثر أماناً.',
@@ -398,7 +439,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'البريد الإلكتروني',
     'contact.message': 'الرسالة',
     'contact.submit': 'إرسال',
->>>>>>> 9f285196ae732608d6ce4d6758c0ee3f9e5156e2
+
     'skip': 'تخطي المقدمة',
     'menu.open': 'فتح القائمة',
     'menu.close': 'إغلاق القائمة',
