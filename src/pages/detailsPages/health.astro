@@ -4,12 +4,12 @@ import Header from '../../components/Header.astro';
 
 // Images
 const bannerImg = '/images/chat/banner.png';
-const phoneImg = '/images/smartphonenutriction.png';
+const phoneImg = '/images/mentalhealth.png';
 const googlePlay = '/images/chat/googleplay.png';
 const appleStore = '/images/chat/apple.png';
 ---
 
-<Layout title="BeMind Power - Nutrition Details" description="Recetas y planes de alimentación" bodyClass="chat-detail-page">
+<Layout title="BeMind Power - Mental Health Details" description="Salud Mental y Bienestar" bodyClass="chat-detail-page">
   <div class="chat-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]">
     <Header />
     
@@ -22,7 +22,7 @@ const appleStore = '/images/chat/apple.png';
       </div>
 
       <!-- Left Content: Smartphone -->
-      <div class="relative z-10 w-full max-w-[280px] md:max-w-[600px] flex justify-center mb-10 md:mb-0">
+      <div class="relative z-10 w-full max-w-[280px] md:max-w-[800px] flex justify-center mb-10 mt-20 md:mb-0">
         <img src={phoneImg} alt="App Interface" class="w-full h-auto" transition:name="phone-morph" transition:animate="slide" />
       </div>
 
@@ -30,19 +30,19 @@ const appleStore = '/images/chat/apple.png';
       <div class="relative z-10 w-full max-w-2xl text-white flex flex-col items-center md:items-start md:ml-16 text-center md:text-left px-4 md:px-0">
         
         <h1 class="mb-6 tracking-tight text-white" style="font-family: 'OPTIFutura-ExtraBlackCond', sans-serif; font-size: clamp(36px, 5vw, 64px); line-height: 1.1; font-weight: 500; letter-spacing: 0;">
-          <span data-i18n="nutrition.detail.title">Conecta tus dispositivos, recibe recetas.</span>
+          <span data-i18n="health.detail.title">Encuentra calma cuando más la necesitas.</span>
         </h1>
         
         <!-- Features List -->
         <ul class="space-y-3 mb-10 w-full flex flex-col items-center md:items-start" style="font-family: 'Neometric', sans-serif; font-size: clamp(16px, 2vw, 24px); line-height: 100%; font-weight: 400; letter-spacing: 0;">
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature1">Recomendaciones según ingredientes que tienes</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="health.detail.feature1">Ejercicios de meditación</span>
             </li>
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature2">Compra lo que falta con un clic</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="health.detail.feature2">Apoyo 24/7 con IA y profesionales</span>
             </li>
             <li class="flex items-center gap-3 text-white">
-                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="nutrition.detail.feature3">Planes de alimentación saludables</span>
+                <span class="text-[#4F46E5] text-xl">✓</span> <span data-i18n="health.detail.feature3">Contenido para el día a día</span>
             </li>
         </ul>
 
@@ -60,7 +60,7 @@ const appleStore = '/images/chat/apple.png';
     </main>
 
     <!-- Back Arrow Icon -->
-    <a href="/app" class="absolute top-[130px] md:top-[200px] left-4 md:left-40         z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
+    <a href="/chat" class="absolute top-[130px] md:top-[200px] left-4 md:left-40         z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
