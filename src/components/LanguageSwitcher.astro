@@ -1,9 +1,10 @@
 ---
 interface Props {
   size?: 'md' | 'sm';
+  variant?: 'dropdown' | 'inline';
 }
 
-const { size = 'md' } = Astro.props;
+const { size = 'md', variant = 'dropdown' } = Astro.props;
 
 // Idiomas y banderas (SVG images)
 const languages = [
@@ -15,19 +16,22 @@ const languages = [
 ];
 ---
 
-<div class="lang-dropdown relative" data-dropdown>
+<div class:list={["lang-container relative", variant === 'dropdown' ? 'lang-dropdown' : 'lang-inline']} data-variant={variant} data-dropdown>
   <!-- Botón que muestra el idioma actual -->
   <button
     type="button"
     class:list={[
-      'lang-trigger glass flex items-center gap-2 text-white transition-all duration-200 cursor-pointer hover:bg-white/20',
-      size === 'sm' ? 'text-[15px] px-4 py-2' : 'text-[16px] px-4 py-2'
+      'lang-trigger flex items-center gap-2 text-white transition-all duration-200 cursor-pointer w-full',
+      variant === 'dropdown' ? 'glass hover:bg-white/20 px-4 py-2 border border-white/20 rounded-full' : 'px-4 py-2 text-sm font-medium hover:bg-white/5 rounded-xl text-white/70 hover:text-white',
+      variant === 'inline' ? 'justify-start' : 'justify-center'
     ]}
     aria-expanded="false"
-    aria-haspopup="listbox"
+    aria-haspopup={variant === 'dropdown' ? 'listbox' : undefined}
   >
-    <img class="current-flag" src="/images/flags/us.svg" alt="" width="24" height="16" />
-    <span class="current-label hidden sm:inline">English</span>
+    <div class="flex items-center gap-2">
+      <img class="current-flag" src="/images/flags/co.svg" alt="" width="24" height="16" />
+      <span class="current-label">Español</span>
+    </div>
     <svg class="dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
@@ -35,13 +39,21 @@ const languages = [
 
   <!-- Lista desplegable -->
   <div 
-    class="lang-menu absolute left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-0 bottom-full sm:bottom-auto sm:top-full mb-2 sm:mb-0 sm:mt-2 min-w-[180px] rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl overflow-hidden opacity-0 invisible translate-y-2 transition-all duration-200 z-[100]"
-    role="listbox"
+    class:list={[
+      'lang-menu transition-all duration-200 z-[100] overflow-hidden',
+      variant === 'dropdown' 
+        ? 'absolute left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-0 bottom-full sm:bottom-auto sm:top-full mb-2 sm:mb-0 sm:mt-2 min-w-[180px] rounded-2xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl opacity-0 invisible translate-y-2' 
+        : 'hidden w-full mt-1 bg-white/5 rounded-xl'
+    ]}
+    role={variant === 'dropdown' ? 'listbox' : undefined}
   >
     {languages.map((lang) => (
       <button
         type="button"
-        class="lang-option w-full flex items-center gap-3 px-4 py-3 text-left text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+        class:list={[
+          'lang-option w-full flex items-center gap-3 px-4 py-3 text-left text-white/80 hover:bg-white/10 hover:text-white transition-colors',
+          variant === 'inline' && 'text-sm py-2 px-6'
+        ]}
         data-lang={lang.code}
         role="option"
         aria-selected="false"
@@ -66,16 +78,11 @@ const languages = [
     flex-shrink: 0;
   }
 
-  .lang-trigger {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 9999px;
-  }
-
   .lang-dropdown[data-open="true"] .lang-trigger {
     background: rgba(255, 255, 255, 0.15);
   }
 
-  .lang-dropdown[data-open="true"] .dropdown-arrow {
+  .lang-trigger[aria-expanded="true"] .dropdown-arrow {
     transform: rotate(180deg);
   }
 
@@ -108,6 +115,10 @@ const languages = [
   .lang-option:last-child {
     border-radius: 0 0 1rem 1rem;
   }
+
+  .lang-inline .lang-menu {
+    transition: max-height 0.3s ease-out;
+  }
 </style>
 
 <script>
@@ -115,7 +126,7 @@ const languages = [
 
   // Función para inicializar todos los dropdowns de idioma
   function initLanguageDropdowns(): void {
-    const dropdowns = document.querySelectorAll<HTMLElement>('.lang-dropdown');
+    const dropdowns = document.querySelectorAll<HTMLElement>('.lang-dropdown, .lang-inline');
     
     dropdowns.forEach((dropdown) => {
       // Evitar inicialización duplicada
@@ -127,6 +138,7 @@ const languages = [
       const options = dropdown.querySelectorAll<HTMLButtonElement>('.lang-option');
       const currentFlag = dropdown.querySelector<HTMLImageElement>('.current-flag');
       const currentLabel = dropdown.querySelector<HTMLElement>('.current-label');
+      const variant = dropdown.getAttribute('data-variant');
 
       if (!trigger || !menu) return;
 
@@ -152,9 +164,18 @@ const languages = [
 
       // Toggle dropdown
       const toggle = (open?: boolean): void => {
-        const isOpen = open ?? dropdown.getAttribute('data-open') !== 'true';
-        dropdown.setAttribute('data-open', String(isOpen));
+        const isOpen = open ?? trigger.getAttribute('aria-expanded') !== 'true';
         trigger.setAttribute('aria-expanded', String(isOpen));
+        
+        if (variant === 'dropdown') {
+          dropdown.setAttribute('data-open', String(isOpen));
+        } else {
+          if (isOpen) {
+            menu.classList.remove('hidden');
+          } else {
+            menu.classList.add('hidden');
+          }
+        }
       };
 
       const close = (): void => toggle(false);
@@ -178,15 +199,17 @@ const languages = [
         });
       });
 
-      // Cerrar al click fuera
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target as Node)) close();
-      });
+      // Cerrar al click fuera (solo para dropdown)
+      if (variant === 'dropdown') {
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target as Node)) close();
+        });
 
-      // Cerrar con Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') close();
-      });
+        // Cerrar con Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') close();
+        });
+      }
     });
   }
 
