@@ -6,23 +6,18 @@ interface Props {
 const { currentPath = "/" } = Astro.props;
 
 const navItems = [
-  { label: "Inicio", href: "/" },
-  { label: "Chat", href: "/chat" },
-  { label: "Wallet", href: "/wallet" },
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Apps", href: "/apps" },
-  { label: "Nutrición", href: "/nutrition" },
-  { label: "Comunidad", href: "/communities" },
-  { label: "Música", href: "/musica" },
-  { label: "Salud Mental", href: "/salud-mental" },
-  { label: "Finanzas", href: "/finance" },
-  { label: "Sobre nosotros", href: "/sobre-nosotros" },
-  { label: "Contacto", href: "/contacto" },
-];
-
-const languages = [
-  { label: "English", code: "en" },
-  { label: "Español", code: "es", active: true },
+  { key: 'nav.home', label: "Inicio", href: "/" },
+  { key: 'nav.chat', label: "Chat", href: "/chat" },
+  { key: 'nav.wallet', label: "Wallet", href: "/wallet" },
+  { key: 'nav.marketplace', label: "Marketplace", href: "/marketplace" },
+  { key: 'nav.apps', label: "Apps", href: "/apps" },
+  { key: 'nav.nutrition', label: "Nutrición", href: "/nutrition" },
+  { key: 'nav.communities', label: "Comunidad", href: "/communities" },
+  { key: 'nav.musica', label: "Música", href: "/musica" },
+  { key: 'nav.salud-mental', label: "Salud Mental", href: "/salud-mental" },
+  { key: 'nav.finance', label: "Finanzas", href: "/finance" },
+  { key: 'nav.about', label: "Sobre nosotros", href: "/sobre-nosotros" },
+  { key: 'nav.contact', label: "Contacto", href: "/contacto" },
 ];
 ---
 
@@ -40,7 +35,7 @@ const languages = [
               `stagger-${index + 1}`,
             ]}
           >
-            {item.label}
+            {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
           </a>
         </li>
       ))
@@ -79,7 +74,7 @@ const languages = [
                   "text-white/90 hover:bg-white/10 hover:text-white",
                 ]}
               >
-                {item.label}
+                {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
               </a>
             </li>
           ))
