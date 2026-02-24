@@ -1,42 +1,40 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
 
 // Images
 const bannerImg = "/images/chat/banner.png";
 const mobileBannerImg = "/images/mobileview.png";
-const phoneImg = "/images/SmartphoneApps.png";
-const googlePlay = "/images/chat/googleplay.png";
-const appleStore = "/images/chat/apple.png";
+const phoneImg = "/images/chat/smartphonehome.png";
 
 const heartIcon = "/images/heartLogo.png";
 const dollarIcon = "/images/doller.png";
 ---
 
 <Layout
-  title="BeMind Power - Apps Details"
-  description="Un universo de apps, sin llenar tu memoria"
-  bodyClass="apps-detail-page"
+  title="BeMind Power - Chat Details"
+  description="Chat con superpoderes"
+  bodyClass="chat-detail-page"
 >
   <div
-    class="apps-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]"
+    class="chat-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]"
   >
     <Header />
 
     <main
-      class="relative w-full lg:min-h-screen lg:h-auto pt-28 max-h-[750px]:pt-20 lg:pt-4 px-0 lg:px-8 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-end lg:justify-center gap-auto lg:gap-20 z-10 overflow-hidden lg:overflow-visible max-h-[750px]:h-auto max-h-[750px]:overflow-y-auto max-h-[750px]:pb-20"
+      class="relative w-full md:min-h-screen md:h-auto pt-28 max-h-[750px]:pt-20 md:pt-40 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center md:justify-center md:gap-20 z-10 overflow-hidden md:overflow-visible max-h-[750px]:h-auto max-h-[750px]:overflow-y-auto max-h-[750px]:pb-20"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
         <picture>
-          <source media="(max-width: 1023px)" srcset={mobileBannerImg} />
+          <source media="(max-width: 768px)" srcset={mobileBannerImg} />
           <img src={bannerImg} alt="" class="w-full h-full object-cover" />
         </picture>
       </div>
 
       <!-- Helper Icons (Mobile Only) -->
       <div
-        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none lg:hidden overflow-hidden"
+        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-hidden"
       >
         <!-- Heart Icon (Left) - Overlapping phone, blurred -->
         <img
@@ -61,7 +59,7 @@ const dollarIcon = "/images/doller.png";
 
         <!-- Mobile Buttons (Moved here for z-index visibility) -->
         <div
-          class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] lg:hidden z-30 pointer-events-auto"
+          class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
           <a
             href="#"
@@ -90,69 +88,77 @@ const dollarIcon = "/images/doller.png";
 
       <!-- Left Content: Smartphone -->
       <div
-        class="relative z-10 w-full flex flex-col items-center justify-end h-full lg:h-auto lg:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] lg:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
+        class="relative z-10 w-full flex flex-col items-center justify-end h-full md:h-auto md:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] md:mb-0 transform scale-y-100 origin-bottom"
       >
         <div
-          class="relative w-[110%] max-h-[750px]:w-[110%] lg:w-full lg:max-w-[650px] lg:mt-20"
+          class="relative w-[130%] max-h-[750px]:w-[110%] md:w-full max-w-[500px] md:max-w-[600px]"
         >
           <img
             src={phoneImg}
-            alt="Apps Interface"
+            alt="App Interface"
             class="w-full h-auto drop-shadow-2xl"
-            transition:name="phone-morph"
           />
         </div>
       </div>
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full lg:max-w-[750px] text-white flex flex-col items-center lg:items-start lg:ml-1 mr-0 lg:mr-20 mt-[30px] max-h-[750px]:mt-6 lg:mt-0 text-left lg:text-left px-6 lg:px-0"
+        class="relative z-10 text-white flex flex-col items-center md:items-start ml-14 md:ml-0 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-10 lg:pr-60"
       >
-        <h1 class="mb-6 tracking-tight text-white apps-heading">
-          <span data-i18n="apps.detail.title">A universe of apps, without filling your memory.</span>
+        <h1
+          class="mb-4 tracking-tight text-white w-full max-w-full md:max-w-full text-[28px] leading-[36px] md:text-[40px] lg:text-[64px] md:leading-[48px] lg:leading-[64px] font-bold md:font-medium"
+          style="font-family: 'OPTIFutura-ExtraBlackCond', sans-serif; letter-spacing: 0;"
+        >
+          <span data-i18n="chat.detail.title"
+            >Imagina tu chat con superpoderes</span
+          >
         </h1>
 
         <p
-          class="mb-8 w-[249px] lg:w-full max-w-[732px] text-white"
-          style="font-family: 'Neometric', sans-serif; font-size: clamp(18px, 3vw, 32px); line-height: 1.34; font-weight: 600; letter-spacing: -0.04em;"
+          class="mb-6 max-w-full md:max-w-xl text-white text-[18px] md:text-[24px] lg:text-[32px] md:leading-[32px] lg:leading-[39px] font-normal md:font-semibold"
+          style="font-family: 'Neometric', sans-serif; letter-spacing: -0.04em;"
         >
-          <span data-i18n="apps.detail.subtitle"
-            >You no longer need 10 downloads. Everything lives within the
-            ecosystem: request a ride, book your hotel, order food or watch
-            streaming, all without leaving.</span
+          <span data-i18n="chat.detail.subtitle"
+            >No solo escribes: compartes fotos, llamas, mandas archivos y hasta
+            dinero sin salir de la conversación.</span
           >
         </p>
 
-        <!-- Features List -->
         <ul
-          class="space-y-1 lg:space-y-3 mb-10 w-[259px] lg:w-full lg:max-w-[743px] flex flex-col items-start lg:items-start pl-0 lg:pl-2 apps-list"
+          class="mb-8 w-full flex flex-col items-start md:items-start pl-0 md:pl-2 text-[14px] leading-[100%] md:text-[18px] lg:text-[24px] md:leading-[100%]"
+          style="font-family: 'Neometric', sans-serif; font-weight: 400; letter-spacing: 0;"
         >
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature1">Delivery, transport, reservations</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-white text-xl hidden md:inline">✔</span>
+            <span data-i18n="chat.detail.feature1"
+              >Chats privados y seguros</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature2">Mini-apps without extra downloads</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-white text-xl hidden md:inline">✔</span>
+            <span data-i18n="chat.detail.feature2">Pagos en el mismo chat</span>
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature3">Integration with instant payments</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-white text-xl hidden md:inline">✔</span>
+            <span data-i18n="chat.detail.feature3"
+              >Llamadas y videollamadas HD</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature4">Optimized experience according to your country</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-white text-xl hidden md:inline">✔</span>
+            <span data-i18n="chat.detail.feature4"
+              >Grupos con miles de miembros</span
+            >
           </li>
         </ul>
 
-        <!-- Download Buttons -->
-        <!-- Center buttons as requested: md:items-center now -->
+        <!-- Download Buttons (Desktop Only) -->
         <div
-          class="apps-badges w-full hidden lg:flex flex-col items-center lg:items-center gap-6"
+          class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
           <a
             href="#"
@@ -176,8 +182,8 @@ const dollarIcon = "/images/doller.png";
 
     <!-- Back Arrow Icon -->
     <a
-      href="/app"
-      class="back-arrow hidden lg:inline-flex absolute lg:top-[180px] left-4 font-bold lg:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      href="/chat"
+      class="hidden md:inline-flex absolute top-20 md:top-32 lg:top-[180px] left-4 md:left-10 lg:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -196,22 +202,6 @@ const dollarIcon = "/images/doller.png";
     </a>
   </div>
 </Layout>
-
-<script>
-  // Detect back arrow clicks
-  document.addEventListener("click", (e) => {
-    const backArrow = (e.target as HTMLElement).closest(".back-arrow");
-    if (backArrow) {
-      document.documentElement.setAttribute("data-nav-back", "true");
-
-      // Disable image transition specifically for back navigation
-      const phoneImg = document.querySelector(".phone-detail-container img");
-      if (phoneImg) {
-        (phoneImg as HTMLElement).style.viewTransitionName = "none";
-      }
-    }
-  });
-</script>
 
 <style>
   @keyframes float {
@@ -261,8 +251,7 @@ const dollarIcon = "/images/doller.png";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 238px;
-    height: 30px;
+    /* Default (Mobile) styles - let HTML utilities control size if needed or provide small defaults */
     padding: 0 18px;
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -275,31 +264,8 @@ const dollarIcon = "/images/doller.png";
     animation: blink-shadow 2s infinite;
   }
 
-  .apps-store-btn:active {
-    transform: scale(1.05);
-    animation: none; /* Stop blinking on hover */
-    box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
-  }
-
-  .apps-store-btn img {
-    height: 12px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-  }
-
-  /* Apps Heading */
-  .apps-heading {
-    width: 249px;
-    font-family: "OPTIFuturaDemiBold", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 0;
-  }
-
-  @media (min-width: 1024px) {
+  /* Desktop Specific Sizes */
+  @media (min-width: 768px) {
     .apps-store-btn {
       width: 250px;
       height: 70px;
@@ -307,14 +273,20 @@ const dollarIcon = "/images/doller.png";
     .apps-store-btn img {
       height: 50px;
     }
+  }
 
-    .apps-heading {
-      width: 100%;
-      font-family: "OPTIFutura-ExtraBlackCond", sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.1;
-      font-weight: 500;
-      letter-spacing: 0;
-    }
+  .apps-store-btn:hover,
+  .apps-store-btn:active {
+    transform: scale(1.05);
+    animation: none; /* Stop blinking on hover */
+    box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
+  }
+
+  .apps-store-btn img {
+    /* Base image style for mobile */
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 </style>

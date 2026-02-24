@@ -1,9 +1,9 @@
 ---
 // Página Música: clonada de /chat con contenido específico de Música.
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Header from '../components/common/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/FeatureSlider.astro';
+import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 ---
 
 <Layout title="BeMind Power - Música" description="BeMind Power: tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar." bodyClass="musica-page">
@@ -132,7 +132,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: absolute;
       top: 50%;
       left: 50%;
-      min-width: 100%;
+      min-width: 80%;
       min-height: 100%;
       width: auto;
       height: auto;
@@ -180,18 +180,24 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       gap: clamp(1rem, 2.5vh, 1.5rem);
     }
 
-    .musica-mobile-title {
+    .musica-mobile-text {
       text-align: center;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .musica-title {
       color: #fff;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 0;
       margin: 0 0 clamp(0.3rem, 1vh, 0.6rem) 0;
       line-height: 1.1;
+      width: 100%;
     }
 
     .musica-title-line1 {
@@ -218,6 +224,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       max-width: 92%;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
     .musica-mobile-buttons {
@@ -234,7 +241,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       justify-content: center;
       height: clamp(42px, 5.5vh, 50px);
       padding: 0 2rem;
-      width: min(280px, 72vw);
+      width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
       font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
@@ -292,35 +299,32 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: relative;
       z-index: 5;
       width: 100%;
-      flex: 4;
-      min-height: 0;
+      flex: 0 0 auto;
+      min-height: 180px;
+      height: clamp(180px, 28vh, 260px);
+      padding-top: clamp(0.5rem, 2vh, 1.5rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 2%;
+      padding-left: 2%;
+      padding-right: 2%;
       overflow: visible;
     }
 
     .musica-mobile-slider .feature-slider {
       width: 100%;
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .musica-mobile-slider .slider-wrapper {
       padding: 0;
       height: 100%;
-      min-height: 0;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .musica-mobile-slider .slider-container {
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
@@ -339,7 +343,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       padding-top: calc(90px + env(safe-area-inset-top));
     }
 
-    .musica-mobile-title {
+    .musica-mobile-text {
       max-width: 720px;
     }
 
@@ -491,7 +495,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       gap: 0.25rem;
     }
 
-    .musica-mobile-title {
+    .musica-mobile-text {
       padding: 0;
     }
 

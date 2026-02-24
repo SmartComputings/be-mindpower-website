@@ -134,7 +134,7 @@ const features = [
 <style>
   .feature-slider {
     height: 100%;
-    min-height: 200px;
+    min-height: 220px;
   }
 
   .slider-wrapper {
@@ -144,7 +144,7 @@ const features = [
   }
 
   .slider-container {
-    height: 220px;
+    height: 240px;
     position: relative;
     width: 100%;
   }
@@ -206,11 +206,11 @@ const features = [
 
   @media (min-width: 480px) {
     .slider-container {
-      height: 240px;
+      height: 260px;
     }
 
     .feature-slider {
-      min-height: 220px;
+      min-height: 240px;
     }
   }
 
@@ -232,7 +232,7 @@ const features = [
 
   @media (max-width: 380px) {
     .slider-container {
-      height: 200px;
+      height: 220px;
     }
 
     .nav-btn {
@@ -407,15 +407,15 @@ const features = [
 
   // Links mapping (Index -> link)
   const LINKS = [
-  '/app/chatdetails',       // 0: Chat
-  '/app/walletdetails',     // 1: Wallet
-  '/app/marketplacedetails',// 2: Marketplace
-  '/app/appsdetails',       // 3: Apps
-  '/app/nutritiondetails', // 4: Nutrition
-  '/app/communitiesdetails', // 5: Communities
-  '/app/musicdetails', // 6: Music
-  '/app/healthdetails', // 7: Mental Health (detail path)
-  '/app/financedetails'  // 8: Finance
+  '/chatdetails',       // 0: Chat
+  '/walletdetails',     // 1: Wallet
+  '/marketplacedetails',// 2: Marketplace
+  '/appsdetails',       // 3: Apps
+  '/nutritiondetails', // 4: Nutrition
+  '/communitiesdetails', // 5: Communities
+  '/musicdetails', // 6: Music
+  '/healthdetails', // 7: Mental Health (detail path)
+  '/financedetails'  // 8: Finance
   ];
 
   // Titles mapping for navbar (Index -> title)
@@ -801,8 +801,9 @@ const features = [
           heroCta.setAttribute('href', '#');
         }
         
-        if (ctaKey) {
-          heroCta.setAttribute('data-i18n', ctaKey);
+        const ctaKeyValue = CONTENT[currentIndex]?.ctaKey;
+        if (ctaKeyValue) {
+          heroCta.setAttribute('data-i18n', ctaKeyValue);
           // @ts-ignore
           window.__translateElement?.(heroCta);
         }
@@ -990,24 +991,11 @@ const features = [
   }
 
   function initAllSliders(): void {
-    // Inicializar todos los sliders visibles en la página
+    // Inicializar todos los sliders en la página (incluso si están ocultos)
     const sliders = document.querySelectorAll<HTMLElement>('[data-feature-slider]');
     sliders.forEach((slider) => {
-      // Check if any ancestor has display:none (more thorough check)
-      let el: HTMLElement | null = slider;
-      let isVisible = true;
-      while (el) {
-        const style = window.getComputedStyle(el);
-        if (style.display === 'none' || style.visibility === 'hidden') {
-          isVisible = false;
-          break;
-        }
-        el = el.parentElement;
-      }
-      
-      if (isVisible) {
-        initSliderInstance(slider);
-      }
+      // Siempre inicializar - el auto-slide funcionará cuando el slider sea visible
+      initSliderInstance(slider);
     });
   }
 

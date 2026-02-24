@@ -1,9 +1,9 @@
 ---
 // Página Wallet: contenido específico de Wallet con hero slider.
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Header from '../components/common/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/FeatureSlider.astro';
+import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 ---
 
 <Layout title="BeMind Power - Wallet" description="BeMind Power: tu billetera digital segura y conectada." bodyClass="wallet-page">
@@ -19,7 +19,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         titleLine2="sin salir del chat"
         subtitle="Desde productos locales hasta servicios digitales: todo en una sola comunidad."
         ctaText="Ver Más"
-        ctaHref="/app/walletdetails"
+        ctaHref="/detailsPages/walletdetails"
         titleLine1Key="wallet.hero.titleLine1"
         titleLine2Key="wallet.hero.titleLine2"
         subtitleKey="wallet.hero.subtitle"
@@ -64,7 +64,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         </div>
 
         <div class="wallet-mobile-buttons">
-          <a id="hero-cta-button" href="/app/walletdetails" class="wallet-cta" data-i18n="wallet.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/detailsPages/walletdetails" class="wallet-cta" data-i18n="wallet.hero.cta">Ver Más</a>
           <div class="wallet-badges">
             <a href="#" class="wallet-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -130,7 +130,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: absolute;
       top: 50%;
       left: 50%;
-      min-width: 100%;
+      min-width: 80%;
       min-height: 100%;
       width: auto;
       height: auto;
@@ -172,18 +172,24 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       gap: clamp(1rem, 2.5vh, 1.5rem);
     }
 
-    .wallet-mobile-title {
+    .wallet-mobile-text {
       text-align: center;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .wallet-title {
       color: #fff;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 0;
       margin: 0 0 clamp(0.3rem, 1vh, 0.6rem) 0;
       line-height: 1.1;
+      width: 100%;
     }
 
     .wallet-title-line1 {
@@ -210,6 +216,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       max-width: 92%;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
     .wallet-mobile-buttons {
@@ -226,7 +233,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       justify-content: center;
       height: clamp(42px, 5.5vh, 50px);
       padding: 0 2rem;
-      width: min(280px, 72vw);
+      width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
       font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
@@ -283,35 +290,32 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: relative;
       z-index: 5;
       width: 100%;
-      flex: 4;
-      min-height: 0;
+      flex: 0 0 auto;
+      min-height: 180px;
+      height: clamp(180px, 28vh, 260px);
+      padding-top: clamp(0.5rem, 2vh, 1.5rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 2%;
+      padding-left: 2%;
+      padding-right: 2%;
       overflow: visible;
     }
 
     .wallet-mobile-slider .feature-slider {
       width: 100%;
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .wallet-mobile-slider .slider-wrapper {
       padding: 0;
       height: 100%;
-      min-height: 0;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .wallet-mobile-slider .slider-container {
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
@@ -329,7 +333,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       padding-top: calc(90px + env(safe-area-inset-top));
     }
 
-    .wallet-mobile-title {
+    .wallet-mobile-text {
       max-width: 720px;
     }
 
@@ -473,7 +477,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       gap: 0.25rem;
     }
 
-    .wallet-mobile-title {
+    .wallet-mobile-text {
       padding: 0;
     }
 

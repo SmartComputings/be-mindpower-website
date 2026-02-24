@@ -1,9 +1,9 @@
 ---
 // Página Marketplace: contenido específico de Marketplace con hero slider.
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Header from '../components/common/Header.astro';
 import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/FeatureSlider.astro';
+import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 ---
 
 <Layout title="BeMind Power - Marketplace" description="BeMind Power: marketplace y bienestar con tecnología inmersiva." bodyClass="marketplace-page">
@@ -19,7 +19,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         titleLine2="sin salir del chat"
         subtitle="Desde productos locales hasta servicios digitales: todo en una sola comunidad."
         ctaText="Ver Más"
-        ctaHref="/app/marketplacedetails"
+        ctaHref="/detailsPages/marketplacedetails"
         titleLine1Key="marketplace.hero.titleLine1"
         titleLine2Key="marketplace.hero.titleLine2"
         subtitleKey="marketplace.hero.subtitle"
@@ -64,7 +64,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         </div>
 
         <div class="marketplace-mobile-buttons">
-          <a id="hero-cta-button" href="/app/marketplacedetails" class="marketplace-m-cta" data-i18n="marketplace.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/detailsPages/marketplacedetails" class="marketplace-m-cta" data-i18n="marketplace.hero.cta">Ver Más</a>
           <div class="marketplace-m-badges">
             <a href="#" class="marketplace-m-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -133,7 +133,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: absolute;
       top: 50%;
       left: 50%;
-      min-width: 100%;
+      min-width: 80%;
       min-height: 100%;
       width: auto;
       height: auto;
@@ -182,18 +182,24 @@ import FeatureSlider from '../components/FeatureSlider.astro';
     }
 
     /* Título */
-    .marketplace-mobile-title {
+    .marketplace-mobile-text {
       text-align: center;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .marketplace-m-title {
       color: #fff;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: 0;
       margin: 0 0 clamp(0.3rem, 1vh, 0.6rem) 0;
       line-height: 1.1;
+      width: 100%;
     }
 
     .marketplace-m-title-line1 {
@@ -220,6 +226,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       max-width: 92%;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
     /* Botones */
@@ -237,7 +244,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       justify-content: center;
       height: clamp(42px, 5.5vh, 50px);
       padding: 0 2rem;
-      width: min(280px, 72vw);
+      width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
       font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
@@ -295,35 +302,32 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       position: relative;
       z-index: 5;
       width: 100%;
-      flex: 4;
-      min-height: 0;
+      flex: 0 0 auto;
+      min-height: 180px;
+      height: clamp(180px, 28vh, 260px);
+      padding-top: clamp(0.5rem, 2vh, 1.5rem);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 2%;
+      padding-left: 2%;
+      padding-right: 2%;
       overflow: visible;
     }
 
     .marketplace-mobile-slider .feature-slider {
       width: 100%;
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .marketplace-mobile-slider .slider-wrapper {
       padding: 0;
       height: 100%;
-      min-height: 0;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
     .marketplace-mobile-slider .slider-container {
       height: 100%;
-      min-height: 0 !important;
-      flex: 1 1 0%;
       overflow: visible;
     }
 
@@ -343,7 +347,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       padding-top: calc(90px + env(safe-area-inset-top));
     }
 
-    .marketplace-mobile-title {
+    .marketplace-mobile-text {
       max-width: 720px;
     }
 
@@ -495,7 +499,7 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       gap: 0.25rem;
     }
 
-    .marketplace-mobile-title {
+    .marketplace-mobile-text {
       padding: 0;
     }
 
