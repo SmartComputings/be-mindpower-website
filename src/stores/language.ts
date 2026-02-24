@@ -996,6 +996,8 @@ export const setLanguage = (lang: Lang): void => {
 export const refreshTranslations = (lang: Lang = $lang.get()): void => {
   if (typeof document === 'undefined') return;
 
+  console.log('[i18n] refreshTranslations called with lang:', lang);
+
   // Actualizar lang del documento
   document.documentElement.lang = lang;
   document.documentElement.dir = 'ltr';
@@ -1056,11 +1058,13 @@ if (typeof window !== 'undefined') {
 
   // Suscribirse a cambios del store para re-traducir dinámicamente
   $lang.subscribe((lang) => {
+    console.log('[i18n] $lang.subscribe fired with:', lang);
     refreshTranslations(lang);
   });
 
   // IMPORTANTE: Re-traducir al cargar cada pág (necesario para View Transitions)
   document.addEventListener('astro:page-load', () => {
+    console.log('[i18n] astro:page-load fired, current lang:', $lang.get());
     refreshTranslations();
   });
 
