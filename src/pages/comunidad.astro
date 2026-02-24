@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="comunidad-mobile-bg">
         <video
+          id="home-hero-video"
           class="comunidad-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="comunidad-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Comunidades (index 5) -->
+      <div class="comunidad-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={5} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="comunidad-mobile-content">
-        <div class="comunidad-mobile-title">
+        <div class="comunidad-mobile-text">
           <h1 class="comunidad-title">
-            <span class="comunidad-title-line1" data-i18n="comunidad.hero.titleLine1">Destácate</span>
-            <span class="comunidad-title-line2" data-i18n="comunidad.hero.titleLine2">Crea tu comunidad</span>
+            <span id="hero-title-line1" class="comunidad-title-line1" data-i18n="comunidad.hero.titleLine1">Destácate</span>
+            <span id="hero-title-line2" class="comunidad-title-line2" data-i18n="comunidad.hero.titleLine2">Crea tu comunidad</span>
           </h1>
-          <p class="comunidad-subtitle" data-i18n="comunidad.hero.subtitle">Crea, únete y colabora con personas que comparten tus intereses y valores.</p>
+          <p id="hero-subtitle" class="comunidad-subtitle" data-i18n="comunidad.hero.subtitle">Crea, únete y colabora con personas que comparten tus intereses y valores.</p>
         </div>
 
         <div class="comunidad-mobile-buttons">
-          <a href="#slider" class="comunidad-cta" data-i18n="comunidad.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/comunidad" class="comunidad-cta" data-i18n="comunidad.hero.cta">Ver Más</a>
           <div class="comunidad-badges">
             <a href="#" class="comunidad-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Comunidades (index 5) -->
-      <div class="comunidad-mobile-slider">
-        <FeatureSlider initialIndex={5} />
       </div>
     </div>
   </div>

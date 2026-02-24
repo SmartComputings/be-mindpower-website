@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="marketplace-mobile-bg">
         <video
+          id="home-hero-video"
           class="marketplace-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="marketplace-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Marketplace (index 2) -->
+      <div class="marketplace-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={2} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="marketplace-mobile-content">
-        <div class="marketplace-mobile-title">
+        <div class="marketplace-mobile-text">
           <h1 class="marketplace-m-title">
-            <span class="marketplace-m-title-line1" data-i18n="marketplace.hero.titleLine1">Compra y vende</span>
-            <span class="marketplace-m-title-line2" data-i18n="marketplace.hero.titleLine2">sin salir del chat</span>
+            <span id="hero-title-line1" class="marketplace-m-title-line1" data-i18n="marketplace.hero.titleLine1">Compra y vende</span>
+            <span id="hero-title-line2" class="marketplace-m-title-line2" data-i18n="marketplace.hero.titleLine2">sin salir del chat</span>
           </h1>
-          <p class="marketplace-m-subtitle" data-i18n="marketplace.hero.subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
+          <p id="hero-subtitle" class="marketplace-m-subtitle" data-i18n="marketplace.hero.subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
         </div>
 
         <div class="marketplace-mobile-buttons">
-          <a href="/app/marketplacedetails" class="marketplace-m-cta" data-i18n="marketplace.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/app/marketplacedetails" class="marketplace-m-cta" data-i18n="marketplace.hero.cta">Ver Más</a>
           <div class="marketplace-m-badges">
             <a href="#" class="marketplace-m-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Marketplace (index 2) -->
-      <div class="marketplace-mobile-slider">
-        <FeatureSlider initialIndex={2} />
       </div>
     </div>
   </div>

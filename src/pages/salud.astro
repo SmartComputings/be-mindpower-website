@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="salud-mobile-bg">
         <video
+          id="home-hero-video"
           class="salud-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="salud-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Salud Mental (index 7) -->
+      <div class="salud-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={7} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="salud-mobile-content">
-        <div class="salud-mobile-title">
+        <div class="salud-mobile-text">
           <h1 class="salud-title">
-            <span class="salud-title-line1" data-i18n="salud.hero.titleLine1">Vive saludable</span>
-            <span class="salud-title-line2" data-i18n="salud.hero.titleLine2">Con los tuyos.</span>
+            <span id="hero-title-line1" class="salud-title-line1" data-i18n="salud.hero.titleLine1">Vive saludable</span>
+            <span id="hero-title-line2" class="salud-title-line2" data-i18n="salud.hero.titleLine2">Con los tuyos.</span>
           </h1>
-          <p class="salud-subtitle" data-i18n="salud.hero.subtitle">Comparte recetas, retos saludables y planes de alimentación en tu red.</p>
+          <p id="hero-subtitle" class="salud-subtitle" data-i18n="salud.hero.subtitle">Comparte recetas, retos saludables y planes de alimentación en tu red.</p>
         </div>
 
         <div class="salud-mobile-buttons">
-          <a href="#slider" class="salud-cta" data-i18n="salud.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/salud" class="salud-cta" data-i18n="salud.hero.cta">Ver Más</a>
           <div class="salud-badges">
             <a href="#" class="salud-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Salud Mental (index 7) -->
-      <div class="salud-mobile-slider">
-        <FeatureSlider initialIndex={7} />
       </div>
     </div>
   </div>

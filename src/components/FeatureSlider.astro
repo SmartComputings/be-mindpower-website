@@ -507,6 +507,7 @@ const features = [
     const layoutScope = root.closest('.chat-mobile-layout') || 
                          root.closest('.chat-desktop-layout') || 
                          root.closest('.home-hero') || 
+                         root.closest('[class$="-mobile-layout"]') ||
                          root;
     
     // External elements to update (scoped to the correct layout - NO FALLBACK to avoid cross-layout updates)

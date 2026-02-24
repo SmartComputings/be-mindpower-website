@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="wallet-mobile-bg">
         <video
+          id="home-hero-video"
           class="wallet-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="wallet-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Wallet (index 1) -->
+      <div class="wallet-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={1} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="wallet-mobile-content">
-        <div class="wallet-mobile-title">
+        <div class="wallet-mobile-text">
           <h1 class="wallet-title">
-            <span class="wallet-title-line1" data-i18n="wallet.hero.titleLine1">Maneja tus finanzas</span>
-            <span class="wallet-title-line2" data-i18n="wallet.hero.titleLine2">sin salir del chat</span>
+            <span id="hero-title-line1" class="wallet-title-line1" data-i18n="wallet.hero.titleLine1">Maneja tus finanzas</span>
+            <span id="hero-title-line2" class="wallet-title-line2" data-i18n="wallet.hero.titleLine2">sin salir del chat</span>
           </h1>
-          <p class="wallet-subtitle" data-i18n="wallet.hero.subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
+          <p id="hero-subtitle" class="wallet-subtitle" data-i18n="wallet.hero.subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
         </div>
 
         <div class="wallet-mobile-buttons">
-          <a href="/app/walletdetails" class="wallet-cta" data-i18n="wallet.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/app/walletdetails" class="wallet-cta" data-i18n="wallet.hero.cta">Ver Más</a>
           <div class="wallet-badges">
             <a href="#" class="wallet-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Wallet (index 1) -->
-      <div class="wallet-mobile-slider">
-        <FeatureSlider initialIndex={1} />
       </div>
     </div>
   </div>

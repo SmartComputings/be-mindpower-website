@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="finance-mobile-bg">
         <video
+          id="home-hero-video"
           class="finance-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="finance-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Finance (index 8) -->
+      <div class="finance-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={8} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="finance-mobile-content">
-        <div class="finance-mobile-title">
+        <div class="finance-mobile-text">
           <h1 class="finance-m-title">
-            <span class="finance-m-title-line1" data-i18n="finance.hero.titleLine1">A.I. Finanzas</span>
-            <span class="finance-m-title-line2" data-i18n="finance.hero.titleLine2">Tu asesor personal</span>
+            <span id="hero-title-line1" class="finance-m-title-line1" data-i18n="finance.hero.titleLine1">A.I. Finanzas</span>
+            <span id="hero-title-line2" class="finance-m-title-line2" data-i18n="finance.hero.titleLine2">Tu asesor personal</span>
           </h1>
-          <p class="finance-m-subtitle" data-i18n="finance.hero.subtitle">Gestión financiera inteligente y personalizada.</p>
+          <p id="hero-subtitle" class="finance-m-subtitle" data-i18n="finance.hero.subtitle">Gestión financiera inteligente y personalizada.</p>
         </div>
 
         <div class="finance-mobile-buttons">
-          <a href="/app/financedetails" class="finance-m-cta" data-i18n="finance.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/app/financedetails" class="finance-m-cta" data-i18n="finance.hero.cta">Ver Más</a>
           <div class="finance-m-badges">
             <a href="#" class="finance-m-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Finance (index 8) -->
-      <div class="finance-mobile-slider">
-        <FeatureSlider initialIndex={8} />
       </div>
     </div>
   </div>

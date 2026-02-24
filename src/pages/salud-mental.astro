@@ -34,7 +34,9 @@ import FeatureSlider from '../components/FeatureSlider.astro';
       <!-- Video de fondo -->
       <div class="saludmental-mobile-bg">
         <video
+          id="home-hero-video"
           class="saludmental-mobile-video"
+          autoplay
           muted
           loop
           playsinline
@@ -46,18 +48,23 @@ import FeatureSlider from '../components/FeatureSlider.astro';
         <div class="saludmental-mobile-glow"></div>
       </div>
 
-      <!-- Contenido superior: título + botones -->
+      <!-- Slider arriba, inicia en Salud Mental (index 7) -->
+      <div class="saludmental-mobile-slider" id="slider">
+        <FeatureSlider initialIndex={7} />
+      </div>
+
+      <!-- Contenido inferior: título + botones -->
       <div class="saludmental-mobile-content">
-        <div class="saludmental-mobile-title">
+        <div class="saludmental-mobile-text">
           <h1 class="saludmental-title">
-            <span class="saludmental-title-line1" data-i18n="saludmental.hero.titleLine1">Apoyo real</span>
-            <span class="saludmental-title-line2" data-i18n="saludmental.hero.titleLine2">Que inspira confianza.</span>
+            <span id="hero-title-line1" class="saludmental-title-line1" data-i18n="saludmental.hero.titleLine1">Apoyo real</span>
+            <span id="hero-title-line2" class="saludmental-title-line2" data-i18n="saludmental.hero.titleLine2">Que inspira confianza.</span>
           </h1>
-          <p class="saludmental-subtitle" data-i18n="saludmental.hero.subtitle">Herramientas de bienestar emocional para ti y tu comunidad de apoyo.</p>
+          <p id="hero-subtitle" class="saludmental-subtitle" data-i18n="saludmental.hero.subtitle">Herramientas de bienestar emocional para ti y tu comunidad de apoyo.</p>
         </div>
 
         <div class="saludmental-mobile-buttons">
-          <a href="#slider" class="saludmental-cta" data-i18n="saludmental.hero.cta">Ver Más</a>
+          <a id="hero-cta-button" href="/salud-mental" class="saludmental-cta" data-i18n="saludmental.hero.cta">Ver Más</a>
           <div class="saludmental-badges">
             <a href="#" class="saludmental-store-btn" aria-label="Download on the App Store">
               <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
@@ -67,11 +74,6 @@ import FeatureSlider from '../components/FeatureSlider.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Slider abajo, inicia en Salud Mental (index 7) -->
-      <div class="saludmental-mobile-slider">
-        <FeatureSlider initialIndex={7} />
       </div>
     </div>
   </div>
