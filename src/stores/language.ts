@@ -200,8 +200,22 @@ const translations: Record<Lang, Record<string, string>> = {
     'music.detail.feature2': 'Comparte música en tus chats',
     'music.detail.feature3': 'Playlists colaborativas',
     'music.detail.feature4': 'Integración con tus actividades diarias',
+    // Header titles for mobile
+    'chat.header.title': 'Todo empieza',
+    'wallet.header.title': 'Envía y recibe Dinero',
+    'marketplace.header.title': 'Compra y Vende',
+    'finance.header.title': 'Finanzas inteligentes',
+    'communities.header.title': 'Comunidades',
+    'musica.header.title': 'La música vive',
+    'nutrition.header.title': 'Vive saludable',
+    'saludmental.header.title': 'Salud mental',
+    'apps.header.title': 'Tips y herramientas',
   },
   en: {
+    'finanzas.hero.titleLine1': 'A.I. Finanzas',
+    'finanzas.hero.titleLine2': 'Tu asesor personal',
+    'finanzas.hero.subtitle': 'Gestión financiera inteligente y personalizada.',
+    'finanzas.hero.cta': 'Ver Más',
     'nav.home': 'Home',
     'nav.chat': 'Chat',
     'nav.wallet': 'Wallet',
@@ -363,16 +377,23 @@ const translations: Record<Lang, Record<string, string>> = {
     'salud.hero.titleLine2': 'in your hands',
     'salud.hero.subtitle': 'Connect your devices and monitor your wellbeing.',
     'salud.hero.cta': 'Learn More',
-    'finanzas.hero.titleLine1': 'A.I. Finance',
-    'finanzas.hero.titleLine2': 'Your personal advisor',
-    'finanzas.hero.subtitle': 'Intelligent and personalized financial management.',
-    'finanzas.hero.cta': 'Learn More',
     'health.hero.titleLine1': 'Find calm',
     'health.hero.titleLine2': 'when you need it most',
     'health.hero.subtitle': 'Emotional wellbeing with intelligent support.',
-    'health.hero.cta': 'Learn More'
+    'health.hero.cta': 'Learn More',
+    // Header titles for mobile
+    'chat.header.title': 'It all starts',
+    'wallet.header.title': 'Send and receive Money',
+    'marketplace.header.title': 'Buy and Sell',
+    'finance.header.title': 'Smart finances',
+    'communities.header.title': 'Communities',
+    'musica.header.title': 'Music lives',
+    'nutrition.header.title': 'Live healthy',
+    'saludmental.header.title': 'Mental health',
+    'apps.header.title': 'Tips and tools',
   },
   pt: {
+
     'nav.home': 'Início',
     'nav.chat': 'Chat',
     'nav.wallet': 'Wallet',
@@ -548,8 +569,21 @@ const translations: Record<Lang, Record<string, string>> = {
     'music.detail.feature2': 'Compartilhe música em seus chats',
     'music.detail.feature3': 'Playlists colaborativas',
     'music.detail.feature4': 'Integração com suas atividades diárias',
+    // Header titles for mobile
+    'chat.header.title': 'Tudo começa',
+    'wallet.header.title': 'Envie e receba Dinheiro',
+    'marketplace.header.title': 'Compre e Venda',
+    'finance.header.title': 'Finanças inteligentes',
+    'communities.header.title': 'Comunidades',
+    'musica.header.title': 'A música vive',
+    'nutrition.header.title': 'Viva saudável',
+    'saludmental.header.title': 'Saúde mental',
+    'apps.header.title': 'Dicas e ferramentas',
   },
   zh: {
+    'finanzas.hero.titleLine1': 'A.I. 金融',
+    'finanzas.hero.titleLine2': '你的个人顾问',
+    'finanzas.hero.subtitle': '智能化个性化财务管理。',
     'nav.home': '首页',
     'nav.chat': '聊天',
     'nav.wallet': '钱包',
@@ -718,8 +752,22 @@ const translations: Record<Lang, Record<string, string>> = {
     'music.detail.feature2': '在聊天中分享音乐',
     'music.detail.feature3': '协作播放列表',
     'music.detail.feature4': '与你的日常活动集成',
+    // Header titles for mobile
+    'chat.header.title': '一切开始',
+    'wallet.header.title': '收发资金',
+    'marketplace.header.title': '买卖交易',
+    'finance.header.title': '智能财务',
+    'communities.header.title': '社区',
+    'musica.header.title': '音乐生活',
+    'nutrition.header.title': '健康生活',
+    'saludmental.header.title': '心理健康',
+    'apps.header.title': '技巧和工具',
   },
   ar: {
+    'finanzas.hero.titleLine1': 'A.I. المالية',
+    'finanzas.hero.titleLine2': 'المستشار الشخصي',
+    'finanzas.hero.subtitle': 'إدارة مالية ذكية وشخصية.',
+    'finanzas.hero.cta': 'تعلم المزيد',
     'nav.home': 'الرئيسية',
     'nav.chat': 'الدردشة',
     'nav.wallet': 'المحفظة',
@@ -833,7 +881,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'saludmental.hero.titleLine2': 'رفاهيتك تهمنا',
     'saludmental.hero.subtitle': 'اعتنِ بعقلك باستخدام أدوات ذكية ودعم احترافي.',
     'saludmental.hero.cta': 'اعرض المزيد',
-    'finanzas.hero.cta': 'اعرض المزيد',
     // Detail pages
     'chat.detail.title': 'تخيل دردشتك بقوى خارقة',
     'chat.detail.subtitle': 'أنت لا تكتب فقط: شارك الصور، اتصل، أرسل الملفات وحتى الأموال دون مغادرة المحادثة.',
@@ -887,6 +934,16 @@ const translations: Record<Lang, Record<string, string>> = {
     'music.detail.feature2': 'شارك الموسيقى في دردشاتك',
     'music.detail.feature3': 'قوائم تشغيل تعاونية',
     'music.detail.feature4': 'تكامل مع أنشطتك اليومية',
+    // Header titles for mobile
+    'chat.header.title': 'كل شيء يبدأ',
+    'wallet.header.title': 'أرسل واستلم المال',
+    'marketplace.header.title': 'اشترِ وبِع',
+    'finance.header.title': 'مالية ذكية',
+    'communities.header.title': 'المجتمعات',
+    'musica.header.title': 'الموسيقى تعيش',
+    'nutrition.header.title': 'عش بصحة',
+    'saludmental.header.title': 'الصحة النفسية',
+    'apps.header.title': 'نصائح وأدوات',
   }
 };
 
@@ -946,8 +1003,22 @@ export const refreshTranslations = (lang: Lang = $lang.get()): void => {
   // Actualizar elementos con data-i18n (texto plano)
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
+    const fallback = el.getAttribute('data-fallback');
+    
+    // Debug logging
+    if (el.id === 'mobile-page-title') {
+      console.log('Header title element found:', { key, lang, fallback, hasTranslation: !!(key && translations[lang]?.[key]) });
+    }
+    
     if (key && translations[lang] && translations[lang][key]) {
       el.textContent = translations[lang][key];
+    } else if (fallback) {
+      el.textContent = fallback;
+    }
+    // Reveal hidden elements after translation
+    if (el.classList.contains('opacity-0')) {
+      el.classList.remove('opacity-0');
+      el.classList.add('opacity-100');
     }
   });
 
@@ -979,6 +1050,10 @@ export const refreshTranslations = (lang: Lang = $lang.get()): void => {
 
 // Inicialización global
 if (typeof window !== 'undefined') {
+  // Expose translations to window for early inline scripts
+  // @ts-ignore
+  window.__bmTranslations = translations;
+
   // Suscribirse a cambios del store para re-traducir dinámicamente
   $lang.subscribe((lang) => {
     refreshTranslations(lang);

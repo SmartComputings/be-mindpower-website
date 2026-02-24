@@ -7,9 +7,10 @@ interface Props {
   currentPath?: string;
   backgroundImage?: string;
   pageTitle?: string;
+  pageTitleKey?: string;
 }
 
-const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle } = Astro.props;
+const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitleKey } = Astro.props;
 ---
 
 <header class="fixed left-0 right-0 top-6 z-40">
@@ -50,7 +51,7 @@ const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle } = Astro
 
           <!-- Mobile Page Title (centered) -->
           <div class="absolute left-1/2 -translate-x-1/2 min-[900px]:hidden">
-            <span id="mobile-page-title" class="text-white font-semibold text-sm tracking-wide">{pageTitle || ''}</span>
+            <span id="mobile-page-title" class="text-white font-semibold text-sm tracking-wide opacity-0 transition-opacity duration-150" data-i18n={pageTitleKey} data-fallback={pageTitle}></span>
           </div>
 
           <!-- Navigation -->
