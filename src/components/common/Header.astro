@@ -1,7 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 import Navigation from "./Navigation.astro";
-import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 interface Props {
   currentPath?: string;
@@ -76,11 +75,21 @@ const {
             <Navigation currentPath={currentPath} />
           </div>
 
-          <!-- Language switcher (replaces Registro/Login buttons) -->
-          <div
-            class="hidden min-[900px]:flex flex-1 items-center justify-end gap-3"
-          >
-            <LanguageSwitcher size="md" />
+          <!-- Buttons -->
+          <div class="hidden min-[900px]:flex flex-1 items-center justify-end gap-3">
+            <button
+              disabled
+              class="px-9 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#ff4fb8] to-[#a43cff] opacity-50 cursor-not-allowed"
+            >
+              Registro
+            </button>
+
+            <button
+              disabled
+              class="px-11 py-2 rounded-full text-base font-semibold text-white shadow-md bg-gradient-to-r from-[#2aa6ff] to-[#235bff] opacity-50 cursor-not-allowed"
+            >
+              Login
+            </button>
           </div>
         </div>
       </div>

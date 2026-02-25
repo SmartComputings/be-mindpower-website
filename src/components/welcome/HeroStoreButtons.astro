@@ -10,7 +10,7 @@ interface Props {
 const { 
   appStoreUrl = "#", 
   googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat&hl=es_US",
-  ctaUrl = "/chat",
+  ctaUrl = "/app",
   ctaText = "Ver Más"
 } = Astro.props;
 ---
@@ -22,7 +22,7 @@ const {
   <a href={googlePlayUrl} class="store-btn" aria-label="Get it on Google Play">
     <img src="/detailPageImages/google-play-badge.svg" alt="Get it on Google Play" />
   </a>
-  <a id="hero-cta-button" href={ctaUrl} class="ver-mas-btn" data-i18n="home.hero.cta">{ctaText}</a>
+  <a id="hero-cta-button" href={ctaUrl} class="ver-mas-btn">{ctaText}</a>
 </div>
 
 <style>
