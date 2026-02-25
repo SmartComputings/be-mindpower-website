@@ -1,20 +1,28 @@
 ---
 // Página Música: clonada de /chat con contenido específico de Música.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Música" description="BeMind Power: tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar." bodyClass="musica-page">
+<Layout
+  title="BeMind Power - Música"
+  description="BeMind Power: tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar."
+  bodyClass="musica-page"
+>
   <div class="musica-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/musica" pageTitle="La música vive" pageTitleKey="musica.header.title" />
+    <Header
+      currentPath="/musica"
+      pageTitle="Siente el ritmo"
+      pageTitleKey="musica.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Música, slider inicia en Música (index 6) -->
     <div class="musica-desktop-layout">
       <HomeHero
-        videoSrc="/videos/musica.mp4"
-        phoneSrc="/images/musica.png"
+        videoSrc="/vedioes/musica.mp4"
+        phoneSrc="/common/musica.png"
         titleLine1="La música vive"
         titleLine2="Escúchala y comparte"
         subtitle="Tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/videos/musica.mp4" type="video/mp4" />
+          <source src="/vedioes/musica.mp4" type="video/mp4" />
         </video>
         <div class="musica-mobile-overlay"></div>
         <div class="musica-mobile-glow"></div>
@@ -57,20 +65,54 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="musica-mobile-content">
         <div class="musica-mobile-text">
           <h1 class="musica-title">
-            <span id="hero-title-line1" class="musica-title-line1" data-i18n="musica.hero.titleLine1">La música vive</span>
-            <span id="hero-title-line2" class="musica-title-line2" data-i18n="musica.hero.titleLine2">Escúchala y comparte</span>
+            <span
+              id="hero-title-line1"
+              class="musica-title-line1"
+              data-i18n="musica.hero.titleLine1">La música vive</span
+            >
+            <span
+              id="hero-title-line2"
+              class="musica-title-line2"
+              data-i18n="musica.hero.titleLine2">Escúchala y comparte</span
+            >
           </h1>
-          <p id="hero-subtitle" class="musica-subtitle" data-i18n="musica.hero.subtitle">Tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar.</p>
+          <p
+            id="hero-subtitle"
+            class="musica-subtitle"
+            data-i18n="musica.hero.subtitle"
+          >
+            Tus canciones, tus playlists y nuevos descubrimientos. Todo en un
+            solo lugar.
+          </p>
         </div>
 
         <div class="musica-mobile-buttons">
-          <a id="hero-cta-button" href="/musica" class="musica-cta" data-i18n="musica.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/musica"
+            class="musica-cta"
+            data-i18n="musica.hero.cta">Ver Más</a
+          >
           <div class="musica-badges">
-            <a href="#" class="musica-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="musica-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="musica-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="musica-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -97,7 +139,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
   }
 
   /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.musica-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -124,10 +167,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .musica-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -157,7 +200,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .musica-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -213,14 +261,14 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .musica-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .musica-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -228,7 +276,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .musica-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -256,13 +304,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .musica-cta:hover,
@@ -288,9 +338,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .musica-store-btn:hover,
@@ -367,7 +421,6 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .musica-store-btn {
       width: min(520px, 60vw);
     }
-
   }
 
   /* ===== TABLETS PEQUEÑAS / MÓVILES GRANDES (601-768px) ===== */
@@ -444,7 +497,6 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .musica-store-btn img {
       height: 26px;
     }
-
   }
 
   /* ===== PANTALLAS MUY CORTAS ===== */
@@ -477,7 +529,6 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .musica-store-btn img {
       height: 22px;
     }
-
   }
 
   /* /musica móvil: centrar botón de asistencia verticalmente */
@@ -567,26 +618,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
 <script>
   function initMusicaMobileVideo(): void {
-    const video = document.querySelector('.musica-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".musica-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMusicaMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMusicaMobileVideo);
   } else {
     initMusicaMobileVideo();
   }

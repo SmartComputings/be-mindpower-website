@@ -6,17 +6,22 @@ interface Props {
   rotation?: number;
 }
 
-const { 
-  src = "/images/telefono.png",
-  mobileSrc = "/asad/welcomephoner.png",
-  rotation = -10
+const {
+  src = "/common/telefono.png",
+  mobileSrc = "/common/welcomephoner.png",
+  rotation = -10,
 } = Astro.props;
 ---
 
-<a href="/chat" class="hero-phone" style={`--rotation: ${rotation}deg`} aria-label="Ir al chat">
+<a
+  href="/chat"
+  class="hero-phone"
+  style={`--rotation: ${rotation}deg`}
+  aria-label="Ir al chat"
+>
   <picture>
     <source media="(max-width: 768px)" srcset={mobileSrc} />
-    <img id="hero-phone-image" src={src} alt="Teléfono BeMind" style={`width: clamp(1100px, 95vw, 2200px); max-width: none;`} />
+    <img id="hero-phone-image" src={src} alt="Teléfono BeMind" />
   </picture>
 </a>
 
@@ -50,19 +55,27 @@ const {
 
   /* Desktop breakpoints */
   @media (min-width: 1280px) and (max-height: 900px) {
-    .hero-phone img { width: clamp(800px, 85vw, 1400px); }
+    .hero-phone img {
+      width: clamp(800px, 85vw, 1400px);
+    }
   }
 
   @media (min-width: 1440px) {
-    .hero-phone img { width: clamp(1000px, 90vw, 1800px); }
+    .hero-phone img {
+      width: clamp(1000px, 90vw, 1800px);
+    }
   }
 
   @media (min-width: 1920px) {
-    .hero-phone img { width: clamp(1200px, 95vw, 2000px); }
+    .hero-phone img {
+      width: clamp(1200px, 95vw, 2000px);
+    }
   }
 
   @media (max-width: 1024px) {
-    .hero-phone img { width: min(900px, 90vw); }
+    .hero-phone img {
+      width: min(900px, 90vw);
+    }
   }
 
   /* Mobile: new phone image takes 50% height */

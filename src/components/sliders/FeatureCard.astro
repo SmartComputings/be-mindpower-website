@@ -9,39 +9,44 @@ interface Props {
   link?: string;
 }
 
-const { image, logo, title, description, titleKey, descriptionKey, link } = Astro.props;
+const { image, logo, title, description, titleKey, descriptionKey, link } =
+  Astro.props;
 ---
 
-<div class="feature-card group relative flex flex-col overflow-visible cursor-pointer transition-all duration-500 hover:scale-105">
+<div
+  class="feature-card group relative flex flex-col overflow-visible cursor-pointer transition-all duration-500 hover:scale-105"
+>
   <div class="card-image-container">
-    <img 
-      src={image} 
-      alt={title}
-      class="card-image"
+    <img src={image} alt={title} class="card-image" />
+  </div>
+
+  <div class="card-top relative rounded-t-[10px] h-[140px] sm:h-[200px]"></div>
+
+  <div class="vignettes-container relative h-0">
+    <img
+      src="/detailPageImages/vignette-left.svg"
+      alt=""
+      class="card-vignette card-vignette-left"
+      aria-hidden="true"
+    />
+    <img
+      src="/detailPageImages/vignette-right.svg"
+      alt=""
+      class="card-vignette card-vignette-right"
+      aria-hidden="true"
     />
   </div>
 
-  <div class="card-top relative rounded-t-[10px] h-[140px] sm:h-[200px]">
-  </div>
-
-  <div class="vignettes-container relative h-0">
-    <img src="/images/vignette-left.svg" alt="" class="card-vignette card-vignette-left" aria-hidden="true" />
-    <img src="/images/vignette-right.svg" alt="" class="card-vignette card-vignette-right" aria-hidden="true" />
-  </div>
-
-  <div class="card-bottom relative rounded-b-[10px] px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 overflow-hidden">
-         <div class="flex justify-end logo-container">
-          <img 
-        src={logo} 
-        alt="Logo"
-        class="card-logo"
-      />
-         </div>
+  <div
+    class="card-bottom relative rounded-b-[10px] px-3 pt-3 pb-3 sm:px-4 sm:pt-4 sm:pb-4 overflow-hidden"
+  >
+    <div class="flex justify-end logo-container">
+      <img src={logo} alt="Logo" class="card-logo" />
+    </div>
     <div class="title-row">
       <div class="card-title text-white">
         <span data-i18n={titleKey}>{title}</span>
       </div>
-
     </div>
 
     <p class="card-description text-white">
@@ -50,9 +55,14 @@ const { image, logo, title, description, titleKey, descriptionKey, link } = Astr
   </div>
 
   <!-- Efecto de brillo en hover -->
-  <div class="absolute inset-0 rounded-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glow-effect"></div>
-  
-  {/* Astro.props.link && <a href={Astro.props.link} class="absolute inset-0 z-20" aria-label={title}></a> */}
+  <div
+    class="absolute inset-0 rounded-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none glow-effect"
+  >
+  </div>
+
+  {
+    /* Astro.props.link && <a href={Astro.props.link} class="absolute inset-0 z-20" aria-label={title}></a> */
+  }
 </div>
 
 <style>
@@ -172,7 +182,7 @@ const { image, logo, title, description, titleKey, descriptionKey, link } = Astr
   }
 
   .card-title {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-weight: 400;
     text-transform: capitalize;
     font-size: 15px;
@@ -205,7 +215,7 @@ const { image, logo, title, description, titleKey, descriptionKey, link } = Astr
   }
 
   .card-description {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: 8px;
     line-height: 1.3;
@@ -269,21 +279,20 @@ const { image, logo, title, description, titleKey, descriptionKey, link } = Astr
 
   /* Hide decorative vignettes on small/mobile screens to avoid visual artifacts */
   @media (max-width: 639px) {
-.card-vignette-left {
-    left: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 20px;
-  }
+    .card-vignette-left {
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 20px;
+    }
 
-  .card-vignette-right {
-    right: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    height: 45px;
-  }
-
+    .card-vignette-right {
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      height: 45px;
+    }
   }
 </style>

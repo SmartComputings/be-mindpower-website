@@ -1,20 +1,28 @@
 ---
 // Página Finance: contenido específico de Finance con hero slider.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Finance" description="BeMind Power: finanzas y bienestar con tecnología inmersiva." bodyClass="finance-page">
+<Layout
+  title="BeMind Power - Finance"
+  description="BeMind Power: finanzas y bienestar con tecnología inmersiva."
+  bodyClass="finance-page"
+>
   <div class="finance-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/finance" pageTitle="Finanzas inteligentes" pageTitleKey="finance.header.title" />
+    <Header
+      currentPath="/finance"
+      pageTitle="Finanzas inteligentes"
+      pageTitleKey="finance.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Finance, slider inicia en Finance (index 8) -->
     <div class="finance-desktop-layout">
       <HomeHero
-        videoSrc="/asad/an9.mp4"
-        phoneSrc="/asad/s9.png"
+        videoSrc="/vedioes/an9.mp4"
+        phoneSrc="/sliderImages/s9.png"
         titleLine1="A.I. Finanzas"
         titleLine2="Tu asesor personal"
         subtitle="Gestión financiera inteligente y personalizada."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/asad/an9.mp4" type="video/mp4" />
+          <source src="/vedioes/an9.mp4" type="video/mp4" />
         </video>
         <div class="finance-mobile-overlay"></div>
         <div class="finance-mobile-glow"></div>
@@ -57,20 +65,53 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="finance-mobile-content">
         <div class="finance-mobile-text">
           <h1 class="finance-m-title">
-            <span id="hero-title-line1" class="finance-m-title-line1" data-i18n="finance.hero.titleLine1">A.I. Finanzas</span>
-            <span id="hero-title-line2" class="finance-m-title-line2" data-i18n="finance.hero.titleLine2">Tu asesor personal</span>
+            <span
+              id="hero-title-line1"
+              class="finance-m-title-line1"
+              data-i18n="finance.hero.titleLine1">A.I. Finanzas</span
+            >
+            <span
+              id="hero-title-line2"
+              class="finance-m-title-line2"
+              data-i18n="finance.hero.titleLine2">Tu asesor personal</span
+            >
           </h1>
-          <p id="hero-subtitle" class="finance-m-subtitle" data-i18n="finance.hero.subtitle">Gestión financiera inteligente y personalizada.</p>
+          <p
+            id="hero-subtitle"
+            class="finance-m-subtitle"
+            data-i18n="finance.hero.subtitle"
+          >
+            Gestión financiera inteligente y personalizada.
+          </p>
         </div>
 
         <div class="finance-mobile-buttons">
-          <a id="hero-cta-button" href="/detailsPages/financedetails" class="finance-m-cta" data-i18n="finance.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/detailsPages/financedetails"
+            class="finance-m-cta"
+            data-i18n="finance.hero.cta">Ver Más</a
+          >
           <div class="finance-m-badges">
-            <a href="#" class="finance-m-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="finance-m-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="finance-m-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="finance-m-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -97,7 +138,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
   }
 
   /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.finance-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -124,10 +166,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .finance-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -157,7 +199,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .finance-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -214,21 +261,21 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .finance-m-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .finance-m-title-line2 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .finance-m-title-line3 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -236,7 +283,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .finance-m-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -266,13 +313,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .finance-m-cta:hover,
@@ -298,9 +347,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .finance-m-store-btn:hover,
@@ -434,7 +487,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .finance-m-title-line1 {
-      font-family: 'OPTIFuturaDemiBold', 'Inter', sans-serif;
+      font-family: "OPTIFuturaDemiBold", "Inter", sans-serif;
       font-size: 24px;
       font-weight: 700;
       line-height: 38px;
@@ -443,7 +496,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .finance-m-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-weight: 600;
       font-size: 16px;
       line-height: 32.09px;
@@ -456,7 +509,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .finance-m-subtitle {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-weight: 600;
       font-size: 14px;
       line-height: 100%;
@@ -620,26 +673,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 <script>
   // Optimizar reproducción de video en mobile
   function initFinanceMobileVideo(): void {
-    const video = document.querySelector('.finance-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".finance-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFinanceMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFinanceMobileVideo);
   } else {
     initFinanceMobileVideo();
   }

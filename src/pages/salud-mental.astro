@@ -1,21 +1,29 @@
 ---
 // Página Salud Mental: clonada de /chat con contenido específico de Salud Mental.
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
-import Header from '../components/common/Header.astro';
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
+import Header from "../components/common/Header.astro";
 ---
 
-<Layout title="BeMind Power - Salud Mental" description="BeMind Power: herramientas de bienestar emocional para ti y tu comunidad de apoyo." bodyClass="saludmental-page">
+<Layout
+  title="BeMind Power - Salud Mental"
+  description="BeMind Power: herramientas de bienestar emocional para ti y tu comunidad de apoyo."
+  bodyClass="saludmental-page"
+>
   <div class="saludmental-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/salud-mental" pageTitle="Salud mental" pageTitleKey="saludmental.header.title" />
+    <Header
+      currentPath="/salud-mental"
+      pageTitle="Apoyo real"
+      pageTitleKey="saludmental.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Salud Mental, slider inicia en Salud Mental (index 7) -->
     <div class="saludmental-desktop-layout">
       <HomeHero
-        videoSrc="/videos/saludmental.mp4"
-        phoneSrc="/images/saludmental.png"
+        videoSrc="/vedioes/saludmental.mp4"
+        phoneSrc="/common/saludmental.png"
         titleLine1="Apoyo real"
         titleLine2="Que inspira confianza."
         subtitle="Herramientas de bienestar emocional para ti y tu comunidad de apoyo."
@@ -43,7 +51,7 @@ import Header from '../components/common/Header.astro';
           playsinline
           preload="auto"
         >
-          <source src="/videos/saludmental.mp4" type="video/mp4" />
+          <source src="/vedioes/saludmental.mp4" type="video/mp4" />
         </video>
         <div class="saludmental-mobile-overlay"></div>
         <div class="saludmental-mobile-glow"></div>
@@ -58,20 +66,54 @@ import Header from '../components/common/Header.astro';
       <div class="saludmental-mobile-content">
         <div class="saludmental-mobile-text">
           <h1 class="saludmental-title">
-            <span id="hero-title-line1" class="saludmental-title-line1" data-i18n="saludmental.hero.titleLine1">Apoyo real</span>
-            <span id="hero-title-line2" class="saludmental-title-line2" data-i18n="saludmental.hero.titleLine2">Que inspira confianza.</span>
+            <span
+              id="hero-title-line1"
+              class="saludmental-title-line1"
+              data-i18n="saludmental.hero.titleLine1">Apoyo real</span
+            >
+            <span
+              id="hero-title-line2"
+              class="saludmental-title-line2"
+              data-i18n="saludmental.hero.titleLine2"
+              >Que inspira confianza.</span
+            >
           </h1>
-          <p id="hero-subtitle" class="saludmental-subtitle" data-i18n="saludmental.hero.subtitle">Herramientas de bienestar emocional para ti y tu comunidad de apoyo.</p>
+          <p
+            id="hero-subtitle"
+            class="saludmental-subtitle"
+            data-i18n="saludmental.hero.subtitle"
+          >
+            Herramientas de bienestar emocional para ti y tu comunidad de apoyo.
+          </p>
         </div>
 
         <div class="saludmental-mobile-buttons">
-          <a id="hero-cta-button" href="/salud-mental" class="saludmental-cta" data-i18n="saludmental.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/salud-mental"
+            class="saludmental-cta"
+            data-i18n="saludmental.hero.cta">Ver Más</a
+          >
           <div class="saludmental-badges">
-            <a href="#" class="saludmental-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="saludmental-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="saludmental-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="saludmental-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -98,7 +140,8 @@ import Header from '../components/common/Header.astro';
   }
 
   /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.saludmental-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -125,10 +168,10 @@ import Header from '../components/common/Header.astro';
 
     /* Full screen background color */
     .saludmental-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -158,7 +201,12 @@ import Header from '../components/common/Header.astro';
     .saludmental-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -214,14 +262,14 @@ import Header from '../components/common/Header.astro';
     }
 
     .saludmental-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .saludmental-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -229,7 +277,7 @@ import Header from '../components/common/Header.astro';
 
     .saludmental-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -257,13 +305,15 @@ import Header from '../components/common/Header.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .saludmental-cta:hover,
@@ -289,9 +339,13 @@ import Header from '../components/common/Header.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .saludmental-store-btn:hover,
@@ -368,7 +422,6 @@ import Header from '../components/common/Header.astro';
     .saludmental-store-btn {
       width: min(520px, 60vw);
     }
-
   }
 
   /* ===== TABLETS PEQUEÑAS / MÓVILES GRANDES (601-768px) ===== */
@@ -445,7 +498,6 @@ import Header from '../components/common/Header.astro';
     .saludmental-store-btn img {
       height: 26px;
     }
-
   }
 
   /* ===== PANTALLAS MUY CORTAS ===== */
@@ -478,7 +530,6 @@ import Header from '../components/common/Header.astro';
     .saludmental-store-btn img {
       height: 22px;
     }
-
   }
 
   /* /salud-mental móvil: centrar botón de asistencia verticalmente */
@@ -568,26 +619,32 @@ import Header from '../components/common/Header.astro';
 
 <script>
   function initSaludmentalMobileVideo(): void {
-    const video = document.querySelector('.saludmental-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".saludmental-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSaludmentalMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSaludmentalMobileVideo);
   } else {
     initSaludmentalMobileVideo();
   }

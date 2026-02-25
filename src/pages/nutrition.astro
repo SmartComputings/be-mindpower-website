@@ -1,20 +1,28 @@
 ---
 // Página Nutrition: contenido específico de Nutrition con hero slider.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Nutrición" description="BeMind Power: alimentación inteligente para tu bienestar." bodyClass="nutrition-page">
+<Layout
+  title="BeMind Power - Nutrición"
+  description="BeMind Power: alimentación inteligente para tu bienestar."
+  bodyClass="nutrition-page"
+>
   <div class="nutrition-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/nutrition" pageTitle="Vive saludable" pageTitleKey="nutrition.header.title" />
+    <Header
+      currentPath="/nutrition"
+      pageTitle="Nutrición inteligente"
+      pageTitleKey="nutrition.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Nutrition, slider inicia en Nutrition (index 4) -->
     <div class="nutrition-desktop-layout">
       <HomeHero
-        videoSrc="/asad/an5.mp4"
-        phoneSrc="/asad/s5.png"
+        videoSrc="/vedioes/an5.mp4"
+        phoneSrc="/sliderImages/s5.png"
         titleLine1="Vive saludable"
         titleLine2="Con los tuyos."
         subtitle="Comparte recetas, retos saludables y planes de alimentación en tu red."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/asad/an5.mp4" type="video/mp4" />
+          <source src="/vedioes/an5.mp4" type="video/mp4" />
         </video>
         <div class="nutrition-mobile-overlay"></div>
         <div class="nutrition-mobile-glow"></div>
@@ -57,20 +65,54 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="nutrition-mobile-content">
         <div class="nutrition-mobile-text">
           <h1 class="nutrition-title">
-            <span id="hero-title-line1" class="nutrition-title-line1" data-i18n="nutrition.hero.titleLine1">Vive saludable</span>
-            <span id="hero-title-line2" class="nutrition-title-line2" data-i18n="nutrition.hero.titleLine2">Con los tuyos.</span>
+            <span
+              id="hero-title-line1"
+              class="nutrition-title-line1"
+              data-i18n="nutrition.hero.titleLine1">Vive saludable</span
+            >
+            <span
+              id="hero-title-line2"
+              class="nutrition-title-line2"
+              data-i18n="nutrition.hero.titleLine2">Con los tuyos.</span
+            >
           </h1>
-          <p id="hero-subtitle" class="nutrition-subtitle" data-i18n="nutrition.hero.subtitle">Comparte recetas, retos saludables y planes de alimentación en tu red.</p>
+          <p
+            id="hero-subtitle"
+            class="nutrition-subtitle"
+            data-i18n="nutrition.hero.subtitle"
+          >
+            Comparte recetas, retos saludables y planes de alimentación en tu
+            red.
+          </p>
         </div>
 
         <div class="nutrition-mobile-buttons">
-          <a id="hero-cta-button" href="/detailsPages/nutritiondetails" class="nutrition-cta" data-i18n="nutrition.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/detailsPages/nutritiondetails"
+            class="nutrition-cta"
+            data-i18n="nutrition.hero.cta">Ver Más</a
+          >
           <div class="nutrition-badges">
-            <a href="#" class="nutrition-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="nutrition-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="nutrition-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="nutrition-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -96,7 +138,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     display: none;
   }
 
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.nutrition-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -122,10 +165,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .nutrition-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -155,7 +198,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .nutrition-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -166,7 +214,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       transform: translate(-50%, -50%);
       width: 80vw;
       height: 80vw;
-      background: radial-gradient(circle, rgba(40, 54, 233, 0.7) 0%, rgba(40, 54, 233, 0.4) 40%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba(40, 54, 233, 0.7) 0%,
+        rgba(40, 54, 233, 0.4) 40%,
+        transparent 70%
+      );
       filter: blur(150px);
       z-index: 2;
     }
@@ -206,14 +259,14 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .nutrition-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .nutrition-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -221,7 +274,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .nutrition-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -249,13 +302,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .nutrition-cta:hover,
@@ -281,9 +336,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .nutrition-store-btn:hover,
@@ -551,26 +610,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
 <script>
   function initNutritionMobileVideo(): void {
-    const video = document.querySelector('.nutrition-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".nutrition-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNutritionMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNutritionMobileVideo);
   } else {
     initNutritionMobileVideo();
   }

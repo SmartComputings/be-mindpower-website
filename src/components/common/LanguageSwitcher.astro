@@ -8,11 +8,11 @@ const { size = 'md', variant = 'dropdown' } = Astro.props;
 
 // Idiomas y banderas (SVG images)
 const languages = [
-  { code: 'en', label: 'English', flag: '/images/flags/us.svg' },
-  { code: 'es', label: 'Español', flag: '/images/flags/co.svg' },
-  { code: 'pt', label: 'Português', flag: '/images/flags/br.svg' },
-  { code: 'zh', label: '中文', flag: '/images/flags/cn.svg' },
-  { code: 'ar', label: 'العربية', flag: '/images/flags/sa.svg' }
+  { code: 'en', label: 'English', flag: '/common/flags/us.svg' },
+  { code: 'es', label: 'Español', flag: '/common/flags/co.svg' },
+  { code: 'pt', label: 'Português', flag: '/common/flags/br.svg' },
+  { code: 'zh', label: '中文', flag: '/common/flags/cn.svg' },
+  { code: 'ar', label: 'العربية', flag: '/common/flags/sa.svg' }
 ];
 ---
 
@@ -29,7 +29,7 @@ const languages = [
     aria-haspopup={variant === 'dropdown' ? 'listbox' : undefined}
   >
     <div class="flex items-center gap-2">
-      <img class="current-flag" src="/images/flags/co.svg" alt="" width="24" height="16" />
+      <img class="current-flag" src="/common/flags/co.svg" alt="" width="24" height="16" />
       <span class="current-label">Español</span>
     </div>
     <svg class="dropdown-arrow w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">

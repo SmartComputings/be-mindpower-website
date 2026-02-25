@@ -6,11 +6,11 @@ export type Lang = 'es' | 'en' | 'pt' | 'zh' | 'ar';
 
 // Lista idiomas + metadata
 export const languages = [
-  { code: 'es', label: 'Español', flag: '/images/flags/co.svg', dir: 'ltr' },
-  { code: 'en', label: 'English', flag: '/images/flags/us.svg', dir: 'ltr' },
-  { code: 'pt', label: 'Português', flag: '/images/flags/br.svg', dir: 'ltr' },
-  { code: 'zh', label: '中文', flag: '/images/flags/cn.svg', dir: 'ltr' },
-  { code: 'ar', label: 'العربية', flag: '/images/flags/sa.svg', dir: 'ltr' }
+  { code: 'es', label: 'Español', flag: '/common/flags/co.svg', dir: 'ltr' },
+  { code: 'en', label: 'English', flag: '/common/flags/us.svg', dir: 'ltr' },
+  { code: 'pt', label: 'Português', flag: '/common/flags/br.svg', dir: 'ltr' },
+  { code: 'zh', label: '中文', flag: '/common/flags/cn.svg', dir: 'ltr' },
+  { code: 'ar', label: 'العربية', flag: '/common/flags/sa.svg', dir: 'ltr' }
 ] as const;
 
 // Traducciones
@@ -1006,12 +1006,12 @@ export const refreshTranslations = (lang: Lang = $lang.get()): void => {
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     const fallback = el.getAttribute('data-fallback');
-    
+
     // Debug logging
     if (el.id === 'mobile-page-title') {
       console.log('Header title element found:', { key, lang, fallback, hasTranslation: !!(key && translations[lang]?.[key]) });
     }
-    
+
     if (key && translations[lang] && translations[lang][key]) {
       el.textContent = translations[lang][key];
     } else if (fallback) {

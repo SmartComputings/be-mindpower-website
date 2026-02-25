@@ -1,20 +1,28 @@
 ---
 // Página Chat: contenido específico de Chat con hero slider.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Chat" description="BeMind Power: comunicación segura, instantánea e inteligente." bodyClass="chat-page">
+<Layout
+  title="BeMind Power - Chat"
+  description="BeMind Power: comunicación segura, instantánea e inteligente."
+  bodyClass="chat-page"
+>
   <div class="chat-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/chat" pageTitle="Todo empieza" pageTitleKey="chat.header.title" />
+    <Header
+      currentPath="/chat"
+      pageTitle="Todo empieza"
+      pageTitleKey="chat.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Chat, slider inicia en Chat (index 0) -->
     <div class="chat-desktop-layout">
       <HomeHero
-        videoSrc="/asad/an1.mp4"
-        phoneSrc="/asad/s1.png"
+        videoSrc="/vedioes/an1.mp4"
+        phoneSrc="/sliderImages/s1.png"
         titleLine1="Todo empieza"
         titleLine2="con una conversación"
         subtitle="Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/asad/an1.mp4" type="video/mp4" />
+          <source src="/vedioes/an1.mp4" type="video/mp4" />
         </video>
         <div class="chat-mobile-overlay"></div>
         <div class="chat-mobile-glow"></div>
@@ -57,20 +65,53 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="chat-mobile-content">
         <div class="chat-mobile-text">
           <h1 class="chat-title">
-            <span id="hero-title-line1" class="chat-title-line1" data-i18n="chat.hero.titleLine1">Todo empieza</span>
-            <span id="hero-title-line2" class="chat-title-line2" data-i18n="chat.hero.titleLine2">con una conversación</span>
+            <span
+              id="hero-title-line1"
+              class="chat-title-line1"
+              data-i18n="chat.hero.titleLine1">Todo empieza</span
+            >
+            <span
+              id="hero-title-line2"
+              class="chat-title-line2"
+              data-i18n="chat.hero.titleLine2">con una conversación</span
+            >
           </h1>
-          <p id="hero-subtitle" class="chat-subtitle" data-i18n="chat.hero.subtitle">Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.</p>
+          <p
+            id="hero-subtitle"
+            class="chat-subtitle"
+            data-i18n="chat.hero.subtitle"
+          >
+            Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.
+          </p>
         </div>
 
         <div class="chat-mobile-buttons">
-          <a id="hero-cta-button" href="/detailsPages/chatdetails" class="chat-cta" data-i18n="chat.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/detailsPages/chatdetails"
+            class="chat-cta"
+            data-i18n="chat.hero.cta">Ver Más</a
+          >
           <div class="chat-badges">
-            <a href="#" class="chat-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="chat-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="chat-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="chat-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -98,7 +139,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
   }
 
   /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.chat-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -125,10 +167,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .chat-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -158,7 +200,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .chat-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -215,14 +262,14 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .chat-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .chat-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -230,7 +277,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .chat-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -259,13 +306,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .chat-cta:hover,
@@ -291,9 +340,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .chat-store-btn:hover,
@@ -569,26 +622,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 <script>
   // Optimizar reproducción de video en mobile
   function initChatMobileVideo(): void {
-    const video = document.querySelector('.chat-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".chat-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initChatMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initChatMobileVideo);
   } else {
     initChatMobileVideo();
   }

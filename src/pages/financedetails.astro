@@ -2,16 +2,15 @@
 import Header from "../components/common/Header.astro";
 import Layout from "../layouts/Layout.astro";
 
-
 // Images
-const bannerImg = "/images/chat/banner.png";
-const mobileBannerImg = "/images/mobileview.png";
-const phoneImg = "/images/aifinance.png";
-const googlePlay = "/images/chat/googleplay.png";
-const appleStore = "/images/chat/apple.png";
+const bannerImg = "/common/chat/banner.png";
+const mobileBannerImg = "/common/mobileview.png";
+const phoneImg = "/common/aifinance.png";
+const googlePlay = "/common/chat/googleplay.png";
+const appleStore = "/common/chat/apple.png";
 
-const heartIcon = "/images/heartLogo.png";
-const dollarIcon = "/images/doller.png";
+const heartIcon = "/common/heartLogo.png";
+const dollarIcon = "/common/icons/doller.png";
 ---
 
 <Layout
@@ -22,7 +21,11 @@ const dollarIcon = "/images/doller.png";
   <div
     class="chat-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]"
   >
-    <Header />
+    <Header
+      currentPath="/financedetails"
+      pageTitle="Finanzas inteligentes"
+      pageTitleKey="finance.hero.titleLine1"
+    />
 
     <main
       class="relative w-full md:min-h-screen md:h-auto pt-28 max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end md:justify-center gap-auto md:gap-20 z-10 overflow-hidden md:overflow-visible max-h-[750px]:h-auto max-h-[750px]:overflow-y-auto max-h-[750px]:pb-20"
@@ -55,7 +58,7 @@ const dollarIcon = "/images/doller.png";
 
         <!-- Overlay for Phone & Icons -->
         <img
-          src="/images/phone-overlay.png"
+          src="/common/phone-overlay.png"
           alt=""
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
@@ -70,7 +73,7 @@ const dollarIcon = "/images/doller.png";
             aria-label="Download on the App Store"
           >
             <img
-              src="/images/app-store-badge.svg"
+              src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
               class="h-[12px]"
             />
@@ -81,7 +84,7 @@ const dollarIcon = "/images/doller.png";
             aria-label="Get it on Google Play"
           >
             <img
-              src="/images/google-play-badge.svg"
+              src="/detailPageImages/google-play-badge.svg"
               alt="Get it on Google Play"
               class="h-[12px]"
             />
@@ -109,7 +112,9 @@ const dollarIcon = "/images/doller.png";
         class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start ml-30 md:ml-0 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 mr-40 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white ai-finance-heading">
-          <span data-i18n="finance.detail.title">Smart financial management at your fingertips.</span>
+          <span data-i18n="finance.detail.title"
+            >Smart financial management at your fingertips.</span
+          >
         </h1>
 
         <!-- Features List -->
@@ -120,17 +125,23 @@ const dollarIcon = "/images/doller.png";
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl md:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
-            <span data-i18n="finance.detail.feature1">AI-powered expense tracking</span>
+            <span data-i18n="finance.detail.feature1"
+              >AI-powered expense tracking</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl md:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
-            <span data-i18n="finance.detail.feature2">Investment insights and trends</span>
+            <span data-i18n="finance.detail.feature2"
+              >Investment insights and trends</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl md:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
-            <span data-i18n="finance.detail.feature3">Secure and private transactions</span>
+            <span data-i18n="finance.detail.feature3"
+              >Secure and private transactions</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl md:hidden">•</span>
@@ -149,13 +160,13 @@ const dollarIcon = "/images/doller.png";
             aria-label="Download on the App Store"
           >
             <img
-              src="/images/app-store-badge.svg"
+              src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
             />
           </a>
           <a href="#" class="apps-store-btn" aria-label="Get it on Google Play">
             <img
-              src="/images/google-play-badge.svg"
+              src="/detailPageImages/google-play-badge.svg"
               alt="Get it on Google Play"
             />
           </a>

@@ -3,14 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/common/Header.astro";
 
 // Images
-const bannerImg = "/images/chat/banner.png";
-const mobileBannerImg = "/images/mobileview.png";
-const phoneImg = "/images/SmartphoneApps.png";
-const googlePlay = "/images/chat/googleplay.png";
-const appleStore = "/images/chat/apple.png";
+const bannerImg = "/common/chat/banner.png";
+const mobileBannerImg = "/common/mobileview.png";
+const phoneImg = "/common/SmartphoneApps.png";
+const googlePlay = "/common/chat/googleplay.png";
+const appleStore = "/common/chat/apple.png";
 
-const heartIcon = "/images/heartLogo.png";
-const dollarIcon = "/images/doller.png";
+const heartIcon = "/common/heartLogo.png";
+const dollarIcon = "/common/icons/doller.png";
 ---
 
 <Layout
@@ -21,7 +21,11 @@ const dollarIcon = "/images/doller.png";
   <div
     class="apps-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]"
   >
-    <Header />
+    <Header
+      currentPath="/appsdetails"
+      pageTitle="Una sola app"
+      pageTitleKey="apps.hero.titleLine1"
+    />
 
     <main
       class="relative w-full lg:min-h-screen lg:h-auto pt-28 max-h-[750px]:pt-20 lg:pt-4 px-0 lg:px-8 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-end lg:justify-center gap-auto lg:gap-20 z-10 overflow-hidden lg:overflow-visible max-h-[750px]:h-auto max-h-[750px]:overflow-y-auto max-h-[750px]:pb-20"
@@ -54,7 +58,7 @@ const dollarIcon = "/images/doller.png";
 
         <!-- Overlay for Phone & Icons -->
         <img
-          src="/images/phone-overlay.png"
+          src="/common/phone-overlay.png"
           alt=""
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
@@ -69,7 +73,7 @@ const dollarIcon = "/images/doller.png";
             aria-label="Download on the App Store"
           >
             <img
-              src="/images/app-store-badge.svg"
+              src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
               class="h-[12px]"
             />
@@ -80,7 +84,7 @@ const dollarIcon = "/images/doller.png";
             aria-label="Get it on Google Play"
           >
             <img
-              src="/images/google-play-badge.svg"
+              src="/detailPageImages/google-play-badge.svg"
               alt="Get it on Google Play"
               class="h-[12px]"
             />
@@ -109,7 +113,9 @@ const dollarIcon = "/images/doller.png";
         class="relative z-10 w-full lg:max-w-[750px] text-white flex flex-col items-center lg:items-start lg:ml-1 mr-0 lg:mr-20 mt-[30px] max-h-[750px]:mt-6 lg:mt-0 text-left lg:text-left px-6 lg:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white apps-heading">
-          <span data-i18n="apps.detail.title">A universe of apps, without filling your memory.</span>
+          <span data-i18n="apps.detail.title"
+            >A universe of apps, without filling your memory.</span
+          >
         </h1>
 
         <p
@@ -130,22 +136,30 @@ const dollarIcon = "/images/doller.png";
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl lg:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature1">Delivery, transport, reservations</span>
+            <span data-i18n="apps.detail.feature1"
+              >Delivery, transport, reservations</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl lg:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature2">Mini-apps without extra downloads</span>
+            <span data-i18n="apps.detail.feature2"
+              >Mini-apps without extra downloads</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl lg:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature3">Integration with instant payments</span>
+            <span data-i18n="apps.detail.feature3"
+              >Integration with instant payments</span
+            >
           </li>
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl lg:hidden">•</span>
             <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
-            <span data-i18n="apps.detail.feature4">Optimized experience according to your country</span>
+            <span data-i18n="apps.detail.feature4"
+              >Optimized experience according to your country</span
+            >
           </li>
         </ul>
 
@@ -160,13 +174,13 @@ const dollarIcon = "/images/doller.png";
             aria-label="Download on the App Store"
           >
             <img
-              src="/images/app-store-badge.svg"
+              src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
             />
           </a>
           <a href="#" class="apps-store-btn" aria-label="Get it on Google Play">
             <img
-              src="/images/google-play-badge.svg"
+              src="/detailPageImages/google-play-badge.svg"
               alt="Get it on Google Play"
             />
           </a>

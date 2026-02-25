@@ -1,20 +1,28 @@
 ---
 // Página Communities: contenido específico de Communities con hero slider.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Comunidad" description="BeMind Power: conecta con personas afines a ti." bodyClass="communities-page">
+<Layout
+  title="BeMind Power - Comunidad"
+  description="BeMind Power: conecta con personas afines a ti."
+  bodyClass="communities-page"
+>
   <div class="communities-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/communities" pageTitle="Comunidades" pageTitleKey="communities.header.title" />
+    <Header
+      currentPath="/communities"
+      pageTitle="Conecta"
+      pageTitleKey="communities.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Communities, slider inicia en Communities (index 5) -->
     <div class="communities-desktop-layout">
       <HomeHero
-        videoSrc="/asad/an6.mp4"
-        phoneSrc="/asad/s6.png"
+        videoSrc="/vedioes/an6.mp4"
+        phoneSrc="/sliderImages/s6.png"
         titleLine1="Destácate"
         titleLine2="Crea tu comunidad"
         subtitle="Crea, únete y colabora con personas que comparten tus intereses y valores."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/asad/an6.mp4" type="video/mp4" />
+          <source src="/vedioes/an6.mp4" type="video/mp4" />
         </video>
         <div class="communities-mobile-overlay"></div>
         <div class="communities-mobile-glow"></div>
@@ -57,20 +65,54 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="communities-mobile-content">
         <div class="communities-mobile-text">
           <h1 class="communities-title">
-            <span id="hero-title-line1" class="communities-title-line1" data-i18n="communities.hero.titleLine1">Destácate</span>
-            <span id="hero-title-line2" class="communities-title-line2" data-i18n="communities.hero.titleLine2">Crea tu comunidad</span>
+            <span
+              id="hero-title-line1"
+              class="communities-title-line1"
+              data-i18n="communities.hero.titleLine1">Destácate</span
+            >
+            <span
+              id="hero-title-line2"
+              class="communities-title-line2"
+              data-i18n="communities.hero.titleLine2">Crea tu comunidad</span
+            >
           </h1>
-          <p id="hero-subtitle" class="communities-subtitle" data-i18n="communities.hero.subtitle">Crea, únete y colabora con personas que comparten tus intereses y valores.</p>
+          <p
+            id="hero-subtitle"
+            class="communities-subtitle"
+            data-i18n="communities.hero.subtitle"
+          >
+            Crea, únete y colabora con personas que comparten tus intereses y
+            valores.
+          </p>
         </div>
 
         <div class="communities-mobile-buttons">
-          <a id="hero-cta-button" href="/detailsPages/communitiesdetails" class="communities-cta" data-i18n="communities.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/detailsPages/communitiesdetails"
+            class="communities-cta"
+            data-i18n="communities.hero.cta">Ver Más</a
+          >
           <div class="communities-badges">
-            <a href="#" class="communities-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="communities-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="communities-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="communities-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -96,7 +138,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     display: none;
   }
 
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.communities-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -122,10 +165,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .communities-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -155,7 +198,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .communities-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -166,7 +214,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       transform: translate(-50%, -50%);
       width: 80vw;
       height: 80vw;
-      background: radial-gradient(circle, rgba(40, 54, 233, 0.7) 0%, rgba(40, 54, 233, 0.4) 40%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba(40, 54, 233, 0.7) 0%,
+        rgba(40, 54, 233, 0.4) 40%,
+        transparent 70%
+      );
       filter: blur(150px);
       z-index: 2;
     }
@@ -206,14 +259,14 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .communities-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .communities-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -221,7 +274,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .communities-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -249,13 +302,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .communities-cta:hover,
@@ -281,9 +336,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .communities-store-btn:hover,
@@ -551,26 +610,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
 <script>
   function initCommunitiesMobileVideo(): void {
-    const video = document.querySelector('.communities-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".communities-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCommunitiesMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCommunitiesMobileVideo);
   } else {
     initCommunitiesMobileVideo();
   }

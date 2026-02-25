@@ -1,20 +1,28 @@
 ---
 // Página Wallet: contenido específico de Wallet con hero slider.
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
-import HomeHero from '../components/home/HomeHero.astro';
-import FeatureSlider from '../components/sliders/FeatureSlider.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
-<Layout title="BeMind Power - Wallet" description="BeMind Power: tu billetera digital segura y conectada." bodyClass="wallet-page">
+<Layout
+  title="BeMind Power - Wallet"
+  description="BeMind Power: tu billetera digital segura y conectada."
+  bodyClass="wallet-page"
+>
   <div class="wallet-page-wrap relative min-h-[100dvh] w-full">
-    <Header currentPath="/wallet" pageTitle="Envía y recibe Dinero" pageTitleKey="wallet.header.title" />
+    <Header
+      currentPath="/wallet"
+      pageTitle="Tu billetera"
+      pageTitleKey="wallet.hero.titleLine1"
+    />
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Wallet, slider inicia en Wallet (index 1) -->
     <div class="wallet-desktop-layout">
       <HomeHero
-        videoSrc="/asad/an2.mp4"
-        phoneSrc="/asad/s2.png"
+        videoSrc="/vedioes/an2.mp4"
+        phoneSrc="/sliderImages/s2.png"
         titleLine1="Maneja tus finanzas"
         titleLine2="sin salir del chat"
         subtitle="Desde productos locales hasta servicios digitales: todo en una sola comunidad."
@@ -42,7 +50,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
           playsinline
           preload="auto"
         >
-          <source src="/asad/an2.mp4" type="video/mp4" />
+          <source src="/vedioes/an2.mp4" type="video/mp4" />
         </video>
         <div class="wallet-mobile-overlay"></div>
         <div class="wallet-mobile-glow"></div>
@@ -57,20 +65,54 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       <div class="wallet-mobile-content">
         <div class="wallet-mobile-text">
           <h1 class="wallet-title">
-            <span id="hero-title-line1" class="wallet-title-line1" data-i18n="wallet.hero.titleLine1">Maneja tus finanzas</span>
-            <span id="hero-title-line2" class="wallet-title-line2" data-i18n="wallet.hero.titleLine2">sin salir del chat</span>
+            <span
+              id="hero-title-line1"
+              class="wallet-title-line1"
+              data-i18n="wallet.hero.titleLine1">Maneja tus finanzas</span
+            >
+            <span
+              id="hero-title-line2"
+              class="wallet-title-line2"
+              data-i18n="wallet.hero.titleLine2">sin salir del chat</span
+            >
           </h1>
-          <p id="hero-subtitle" class="wallet-subtitle" data-i18n="wallet.hero.subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
+          <p
+            id="hero-subtitle"
+            class="wallet-subtitle"
+            data-i18n="wallet.hero.subtitle"
+          >
+            Desde productos locales hasta servicios digitales: todo en una sola
+            comunidad.
+          </p>
         </div>
 
         <div class="wallet-mobile-buttons">
-          <a id="hero-cta-button" href="/detailsPages/walletdetails" class="wallet-cta" data-i18n="wallet.hero.cta">Ver Más</a>
+          <a
+            id="hero-cta-button"
+            href="/detailsPages/walletdetails"
+            class="wallet-cta"
+            data-i18n="wallet.hero.cta">Ver Más</a
+          >
           <div class="wallet-badges">
-            <a href="#" class="wallet-store-btn" aria-label="Download on the App Store">
-              <img src="/images/app-store-badge.svg" alt="Download on the App Store" />
+            <a
+              href="#"
+              class="wallet-store-btn"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="/detailPageImages/app-store-badge.svg"
+                alt="Download on the App Store"
+              />
             </a>
-            <a href="#" class="wallet-store-btn" aria-label="Get it on Google Play">
-              <img src="/images/google-play-badge.svg" alt="Get it on Google Play" />
+            <a
+              href="#"
+              class="wallet-store-btn"
+              aria-label="Get it on Google Play"
+            >
+              <img
+                src="/detailPageImages/google-play-badge.svg"
+                alt="Get it on Google Play"
+              />
             </a>
           </div>
         </div>
@@ -96,7 +138,8 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     display: none;
   }
 
-  @media (max-width: 768px), (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media (max-width: 768px),
+    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.wallet-page {
       overflow-x: hidden;
       overscroll-behavior: none;
@@ -122,10 +165,10 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     /* Full screen background color */
     .wallet-mobile-layout::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
-      background: #0B0245;
+      background: #0b0245;
       z-index: -1;
     }
 
@@ -155,7 +198,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     .wallet-mobile-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(11, 2, 69, 0.2) 0%, rgba(11, 2, 69, 0.6) 80%, rgba(11, 2, 69, 1) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(11, 2, 69, 0.2) 0%,
+        rgba(11, 2, 69, 0.6) 80%,
+        rgba(11, 2, 69, 1) 100%
+      );
       z-index: 1;
     }
 
@@ -166,7 +214,12 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       transform: translate(-50%, -50%);
       width: 80vw;
       height: 80vw;
-      background: radial-gradient(circle, rgba(40, 54, 233, 0.7) 0%, rgba(40, 54, 233, 0.4) 40%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba(40, 54, 233, 0.7) 0%,
+        rgba(40, 54, 233, 0.4) 40%,
+        transparent 70%
+      );
       filter: blur(150px);
       z-index: 2;
     }
@@ -206,14 +259,14 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
     }
 
     .wallet-title-line1 {
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-size: clamp(24px, 7vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .wallet-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(14px, 4vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -221,7 +274,7 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
     .wallet-subtitle {
       color: #fff;
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-size: clamp(11px, 2.8vw, 14px);
       font-weight: 400;
       line-height: 1.3;
@@ -249,13 +302,15 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
       font-weight: 900;
       font-size: clamp(14px, 3.8vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .wallet-cta:hover,
@@ -281,9 +336,13 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(55, 27, 190, 0.25), 0 -4px 14px rgba(25, 41, 255, 0.2);
+      box-shadow:
+        0 4px 14px rgba(55, 27, 190, 0.25),
+        0 -4px 14px rgba(25, 41, 255, 0.2);
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .wallet-store-btn:hover,
@@ -551,26 +610,32 @@ import FeatureSlider from '../components/sliders/FeatureSlider.astro';
 
 <script>
   function initWalletMobileVideo(): void {
-    const video = document.querySelector('.wallet-mobile-video') as HTMLVideoElement;
+    const video = document.querySelector(
+      ".wallet-mobile-video",
+    ) as HTMLVideoElement;
     if (!video) return;
 
     const playVideo = () => {
       video.play().catch(() => {
-        document.addEventListener('touchstart', () => {
-          video.play();
-        }, { once: true });
+        document.addEventListener(
+          "touchstart",
+          () => {
+            video.play();
+          },
+          { once: true },
+        );
       });
     };
 
     if (video.readyState >= 2) {
       playVideo();
     } else {
-      video.addEventListener('loadeddata', playVideo, { once: true });
+      video.addEventListener("loadeddata", playVideo, { once: true });
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWalletMobileVideo);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initWalletMobileVideo);
   } else {
     initWalletMobileVideo();
   }

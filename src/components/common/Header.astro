@@ -10,7 +10,12 @@ interface Props {
   pageTitleKey?: string;
 }
 
-const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitleKey } = Astro.props;
+const {
+  currentPath,
+  backgroundImage = "/common/headerbg.png",
+  pageTitle,
+  pageTitleKey,
+} = Astro.props;
 ---
 
 <header class="fixed left-0 right-0 top-6 z-40">
@@ -21,15 +26,21 @@ const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitl
   >
   </div>
 
-  <div class="relative w-full max-w-[1728px] mx-auto px-4 min-[900px]:px-[6.4%]">
+  <div
+    class="relative w-full max-w-[1728px] mx-auto px-4 min-[900px]:px-[6.4%]"
+  >
     <div class="flex items-center justify-center">
       <div
         class="w-full bg-none min-[900px]:bg-cover min-[900px]:bg-center min-[900px]:rounded-full px-0 min-[900px]:px-8 py-3 min-[900px]:border min-[900px]:border-white/10 min-[900px]:shadow-[0_8px_40px_rgba(18,12,40,0.6)] min-[900px]:backdrop-blur-md header-container"
         style={`--bg-image: url('${backgroundImage}');`}
       >
-        <div class="relative flex items-center justify-between w-full max-w-[1400px] mx-auto">
+        <div
+          class="relative flex items-center justify-between w-full max-w-[1400px] mx-auto"
+        >
           <!-- Logo -->
-          <div class="flex items-center min-[900px]:flex-1 justify-start min-[900px]:pr-0">
+          <div
+            class="flex items-center min-[900px]:flex-1 justify-start min-[900px]:pr-0"
+          >
             <a
               href="/"
               class="flex items-center gap-2.5 no-underline shrink-0"
@@ -38,10 +49,10 @@ const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitl
               <picture>
                 <source
                   media="(max-width: 899px)"
-                  srcset="/images/logos/Logo_Be-Mind%20night.png"
+                  srcset="/common/logos/Logo-bmp.svg"
                 />
                 <img
-                  src="/images/logos/Logo_Be-Mind%20night.svg"
+                  src="/common/logos/Logo-bmp.svg"
                   alt="BeMind Power"
                   class="h-8 min-[900px]:h-10 w-auto"
                 />
@@ -51,16 +62,24 @@ const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitl
 
           <!-- Mobile Page Title (centered) -->
           <div class="absolute left-1/2 -translate-x-1/2 min-[900px]:hidden">
-            <span id="mobile-page-title" class="text-white font-semibold text-sm tracking-wide opacity-0 transition-opacity duration-150" data-i18n={pageTitleKey} data-fallback={pageTitle}></span>
+            <span
+              id="mobile-page-title"
+              class="text-white font-semibold text-sm tracking-wide opacity-0 transition-opacity duration-150"
+              data-i18n={pageTitleKey}
+              data-fallback={pageTitle}></span>
           </div>
 
           <!-- Navigation -->
-          <div class="min-[900px]:relative min-[900px]:flex-1 flex items-center justify-end min-[900px]:justify-center">
+          <div
+            class="min-[900px]:relative min-[900px]:flex-1 flex items-center justify-end min-[900px]:justify-center"
+          >
             <Navigation currentPath={currentPath} />
           </div>
 
           <!-- Language switcher (replaces Registro/Login buttons) -->
-          <div class="hidden min-[900px]:flex flex-1 items-center justify-end gap-3">
+          <div
+            class="hidden min-[900px]:flex flex-1 items-center justify-end gap-3"
+          >
             <LanguageSwitcher size="md" />
           </div>
         </div>
@@ -94,7 +113,7 @@ const { currentPath, backgroundImage = "/asad/headerbg.png", pageTitle, pageTitl
       () => {
         window.removeEventListener("scroll", updateHeader);
       },
-      { once: true }
+      { once: true },
     );
   };
 
