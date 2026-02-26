@@ -10,7 +10,7 @@ const googlePlay = "/common/chat/googleplay.png";
 const appleStore = "/common/chat/apple.png";
 
 const heartIcon = "/common/heartLogo.png";
-const dollarIcon = "/common/icons/doller.png";
+const dollarIcon = "/common/doller.png";
 ---
 
 <Layout
@@ -40,7 +40,7 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Helper Icons (Mobile Only) -->
       <div
-        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-hidden"
+        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-visible"
       >
         <!-- Heart Icon (Left) - Overlapping phone, blurred -->
         <img
@@ -53,7 +53,7 @@ const dollarIcon = "/common/icons/doller.png";
         <img
           src={dollarIcon}
           alt=""
-          class="absolute bottom-[-20px] right-[-20px] w-20 z-5 h-auto blur-[3px] scale-190"
+          class="absolute bottom-[-20px] right-[-20px] w-20 z-[5] h-auto blur-[3px] scale-190"
         />
 
         <!-- Overlay for Phone & Icons -->
@@ -63,15 +63,11 @@ const dollarIcon = "/common/icons/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-        <!-- Mobile Buttons (Moved here for z-index visibility) -->
+                <!-- Mobile Buttons -->
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -97,7 +93,7 @@ const dollarIcon = "/common/icons/doller.png";
         class="relative z-10 w-full flex flex-col items-center md:mt-20 justify-end h-full md:h-auto md:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] md:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
       >
         <div
-          class="relative w-[130%] max-h-[750px]:w-[110%] md:w-full md:max-w-[600px]"
+          class="relative w-[115%] max-h-[750px]:w-[100%] md:w-[85%] lg:w-[80%] md:max-w-[500px]"
         >
           <img
             src={phoneImg}
@@ -150,15 +146,11 @@ const dollarIcon = "/common/icons/doller.png";
           </li>
         </ul>
 
-        <!-- Download Buttons -->
+                <!-- Download Buttons -->
         <div
           class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -230,7 +222,7 @@ const dollarIcon = "/common/icons/doller.png";
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-  /* Apps Buttons Styles */
+    /* Apps Buttons Styles */
   @keyframes blink-shadow {
     0%,
     100% {
@@ -249,12 +241,7 @@ const dollarIcon = "/common/icons/doller.png";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* Default (Mobile) styles - let HTML utilities control size if needed or provide small defaults */
     padding: 0 18px;
-    /* Mobile size defaults */
-    width: 238px;
-    height: 30px;
-
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50px;
@@ -266,22 +253,6 @@ const dollarIcon = "/common/icons/doller.png";
     animation: blink-shadow 2s infinite;
   }
 
-  .apps-store-btn:hover,
-  .apps-store-btn:active {
-    transform: scale(1.05);
-    animation: none; /* Stop blinking on hover */
-    box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
-  }
-
-  .apps-store-btn img {
-    /* Base image style for mobile */
-    height: 12px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-  }
-
-  /* Desktop Specific Sizes */
   @media (min-width: 768px) {
     .apps-store-btn {
       width: 250px;
@@ -292,24 +263,18 @@ const dollarIcon = "/common/icons/doller.png";
     }
   }
 
-  /* AI Finance Heading */
-  .ai-finance-heading {
-    width: 249px;
-    font-family: "OPTIFuturaDemiBold", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 0;
+  .apps-store-btn:hover,
+  .apps-store-btn:active {
+    transform: scale(1.05);
+    animation: none;
+    box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
   }
 
-  @media (min-width: 768px) {
-    .ai-finance-heading {
-      width: 100%;
-      font-family: "OPTIFutura-ExtraBlackCond", sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.1;
-      font-weight: 500;
-    }
+  .apps-store-btn img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
-</style>
+
+  </style>

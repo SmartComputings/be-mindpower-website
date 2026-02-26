@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import ComingSoonModal from "../components/common/ComingSoonModal.astro";
 
 interface Props {
   title: string;
@@ -23,6 +24,7 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/common/logos/favicon.ico" />
     <link
       rel="icon"
       type="image/png"
@@ -194,6 +196,7 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
   </head>
   <body class={bodyClass}>
     <slot />
+    <ComingSoonModal />
 
     <!-- SupportButton removed: floating support button hidden globally -->
 

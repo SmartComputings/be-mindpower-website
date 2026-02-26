@@ -93,11 +93,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
             data-i18n="chat.hero.cta">Ver Más</a
           >
           <div class="chat-badges">
-            <a
-              href="#"
-              class="chat-store-btn"
-              aria-label="Download on the App Store"
-            >
+            <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger chat-store-btn" >
               <img
                 src="/detailPageImages/app-store-badge.svg"
                 alt="Download on the App Store"

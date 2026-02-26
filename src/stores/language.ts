@@ -210,6 +210,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.header.title': 'Vive saludable',
     'saludmental.header.title': 'Salud mental',
     'apps.header.title': 'Tips y herramientas',
+    'comingSoon.title': '¡Próximamente!',
+    'comingSoon.description': 'Nuestra aplicación para iOS estará disponible muy pronto en la App Store. ¡Mantente atento!',
+    'comingSoon.button': 'Entendido',
   },
   en: {
     'finanzas.hero.titleLine1': 'A.I. Finanzas',
@@ -391,6 +394,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.header.title': 'Live healthy',
     'saludmental.header.title': 'Mental health',
     'apps.header.title': 'Tips and tools',
+    'comingSoon.title': 'Coming Soon!',
+    'comingSoon.description': 'Our iOS app will be available very soon on the App Store. Stay tuned!',
+    'comingSoon.button': 'Understood',
   },
   pt: {
 
@@ -579,6 +585,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.header.title': 'Viva saudável',
     'saludmental.header.title': 'Saúde mental',
     'apps.header.title': 'Dicas e ferramentas',
+    'comingSoon.title': 'Em breve!',
+    'comingSoon.description': 'Nosso aplicativo para iOS estará disponível muito em breve na App Store. Fique ligado!',
+    'comingSoon.button': 'Entendi',
   },
   zh: {
     'finanzas.hero.titleLine1': 'A.I. 金融',
@@ -762,6 +771,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.header.title': '健康生活',
     'saludmental.header.title': '心理健康',
     'apps.header.title': '技巧和工具',
+    'comingSoon.title': '即将推出！',
+    'comingSoon.description': '我们的 iOS 应用程序即将登陆 App Store。敬请期待！',
+    'comingSoon.button': '明白了',
   },
   ar: {
     'finanzas.hero.titleLine1': 'A.I. المالية',
@@ -944,6 +956,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.header.title': 'عش بصحة',
     'saludmental.header.title': 'الصحة النفسية',
     'apps.header.title': 'نصائح وأدوات',
+    'comingSoon.title': 'قريباً!',
+    'comingSoon.description': 'سيكون تطبيق iOS الخاص بنا متاحاً قريباً جداً على App Store. ابق متيقظاً!',
+    'comingSoon.button': 'مفهوم',
   }
 };
 

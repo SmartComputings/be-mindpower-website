@@ -95,11 +95,7 @@ import Header from "../components/common/Header.astro";
             data-i18n="saludmental.hero.cta">Ver Más</a
           >
           <div class="saludmental-badges">
-            <a
-              href="#"
-              class="saludmental-store-btn"
-              aria-label="Download on the App Store"
-            >
+            <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger saludmental-store-btn" >
               <img
                 src="/detailPageImages/app-store-badge.svg"
                 alt="Download on the App Store"

@@ -1,0 +1,127 @@
+---
+// src/components/common/ComingSoonModal.astro
+---
+
+<div
+    id="coming-soon-modal"
+    class="fixed inset-0 z-[99999] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+>
+    <div
+        class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        id="coming-soon-backdrop"
+    >
+    </div>
+    <div
+        class="relative bg-[#0A0A1B] border border-white/10 rounded-3xl p-8 max-w-sm w-[90%] mx-auto shadow-[0_0_40px_rgba(79,70,229,0.3)] transform scale-95 transition-transform duration-300 flex flex-col items-center text-center"
+    >
+        <button
+            id="coming-soon-close"
+            class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+            aria-label="Cerrar"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div
+            class="w-16 h-16 bg-[#4F46E5]/20 rounded-full flex items-center justify-center mb-4 text-[#4F46E5]"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path
+                    d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"
+                ></path>
+                <path d="M10 2c1 .5 2 2 2 5"></path>
+            </svg>
+        </div>
+        <h3
+            class="text-2xl font-bold text-white mb-2"
+            style="font-family: 'OPTIFuturaDemiBold', sans-serif;"
+            data-i18n="comingSoon.title"
+        >
+            ¡Próximamente!
+        </h3>
+        <p
+            class="text-white/70 text-sm md:text-base leading-relaxed"
+            style="font-family: 'Neometric', sans-serif;"
+            data-i18n="comingSoon.description"
+        >
+            Nuestra aplicación para iOS estará disponible muy pronto en la App
+            Store. ¡Mantente atento!
+        </p>
+        <button
+            id="coming-soon-ok"
+            class="mt-8 px-8 py-3 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] text-white rounded-full transition-all font-medium w-full shadow-lg shadow-indigo-500/25"
+            data-i18n="comingSoon.button">Entendido</button
+        >
+    </div>
+</div>
+
+<script>
+    function setupComingSoonModal() {
+        const modal = document.getElementById("coming-soon-modal");
+        const backdrop = document.getElementById("coming-soon-backdrop");
+        const closeBtn = document.getElementById("coming-soon-close");
+        const okBtn = document.getElementById("coming-soon-ok");
+
+        if (!modal) return;
+
+        function openModal(e?: Event) {
+            if (e) e.preventDefault();
+            if (!modal) return;
+            modal.classList.remove("opacity-0", "pointer-events-none");
+            const innerContent = modal.querySelector("div.relative");
+            if (innerContent) {
+                innerContent.classList.remove("scale-95");
+                innerContent.classList.add("scale-100");
+            }
+        }
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.add("opacity-0", "pointer-events-none");
+            const innerContent = modal.querySelector("div.relative");
+            if (innerContent) {
+                innerContent.classList.remove("scale-100");
+                innerContent.classList.add("scale-95");
+            }
+        }
+
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (okBtn) okBtn.addEventListener("click", closeModal);
+        if (backdrop) backdrop.addEventListener("click", closeModal);
+
+        // Listen for custom event triggered by buttons
+        window.addEventListener("open-coming-soon", openModal);
+    }
+
+    // Setup on initial load and view transitions
+    document.addEventListener("astro:page-load", () => {
+        // Remove old listeners to prevent duplicates if any
+        window.removeEventListener("open-coming-soon", () => {});
+        setupComingSoonModal();
+    });
+
+    // Also run immediately if script runs
+    setupComingSoonModal();
+</script>

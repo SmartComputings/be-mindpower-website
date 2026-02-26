@@ -8,7 +8,7 @@ const mobileBannerImg = "/common/mobileview.png";
 const phoneImg = "/common/smartphonemusic.png";
 
 const heartIcon = "/common/heartLogo.png";
-const dollarIcon = "/common/icons/doller.png";
+const dollarIcon = "/common/doller.png";
 ---
 
 <Layout
@@ -38,7 +38,7 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Helper Icons (Mobile Only) -->
       <div
-        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-hidden"
+        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-visible"
       >
         <!-- Heart Icon (Left) - Overlapping phone, blurred -->
         <img
@@ -51,7 +51,7 @@ const dollarIcon = "/common/icons/doller.png";
         <img
           src={dollarIcon}
           alt=""
-          class="absolute bottom-[-20px] right-[-20px] w-20 z-5 h-auto blur-[3px] scale-190"
+          class="absolute bottom-[-20px] right-[-20px] w-20 z-[5] h-auto blur-[3px] scale-190"
         />
 
         <!-- Overlay for Phone & Icons -->
@@ -61,15 +61,11 @@ const dollarIcon = "/common/icons/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-        <!-- Mobile Buttons (Moved here for z-index visibility) -->
+                <!-- Mobile Buttons -->
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -138,15 +134,11 @@ const dollarIcon = "/common/icons/doller.png";
           </li>
         </ul>
 
-        <!-- Download Buttons (Desktop) -->
+                <!-- Download Buttons -->
         <div
           class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -234,7 +226,7 @@ const dollarIcon = "/common/icons/doller.png";
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-  /* Apps Buttons Styles */
+    /* Apps Buttons Styles */
   @keyframes blink-shadow {
     0%,
     100% {
@@ -253,8 +245,6 @@ const dollarIcon = "/common/icons/doller.png";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 238px;
-    height: 30px;
     padding: 0 18px;
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -267,15 +257,25 @@ const dollarIcon = "/common/icons/doller.png";
     animation: blink-shadow 2s infinite;
   }
 
+  @media (min-width: 768px) {
+    .apps-store-btn {
+      width: 250px;
+      height: 70px;
+    }
+    .apps-store-btn img {
+      height: 50px;
+    }
+  }
+
   .apps-store-btn:hover,
   .apps-store-btn:active {
     transform: scale(1.05);
-    animation: none; /* Stop blinking on hover */
+    animation: none;
     box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
   }
 
   .apps-store-btn img {
-    height: 12px;
+    height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;

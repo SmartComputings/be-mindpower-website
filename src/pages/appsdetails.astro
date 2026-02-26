@@ -10,7 +10,7 @@ const googlePlay = "/common/chat/googleplay.png";
 const appleStore = "/common/chat/apple.png";
 
 const heartIcon = "/common/heartLogo.png";
-const dollarIcon = "/common/icons/doller.png";
+const dollarIcon = "/common/doller.png";
 ---
 
 <Layout
@@ -28,19 +28,19 @@ const dollarIcon = "/common/icons/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-28 max-h-[750px]:pt-20 lg:pt-4 px-0 lg:px-8 lg:px-16 flex flex-col-reverse lg:flex-row items-center justify-end lg:justify-center gap-auto lg:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-28 max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
         <picture>
-          <source media="(max-width: 1023px)" srcset={mobileBannerImg} />
+          <source media="(max-width: 768px)" srcset={mobileBannerImg} />
           <img src={bannerImg} alt="" class="w-full h-full object-cover" />
         </picture>
       </div>
 
       <!-- Helper Icons (Mobile Only) -->
       <div
-        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none lg:hidden overflow-hidden"
+        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-visible"
       >
         <!-- Heart Icon (Left) - Overlapping phone, blurred -->
         <img
@@ -53,7 +53,7 @@ const dollarIcon = "/common/icons/doller.png";
         <img
           src={dollarIcon}
           alt=""
-          class="absolute bottom-[-20px] right-[-20px] w-20 z-5 h-auto blur-[3px] scale-190"
+          class="absolute bottom-[-20px] right-[-20px] w-20 z-[5] h-auto blur-[3px] scale-190"
         />
 
         <!-- Overlay for Phone & Icons -->
@@ -63,15 +63,11 @@ const dollarIcon = "/common/icons/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-        <!-- Mobile Buttons (Moved here for z-index visibility) -->
+                <!-- Mobile Buttons -->
         <div
-          class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] lg:hidden z-30 pointer-events-auto"
+          class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -94,10 +90,10 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Left Content: Smartphone -->
       <div
-        class="relative z-10 w-full flex flex-col items-center justify-end h-full lg:h-auto lg:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] lg:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
+        class="relative z-10 w-full flex flex-col items-center justify-end h-full md:h-auto md:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] md:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
       >
         <div
-          class="relative w-[110%] max-h-[750px]:w-[110%] lg:w-full lg:max-w-[650px] lg:mt-20"
+          class="relative w-[135%] max-h-[750px]:w-[135%] md:w-[95%] lg:w-[95%] md:max-w-[500px] lg:max-w-[600px] md:mt-10 lg:mt-20"
         >
           <img
             src={phoneImg}
@@ -110,7 +106,7 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full lg:max-w-[750px] text-white flex flex-col items-center lg:items-start lg:ml-1 mr-0 lg:mr-20 mt-[30px] max-h-[750px]:mt-6 lg:mt-0 text-left lg:text-left px-6 lg:px-0"
+        class="relative z-10 w-full md:max-w-[750px] text-white flex flex-col items-center md:items-start md:ml-1 mr-0 md:mr-20 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white apps-heading">
           <span data-i18n="apps.detail.title"
@@ -119,7 +115,7 @@ const dollarIcon = "/common/icons/doller.png";
         </h1>
 
         <p
-          class="mb-8 w-[249px] lg:w-full max-w-[732px] text-white"
+          class="mb-8 w-[249px] md:w-full max-w-[732px] text-white"
           style="font-family: 'Neometric', sans-serif; font-size: clamp(18px, 3vw, 32px); line-height: 1.34; font-weight: 600; letter-spacing: -0.04em;"
         >
           <span data-i18n="apps.detail.subtitle"
@@ -131,48 +127,43 @@ const dollarIcon = "/common/icons/doller.png";
 
         <!-- Features List -->
         <ul
-          class="space-y-1 lg:space-y-3 mb-10 w-[259px] lg:w-full lg:max-w-[743px] flex flex-col items-start lg:items-start pl-0 lg:pl-2 apps-list"
+          class="space-y-1 md:space-y-3 mb-10 w-[259px] md:w-full md:max-w-[743px] flex flex-col items-start md:items-start pl-0 md:pl-2 apps-list"
         >
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
             <span data-i18n="apps.detail.feature1"
               >Delivery, transport, reservations</span
             >
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
             <span data-i18n="apps.detail.feature2"
               >Mini-apps without extra downloads</span
             >
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
             <span data-i18n="apps.detail.feature3"
               >Integration with instant payments</span
             >
           </li>
           <li class="flex items-center gap-3 text-white">
-            <span class="text-white text-xl lg:hidden">•</span>
-            <span class="text-[#4F46E5] text-xl hidden lg:inline">✓</span>
+            <span class="text-white text-xl md:hidden">•</span>
+            <span class="text-[#4F46E5] text-xl hidden md:inline">✓</span>
             <span data-i18n="apps.detail.feature4"
               >Optimized experience according to your country</span
             >
           </li>
         </ul>
 
-        <!-- Download Buttons -->
-        <!-- Center buttons as requested: md:items-center now -->
+                <!-- Download Buttons -->
         <div
-          class="apps-badges w-full hidden lg:flex flex-col items-center lg:items-center gap-6"
+          class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
-          <a
-            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-            class="apps-store-btn"
-            aria-label="Download on the App Store"
-          >
+          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -195,7 +186,7 @@ const dollarIcon = "/common/icons/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="back-arrow hidden lg:inline-flex absolute lg:top-[180px] left-4 font-bold lg:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      class="back-arrow hidden md:inline-flex absolute md:top-[120px] lg:top-[180px] left-4 font-bold md:left-40 lg:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -260,7 +251,7 @@ const dollarIcon = "/common/icons/doller.png";
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-  /* Apps Buttons Styles */
+    /* Apps Buttons Styles */
   @keyframes blink-shadow {
     0%,
     100% {
@@ -279,8 +270,6 @@ const dollarIcon = "/common/icons/doller.png";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 238px;
-    height: 30px;
     padding: 0 18px;
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -293,14 +282,25 @@ const dollarIcon = "/common/icons/doller.png";
     animation: blink-shadow 2s infinite;
   }
 
+  @media (min-width: 768px) {
+    .apps-store-btn {
+      width: 250px;
+      height: 70px;
+    }
+    .apps-store-btn img {
+      height: 50px;
+    }
+  }
+
+  .apps-store-btn:hover,
   .apps-store-btn:active {
     transform: scale(1.05);
-    animation: none; /* Stop blinking on hover */
+    animation: none;
     box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
   }
 
   .apps-store-btn img {
-    height: 12px;
+    height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -317,7 +317,7 @@ const dollarIcon = "/common/icons/doller.png";
     letter-spacing: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .apps-store-btn {
       width: 250px;
       height: 70px;
