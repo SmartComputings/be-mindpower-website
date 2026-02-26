@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  appStoreUrl = "#",
+  appStoreUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat",
   googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat",
   ctaUrl = "/chat",
   ctaText = "Ver Más",
@@ -16,13 +16,13 @@ const {
 ---
 
 <div class="hero-store-buttons">
-  <a href={appStoreUrl} class="store-btn" aria-label="Download on App Store">
+  <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" class="store-btn store-btn-app" aria-label="Download on App Store">
     <img
       src="/detailPageImages/app-store-badge.svg"
       alt="Download on App Store"
     />
   </a>
-  <a href={googlePlayUrl} class="store-btn" aria-label="Get it on Google Play">
+  <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" class="store-btn store-btn-google" aria-label="Get it on Google Play">
     <img
       src="/detailPageImages/google-play-badge.svg"
       alt="Get it on Google Play"
@@ -36,12 +36,72 @@ const {
   >
 </div>
 
+<script>
+  function initStoreButtons() {
+    // Query all instances of store buttons (in case there are multiple on the page)
+    const appStoreBtns = document.querySelectorAll('.store-btn-app');
+    const googlePlayBtns = document.querySelectorAll('.store-btn-google');
+    
+    appStoreBtns.forEach(appStoreBtn => {
+      if (appStoreBtn) {
+        // Remove any existing listeners by cloning
+        const newBtn = appStoreBtn.cloneNode(true) as HTMLElement;
+        appStoreBtn.parentNode?.replaceChild(newBtn, appStoreBtn);
+        
+        newBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          const url = newBtn.getAttribute('href');
+          if (url) window.open(url, '_blank', 'noopener,noreferrer');
+        }, { capture: true });
+        
+        // Also handle mousedown to catch it even earlier
+        newBtn.addEventListener('mousedown', (e) => {
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }, { capture: true });
+      }
+    });
+    
+    googlePlayBtns.forEach(googlePlayBtn => {
+      if (googlePlayBtn) {
+        const newBtn = googlePlayBtn.cloneNode(true) as HTMLElement;
+        googlePlayBtn.parentNode?.replaceChild(newBtn, googlePlayBtn);
+        
+        newBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          const url = newBtn.getAttribute('href');
+          if (url) window.open(url, '_blank', 'noopener,noreferrer');
+        }, { capture: true });
+        
+        newBtn.addEventListener('mousedown', (e) => {
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }, { capture: true });
+      }
+    });
+  }
+
+  // Run on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStoreButtons);
+  } else {
+    initStoreButtons();
+  }
+
+  // Run on Astro page transitions
+  document.addEventListener('astro:page-load', initStoreButtons);
+</script>
+
 <style>
   .hero-store-buttons {
     display: flex;
     gap: clamp(18px, 2vw, 28px);
     position: relative;
-    z-index: 18;
+    z-index: 100;
     pointer-events: auto;
   }
 
@@ -64,6 +124,9 @@ const {
       box-shadow 0.2s ease;
     overflow: hidden;
     text-decoration: none;
+    position: relative;
+    z-index: 101;
+    pointer-events: auto;
   }
 
   .store-btn:hover {
@@ -78,6 +141,7 @@ const {
     width: auto;
     object-fit: contain;
     margin-left: 5px; /* Visual correction to center content */
+    pointer-events: none;
   }
 
   .ver-mas-btn {

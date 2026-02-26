@@ -1104,9 +1104,14 @@ const features = [
     // Check if dragging happened? Since touchStart/touchEnd are passive, click might fire.
     // If we want simple click behavior:
     track.parentElement?.addEventListener("click", (e) => {
-      // Ignore clicks that originate from buttons/links (arrows/CTAs)
+      // Ignore clicks that originate from buttons/links (arrows/CTAs/store buttons)
       const target = e.target as HTMLElement | null;
-      if (target && target.closest && target.closest("button, a")) return;
+      if (target && target.closest) {
+        // Check for any button, link, or store button
+        if (target.closest("button, a, .store-btn, .store-btn-app, .store-btn-google, .hero-store-buttons")) {
+          return;
+        }
+      }
 
       // Bounce animation: Move right first (wind up)
       track.style.transition = "transform 0.15s ease-out";
