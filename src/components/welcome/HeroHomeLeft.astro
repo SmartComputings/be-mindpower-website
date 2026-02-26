@@ -23,21 +23,47 @@ const {
   ctaKey = "home.hero.cta",
 } = Astro.props;
 ---
+
 <!-- Componente único izquierdo según Figma: títulos arriba, Ver más, botones de descarga debajo uno del otro -->
 <aside class="hero-home-left" aria-label="Presentación BeMind Power">
   <div class="hero-home-left-content">
     <h1 class="hero-home-title">
-      <span id="hero-title-line1" class="hero-home-title-line1" data-i18n={titleLine1Key}>{titleLine1}</span>
-      <span id="hero-title-line2" class="hero-home-title-line2" data-i18n={titleLine2Key}>{titleLine2}</span>
+      <span
+        id="hero-title-line1"
+        class="hero-home-title-line1"
+        data-i18n={titleLine1Key}>{titleLine1}</span
+      >
+      <span
+        id="hero-title-line2"
+        class="hero-home-title-line2"
+        data-i18n={titleLine2Key}>{titleLine2}</span
+      >
     </h1>
-    <p id="hero-subtitle" class="hero-home-subtitle" data-i18n={subtitleKey}>{subtitle}</p>
-    <a id="hero-cta-button" href={ctaHref} class="hero-home-cta" data-i18n={ctaKey}>{ctaText}</a>
+    <p id="hero-subtitle" class="hero-home-subtitle" data-i18n={subtitleKey}>
+      {subtitle}
+    </p>
+    <a
+      id="hero-cta-button"
+      href={ctaHref}
+      class="hero-home-cta"
+      data-i18n={ctaKey}>{ctaText}</a
+    >
     <div class="hero-home-badges">
       <a href="#" class="store-btn" aria-label="Download on the App Store">
-        <img src="/detailPageImages/app-store-badge.svg" alt="Download on the App Store" />
+        <img
+          src="/detailPageImages/app-store-badge.svg"
+          alt="Download on the App Store"
+        />
       </a>
-      <a href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat&hl=es_US" class="store-btn" aria-label="Get it on Google Play">
-        <img src="/detailPageImages/google-play-badge.svg" alt="Get it on Google Play" />
+      <a
+        href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
+        class="store-btn"
+        aria-label="Get it on Google Play"
+      >
+        <img
+          src="/detailPageImages/google-play-badge.svg"
+          alt="Get it on Google Play"
+        />
       </a>
     </div>
   </div>
@@ -74,14 +100,14 @@ const {
   }
 
   .hero-home-title-line1 {
-    font-family: 'OPTIFutura-ExtraBlackCond', 'Inter', sans-serif;
+    font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
     font-size: clamp(32px, 4.5vw, 80px);
     font-weight: 900;
     letter-spacing: 0.01em;
   }
 
   .hero-home-title-line2 {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(20px, 2.4vw, 40px);
     font-weight: 700;
     letter-spacing: 0.01em;
@@ -89,7 +115,7 @@ const {
 
   .hero-home-subtitle {
     color: #fff;
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(16px, 1.5vw, 26px);
     font-weight: 400;
     line-height: 1.5;
@@ -106,14 +132,16 @@ const {
     width: min(262px, 18vw);
     background: #1929ff;
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: clamp(14px, 1.15vw, 20px);
     letter-spacing: 0.02em;
     border-radius: 999px;
     text-decoration: none;
     margin: 0 0 1rem 0;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
   }
 
   .hero-home-cta:hover {
@@ -139,9 +167,13 @@ const {
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50px;
-    box-shadow: 2.11px 2.11px 8.43px 0px #371BBE, -2.11px -2.11px 8.43px 0px #1929FF;
+    box-shadow:
+      2.11px 2.11px 8.43px 0px #371bbe,
+      -2.11px -2.11px 8.43px 0px #1929ff;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
   }
 
   .hero-home-badges .store-btn:hover {
@@ -170,7 +202,6 @@ const {
 
   /* Tablet: ajustes de tamaño */
   @media (max-width: 1024px) {
-
     .hero-home-title-line1 {
       font-size: clamp(28px, 5vw, 48px);
     }
@@ -192,7 +223,6 @@ const {
 
   /* Móvil: espaciado y tamaños */
   @media (max-width: 768px) {
-
     .hero-home-title-line1 {
       font-size: clamp(26px, 7vw, 40px);
     }
@@ -221,9 +251,8 @@ const {
   }
 
   @media (max-width: 480px) {
-
     .hero-home-title-line1 {
-      font-family: 'OPTIFuturaDemiBold', 'Inter', sans-serif;
+      font-family: "OPTIFuturaDemiBold", "Inter", sans-serif;
       font-size: 24px;
       font-weight: 700;
       line-height: 38px;
@@ -232,7 +261,7 @@ const {
     }
 
     .hero-home-title-line2 {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-weight: 600;
       font-size: 16px;
       line-height: 32.09px;
@@ -241,7 +270,7 @@ const {
     }
 
     .hero-home-subtitle {
-      font-family: 'Neometric', 'Inter', sans-serif;
+      font-family: "Neometric", "Inter", sans-serif;
       font-weight: 600;
       font-size: 14px;
       line-height: 100%;
@@ -259,7 +288,6 @@ const {
       padding: 0 1.5rem;
       font-weight: 400;
     }
-  
 
     .hero-home-badges {
       gap: 10px;
