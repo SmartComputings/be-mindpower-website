@@ -19,12 +19,7 @@ const {
 ---
 
 <header class="fixed left-0 right-0 top-6 z-40">
-  <!-- Decorative backdrop for header (subtle, used for scroll state) -->
-  <div
-    id="header-bg"
-    class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 bg-[#120068]/90 backdrop-blur-md md:hidden"
-  >
-  </div>
+  <!-- Decorative backdrop for header removed for pure transparency on mobile -->
 
   <div
     class="relative w-full max-w-[1728px] mx-auto px-4 min-[900px]:px-[6.4%]"
@@ -53,24 +48,15 @@ const {
                 <img
                   src="/common/logos/Logo_Be-Mind%20night.svg"
                   alt="BeMind Power"
-                  class="h-10 min-[900px]:h-10 w-auto"
+                  class="h-[60px] min-[900px]:h-10 w-auto"
                 />
               </picture>
             </a>
           </div>
 
-          <!-- Mobile Page Title (centered) -->
-          <div class="absolute left-1/2 -translate-x-1/2 min-[900px]:hidden">
-            <span
-              id="mobile-page-title"
-              class="text-white font-semibold text-sm tracking-wide opacity-0 transition-opacity duration-150"
-              data-i18n={pageTitleKey}
-              data-fallback={pageTitle}></span>
-          </div>
-
           <!-- Navigation -->
           <div
-            class="min-[900px]:relative min-[900px]:flex-1 flex items-center justify-end min-[900px]:justify-center"
+            class="min-[900px]:relative min-[900px]:flex-1 flex items-center justify-end min-[900px]:justify-center ml-auto min-[900px]:ml-0"
           >
             <Navigation currentPath={currentPath} />
           </div>
@@ -86,35 +72,3 @@ const {
     </div>
   </div>
 </header>
-
-<script>
-  // Initialize header scroll behavior when the page is loaded on the client
-  const initHeaderScroll = () => {
-    const headerBg = document.getElementById("header-bg");
-    if (!headerBg) return;
-
-    const updateHeader = () => {
-      if (window.scrollY > 20) {
-        headerBg.classList.remove("opacity-0");
-        headerBg.classList.add("opacity-100");
-      } else {
-        headerBg.classList.add("opacity-0");
-        headerBg.classList.remove("opacity-100");
-      }
-    };
-
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    updateHeader(); // Initial check
-
-    // Remove listener on page swap to avoid duplicates
-    document.addEventListener(
-      "astro:before-swap",
-      () => {
-        window.removeEventListener("scroll", updateHeader);
-      },
-      { once: true },
-    );
-  };
-
-  document.addEventListener("astro:page-load", initHeaderScroll);
-</script>

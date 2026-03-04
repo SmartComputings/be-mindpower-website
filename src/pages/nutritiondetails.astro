@@ -5,7 +5,7 @@ import Header from "../components/common/Header.astro";
 // Images
 const bannerImg = "/common/chat/banner.png";
 const mobileBannerImg = "/common/mobileview.png";
-const phoneImg = "/common/smartphonenutriction.png";
+const phoneImg = "/sliderImages/s5.png";
 
 const heartIcon = "/common/heartLogo.png";
 const dollarIcon = "/common/doller.png";
@@ -26,7 +26,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-24 max-h-[750px]:pt-20 md:pt-24 md:pb-12 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-24 max-h-[750px]:pt-20 md:pt-24 md:pb-12 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -97,14 +97,13 @@ const dollarIcon = "/common/doller.png";
             src={phoneImg}
             alt="Nutrition Interface"
             class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph-nutrition"
-            transition:name="phone-morph-nutrition"
           />
         </div>
       </div>
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start md:ml-0 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left mr-0 md:mr-40 px-6 md:px-0"
+        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start md:ml-0 mt-[90px] max-h-[750px]:mt-[80px] md:mt-0 text-left md:text-left mr-0 md:mr-40 px-6 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white nutrition-heading">
           <span data-i18n="nutrition.detail.title"
@@ -342,4 +341,12 @@ const dollarIcon = "/common/doller.png";
     }
   }
 </style>
+
+
+
+
+
+
+
+
 

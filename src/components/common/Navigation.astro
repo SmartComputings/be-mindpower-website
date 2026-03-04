@@ -16,15 +16,50 @@ const aboutItem = {
 };
 
 const featureItems = [
-  { key: "nav.chat", label: "Chat", href: "/chat" },
-  { key: "nav.wallet", label: "Wallet", href: "/wallet" },
-  { key: "nav.marketplace", label: "Marketplace", href: "/marketplace" },
-  { key: "nav.apps", label: "Apps", href: "/apps" },
-  { key: "nav.nutrition", label: "Nutrición", href: "/nutrition" },
-  { key: "nav.communities", label: "Comunidad", href: "/communities" },
-  { key: "nav.musica", label: "Música", href: "/musica" },
-  { key: "nav.salud-mental", label: "Salud Mental", href: "/salud-mental" },
-  { key: "nav.finance", label: "Finanzas", href: "/finance" },
+  { key: "nav.chat", label: "Chat", href: "/chat", mobileHref: "/chatdetails" },
+  {
+    key: "nav.wallet",
+    label: "Wallet",
+    href: "/wallet",
+    mobileHref: "/walletdetails",
+  },
+  {
+    key: "nav.marketplace",
+    label: "Marketplace",
+    href: "/marketplace",
+    mobileHref: "/marketplacedetails",
+  },
+  { key: "nav.apps", label: "Apps", href: "/apps", mobileHref: "/appsdetails" },
+  {
+    key: "nav.nutrition",
+    label: "Nutrición",
+    href: "/nutrition",
+    mobileHref: "/nutritiondetails",
+  },
+  {
+    key: "nav.communities",
+    label: "Comunidades",
+    href: "/communities",
+    mobileHref: "/communitiesdetails",
+  },
+  {
+    key: "nav.musica",
+    label: "Música",
+    href: "/musica",
+    mobileHref: "/musicdetails",
+  },
+  {
+    key: "nav.salud-mental",
+    label: "Salud Mental",
+    href: "/salud-mental",
+    mobileHref: "/healthdetails",
+  },
+  {
+    key: "nav.finance",
+    label: "Finanzas",
+    href: "/finance",
+    mobileHref: "/financedetails",
+  },
 ];
 
 const contactItem = {
@@ -228,10 +263,11 @@ const activeFeature = featureItems.find((item) => currentPath === item.href);
                 featureItems.map((item) => (
                   <li>
                     <a
-                      href={item.href}
+                      href={item.mobileHref || item.href}
                       class:list={[
                         "flex items-center w-full px-4 py-2 text-[13px] font-normal rounded-xl transition-colors",
-                        currentPath === item.href
+                        currentPath === item.href ||
+                        currentPath === item.mobileHref
                           ? "text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                           : "text-white/60 hover:bg-white/5 hover:text-white",
                       ]}

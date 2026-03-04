@@ -206,11 +206,13 @@ const features = [
     left: 50%;
     top: 50%;
     will-change: transform, filter, opacity;
+    cursor: pointer;
   }
 
   /* Z-index según distancia */
   .slider-item.active {
     z-index: 10;
+    cursor: pointer;
   }
 
   .slider-item.distance-1 {
@@ -299,6 +301,7 @@ const features = [
 </style>
 
 <script>
+  import { navigate } from "astro:transitions/client";
   // Track auto-slide intervals per slider element to prevent duplicates
   const sliderIntervals = new WeakMap<
     HTMLElement,
@@ -482,6 +485,19 @@ const features = [
     "La música vive", // 6: Music
     "Apoyo real", // 7: Mental Health
     "A.I. Finanzas", // 8: Finance
+  ];
+
+  // Transition names for the morphing phone view-transitions
+  const TRANSITION_NAMES = [
+    "phone-morph-chat", // 0
+    "phone-morph-wallet", // 1
+    "phone-morph-marketplace", // 2
+    "phone-morph-apps", // 3
+    "phone-morph-nutrition", // 4
+    "phone-morph-communities", // 5
+    "phone-morph-music", // 6
+    "phone-morph-health", // 7
+    "phone-morph-finance", // 8
   ];
 
   // Video preloading cache
@@ -764,6 +780,8 @@ const features = [
             if (isFirstUpdate) {
               // No animation on initial load — just set the image
               heroPhone.src = phone;
+              heroPhone.style.viewTransitionName =
+                TRANSITION_NAMES[currentIndex];
             } else {
               // Exit animation: slide out from top
               heroPhone.style.transition =
@@ -774,6 +792,8 @@ const features = [
               // Change image after exit animation
               setTimeout(() => {
                 heroPhone.src = phone;
+                heroPhone.style.viewTransitionName =
+                  TRANSITION_NAMES[currentIndex];
 
                 // Prepare for enter animation (start from below)
                 heroPhone.style.transition = "none";
@@ -1099,34 +1119,61 @@ const features = [
       }
     });
 
-    // Click on slider to scroll (Right to Left / Next)
-    // Avoid double triggering if button clicked (buttons are outside, but check anyway)
-    // Check if dragging happened? Since touchStart/touchEnd are passive, click might fire.
-    // If we want simple click behavior:
+    // Smart click handler:
+    // - Clicking the left/prev side card → previous slide
+    // - Clicking the right/next side card → next slide
+    // - Clicking the center (active) card → navigate to its detail page
     track.parentElement?.addEventListener("click", (e) => {
-      // Ignore clicks that originate from buttons/links (arrows/CTAs/store buttons)
       const target = e.target as HTMLElement | null;
-      if (target && target.closest) {
-        // Check for any button, link, or store button
-        if (
-          target.closest(
-            "button, a, .store-btn, .store-btn-app, .store-btn-google, .hero-store-buttons",
-          )
-        ) {
-          return;
+      if (!target) return;
+
+      // Ignore clicks that originate from nav buttons (arrows)
+      if (target.closest("button.nav-btn")) return;
+
+      // Find which slider-item was clicked
+      const clickedItem = target.closest(".slider-item") as HTMLElement | null;
+
+      if (clickedItem) {
+        const clickedIndex = parseInt(
+          clickedItem.getAttribute("data-index") || "-1",
+          10,
+        );
+        if (clickedIndex === -1) return;
+
+        const isActive = clickedItem.classList.contains("active");
+
+        if (isActive) {
+          // Center (active) card clicked → navigate to detail page
+          // Ignore if click was on a button or link inside the card
+          if (
+            target.closest(
+              "a, button, .store-btn, .store-btn-app, .store-btn-google, .hero-store-buttons",
+            )
+          ) {
+            return;
+          }
+          const link = LINKS[clickedIndex];
+          if (link) {
+            // Use Astro's navigate() to trigger View Transitions (same smooth animation as "Ver Más" button)
+            navigate(link);
+          }
+        } else {
+          // Side card clicked → determine direction and slide
+          const distance = getCircularDistance(
+            clickedIndex,
+            currentIndex,
+            totalItems,
+          );
+          if (distance < 0) {
+            prevSlide();
+          } else {
+            nextSlide();
+          }
+          resetAutoSlide();
         }
+      } else {
+        // Click was not on a specific card (empty area) — ignore
       }
-
-      // Bounce animation: Move right first (wind up)
-      track.style.transition = "transform 0.15s ease-out";
-      track.style.transform = "translateX(20px)";
-
-      setTimeout(() => {
-        // Then trigger next slide (scroll left) and reset track
-        nextSlide();
-        resetAutoSlide();
-        track.style.transform = "translateX(0)";
-      }, 150);
     });
 
     // Pausar auto-slide cuando el usuario hace hover

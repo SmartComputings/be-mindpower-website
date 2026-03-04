@@ -1,652 +1,264 @@
 ---
-// Página Apps: clonada de /chat con contenido específico de Apps.
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/common/Header.astro";
-import HomeHero from "../components/home/HomeHero.astro";
-import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
 <Layout
-  title="BeMind Power - Apps"
-  description="BeMind Power: una sola puerta a cientos de soluciones con tecnología inmersiva."
-  bodyClass="apps-page"
+  title="BeMind Power - Sobre Nosotros"
+  description="Conoce al equipo detrás de BeMind Power. Creemos en una vida digital más simple."
+  bodyClass="sobre-nosotros-page"
 >
-  <div class="apps-page-wrap relative min-h-[100dvh] w-full">
-    <Header
-      currentPath="/apps"
-      pageTitle="Todo empieza"
-      pageTitleKey="apps.hero.titleLine1"
-    />
+  <Header currentPath="/Aboutus" />
 
-    <!-- Layout Desktop: usa HomeHero con video y phone de Apps, slider inicia en Apps (index 3) -->
-    <div class="apps-desktop-layout">
-      <HomeHero transitionName="phone-morph-apps"
-        videoSrc="/vedioes/apps.mp4"
-        phoneSrc="/common/SmartphoneApps.png"
-        titleLine1="Todo empieza"
-        titleLine2="con una aplicación"
-        subtitle="Una sola puerta a cientos de soluciones. Accede a todas las apps que necesitas desde un solo lugar."
-        ctaText="Ver Más"
-        ctaHref="/apps"
-        titleLine1Key="apps.hero.titleLine1"
-        titleLine2Key="apps.hero.titleLine2"
-        subtitleKey="apps.hero.subtitle"
-        ctaKey="apps.hero.cta"
-      >
-        <FeatureSlider initialIndex={3} />
-      </HomeHero>
+  <section class="about-hero">
+    <!-- Background -->
+    <div class="about-bg">
+      <div class="about-bg-base"></div>
+      <div class="about-glow"></div>
     </div>
 
-    <!-- Layout Mobile: estructura separada para mejor control -->
-    <div class="apps-mobile-layout">
-      <!-- Video de fondo -->
-      <div class="apps-mobile-bg">
-        <video
-          id="home-hero-video"
-          class="apps-mobile-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-        >
-          <source src="/vedioes/apps.mp4" type="video/mp4" />
-        </video>
-        <div class="apps-mobile-overlay"></div>
-        <div class="apps-mobile-glow"></div>
-      </div>
-
-      <!-- Slider arriba, inicia en Apps (index 3) -->
-      <div class="apps-mobile-slider" id="slider">
-        <FeatureSlider initialIndex={3} />
-      </div>
-
-      <!-- Contenido inferior: título + botones -->
-      <div class="apps-mobile-content">
-        <div class="apps-mobile-text">
-          <h1 class="apps-title">
-            <span
-              id="hero-title-line1"
-              class="apps-title-line1"
-              data-i18n="apps.hero.titleLine1">Todo empieza</span
-            >
-            <span
-              id="hero-title-line2"
-              class="apps-title-line2"
-              data-i18n="apps.hero.titleLine2">con una aplicación</span
-            >
-          </h1>
-          <p
-            id="hero-subtitle"
-            class="apps-subtitle"
-            data-i18n="apps.hero.subtitle"
-          >
-            Una sola puerta a cientos de soluciones. Accede a todas las apps que
-            necesitas desde un solo lugar.
-          </p>
-        </div>
-
-        <div class="apps-mobile-buttons">
-          <a
-            id="hero-cta-button"
-            href="/apps"
-            class="apps-cta"
-            data-i18n="apps.hero.cta">Ver Más</a
-          >
-          <div class="apps-badges">
-            <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
-              <img
-                src="/detailPageImages/app-store-badge.svg"
-                alt="Download on the App Store"
-              />
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
-              class="apps-store-btn"
-              aria-label="Get it on Google Play"
-            >
-              <img
-                src="/detailPageImages/google-play-badge.svg"
-                alt="Get it on Google Play"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
+    <!-- Logo -->
+    <div class="about-logo">
+      <img src="/detailPageImages/LOGOBLANCO.svg" alt="BeMind Power" />
     </div>
-  </div>
+
+    <!-- Content -->
+    <div class="about-content">
+      <h1 class="about-title" data-i18n-html="about.title">
+        Creemos en una vida digital<br />más simple.
+      </h1>
+      <p class="about-subtitle" data-i18n="about.subtitle">
+        Construimos un ecosistema que conecta personas, negocios y servicios en
+        una sola app.
+      </p>
+      <p class="about-description" data-i18n="about.description">
+        Nuestro equipo está formado por creadores, ingenieros y diseñadores que
+        comparten una misma visión: hacer que cada mensaje, pago o interacción
+        sea más fácil y seguro.
+      </p>
+    </div>
+  </section>
 </Layout>
 
 <style is:global>
-  body.apps-page {
+  body.sobre-nosotros-page {
     background: #000000;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<style>
+  .about-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Desktop: mostrar layout normal, ocultar mobile */
-  .apps-desktop-layout {
-    display: block;
+  /* ── Background ── */
+  .about-bg {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: #030014;
   }
 
-  .apps-mobile-layout {
-    display: none;
+  .about-bg-base {
+    position: absolute;
+    inset: 0;
+    background-color: #000000;
+    background-image: url("/common/welcomebg.png");
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.98;
   }
 
-  /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px),
-    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
-    body.apps-page {
-      overflow-x: hidden;
-      overscroll-behavior: none;
+  @media (max-width: 1024px) {
+    .about-bg-base {
+      background-image: url("/common/contactbgr.png");
+    }
+  }
+
+  .about-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(1400px, 150vw);
+    height: min(1400px, 150vw);
+    background: radial-gradient(
+      circle,
+      rgba(25, 41, 255, 0.35) 0%,
+      rgba(25, 41, 255, 0.15) 35%,
+      transparent 65%
+    );
+    filter: blur(120px);
+    z-index: 1;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+  }
+
+  /* ── Logo ── */
+  .about-logo {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 2rem;
+    animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .about-logo img {
+    width: clamp(190px, 18vw, 260px);
+    height: auto;
+  }
+
+  /* ── Content ── */
+  .about-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .about-title {
+    font-family: "Neometric", "Inter", sans-serif;
+    font-size: clamp(24px, 3.2vw, 44px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: 0.01em;
+    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .about-subtitle {
+    font-family: "Neometric", "Inter", sans-serif;
+    font-size: clamp(16px, 1.8vw, 28px);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 640px;
+    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  .about-description {
+    font-family: "Neometric", "Inter", sans-serif;
+    font-size: clamp(12px, 1.1vw, 18px);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 540px;
+    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .about-glow {
+      width: min(1000px, 140vw);
+      height: min(1000px, 140vw);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      gap: 1.25rem;
     }
 
-    .apps-desktop-layout {
-      display: none;
+    .about-glow {
+      width: min(800px, 160vw);
+      height: min(800px, 160vw);
+      filter: blur(80px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-content {
+      gap: 1rem;
     }
 
-    /* Layout principal: altura fija al viewport, sin scroll */
-    .apps-mobile-layout {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      width: 100%;
-      height: 100dvh;
-      height: 100vh;
-      overflow: clip;
-      box-sizing: border-box;
-      padding-top: calc(70px + env(safe-area-inset-top));
-      padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    .about-logo img {
+      width: 200px;
     }
 
-    /* Full screen background color */
-    .apps-mobile-layout::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: #0b0245;
-      z-index: -1;
-    }
-
-    /* Video de fondo - solo en area media */
-    .apps-mobile-bg {
-      position: absolute;
-      top: calc(70px + env(safe-area-inset-top));
-      left: 0;
-      right: 0;
-      height: clamp(280px, 45vh, 400px);
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .apps-mobile-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      object-position: center top;
-      opacity: 0.9;
-    }
-
-    .apps-mobile-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(11, 2, 69, 0.2) 0%,
-        rgba(11, 2, 69, 0.6) 80%,
-        rgba(11, 2, 69, 1) 100%
-      );
-      z-index: 1;
-    }
-
-    .apps-mobile-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw;
-      height: 80vw;
-      background: radial-gradient(
-        circle,
-        rgba(40, 54, 233, 0.7) 0%,
-        rgba(40, 54, 233, 0.4) 40%,
-        transparent 70%
-      );
-      filter: blur(150px);
-      z-index: 2;
-    }
-
-    /* === CONTENIDO INFERIOR (textos + botones) — parte inferior === */
-    .apps-mobile-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 0 0 auto;
-      min-height: 0;
-      padding: 0 5%;
-      gap: clamp(0.8rem, 1.5vh, 1rem);
-    }
-
-    /* Título */
-    .apps-mobile-text {
-      text-align: center;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .apps-title {
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0;
-      margin: 0 0 clamp(0.3rem, 1vh, 0.6rem) 0;
-      line-height: 1.1;
-      width: 100%;
-    }
-
-    .apps-title-line1 {
-      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-size: clamp(24px, 7vw, 40px);
-      font-weight: 900;
-      letter-spacing: 0.01em;
-    }
-
-    .apps-title-line2 {
-      font-family: "Neometric", "Inter", sans-serif;
-      font-size: clamp(14px, 4vw, 24px);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .apps-subtitle {
-      color: #fff;
-      font-family: "Neometric", "Inter", sans-serif;
-      font-size: clamp(11px, 2.8vw, 14px);
+    .about-description {
+      color: #ffffff;
       font-weight: 400;
-      line-height: 1.3;
-      margin: 0;
-      max-width: 92%;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
     }
 
-    /* Botones */
-    .apps-mobile-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(0.4rem, 0.8vh, 0.6rem);
-      width: 100%;
-    }
-
-    .apps-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: clamp(42px, 5.5vh, 50px);
-      padding: 0 2rem;
-      width: min(260px, 68vw);
-      background: #1929ff;
-      color: #fff;
-      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-weight: 900;
-      font-size: clamp(14px, 3.8vw, 16px);
-      letter-spacing: 0.02em;
-      border-radius: 999px;
-      text-decoration: none;
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .apps-cta:hover,
-    .apps-cta:active {
-      transform: scale(1.02);
-      box-shadow: 0 4px 24px rgba(25, 41, 255, 0.5);
-    }
-
-    .apps-badges {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: clamp(0.3rem, 0.6vh, 0.5rem);
-    }
-
-    .apps-store-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: min(260px, 68vw);
-      height: clamp(42px, 5.5vh, 50px);
-      padding: 0 18px;
-      background: rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 50px;
-      box-shadow:
-        0 4px 14px rgba(55, 27, 190, 0.25),
-        0 -4px 14px rgba(25, 41, 255, 0.2);
-      text-decoration: none;
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .apps-store-btn:hover,
-    .apps-store-btn:active {
-      transform: scale(1.02);
-      box-shadow: 0 6px 20px rgba(55, 27, 190, 0.35);
-    }
-
-    .apps-store-btn img {
-      height: clamp(24px, 3.8vh, 32px);
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-    }
-
-    /* === SLIDER — encima del contenido === */
-    .apps-mobile-slider {
-      position: relative;
-      z-index: 5;
-      width: 100%;
-      flex: 0 0 auto;
-      min-height: 180px;
-      height: clamp(180px, 32vh, 280px);
-      padding-top: 0;
-      margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 2%;
-      padding-right: 2%;
-      overflow: visible;
-    }
-
-    .apps-mobile-slider .feature-slider {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .apps-mobile-slider .slider-wrapper {
-      padding: 0;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .apps-mobile-slider .slider-container {
-      height: 100%;
-      overflow: visible;
-    }
-
-    .apps-mobile-slider .slider-track {
-      overflow: visible;
-    }
-
-    /* Ocultar flechas de navegación en móvil */
-    .apps-mobile-slider .slider-nav {
-      display: none;
+    .about-glow {
+      filter: blur(60px);
     }
   }
 
-  /* ===== TABLETS TÁCTILES (iPad, etc.) ===== */
-  @media (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
-    .apps-mobile-layout {
-      padding-top: calc(90px + env(safe-area-inset-top));
+  /* ── Animations ── */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
     }
-
-    .apps-mobile-text {
-      max-width: 720px;
-    }
-
-    .apps-cta {
-      width: min(520px, 60vw);
-    }
-
-    .apps-store-btn {
-      width: min(520px, 60vw);
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
-  /* ===== TABLETS PEQUEÑAS / MÓVILES GRANDES (601-768px) ===== */
-  @media (max-width: 768px) and (min-width: 601px) {
-    .apps-mobile-layout {
-      padding-top: calc(80px + env(safe-area-inset-top));
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
     }
-
-    .apps-title-line1 {
-      font-size: clamp(34px, 5.5vw, 44px);
-    }
-
-    .apps-title-line2 {
-      font-size: clamp(19px, 3.2vw, 26px);
-    }
-
-    .apps-subtitle {
-      font-size: clamp(13px, 2vw, 16px);
-    }
-
-    .apps-cta {
-      width: min(300px, 55vw);
-      height: 52px;
-      font-size: 16px;
-    }
-
-    .apps-store-btn {
-      width: min(280px, 52vw);
-      height: 52px;
-    }
-
-    .apps-store-btn img {
-      height: 32px;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* ===== MÓVILES PEQUEÑOS (<=374px) - iPhone SE ===== */
-  @media (max-width: 374px) {
-    .apps-mobile-layout {
-      padding-top: calc(62px + env(safe-area-inset-top));
+  @keyframes glowPulse {
+    from {
+      opacity: 0.7;
+      transform: translate(-50%, -50%) scale(0.95);
     }
-
-    .apps-mobile-content {
-      padding-left: 4%;
-      padding-right: 4%;
-    }
-
-    .apps-title-line1 {
-      font-size: clamp(22px, 6.5vw, 28px);
-    }
-
-    .apps-title-line2 {
-      font-size: clamp(13px, 3.8vw, 16px);
-    }
-
-    .apps-subtitle {
-      font-size: 11px;
-      max-width: 90%;
-    }
-
-    .apps-cta {
-      width: min(230px, 70vw);
-      height: 44px;
-      font-size: 14px;
-      padding: 0 1.5rem;
-    }
-
-    .apps-store-btn {
-      width: min(210px, 66vw);
-      height: 44px;
-      padding: 0 14px;
-    }
-
-    .apps-store-btn img {
-      height: 26px;
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.05);
     }
   }
 
-  /* ===== PANTALLAS MUY CORTAS ===== */
-  @media (max-width: 768px) and (max-height: 650px) {
-    .apps-mobile-layout {
-      padding-top: calc(60px + env(safe-area-inset-top));
-    }
-
-    .apps-title-line1 {
-      font-size: clamp(22px, 6.5vw, 30px);
-    }
-
-    .apps-title-line2 {
-      font-size: clamp(13px, 3.5vw, 17px);
-    }
-
-    .apps-subtitle {
-      font-size: 11px;
-    }
-
-    .apps-cta {
-      height: 40px;
-      font-size: 13px;
-    }
-
-    .apps-store-btn {
-      height: 40px;
-    }
-
-    .apps-store-btn img {
-      height: 22px;
-    }
-  }
-
-  /* /apps móvil: centrar botón de asistencia verticalmente */
-  @media (max-width: 640px) {
-    body.apps-page .support-container {
-      top: 50%;
-      bottom: auto;
-      left: max(16px, calc(env(safe-area-inset-left) + 16px));
-      transform: translateY(-50%);
-    }
-
-    body.apps-page .support-tooltip {
-      position: relative;
-    }
-  }
-
-  /* ===== LANDSCAPE ===== */
-  @media (max-width: 768px) and (max-height: 500px) and (orientation: landscape) {
-    .apps-mobile-layout {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-
-    .apps-mobile-content {
-      flex: 1;
-      min-width: 50%;
-      padding: 60px 2% 0.4rem 2%;
-      gap: 0.25rem;
-    }
-
-    .apps-mobile-text {
-      padding: 0;
-    }
-
-    .apps-title {
-      margin-bottom: 0.3rem;
-    }
-
-    .apps-title-line1 {
-      font-size: clamp(18px, 4.5vw, 26px);
-    }
-
-    .apps-title-line2 {
-      font-size: clamp(11px, 2.5vw, 16px);
-    }
-
-    .apps-subtitle {
-      font-size: 10px;
-    }
-
-    .apps-mobile-buttons {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.3rem;
-    }
-
-    .apps-badges {
-      flex-direction: row;
-      gap: 0.3rem;
-    }
-
-    .apps-cta {
-      height: 36px;
-      width: auto;
-      min-width: 130px;
-      font-size: 11px;
-    }
-
-    .apps-store-btn {
-      height: 36px;
-      width: auto;
-      min-width: 125px;
-    }
-
-    .apps-store-btn img {
-      height: 18px;
-    }
-
-    .apps-mobile-slider {
-      width: 100%;
-      min-height: 150px;
-      max-height: 200px;
+  @media (prefers-reduced-motion: reduce) {
+    .about-logo,
+    .about-title,
+    .about-subtitle,
+    .about-description,
+    .about-glow {
+      animation: none !important;
     }
   }
 </style>
 
-<script>
-  // Optimizar reproducción de video en mobile
-  function initAppsMobileVideo(): void {
-    const video = document.querySelector(
-      ".apps-mobile-video",
-    ) as HTMLVideoElement;
-    if (!video) return;
-
-    const playVideo = () => {
-      video.play().catch(() => {
-        document.addEventListener(
-          "touchstart",
-          () => {
-            video.play();
-          },
-          { once: true },
-        );
-      });
-    };
-
-    if (video.readyState >= 2) {
-      playVideo();
-    } else {
-      video.addEventListener("loadeddata", playVideo, { once: true });
+<style is:global>
+  @media (max-width: 768px) {
+    .sobre-nosotros-page header a[href="/"] {
+      display: none !important;
     }
   }
+</style>
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initAppsMobileVideo);
-  } else {
-    initAppsMobileVideo();
-  }
-</script>
+
+
+
 

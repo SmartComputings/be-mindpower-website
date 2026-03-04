@@ -1,8 +1,8 @@
 ---
 // Página home: hero compuesto por componentes pequeños e inspeccionables por separado.
-import HomeHeroBackground from './HomeHeroBackground.astro';
-import HomeHeroSliderLayer from './HomeHeroSliderLayer.astro';
-import HomeHeroOverlay from './HomeHeroOverlay.astro';
+import HomeHeroBackground from "./HomeHeroBackground.astro";
+import HomeHeroSliderLayer from "./HomeHeroSliderLayer.astro";
+import HomeHeroOverlay from "./HomeHeroOverlay.astro";
 
 interface Props {
   videoSrc?: string;
@@ -17,9 +17,24 @@ interface Props {
   subtitleKey?: string;
   ctaKey?: string;
   autoplayVideo?: boolean;
+  transitionName?: string;
 }
 
-const { videoSrc, phoneSrc, titleLine1, titleLine2, subtitle, ctaText, ctaHref, titleLine1Key, titleLine2Key, subtitleKey, ctaKey, autoplayVideo = false } = Astro.props;
+const {
+  videoSrc,
+  phoneSrc,
+  titleLine1,
+  titleLine2,
+  subtitle,
+  ctaText,
+  ctaHref,
+  titleLine1Key,
+  titleLine2Key,
+  subtitleKey,
+  ctaKey,
+  autoplayVideo = false,
+  transitionName = "phone-morph-chat",
+} = Astro.props;
 ---
 
 <div class="home-hero">
@@ -27,7 +42,19 @@ const { videoSrc, phoneSrc, titleLine1, titleLine2, subtitle, ctaText, ctaHref, 
   <HomeHeroSliderLayer>
     <slot />
   </HomeHeroSliderLayer>
-  <HomeHeroOverlay phoneSrc={phoneSrc} titleLine1={titleLine1} titleLine2={titleLine2} subtitle={subtitle} ctaText={ctaText} ctaHref={ctaHref} titleLine1Key={titleLine1Key} titleLine2Key={titleLine2Key} subtitleKey={subtitleKey} ctaKey={ctaKey} />
+  <HomeHeroOverlay
+    transitionName={transitionName}
+    phoneSrc={phoneSrc}
+    titleLine1={titleLine1}
+    titleLine2={titleLine2}
+    subtitle={subtitle}
+    ctaText={ctaText}
+    ctaHref={ctaHref}
+    titleLine1Key={titleLine1Key}
+    titleLine2Key={titleLine2Key}
+    subtitleKey={subtitleKey}
+    ctaKey={ctaKey}
+  />
 </div>
 
 <style>

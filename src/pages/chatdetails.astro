@@ -61,11 +61,16 @@ const dollarIcon = "/common/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-                <!-- Mobile Buttons -->
+        <!-- Mobile Buttons -->
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
-          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl" >
+          <a
+            href="#"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+            aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
+          >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -96,14 +101,15 @@ const dollarIcon = "/common/doller.png";
           <img
             src={phoneImg}
             alt="App Interface"
-            class="w-full h-auto drop-shadow-2xl" transition:name="phone-morph-chat"
+            class="w-full h-auto drop-shadow-2xl"
+            transition:name="phone-morph-chat"
           />
         </div>
       </div>
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 text-white flex flex-col items-center md:items-start ml-14 md:ml-0 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-10 lg:pr-60"
+        class="relative z-10 text-white flex flex-col items-center md:items-start ml-14 md:ml-0 mt-[90px] max-h-[750px]:mt-[80px] md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-10 lg:pr-60"
       >
         <h1
           class="mb-4 tracking-tight text-white w-full max-w-full md:max-w-full text-[28px] leading-[36px] md:text-[40px] lg:text-[64px] md:leading-[48px] lg:leading-[64px] font-bold md:font-medium"
@@ -156,11 +162,16 @@ const dollarIcon = "/common/doller.png";
           </li>
         </ul>
 
-                <!-- Download Buttons -->
+        <!-- Download Buttons -->
         <div
           class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
-          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
+          <a
+            href="#"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+            aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn"
+          >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -232,7 +243,7 @@ const dollarIcon = "/common/doller.png";
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-    /* Apps Buttons Styles */
+  /* Apps Buttons Styles */
   @keyframes blink-shadow {
     0%,
     100% {
@@ -287,5 +298,36 @@ const dollarIcon = "/common/doller.png";
     object-fit: contain;
   }
 
-  </style>
+  /* ===== iPhone SE & small screens ===== */
+  @media (max-width: 768px) and (max-height: 680px) {
+    /* Shrink heading */
+    .chat-detail-wrap h1 {
+      font-size: 22px !important;
+      line-height: 28px !important;
+      margin-bottom: 6px !important;
+    }
 
+    /* Shrink subtitle */
+    .chat-detail-wrap p {
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+      margin-bottom: 6px !important;
+    }
+
+    /* Shrink feature list */
+    .chat-detail-wrap ul {
+      font-size: 12px !important;
+      margin-bottom: 6px !important;
+    }
+
+    /* Shrink phone image */
+    .chat-detail-wrap main > div:first-of-type div {
+      max-width: 65% !important;
+    }
+
+    /* Reduce phone negative margin pull */
+    .chat-detail-wrap main > div:first-of-type {
+      margin-bottom: -80px !important;
+    }
+  }
+</style>
