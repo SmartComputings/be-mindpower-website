@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Apps, slider inicia en Apps (index 3) -->
     <div class="apps-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-apps"
         videoSrc="/vedioes/apps.mp4"
         phoneSrc="/common/SmartphoneApps.png"
         titleLine1="Todo empieza"
@@ -649,3 +649,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initAppsMobileVideo();
   }
 </script>
+

@@ -147,50 +147,44 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
     <title>{title}</title>
 
     <style is:global>
-      /* Custom view transition animations for phone-morph */
-      ::view-transition-old(phone-morph),
-      ::view-transition-new(phone-morph) {
-        /* Use default morph animation for forward navigation - 
-           browser smoothly moves phone from old position to new position */
-        animation-duration: 0.3s;
+      /* Custom view transition animations for phone morphing between features */
+      ::view-transition-group(phone-morph-chat),
+      ::view-transition-group(phone-morph-wallet),
+      ::view-transition-group(phone-morph-marketplace),
+      ::view-transition-group(phone-morph-apps),
+      ::view-transition-group(phone-morph-nutrition),
+      ::view-transition-group(phone-morph-communities),
+      ::view-transition-group(phone-morph-music),
+      ::view-transition-group(phone-morph-health),
+      ::view-transition-group(phone-morph-finance) {
+        animation-duration: 0.5s;
         animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      /* Forward navigation: slide from right */
-      html:not([data-nav-back]) ::view-transition-old(phone-morph) {
-        animation-name: slideOutLeft;
+      /* Prevent cross-fade ghosting by hiding the outgoing image and keeping the incoming image solid */
+      ::view-transition-old(phone-morph-chat),
+      ::view-transition-old(phone-morph-wallet),
+      ::view-transition-old(phone-morph-marketplace),
+      ::view-transition-old(phone-morph-apps),
+      ::view-transition-old(phone-morph-nutrition),
+      ::view-transition-old(phone-morph-communities),
+      ::view-transition-old(phone-morph-music),
+      ::view-transition-old(phone-morph-health),
+      ::view-transition-old(phone-morph-finance) {
+        display: none;
       }
 
-      html:not([data-nav-back]) ::view-transition-new(phone-morph) {
-        animation-name: slideInFromRight;
-      }
-
-      /* Back navigation: no animation, instant switch */
-      html[data-nav-back] ::view-transition-old(phone-morph),
-      html[data-nav-back] ::view-transition-new(phone-morph) {
+      ::view-transition-new(phone-morph-chat),
+      ::view-transition-new(phone-morph-wallet),
+      ::view-transition-new(phone-morph-marketplace),
+      ::view-transition-new(phone-morph-apps),
+      ::view-transition-new(phone-morph-nutrition),
+      ::view-transition-new(phone-morph-communities),
+      ::view-transition-new(phone-morph-music),
+      ::view-transition-new(phone-morph-health),
+      ::view-transition-new(phone-morph-finance) {
         animation: none;
-      }
-
-      @keyframes slideOutLeft {
-        from {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateX(-100px);
-          opacity: 0;
-        }
-      }
-
-      @keyframes slideInFromRight {
-        from {
-          transform: translateX(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
+        opacity: 1;
       }
     </style>
   </head>

@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Communities, slider inicia en Communities (index 5) -->
     <div class="communities-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-communities"
         videoSrc="/vedioes/an6.mp4"
         phoneSrc="/sliderImages/s6.png"
         titleLine1="Destácate"
@@ -636,3 +636,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initCommunitiesMobileVideo();
   }
 </script>
+

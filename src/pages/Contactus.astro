@@ -1,10 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
 ---
 
-<Layout title="BeMind Power - Contacto" description="Contáctanos. Queremos escucharte: tus preguntas, ideas o propuestas." bodyClass="contacto-page">
-  <Header currentPath="/contacto" backgroundImage="/common/headerbghome.png" />
+<Layout
+  title="BeMind Power - Contacto"
+  description="Contáctanos. Queremos escucharte: tus preguntas, ideas o propuestas."
+  bodyClass="contacto-page"
+>
+  <Header currentPath="/Contactus" backgroundImage="/common/headerbghome.png" />
 
   <section class="contact-hero">
     <!-- Background -->
@@ -54,8 +58,7 @@ import Header from '../components/common/Header.astro';
               placeholder="Mensaje"
               data-i18n-placeholder="contact.message"
               rows="5"
-              required
-            ></textarea>
+              required></textarea>
           </div>
 
           <!-- Mobile illustration (shown only on mobile) -->
@@ -67,7 +70,11 @@ import Header from '../components/common/Header.astro';
             />
           </div>
 
-          <button type="submit" class="contact-submit" data-i18n="contact.submit">Enviar</button>
+          <button
+            type="submit"
+            class="contact-submit"
+            data-i18n="contact.submit">Enviar</button
+          >
         </form>
       </div>
 
@@ -123,7 +130,7 @@ import Header from '../components/common/Header.astro';
     position: absolute;
     inset: 0;
     background-color: #000000;
-    background-image: url('/common/Contactobg.png');
+    background-image: url("/common/Contactobg.png");
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -132,7 +139,7 @@ import Header from '../components/common/Header.astro';
 
   @media (max-width: 1024px) {
     .contact-bg-base {
-      background-image: url('/common/contactbgr.png');
+      background-image: url("/common/contactbgr.png");
     }
   }
 
@@ -174,7 +181,7 @@ import Header from '../components/common/Header.astro';
   }
 
   .contact-title {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(36px, 4.5vw, 64px);
     font-weight: 700;
     color: #fff;
@@ -184,7 +191,7 @@ import Header from '../components/common/Header.astro';
   }
 
   .contact-subtitle {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(16px, 1.6vw, 22px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.7);
@@ -212,11 +219,11 @@ import Header from '../components/common/Header.astro';
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
     color: #fff;
     outline: none;
-    box-shadow: 0px 2px 8.7px 0px #1929FF80;
+    box-shadow: 0px 2px 8.7px 0px #1929ff80;
     transition: box-shadow 0.25s ease;
     -webkit-appearance: none;
     box-sizing: border-box;
@@ -230,7 +237,7 @@ import Header from '../components/common/Header.astro';
 
   .form-group input:focus,
   .form-group textarea:focus {
-    box-shadow: 0px 2px 12px 0px #1929FFaa;
+    box-shadow: 0px 2px 12px 0px #1929ffaa;
   }
 
   .form-group textarea {
@@ -246,14 +253,15 @@ import Header from '../components/common/Header.astro';
     height: 50px;
     border: none;
     border-radius: 918.42px;
-    background: #1929FF;
+    background: #1929ff;
     color: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 500ms cubic-bezier(0.7, -0.4, 0.4, 1.4),
-                box-shadow 500ms cubic-bezier(0.7, -0.4, 0.4, 1.4);
+    transition:
+      transform 500ms cubic-bezier(0.7, -0.4, 0.4, 1.4),
+      box-shadow 500ms cubic-bezier(0.7, -0.4, 0.4, 1.4);
     box-shadow: 0 4px 20px rgba(25, 41, 255, 0.35);
     margin-top: 1rem;
     padding: 0;

@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Chat, slider inicia en Chat (index 0) -->
     <div class="chat-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-chat"
         videoSrc="/vedioes/an1.mp4"
         phoneSrc="/sliderImages/s1.png"
         titleLine1="Todo empieza"
@@ -648,3 +648,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initChatMobileVideo();
   }
 </script>
+

@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Wallet, slider inicia en Wallet (index 1) -->
     <div class="wallet-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-wallet"
         videoSrc="/vedioes/an2.mp4"
         phoneSrc="/sliderImages/s2.png"
         titleLine1="Maneja tus finanzas"
@@ -636,3 +636,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initWalletMobileVideo();
   }
 </script>
+

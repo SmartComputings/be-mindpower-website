@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Finance, slider inicia en Finance (index 8) -->
     <div class="finance-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-finance"
         videoSrc="/vedioes/an9.mp4"
         phoneSrc="/sliderImages/s9.png"
         titleLine1="A.I. Finanzas"
@@ -699,3 +699,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initFinanceMobileVideo();
   }
 </script>
+

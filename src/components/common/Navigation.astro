@@ -7,47 +7,58 @@ interface Props {
 
 const { currentPath = "/" } = Astro.props;
 
-const mainNavItems = [
-  { key: 'nav.home', label: "Inicio", href: "/" },
-];
+const mainNavItems = [{ key: "nav.home", label: "Inicio", href: "/" }];
 
-const aboutItem = { key: 'nav.about', label: "Sobre nosotros", href: "/Aboutus" };
+const aboutItem = {
+  key: "nav.about",
+  label: "Sobre nosotros",
+  href: "/Aboutus",
+};
 
 const featureItems = [
-  { key: 'nav.chat', label: "Chat", href: "/chat" },
-  { key: 'nav.wallet', label: "Wallet", href: "/wallet" },
-  { key: 'nav.marketplace', label: "Marketplace", href: "/marketplace" },
-  { key: 'nav.apps', label: "Apps", href: "/apps" },
-  { key: 'nav.nutrition', label: "Nutrición", href: "/nutrition" },
-  { key: 'nav.communities', label: "Comunidad", href: "/communities" },
-  { key: 'nav.musica', label: "Música", href: "/musica" },
-  { key: 'nav.salud-mental', label: "Salud Mental", href: "/salud-mental" },
-  { key: 'nav.finance', label: "Finanzas", href: "/finance" },
+  { key: "nav.chat", label: "Chat", href: "/chat" },
+  { key: "nav.wallet", label: "Wallet", href: "/wallet" },
+  { key: "nav.marketplace", label: "Marketplace", href: "/marketplace" },
+  { key: "nav.apps", label: "Apps", href: "/apps" },
+  { key: "nav.nutrition", label: "Nutrición", href: "/nutrition" },
+  { key: "nav.communities", label: "Comunidad", href: "/communities" },
+  { key: "nav.musica", label: "Música", href: "/musica" },
+  { key: "nav.salud-mental", label: "Salud Mental", href: "/salud-mental" },
+  { key: "nav.finance", label: "Finanzas", href: "/finance" },
 ];
 
-const contactItem = { key: 'nav.contact', label: "Contacto", href: "/Contactus" };
+const contactItem = {
+  key: "nav.contact",
+  label: "Contacto",
+  href: "/Contactus",
+};
 
-const footerNavItems = [
-  aboutItem,
-  contactItem,
-];
+const footerNavItems = [aboutItem, contactItem];
+
+const activeFeature = featureItems.find((item) => currentPath === item.href);
 ---
 
 <nav class="relative flex items-center gap-8">
   <!-- Main Navigation (Desktop) -->
-  <ul class="hidden min-[900px]:flex items-center gap-1">
+  <ul class="hidden min-[900px]:flex items-center gap-8">
     {
       mainNavItems.map((item, index) => (
         <li>
           <a
             href={item.href}
             class:list={[
-              "px-2 py-2 text-xs font-normal transition-colors duration-300 whitespace-nowrap",
-              currentPath === item.href ? "text-white border-b-2 border-white" : "text-white/70 hover:text-white",
+              "py-1 text-[15px] transition-colors duration-300 whitespace-nowrap",
+              currentPath === item.href
+                ? "font-bold text-white border-b-[1.5px] border-white"
+                : "font-light text-white/70 hover:text-white",
               `stagger-${index + 1}`,
             ]}
           >
-            {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
+            {item.key ? (
+              <span data-i18n={item.key}>{item.label}</span>
+            ) : (
+              item.label
+            )}
           </a>
         </li>
       ))
@@ -56,16 +67,40 @@ const footerNavItems = [
     <!-- Features Dropdown -->
     <li class="relative group">
       <button
-        class="px-2 py-2 text-xs font-normal text-white/70 hover:text-white transition-colors duration-300 whitespace-nowrap flex items-center gap-1 cursor-default"
+        class:list={[
+          "py-1 text-[15px] transition-colors duration-300 whitespace-nowrap flex items-center gap-1 cursor-default",
+          activeFeature
+            ? "font-bold text-white border-b-[1.5px] border-white"
+            : "font-light text-white/70 hover:text-white",
+        ]}
       >
-        <span data-i18n="nav.features">Features</span>
-        <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        {
+          activeFeature ? (
+            <span>{activeFeature.label}</span>
+          ) : (
+            <span data-i18n="nav.features">Features</span>
+          )
+        }
+        <svg
+          class="w-3 h-3 transition-transform group-hover:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
 
-      <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-        <div class="bg-[#120068]/95 backdrop-blur-xl rounded-2xl border border-white/10 p-2 shadow-2xl min-w-[160px]">
+      <div
+        class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+      >
+        <div
+          class="bg-[#120068]/95 backdrop-blur-xl rounded-2xl border border-white/10 p-2 shadow-2xl min-w-[160px]"
+        >
           <ul class="flex flex-col gap-1">
             {
               featureItems.map((item) => (
@@ -73,11 +108,17 @@ const footerNavItems = [
                   <a
                     href={item.href}
                     class:list={[
-                      "block px-4 py-2 text-xs font-normal rounded-xl transition-colors whitespace-nowrap",
-                      currentPath === item.href ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white",
+                      "block px-4 py-2 text-xs rounded-xl transition-colors whitespace-nowrap",
+                      currentPath === item.href
+                        ? "font-bold bg-white/10 text-white"
+                        : "font-light text-white/70 hover:bg-white/5 hover:text-white",
                     ]}
                   >
-                    {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
+                    {item.key ? (
+                      <span data-i18n={item.key}>{item.label}</span>
+                    ) : (
+                      item.label
+                    )}
                   </a>
                 </li>
               ))
@@ -93,12 +134,18 @@ const footerNavItems = [
           <a
             href={item.href}
             class:list={[
-              "px-2 py-2 text-xs font-normal transition-colors duration-300 whitespace-nowrap",
-              currentPath === item.href ? "text-white border-b-2 border-white" : "text-white/70 hover:text-white",
+              "py-1 text-[15px] transition-colors duration-300 whitespace-nowrap",
+              currentPath === item.href
+                ? "font-bold text-white border-b-[1.5px] border-white"
+                : "font-light text-white/70 hover:text-white",
               `stagger-${mainNavItems.length + 1 + index}`,
             ]}
           >
-            {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
+            {item.key ? (
+              <span data-i18n={item.key}>{item.label}</span>
+            ) : (
+              item.label
+            )}
           </a>
         </li>
       ))
@@ -125,7 +172,9 @@ const footerNavItems = [
     id="mobile-menu"
     class="absolute top-full right-[-60px] mt-2 w-64 hidden origin-top-right z-50"
   >
-    <div class="bg-[#13045D]/100 rounded-2xl w-full p-2 animate-menu-pop shadow-2xl overflow-y-auto max-h-[80vh]">
+    <div
+      class="bg-[#13045D]/100 rounded-2xl w-full p-2 animate-menu-pop shadow-2xl overflow-y-auto max-h-[80vh]"
+    >
       <ul class="flex flex-col w-full gap-1">
         <!-- Home -->
         <li>
@@ -133,7 +182,9 @@ const footerNavItems = [
             href="/"
             class:list={[
               "flex items-center w-full px-4 py-2 text-sm font-medium rounded-xl transition-colors",
-              currentPath === "/" ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/10 hover:text-white"
+              currentPath === "/"
+                ? "bg-white/10 text-white"
+                : "text-white/70 hover:bg-white/10 hover:text-white",
             ]}
           >
             <span data-i18n="nav.home">Home</span>
@@ -146,13 +197,32 @@ const footerNavItems = [
             id="mobile-features-trigger"
             class="flex items-center justify-start gap-2 w-full px-4 py-2 text-sm font-medium rounded-xl text-white/70 hover:bg-white/10 hover:text-white transition-colors group"
           >
-            <span data-i18n="nav.features">Features</span>
-            <svg id="mobile-features-arrow" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            {
+              activeFeature ? (
+                <span>{activeFeature.label}</span>
+              ) : (
+                <span data-i18n="nav.features">Features</span>
+              )
+            }
+            <svg
+              id="mobile-features-arrow"
+              class="w-4 h-4 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          
-          <div id="mobile-features-content" class="hidden overflow-hidden transition-all duration-300 pl-4">
+
+          <div
+            id="mobile-features-content"
+            class="hidden overflow-hidden transition-all duration-300 pl-4"
+          >
             <ul class="flex flex-col gap-1 py-1">
               {
                 featureItems.map((item) => (
@@ -161,10 +231,16 @@ const footerNavItems = [
                       href={item.href}
                       class:list={[
                         "flex items-center w-full px-4 py-2 text-[13px] font-normal rounded-xl transition-colors",
-                        currentPath === item.href ? "text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.1)]" : "text-white/60 hover:bg-white/5 hover:text-white"
+                        currentPath === item.href
+                          ? "text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                          : "text-white/60 hover:bg-white/5 hover:text-white",
                       ]}
                     >
-                      {item.key ? <span data-i18n={item.key}>{item.label}</span> : item.label}
+                      {item.key ? (
+                        <span data-i18n={item.key}>{item.label}</span>
+                      ) : (
+                        item.label
+                      )}
                     </a>
                   </li>
                 ))
@@ -179,7 +255,9 @@ const footerNavItems = [
             href={aboutItem.href}
             class:list={[
               "flex items-center w-full px-4 py-2 text-sm font-medium rounded-xl transition-colors",
-              currentPath === aboutItem.href ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/10 hover:text-white"
+              currentPath === aboutItem.href
+                ? "bg-white/10 text-white"
+                : "text-white/70 hover:bg-white/10 hover:text-white",
             ]}
           >
             <span data-i18n={aboutItem.key}>{aboutItem.label}</span>
@@ -192,7 +270,9 @@ const footerNavItems = [
             href={contactItem.href}
             class:list={[
               "flex items-center w-full px-4 py-2 text-sm font-medium rounded-xl transition-colors",
-              currentPath === contactItem.href ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/10 hover:text-white"
+              currentPath === contactItem.href
+                ? "bg-white/10 text-white"
+                : "text-white/70 hover:bg-white/10 hover:text-white",
             ]}
           >
             <span data-i18n={contactItem.key}>{contactItem.label}</span>
@@ -200,7 +280,6 @@ const footerNavItems = [
         </li>
 
         <li class="h-px bg-white/10 my-1 mx-2"></li>
-   
 
         <!-- Language Switcher -->
         <li class="mt-2">
@@ -268,7 +347,7 @@ const footerNavItems = [
     });
   };
 
-  document.addEventListener('astro:page-load', initNavigationMenu);
+  document.addEventListener("astro:page-load", initNavigationMenu);
 </script>
 
 <style>

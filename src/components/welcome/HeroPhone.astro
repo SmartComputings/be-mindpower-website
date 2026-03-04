@@ -17,7 +17,12 @@ const {
   <a href="/chat" class="phone-link" aria-label="Ir al chat">
     <picture>
       <source media="(max-width: 768px)" srcset={mobileSrc} />
-      <img id="hero-phone-image" src={src} alt="Teléfono BeMind" />
+      <img
+        id="hero-phone-image"
+        src={src}
+        alt="Teléfono BeMind"
+        transition:name="phone-morph-chat"
+      />
     </picture>
   </a>
 </div>
@@ -110,3 +115,4 @@ const {
     }
   }
 </style>
+

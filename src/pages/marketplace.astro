@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Marketplace, slider inicia en Marketplace (index 2) -->
     <div class="marketplace-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-marketplace"
         videoSrc="/vedioes/an3.mp4"
         phoneSrc="/sliderImages/s3.png"
         titleLine1="Compra y vende"
@@ -648,3 +648,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initMarketplaceMobileVideo();
   }
 </script>
+

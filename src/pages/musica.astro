@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Música, slider inicia en Música (index 6) -->
     <div class="musica-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-music"
         videoSrc="/vedioes/musica.mp4"
         phoneSrc="/common/musica.png"
         titleLine1="La música vive"
@@ -644,3 +644,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initMusicaMobileVideo();
   }
 </script>
+

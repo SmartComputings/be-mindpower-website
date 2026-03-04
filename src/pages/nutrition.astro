@@ -20,7 +20,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Nutrition, slider inicia en Nutrition (index 4) -->
     <div class="nutrition-desktop-layout">
-      <HomeHero
+      <HomeHero transitionName="phone-morph-nutrition"
         videoSrc="/vedioes/an5.mp4"
         phoneSrc="/sliderImages/s5.png"
         titleLine1="Vive saludable"
@@ -636,3 +636,4 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initNutritionMobileVideo();
   }
 </script>
+
