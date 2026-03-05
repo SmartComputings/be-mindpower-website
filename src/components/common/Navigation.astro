@@ -70,7 +70,11 @@ const contactItem = {
 
 const footerNavItems = [aboutItem, contactItem];
 
-const activeFeature = featureItems.find((item) => currentPath === item.href);
+const activeFeature = featureItems.find(
+  (item) =>
+    currentPath === item.href ||
+    ((item as any).mobileHref && currentPath === (item as any).mobileHref),
+);
 ---
 
 <nav class="relative flex items-center gap-8">
@@ -111,7 +115,13 @@ const activeFeature = featureItems.find((item) => currentPath === item.href);
       >
         {
           activeFeature ? (
-            <span>{activeFeature.label}</span>
+            <span
+              data-i18n={
+                activeFeature.key || `nav.${activeFeature.href.substring(1)}`
+              }
+            >
+              {activeFeature.label}
+            </span>
           ) : (
             <span data-i18n="nav.features">Features</span>
           )
@@ -234,7 +244,14 @@ const activeFeature = featureItems.find((item) => currentPath === item.href);
           >
             {
               activeFeature ? (
-                <span>{activeFeature.label}</span>
+                <span
+                  data-i18n={
+                    activeFeature.key ||
+                    `nav.${activeFeature.href.substring(1)}`
+                  }
+                >
+                  {activeFeature.label}
+                </span>
               ) : (
                 <span data-i18n="nav.features">Features</span>
               )

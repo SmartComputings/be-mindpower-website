@@ -21,7 +21,8 @@ import Header from "../components/common/Header.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Salud Mental, slider inicia en Salud Mental (index 7) -->
     <div class="saludmental-desktop-layout">
-      <HomeHero transitionName="phone-morph-health"
+      <HomeHero
+        transitionName="phone-morph-health"
         videoSrc="/vedioes/saludmental.mp4"
         phoneSrc="/common/saludmental.png"
         titleLine1="Apoyo real"
@@ -95,7 +96,12 @@ import Header from "../components/common/Header.astro";
             data-i18n="saludmental.hero.cta">Ver Más</a
           >
           <div class="saludmental-badges">
-            <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger saludmental-store-btn" >
+            <a
+              href="#"
+              onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+              aria-label="Download on the App Store"
+              class="coming-soon-trigger saludmental-store-btn"
+            >
               <img
                 src="/detailPageImages/app-store-badge.svg"
                 alt="Download on the App Store"
@@ -139,7 +145,8 @@ import Header from "../components/common/Header.astro";
   @media (max-width: 768px),
     (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.saludmental-page {
-      overflow: hidden; overscroll-behavior: none;
+      overflow: hidden;
+      overscroll-behavior: none;
     }
 
     .saludmental-desktop-layout {
@@ -183,7 +190,12 @@ import Header from "../components/common/Header.astro";
 
     .saludmental-mobile-video {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       opacity: 0.9;
     }
 
@@ -217,7 +229,7 @@ import Header from "../components/common/Header.astro";
     }
 
     /* === CONTENIDO INFERIOR (textos + botones) — parte inferior === */
-    .saludmental-mobile-content {
+    .mental-health-mobile-content {
       position: relative;
       z-index: 10;
       display: flex;
@@ -227,7 +239,7 @@ import Header from "../components/common/Header.astro";
       flex: 0 0 auto;
       min-height: 0;
       padding: 0 5%;
-      gap: clamp(0.8rem, 1.5vh, 1rem);
+      gap: clamp(0.5rem, 1vh, 1rem);
     }
 
     .saludmental-mobile-text {
@@ -250,16 +262,16 @@ import Header from "../components/common/Header.astro";
       width: 100%;
     }
 
-    .saludmental-title-line1 {
+    .mental-health-title-line1 {
       font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-size: clamp(24px, 7vw, 40px);
+      font-size: clamp(20px, 6vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
-    .saludmental-title-line2 {
+    .mental-health-title-line2 {
       font-family: "Neometric", "Inter", sans-serif;
-      font-size: clamp(14px, 4vw, 24px);
+      font-size: clamp(12px, 3.5vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
     }
@@ -277,7 +289,7 @@ import Header from "../components/common/Header.astro";
       text-align: center;
     }
 
-    .saludmental-mobile-buttons {
+    .mental-health-mobile-buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -285,18 +297,18 @@ import Header from "../components/common/Header.astro";
       width: 100%;
     }
 
-    .saludmental-cta {
+    .mental-health-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 2rem;
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-weight: 900;
-      font-size: clamp(14px, 3.8vw, 16px);
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: clamp(12px, 3vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
@@ -318,12 +330,12 @@ import Header from "../components/common/Header.astro";
       gap: clamp(0.3rem, 0.6vh, 0.5rem);
     }
 
-    .saludmental-store-btn {
+    .mental-health-store-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: min(260px, 68vw);
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 18px;
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -638,8 +650,3 @@ import Header from "../components/common/Header.astro";
     initSaludmentalMobileVideo();
   }
 </script>
-
-
-
-
-

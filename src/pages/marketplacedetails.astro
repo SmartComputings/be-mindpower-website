@@ -28,7 +28,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-24 max-h-[750px]:pt-20 md:pt-24 md:pb-12 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end md:items-center justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-[clamp(6rem,12vh,9rem)] max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -95,7 +95,7 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Left Content: Smartphone -->
       <div
-        class="relative z-10 w-full flex flex-col items-center ml-0 md:max-w-[750px] md:mt-20 justify-end h-full md:h-auto md:justify-center mb-[-210px] max-h-[750px]:mb-[-80px] md:mb-0 transform scale-y-100 md:scale-y-100 origin-bottom phone-detail-container"
+        class="relative z-10 w-full flex flex-col items-center justify-end h-full md:h-auto md:justify-center mb-[clamp(-250px,-30vh,-50px)] max-h-[750px]:mb-[clamp(-150px,-20vh,-20px)] md:mb-0 transform scale-y-100 mt-0 md:mt-[clamp(2rem,6vh,5rem)] origin-bottom phone-detail-container"
       >
         <div
           class="relative w-[137%] max-h-[750px]:w-[95%] md:w-[95%] lg:w-[95%] max-w-[600px]"
@@ -111,7 +111,7 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start md:ml-16 mt-[90px] max-h-[750px]:mt-[80px] max-h-[750px]:mb-32 md:mt-0 text-left md:text-left px-6 md:px-0"
+        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
       >
         <h1
           class="mb-6 max-h-[750px]:mb-2 tracking-tight text-white ml-8 md:ml-0"
@@ -310,5 +310,3 @@ const dollarIcon = "/common/doller.png";
     object-fit: contain;
   }
 </style>
-
-

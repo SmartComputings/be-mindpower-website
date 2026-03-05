@@ -20,7 +20,8 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     <!-- Layout Desktop: usa HomeHero con video y phone de Música, slider inicia en Música (index 6) -->
     <div class="musica-desktop-layout">
-      <HomeHero transitionName="phone-morph-music"
+      <HomeHero
+        transitionName="phone-morph-music"
         videoSrc="/vedioes/musica.mp4"
         phoneSrc="/common/musica.png"
         titleLine1="La música vive"
@@ -94,7 +95,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
             data-i18n="musica.hero.cta">Ver Más</a
           >
           <div class="musica-badges">
-            <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger musica-store-btn" >
+            <a
+              href="#"
+              onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+              aria-label="Download on the App Store"
+              class="coming-soon-trigger musica-store-btn"
+            >
               <img
                 src="/detailPageImages/app-store-badge.svg"
                 alt="Download on the App Store"
@@ -138,7 +144,8 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   @media (max-width: 768px),
     (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     body.musica-page {
-      overflow: hidden; overscroll-behavior: none;
+      overflow: hidden;
+      overscroll-behavior: none;
     }
 
     .musica-desktop-layout {
@@ -182,7 +189,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     .musica-mobile-video {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       opacity: 0.9;
     }
 
@@ -216,7 +228,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     }
 
     /* === CONTENIDO INFERIOR (textos + botones) — parte inferior === */
-    .musica-mobile-content {
+    .music-mobile-content {
       position: relative;
       z-index: 10;
       display: flex;
@@ -226,7 +238,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       flex: 0 0 auto;
       min-height: 0;
       padding: 0 5%;
-      gap: clamp(0.8rem, 1.5vh, 1rem);
+      gap: clamp(0.5rem, 1vh, 1rem);
     }
 
     .musica-mobile-text {
@@ -249,16 +261,16 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       width: 100%;
     }
 
-    .musica-title-line1 {
+    .music-title-line1 {
       font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-size: clamp(24px, 7vw, 40px);
+      font-size: clamp(20px, 6vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
-    .musica-title-line2 {
+    .music-title-line2 {
       font-family: "Neometric", "Inter", sans-serif;
-      font-size: clamp(14px, 4vw, 24px);
+      font-size: clamp(12px, 3.5vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
     }
@@ -276,7 +288,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       text-align: center;
     }
 
-    .musica-mobile-buttons {
+    .music-mobile-buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -284,18 +296,18 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       width: 100%;
     }
 
-    .musica-cta {
+    .music-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 2rem;
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-weight: 900;
-      font-size: clamp(14px, 3.8vw, 16px);
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: clamp(12px, 3vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
@@ -317,12 +329,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       gap: clamp(0.3rem, 0.6vh, 0.5rem);
     }
 
-    .musica-store-btn {
+    .music-store-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: min(260px, 68vw);
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 18px;
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -637,8 +649,3 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     initMusicaMobileVideo();
   }
 </script>
-
-
-
-
-

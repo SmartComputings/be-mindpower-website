@@ -26,7 +26,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-24 max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-[clamp(6rem,12vh,9rem)] max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -61,11 +61,16 @@ const dollarIcon = "/common/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-                <!-- Mobile Buttons -->
+        <!-- Mobile Buttons -->
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
-          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl" >
+          <a
+            href="#"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+            aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
+          >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -88,7 +93,7 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Left Content: Smartphone -->
       <div
-        class="relative z-10 w-full flex flex-col items-center ml-0 md:ml-14 mt-0 md:mt-20 justify-end h-full md:h-auto md:justify-center mb-[-210px] max-h-[750px]:mb-[-50px] md:mb-0 transform scale-y-90 origin-bottom phone-detail-container"
+        class="relative z-10 w-full flex flex-col items-center ml-0 md:ml-14 mt-0 md:mt-[clamp(2rem,6vh,5rem)] justify-end h-full md:h-auto md:justify-center mb-[clamp(-250px,-30vh,-50px)] max-h-[750px]:mb-[clamp(-150px,-20vh,-20px)] md:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
       >
         <div
           class="relative w-[137%] max-h-[750px]:w-[110%] md:w-[105%] lg:w-[100%] md:max-w-[700px]"
@@ -104,7 +109,7 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-28 mt-[90px] max-h-[750px]:mt-[80px] md:mt-0 text-left md:text-left px-6 md:px-0"
+        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white health-heading">
           <span data-i18n="health.detail.title"
@@ -139,11 +144,16 @@ const dollarIcon = "/common/doller.png";
           </li>
         </ul>
 
-                <!-- Download Buttons -->
+        <!-- Download Buttons -->
         <div
           class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
-          <a href="#" onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));" aria-label="Download on the App Store" class="coming-soon-trigger apps-store-btn" >
+          <a
+            href="#"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+            aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn"
+          >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
@@ -231,7 +241,7 @@ const dollarIcon = "/common/doller.png";
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   }
 
-    /* Apps Buttons Styles */
+  /* Apps Buttons Styles */
   @keyframes blink-shadow {
     0%,
     100% {
@@ -335,11 +345,3 @@ const dollarIcon = "/common/doller.png";
     }
   }
 </style>
-
-
-
-
-
-
-
-

@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     height: min(467px, 41.8vh);
-    min-height: 380px;
+    min-height: clamp(280px, 35vh, 380px);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@
     width: 100%;
     max-width: 1295px;
     height: 100%;
-    min-height: 380px;
+    min-height: clamp(280px, 35vh, 380px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,26 +37,40 @@
 
   .home-hero-slider-slot :global(.feature-slider) {
     height: 100%;
-    min-height: 380px;
+    min-height: clamp(280px, 35vh, 380px);
     max-height: 467px;
   }
 
   .home-hero-slider-slot :global(.slider-container) {
     height: 100%;
-    min-height: 380px;
+    min-height: clamp(280px, 35vh, 380px);
+  }
+
+  @media (max-width: 1440px) and (max-height: 800px) {
+    .home-hero-slider-layer {
+      height: min(380px, 45vh);
+      min-height: clamp(240px, 32vh, 320px);
+      padding: 0 8%;
+    }
+
+    .home-hero-slider-slot,
+    .home-hero-slider-slot :global(.feature-slider),
+    .home-hero-slider-slot :global(.slider-container) {
+      min-height: clamp(240px, 32vh, 320px);
+    }
   }
 
   @media (max-width: 1024px) {
     .home-hero-slider-layer {
       height: min(320px, 38vh);
-      min-height: 280px;
+      min-height: 240px;
       padding: 0 6%;
     }
 
     .home-hero-slider-slot,
     .home-hero-slider-slot :global(.feature-slider),
     .home-hero-slider-slot :global(.slider-container) {
-      min-height: 280px;
+      min-height: 240px;
     }
   }
 

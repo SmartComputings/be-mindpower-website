@@ -161,7 +161,7 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
         animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
       }
 
-      /* Prevent cross-fade ghosting by hiding the outgoing image and keeping the incoming image solid */
+      /* Ensure images scale proportionally during morph without distortion */
       ::view-transition-old(phone-morph-chat),
       ::view-transition-old(phone-morph-wallet),
       ::view-transition-old(phone-morph-marketplace),
@@ -170,10 +170,7 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
       ::view-transition-old(phone-morph-communities),
       ::view-transition-old(phone-morph-music),
       ::view-transition-old(phone-morph-health),
-      ::view-transition-old(phone-morph-finance) {
-        display: none;
-      }
-
+      ::view-transition-old(phone-morph-finance),
       ::view-transition-new(phone-morph-chat),
       ::view-transition-new(phone-morph-wallet),
       ::view-transition-new(phone-morph-marketplace),
@@ -183,8 +180,9 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
       ::view-transition-new(phone-morph-music),
       ::view-transition-new(phone-morph-health),
       ::view-transition-new(phone-morph-finance) {
-        animation: none;
-        opacity: 1;
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
       }
     </style>
   </head>
