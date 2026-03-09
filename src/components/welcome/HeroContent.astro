@@ -43,8 +43,17 @@ const {
     padding: 0 5vw;
   }
 
+  @media (max-width: 1440px) {
+    .hero-content {
+      top: 10%;
+      height: 40%;
+    }
+  }
+
   @media (max-width: 1024px) {
     .hero-content {
+      top: 12%;
+      height: 42%;
       padding-top: 0;
     }
   }
@@ -83,11 +92,13 @@ const {
     flex-direction: column;
     align-items: center;
     pointer-events: auto;
+    margin-top: 140px;
   }
 
   @media (max-width: 768px) {
     .hero-text-group {
       padding-top: 6vh;
+      margin-top: 0;
     }
   }
 </style>

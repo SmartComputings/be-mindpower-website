@@ -63,6 +63,17 @@ const {
     object-fit: contain;
   }
 
+  /* Laptop screens */
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .hero-phone {
+      top: 58%;
+    }
+    .hero-phone img {
+      width: clamp(300px, 32vw, 420px);
+      max-height: 110%;
+    }
+  }
+
   /* Desktop breakpoints */
   @media (min-width: 1280px) and (max-height: 900px) {
     .hero-phone img {
