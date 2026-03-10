@@ -93,11 +93,12 @@ import Header from "../components/common/Header.astro";
 <style is:global>
   body.contacto-page {
     background: #000000;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* Permite scroll si el contenido no cabe en pantallas muy bajas */
     margin: 0;
     padding: 0;
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 </style>
 
@@ -106,14 +107,24 @@ import Header from "../components/common/Header.astro";
   .contact-hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: clamp(80px, 12vh, 120px);
+    padding-top: clamp(
+      100px,
+      15vh,
+      140px
+    ); /* Aumentado para mayor espacio desde el header */
     padding-bottom: clamp(20px, 4vh, 40px);
+  }
+
+  @media (max-height: 750px) {
+    .contact-hero {
+      padding-top: 90px;
+      align-items: flex-start; /* Alinea arriba para evitar cortes en el botón enviar */
+    }
   }
 
   /* ── Background ── */
@@ -186,8 +197,15 @@ import Header from "../components/common/Header.astro";
     font-weight: 700;
     color: #fff;
     line-height: 1.1;
-    margin: clamp(1rem, 4vh, 2rem) 0 1rem 0;
+    margin: 0 0 1rem 0; /* Eliminado margin top excesivo */
     letter-spacing: -0.01em;
+  }
+
+  @media (max-height: 750px) {
+    .contact-title {
+      font-size: clamp(24px, 3.5vw, 44px);
+      margin-bottom: 0.5rem;
+    }
   }
 
   .contact-subtitle {
@@ -196,7 +214,7 @@ import Header from "../components/common/Header.astro";
     font-weight: 400;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.5;
-    margin: 0 0 clamp(1rem, 4vh, 2.5rem) 0;
+    margin: 0 0 clamp(1rem, 3vh, 2.5rem) 0;
   }
 
   .contact-subtitle br {
@@ -243,7 +261,24 @@ import Header from "../components/common/Header.astro";
   .form-group textarea {
     resize: none;
     height: auto;
-    min-height: clamp(140px, 20vh, 250px);
+    min-height: clamp(100px, 15vh, 250px); /* Reducido min-height */
+  }
+
+  @media (max-height: 750px) {
+    .contact-form {
+      gap: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      height: clamp(40px, 5vh, 50px);
+    }
+    .form-group textarea {
+      min-height: 100px;
+    }
+    .contact-submit {
+      margin-top: 0.5rem;
+      height: 42px;
+    }
   }
 
   .contact-submit {
@@ -285,6 +320,16 @@ import Header from "../components/common/Header.astro";
     justify-content: flex-end;
     margin-right: -5vw;
     align-self: flex-end;
+    max-height: 90vh; /* Evita que crezca demasiado en pantallas cortas */
+  }
+
+  @media (max-height: 750px) {
+    .contact-right {
+      max-width: 35%;
+    }
+    .contact-illustration {
+      max-height: 60vh !important;
+    }
   }
 
   .contact-illustration-mobile {

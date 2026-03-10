@@ -1,9 +1,9 @@
 ---
-import HeroLogoText from './HeroLogoText.astro';
-import HeroWelcomeTitle from './HeroWelcomeTitle.astro';
-import HeroTitle from './HeroTitle.astro';
-import HeroDescription from './HeroDescription.astro';
-import HeroStoreButtons from './HeroStoreButtons.astro';
+import HeroLogoText from "./HeroLogoText.astro";
+import HeroWelcomeTitle from "./HeroWelcomeTitle.astro";
+import HeroTitle from "./HeroTitle.astro";
+import HeroDescription from "./HeroDescription.astro";
+import HeroStoreButtons from "./HeroStoreButtons.astro";
 
 interface Props {
   welcomeText?: string;
@@ -11,11 +11,7 @@ interface Props {
   description?: string;
 }
 
-const { 
-  welcomeText,
-  mainTitle,
-  description
-} = Astro.props;
+const { welcomeText, mainTitle, description } = Astro.props;
 ---
 
 <div class="hero-content">
@@ -92,7 +88,7 @@ const {
     flex-direction: column;
     align-items: center;
     pointer-events: auto;
-    margin-top: 140px;
+    margin-top: 100px;
   }
 
   @media (max-width: 768px) {

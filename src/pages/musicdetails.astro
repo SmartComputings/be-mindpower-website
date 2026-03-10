@@ -26,7 +26,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-[clamp(6rem,12vh,9rem)] max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-[clamp(8rem,15vh,10rem)] md:pt-[150px] px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-10 lg:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -109,7 +109,7 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
+        class="relative z-10 w-full md:max-w-xl lg:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-10 lg:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white music-heading">
           <span data-i18n="music.detail.title">Your music, your frequency.</span
@@ -171,7 +171,7 @@ const dollarIcon = "/common/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="back-arrow hidden md:inline-flex absolute top-[130px] md:top-[200px] left-4 md:left-40 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      class="back-arrow inline-flex absolute top-[90px] md:top-[120px] left-4 md:left-[5vw] lg:left-[8vw] z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -337,6 +337,79 @@ const dollarIcon = "/common/doller.png";
       font-size: clamp(16px, 2vw, 24px);
       line-height: 100%;
       font-weight: 400;
+    }
+  }
+
+  /* ===== Tablets & Small Laptops (Landscape) ===== */
+  @media (min-width: 768px) and (max-width: 1280px) {
+    .music-heading {
+      font-size: clamp(30px, 4vw, 44px) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 12px !important;
+    }
+    .music-list {
+      font-size: clamp(13px, 1.6vw, 17px) !important;
+      margin-bottom: 12px !important;
+      gap: 5px !important;
+    }
+    .chat-detail-wrap .apps-badges {
+      gap: 12px !important;
+    }
+    .apps-store-btn {
+      width: 190px !important;
+      height: 52px !important;
+    }
+    .apps-store-btn img {
+      height: 32px !important;
+    }
+    .phone-detail-container > div {
+      width: 100% !important;
+    }
+  }
+
+  /* Medium height reduction (e.g., 700px - 900px) */
+  @media (min-width: 768px) and (max-height: 900px) {
+    .chat-detail-wrap main {
+      padding-top: 150px !important;
+    }
+    .music-heading {
+      font-size: clamp(28px, 3.5vw, 48px) !important;
+    }
+    .music-list {
+      font-size: clamp(14px, 1.6vw, 18px) !important;
+      margin-bottom: 15px !important;
+    }
+    .phone-detail-container {
+      max-width: 38% !important;
+    }
+  }
+
+  /* Aggressive height reduction for short landscapes */
+  @media (min-width: 768px) and (max-height: 700px) {
+    .music-heading {
+      font-size: clamp(26px, 3.5vw, 36px) !important;
+      margin-bottom: 8px !important;
+    }
+    .music-list {
+      font-size: clamp(12px, 1.4vw, 14px) !important;
+      margin-bottom: 8px !important;
+    }
+    .apps-store-btn {
+      width: 160px !important;
+      height: 45px !important;
+    }
+    .apps-store-btn img {
+      height: 28px !important;
+    }
+    .phone-detail-container {
+      max-width: 30% !important;
+      margin-top: 25px !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 600px) {
+    .chat-detail-wrap main {
+      padding-top: 100px !important;
     }
   }
 </style>

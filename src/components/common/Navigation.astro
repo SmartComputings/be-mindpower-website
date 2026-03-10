@@ -16,46 +16,56 @@ const aboutItem = {
 };
 
 const featureItems = [
-  { key: "nav.chat", label: "Chat", href: "/chat", mobileHref: "/chatdetails" },
   {
-    key: "nav.wallet",
+    key: "features.chat.title",
+    label: "Chat",
+    href: "/chat",
+    mobileHref: "/chatdetails",
+  },
+  {
+    key: "features.wallet.title",
     label: "Wallet",
     href: "/wallet",
     mobileHref: "/walletdetails",
   },
   {
-    key: "nav.marketplace",
+    key: "features.marketplace.title",
     label: "Marketplace",
     href: "/marketplace",
     mobileHref: "/marketplacedetails",
   },
-  { key: "nav.apps", label: "Apps", href: "/apps", mobileHref: "/appsdetails" },
   {
-    key: "nav.nutrition",
+    key: "features.apps.title",
+    label: "Apps",
+    href: "/apps",
+    mobileHref: "/appsdetails",
+  },
+  {
+    key: "features.nutrition.title",
     label: "Nutrición",
     href: "/nutrition",
     mobileHref: "/nutritiondetails",
   },
   {
-    key: "nav.communities",
-    label: "Comunidades",
+    key: "features.communities.title",
+    label: "Comunidad",
     href: "/communities",
     mobileHref: "/communitiesdetails",
   },
   {
-    key: "nav.musica",
+    key: "features.music.title",
     label: "Música",
     href: "/musica",
     mobileHref: "/musicdetails",
   },
   {
-    key: "nav.salud-mental",
+    key: "features.mentalHealth.title",
     label: "Salud Mental",
     href: "/salud-mental",
     mobileHref: "/healthdetails",
   },
   {
-    key: "nav.finance",
+    key: "features.finance.title",
     label: "Finanzas",
     href: "/finance",
     mobileHref: "/financedetails",
@@ -103,11 +113,11 @@ const activeFeature = featureItems.find(
       ))
     }
 
-    <!-- Features Dropdown -->
-    <li class="relative group">
+    <li class="relative group h-full flex items-center" id="features-dropdown">
       <button
+        id="features-trigger"
         class:list={[
-          "py-1 text-[15px] transition-colors duration-300 whitespace-nowrap flex items-center gap-1 cursor-default",
+          "h-full py-1 text-[15px] transition-colors duration-300 whitespace-nowrap flex items-center gap-1",
           activeFeature
             ? "font-bold text-white border-b-[1.5px] border-white"
             : "font-light text-white/70 hover:text-white",
@@ -127,7 +137,7 @@ const activeFeature = featureItems.find(
           )
         }
         <svg
-          class="w-3 h-3 transition-transform group-hover:rotate-180"
+          class="w-3 h-3 transition-transform group-hover:rotate-180 features-arrow"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -141,7 +151,8 @@ const activeFeature = featureItems.find(
       </button>
 
       <div
-        class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
+        id="features-menu"
+        class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 desktop-dropdown"
       >
         <div
           class="bg-[#120068]/95 backdrop-blur-xl rounded-2xl border border-white/10 p-2 shadow-2xl min-w-[160px]"
@@ -345,58 +356,110 @@ const activeFeature = featureItems.find(
 
 <script>
   const initNavigationMenu = () => {
+    // --- Mobile Menu Elements ---
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
-    const featuresTrigger = document.getElementById("mobile-features-trigger");
-    const featuresContent = document.getElementById("mobile-features-content");
-    const featuresArrow = document.getElementById("mobile-features-arrow");
+    const mobileFeaturesTrigger = document.getElementById(
+      "mobile-features-trigger",
+    );
+    const mobileFeaturesContent = document.getElementById(
+      "mobile-features-content",
+    );
+    const mobileFeaturesArrow = document.getElementById(
+      "mobile-features-arrow",
+    );
+
+    // --- Desktop Menu Elements ---
+    const featuresDropdown = document.getElementById("features-dropdown");
+    const featuresTrigger = document.getElementById("features-trigger");
+    const featuresMenu = document.getElementById("features-menu");
+    const featuresArrow = featuresDropdown?.querySelector(
+      ".features-arrow",
+    ) as HTMLElement;
 
     if (!mobileMenuBtn || !mobileMenu) return;
 
-    const toggleMenu = (e: Event) => {
+    // --- Mobile Menu Logic ---
+    const toggleMobileMenu = (e: Event) => {
       e.stopPropagation();
       mobileMenu.classList.toggle("hidden");
     };
 
-    const closeMenu = () => {
+    const closeMobileMenu = () => {
       if (!mobileMenu.classList.contains("hidden")) {
         mobileMenu.classList.add("hidden");
-        // Also resets features collapse when closing menu
-        if (featuresContent) featuresContent.classList.add("hidden");
-        if (featuresArrow) featuresArrow.style.transform = "";
+        if (mobileFeaturesContent)
+          mobileFeaturesContent.classList.add("hidden");
+        if (mobileFeaturesArrow) mobileFeaturesArrow.style.transform = "";
       }
     };
 
-    // Features collapsible logic
-    if (featuresTrigger && featuresContent && featuresArrow) {
-      featuresTrigger.addEventListener("click", (e) => {
+    if (mobileFeaturesTrigger && mobileFeaturesContent && mobileFeaturesArrow) {
+      mobileFeaturesTrigger.addEventListener("click", (e) => {
         e.stopPropagation();
-        const isHidden = featuresContent.classList.contains("hidden");
+        const isHidden = mobileFeaturesContent.classList.contains("hidden");
         if (isHidden) {
-          featuresContent.classList.remove("hidden");
-          featuresArrow.style.transform = "rotate(180deg)";
+          mobileFeaturesContent.classList.remove("hidden");
+          mobileFeaturesArrow.style.transform = "rotate(180deg)";
         } else {
-          featuresContent.classList.add("hidden");
-          featuresArrow.style.transform = "";
+          mobileFeaturesContent.classList.add("hidden");
+          mobileFeaturesArrow.style.transform = "";
         }
       });
     }
 
-    mobileMenuBtn.addEventListener("click", toggleMenu);
+    mobileMenuBtn.addEventListener("click", toggleMobileMenu);
 
-    // Close on link click (only for actual links, not the trigger button)
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
+    // --- Desktop Dropdown Logic (for touch & reliable click) ---
+    if (featuresTrigger && featuresMenu && featuresDropdown) {
+      featuresTrigger.addEventListener("click", (e) => {
+        // Only toggle via JS if we are likely on a touch device or to provide persistent open
+        e.stopPropagation();
+        const isOpen = featuresDropdown.classList.contains("is-open");
+
+        // Close other menus if any
+        closeMobileMenu();
+
+        if (isOpen) {
+          featuresDropdown.classList.remove("is-open");
+          if (featuresArrow) featuresArrow.style.transform = "";
+        } else {
+          featuresDropdown.classList.add("is-open");
+          if (featuresArrow) featuresArrow.style.transform = "rotate(180deg)";
+        }
+      });
+
+      // Prevent closing when clicking inside the menu
+      featuresMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
+
+    // --- Global Close Logic ---
+    document.addEventListener("click", (event) => {
+      const target = event.target as Node;
+
+      // Close mobile menu if clicking outside
+      if (!mobileMenu.contains(target) && !mobileMenuBtn.contains(target)) {
+        closeMobileMenu();
+      }
+
+      // Close desktop menu if clicking outside
+      if (featuresDropdown && !featuresDropdown.contains(target)) {
+        featuresDropdown.classList.remove("is-open");
+        if (featuresArrow) featuresArrow.style.transform = "";
+      }
     });
 
-    // Close on click outside
-    document.addEventListener("click", (event) => {
-      if (
-        !mobileMenu.contains(event.target as Node) &&
-        !mobileMenuBtn.contains(event.target as Node)
-      ) {
-        closeMenu();
-      }
+    // Close on link click
+    document.querySelectorAll("nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMobileMenu();
+        if (featuresDropdown) {
+          featuresDropdown.classList.remove("is-open");
+          if (featuresArrow) featuresArrow.style.transform = "";
+        }
+      });
     });
   };
 
@@ -417,5 +480,25 @@ const activeFeature = featureItems.find(
 
   .animate-menu-pop {
     animation: menu-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Desktop Dropdown Open State (for JS toggle) */
+  #features-dropdown.is-open #features-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, 0) !important;
+    top: 100% !important;
+  }
+
+  /* Hover Bridge: ensures there's no gap for the mouse to cross */
+  .desktop-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: transparent;
+    z-index: -1;
   }
 </style>

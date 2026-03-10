@@ -95,7 +95,7 @@ const {
 <style>
   .hero-store-buttons {
     display: flex;
-    gap: clamp(18px, 2vw, 28px);
+    gap: clamp(14px, 1.8vw, 22px);
     position: relative;
     z-index: 100;
     pointer-events: auto;
@@ -105,8 +105,8 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(160px, 15vw, 200px);
-    height: clamp(48px, 5vh, 60px);
+    width: clamp(140px, 13vw, 175px);
+    height: clamp(42px, 4.5vh, 52px);
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -133,7 +133,7 @@ const {
   }
 
   .store-btn img {
-    height: clamp(36px, 4.2vh, 46px);
+    height: clamp(32px, 3.8vh, 40px);
     width: auto;
     object-fit: contain;
     margin-left: 5px; /* Visual correction to center content */
@@ -173,31 +173,31 @@ const {
 
   @media (min-width: 1440px) {
     .hero-store-buttons {
-      gap: clamp(22px, 2.2vw, 32px);
+      gap: clamp(18px, 2vw, 26px);
     }
 
     .store-btn {
-      width: clamp(180px, 16vw, 220px);
-      height: clamp(54px, 5.5vh, 64px);
+      width: clamp(160px, 14vw, 195px);
+      height: clamp(48px, 5vh, 58px);
     }
 
     .store-btn img {
-      height: clamp(40px, 4.5vh, 50px);
+      height: clamp(36px, 4vh, 45px);
     }
   }
 
   @media (min-width: 1920px) {
     .hero-store-buttons {
-      gap: clamp(26px, 2.4vw, 36px);
+      gap: clamp(22px, 2.2vw, 30px);
     }
 
     .store-btn {
-      width: clamp(200px, 17vw, 240px);
-      height: clamp(58px, 6vh, 68px);
+      width: clamp(180px, 15vw, 215px);
+      height: clamp(52px, 5.5vh, 62px);
     }
 
     .store-btn img {
-      height: clamp(44px, 5vh, 54px);
+      height: clamp(40px, 4.5vh, 50px);
     }
   }
 

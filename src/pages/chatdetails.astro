@@ -26,7 +26,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-[clamp(6rem,12vh,9rem)] max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-20 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-[clamp(8rem,15vh,10rem)] md:pt-[150px] px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-10 lg:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -109,10 +109,10 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-10 lg:pr-60"
+        class="relative z-10 w-full md:max-w-xl lg:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-10 lg:mr-20 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-5 lg:pr-60"
       >
         <h1
-          class="mb-4 tracking-tight text-white w-full max-w-full md:max-w-full text-[28px] leading-[36px] md:text-[40px] lg:text-[64px] md:leading-[48px] lg:leading-[64px] font-bold md:font-medium"
+          class="mb-4 tracking-tight text-white w-full max-w-full md:max-w-full text-[28px] leading-[36px] md:text-[32px] lg:text-[64px] md:leading-[38px] lg:leading-[64px] font-bold md:font-medium"
           style="font-family: 'OPTIFutura-ExtraBlackCond', sans-serif; letter-spacing: 0;"
         >
           <span data-i18n="chat.detail.title"
@@ -121,7 +121,7 @@ const dollarIcon = "/common/doller.png";
         </h1>
 
         <p
-          class="mb-6 max-w-full md:max-w-xl text-white text-[18px] md:text-[24px] lg:text-[32px] md:leading-[32px] lg:leading-[39px] font-normal md:font-semibold"
+          class="mb-6 max-w-full md:max-w-lg lg:max-w-xl text-white text-[18px] md:text-[20px] lg:text-[32px] md:leading-[24px] lg:leading-[39px] font-normal md:font-semibold"
           style="font-family: 'Neometric', sans-serif; letter-spacing: -0.04em;"
         >
           <span data-i18n="chat.detail.subtitle"
@@ -131,7 +131,7 @@ const dollarIcon = "/common/doller.png";
         </p>
 
         <ul
-          class="mb-8 w-full flex flex-col items-start md:items-start pl-0 md:pl-2 text-[14px] leading-[100%] md:text-[18px] lg:text-[24px] md:leading-[100%]"
+          class="mb-8 w-full flex flex-col items-start md:items-start pl-0 md:pl-2 text-[14px] leading-[100%] md:text-[16px] lg:text-[24px] md:leading-[100%]"
           style="font-family: 'Neometric', sans-serif; font-weight: 400; letter-spacing: 0;"
         >
           <li class="flex items-center gap-3 text-white">
@@ -194,7 +194,7 @@ const dollarIcon = "/common/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="hidden md:inline-flex absolute top-20 md:top-32 lg:top-[180px] left-4 md:left-10 lg:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      class="back-arrow inline-flex absolute top-[90px] md:top-[120px] left-4 md:left-[5vw] lg:left-[8vw] z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -296,6 +296,95 @@ const dollarIcon = "/common/doller.png";
     width: auto;
     max-width: 100%;
     object-fit: contain;
+  }
+
+  /* ===== Tablets & Small Laptops (Landscape) ===== */
+  @media (min-width: 768px) and (max-width: 1280px) {
+    .chat-detail-wrap h1 {
+      font-size: clamp(32px, 4.5vw, 48px) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 12px !important;
+    }
+    .chat-detail-wrap p {
+      font-size: clamp(16px, 2vw, 22px) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 12px !important;
+      max-width: 85% !important;
+    }
+    .chat-detail-wrap ul {
+      font-size: clamp(14px, 1.8vw, 18px) !important;
+      margin-bottom: 15px !important;
+    }
+    .chat-detail-wrap .apps-badges {
+      gap: 12px !important;
+    }
+    .apps-store-btn {
+      width: 200px !important;
+      height: 55px !important;
+    }
+    .apps-store-btn img {
+      height: 35px !important;
+    }
+    .phone-detail-container {
+      max-width: 40% !important;
+      margin-top: 20px !important;
+    }
+  }
+
+  /* Medium height reduction (e.g., 700px - 900px) */
+  @media (min-width: 768px) and (max-height: 900px) {
+    .chat-detail-wrap main {
+      padding-top: 130px !important;
+    }
+    .chat-detail-wrap h1 {
+      font-size: clamp(32px, 4vw, 54px) !important;
+    }
+    .chat-detail-wrap p {
+      font-size: clamp(18px, 2.2vw, 26px) !important;
+    }
+    .chat-detail-wrap ul {
+      font-size: clamp(16px, 1.8vw, 20px) !important;
+      margin-bottom: 20px !important;
+    }
+    .phone-detail-container {
+      max-width: 45% !important;
+    }
+  }
+
+  /* Aggressive height reduction for short landscapes */
+  @media (min-width: 768px) and (max-height: 700px) {
+    .chat-detail-wrap main {
+      padding-top: 100px !important;
+    }
+    .chat-detail-wrap h1 {
+      font-size: clamp(28px, 4vw, 36px) !important;
+      margin-bottom: 8px !important;
+    }
+    .chat-detail-wrap p {
+      font-size: clamp(14px, 1.8vw, 18px) !important;
+      margin-bottom: 8px !important;
+    }
+    .chat-detail-wrap ul {
+      font-size: clamp(13px, 1.6vw, 15px) !important;
+      margin-bottom: 10px !important;
+    }
+    .apps-store-btn {
+      width: 160px !important;
+      height: 45px !important;
+    }
+    .apps-store-btn img {
+      height: 28px !important;
+    }
+    .phone-detail-container {
+      max-width: 35% !important;
+      margin-top: 40px !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 600px) {
+    .chat-detail-wrap main {
+      padding-top: 100px !important;
+    }
   }
 
   /* ===== iPhone SE & small screens ===== */
