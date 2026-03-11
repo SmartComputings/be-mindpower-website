@@ -26,7 +26,7 @@ const dollarIcon = "/common/doller.png";
     />
 
     <main
-      class="relative w-full h-[100dvh] pt-[120px] md:pt-[clamp(8rem,15vh,10rem)] md:pb-1 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-2 lg:gap-16 z-10 overflow-hidden"
+      class="relative w-full h-[100dvh] pt-[140px] md:pt-[clamp(10rem,18vh,12rem)] md:pb-1 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-2 lg:gap-16 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -109,11 +109,10 @@ const dollarIcon = "/common/doller.png";
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full text-white flex flex-col items-center md:items-start ml-0 md:ml-5 lg:ml-20 mt-[80px] max-h-[750px]:mt-[80px] md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-5 lg:pr-40"
+        class="relative z-10 w-full text-white flex flex-col items-center md:items-start ml-0 md:ml-4 lg:ml-12 mt-[clamp(20px,6vh,60px)] max-h-[750px]:mt-[40px] md:mt-0 text-left md:text-left px-6 md:px-0 md:pr-5 lg:pr-40"
       >
         <h1
-          class="mb-3 max-h-[750px]:mb-2 tracking-tight text-white w-full max-w-full text-[28px] max-h-[750px]:text-[24px] leading-[36px] max-h-[750px]:leading-[28px] md:text-[36px] lg:text-[52px] md:leading-[42px] lg:leading-[56px] font-bold md:font-medium"
-          style="font-family: 'OPTIFutura-ExtraBlackCond', sans-serif; letter-spacing: 0;"
+          class="mb-3 max-h-[750px]:mb-2 tracking-tight text-white w-full max-w-full md:max-w-[650px] wallet-heading"
         >
           <span data-i18n="wallet.detail.title"></span>
         </h1>
@@ -126,7 +125,7 @@ const dollarIcon = "/common/doller.png";
 
         <!-- Features List -->
         <ul
-          class="space-y-2 max-h-[750px]:space-y-2.5 mr-20 mb-16 max-h-[750px]:mb-3 w-[259px] md:w-full flex flex-col items-start md:items-start pl-0 md:pl-2 text-[14px] max-h-[750px]:text-[13px] leading-[100%] md:text-[16px] lg:text-[22px] md:leading-[100%]"
+          class="space-y-2 max-h-[750px]:space-y-2.5 mr-20 mb-8 max-h-[750px]:mb-3 w-[259px] md:w-full flex flex-col items-start md:items-start pl-0 md:pl-2 text-[14px] max-h-[750px]:text-[13px] leading-[100%] md:text-[16px] lg:text-[22px] md:leading-[100%]"
           style="font-family: 'Neometric', sans-serif; font-weight: 400; letter-spacing: 0;"
         >
           <li class="flex items-center gap-3 text-white lg:mb-2">
@@ -329,7 +328,7 @@ const dollarIcon = "/common/doller.png";
     .wallet-heading {
       width: 100%;
       font-family: "OPTIFutura-ExtraBlackCond", sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
+      font-size: clamp(24px, 5vw, 64px);
       line-height: 1.1;
       font-weight: 500;
     }
@@ -382,7 +381,7 @@ const dollarIcon = "/common/doller.png";
   /* Medium height reduction (e.g., 700px - 900px) */
   @media (min-width: 768px) and (max-height: 900px) {
     .wallet-detail-wrap main {
-      padding-top: 150px !important;
+      padding-top: 160px !important;
     }
     .wallet-heading {
       font-size: clamp(28px, 3.5vw, 42px) !important;
@@ -428,7 +427,7 @@ const dollarIcon = "/common/doller.png";
 
   @media (min-width: 768px) and (max-height: 600px) {
     .wallet-detail-wrap main {
-      padding-top: 100px !important;
+      padding-top: 120px !important;
     }
   }
 </style>

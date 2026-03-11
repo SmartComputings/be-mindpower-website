@@ -27,7 +27,7 @@ const { welcomeText, mainTitle, description } = Astro.props;
 <style>
   .hero-content {
     position: absolute;
-    top: 12%;
+    top: clamp(80px, 12%, 120px);
     left: 0;
     width: 100%;
     height: 46%;

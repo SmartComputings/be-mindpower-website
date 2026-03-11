@@ -1,259 +1,255 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/common/Header.astro";
+import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
 <Layout
-  title="BeMind Power - Sobre Nosotros"
-  description="Conoce al equipo detrás de BeMind Power. Creemos en una vida digital más simple."
-  bodyClass="sobre-nosotros-page"
+  title="BeMind Power - Apps"
+  description="BeMind Power: Una sola puerta a cientos de soluciones."
+  bodyClass="apps-page"
 >
-  <Header currentPath="/Aboutus" />
+  <div class="apps-page-wrap relative min-h-[100dvh] w-full">
+    <Header
+      currentPath="/apps"
+      pageTitle="Una sola app"
+      pageTitleKey="apps.hero.titleLine1"
+    />
 
-  <section class="about-hero">
-    <!-- Background -->
-    <div class="about-bg">
-      <div class="about-bg-base"></div>
-      <div class="about-glow"></div>
-    </div>
+    <!-- Layout Mobile: estructura separada para mejor control -->
+    <div class="apps-mobile-layout">
+      <!-- Video de fondo (o imagen de fondo si no hay video específico) -->
+      <div class="apps-mobile-bg">
+        <div class="apps-mobile-overlay"></div>
+        <div class="apps-mobile-glow"></div>
+      </div>
 
-    <!-- Logo -->
-    <div class="about-logo">
-      <img src="/detailPageImages/LOGOBLANCO.svg" alt="BeMind Power" />
-    </div>
+      <!-- Spacer for Header Clearance -->
+      <div class="apps-mobile-spacer"></div>
 
-    <!-- Content -->
-    <div class="about-content">
-      <h1 class="about-title" data-i18n-html="about.title">
-        Creemos en una vida digital<br />más simple.
-      </h1>
-      <p class="about-subtitle" data-i18n="about.subtitle">
-        Construimos un ecosistema que conecta personas, negocios y servicios en
-        una sola app.
-      </p>
-      <p class="about-description" data-i18n="about.description">
-        Nuestro equipo está formado por creadores, ingenieros y diseñadores que
-        comparten una misma visión: hacer que cada mensaje, pago o interacción
-        sea más fácil y seguro.
-      </p>
+      <!-- Main centered content -->
+      <div class="apps-mobile-main">
+        <!-- Slider arriba -->
+        <div class="apps-mobile-slider" id="slider">
+          <FeatureSlider initialIndex={3} />
+        </div>
+
+        <!-- Contenido inferior: título + botones -->
+        <div class="apps-mobile-content">
+          <div class="apps-mobile-text">
+            <h1 class="apps-title">
+              <span
+                id="hero-title-line1"
+                class="apps-title-line1"
+                data-i18n="apps.hero.titleLine1">Una sola app</span
+              >
+              <span
+                id="hero-title-line2"
+                class="apps-title-line2"
+                data-i18n="apps.hero.titleLine2">Cientos de soluciones</span
+              >
+            </h1>
+            <p
+              id="hero-subtitle"
+              class="apps-subtitle"
+              data-i18n="apps.hero.subtitle"
+            >
+              Una sola puerta a cientos de soluciones. Accede a todas las apps que necesitas desde un solo lugar.
+            </p>
+          </div>
+
+          <div class="apps-mobile-buttons">
+            <a
+              id="hero-cta-button"
+              href="/detailsPages/appsdetails"
+              class="apps-cta"
+              data-i18n="apps.hero.cta">Ver Más</a
+            >
+            <div class="apps-badges">
+              <a
+                href="#"
+                onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+                aria-label="Download on the App Store"
+                class="coming-soon-trigger apps-store-btn"
+              >
+                <img
+                  src="/detailPageImages/app-store-badge.svg"
+                  alt="Download on the App Store"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
+                class="apps-store-btn"
+                aria-label="Get it on Google Play"
+              >
+                <img
+                  src="/detailPageImages/google-play-badge.svg"
+                  alt="Get it on Google Play"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 </Layout>
 
 <style is:global>
-  body.sobre-nosotros-page {
+  body.apps-page {
     background: #000000;
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
   }
-</style>
 
-<style>
-  .about-hero {
+  .apps-mobile-layout {
     position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 100dvh;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #0b0245;
+  }
+
+  /* Spacer for fixed Header */
+  .apps-mobile-spacer {
+    flex: 0 0 auto;
+    height: clamp(120px, 15vh, 180px);
+    width: 100%;
+  }
+
+  /* Main box that centers its children vertically */
+  .apps-mobile-main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    position: relative;
+    z-index: 10;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  .apps-mobile-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/common/welcomebg.png");
+    background-size: cover;
+    background-position: center top;
+  }
+  .apps-mobile-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 2, 69, 0.2) 0%,
+      rgba(11, 2, 69, 0.6) 80%,
+      rgba(11, 2, 69, 1) 100%
+    );
+    z-index: 1;
+  }
+
+  .apps-mobile-slider {
+    width: 100%;
+    height: clamp(160px, 30vh, 260px);
+    margin-bottom: clamp(2.5rem, 8vh, 5.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  .apps-mobile-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5%;
+    gap: clamp(0.3rem, 1.2vh, 1rem);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  }
+
+  /* Typography & Buttons */
+  .apps-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    gap: 0.1rem;
+  }
+  .apps-title-line1 {
+    font-family: "OPTIFutura-ExtraBlackCond", sans-serif;
+    font-size: clamp(24px, 7vw, 38px);
+    font-weight: 900;
+    color: #fff;
+  }
+  .apps-title-line2 {
+    font-family: "Neometric", sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    font-weight: 700;
+    color: #fff;
+  }
+  .apps-subtitle {
+    color: #fff;
+    font-family: "Neometric", sans-serif;
+    font-size: clamp(11px, 3.2vw, 15px);
+    text-align: center;
+    max-width: 90%;
+    line-height: 1.3;
+  }
+
+  .apps-mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .apps-cta {
+    background: #1929ff;
+    color: #fff;
+    height: 44px;
+    width: min(240px, 70vw);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .apps-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .apps-store-btn {
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 42px;
+    width: min(240px, 70vw);
+    border-radius: 50px;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
-
-  /* ── Background ── */
-  .about-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
-    background-color: #030014;
+  .apps-store-btn img {
+    height: 26px;
   }
 
-  .about-bg-base {
-    position: absolute;
-    inset: 0;
-    background-color: #000000;
-    background-image: url("/common/welcomebg.png");
-    background-size: 100% 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.98;
-  }
-
-  @media (max-width: 1024px) {
-    .about-bg-base {
-      background-image: url("/common/contactbgr.png");
-    }
-  }
-
-  .about-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(1400px, 150vw);
-    height: min(1400px, 150vw);
-    background: radial-gradient(
-      circle,
-      rgba(25, 41, 255, 0.35) 0%,
-      rgba(25, 41, 255, 0.15) 35%,
-      transparent 65%
-    );
-    filter: blur(120px);
-    z-index: 1;
-    animation: glowPulse 4s ease-in-out infinite alternate;
-  }
-
-  /* ── Logo ── */
-  .about-logo {
-    position: relative;
-    z-index: 10;
-    margin-bottom: 2rem;
-    animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .about-logo img {
-    width: clamp(190px, 18vw, 260px);
-    height: auto;
-  }
-
-  /* ── Content ── */
-  .about-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    max-width: 1000px;
-    padding: 0 5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .about-title {
-    font-family: "Neometric", "Inter", sans-serif;
-    font-size: clamp(24px, 3.2vw, 44px);
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.15;
-    margin: 0;
-    letter-spacing: 0.01em;
-    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-  }
-
-  .about-subtitle {
-    font-family: "Neometric", "Inter", sans-serif;
-    font-size: clamp(16px, 1.8vw, 28px);
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.5;
-    margin: 0;
-    max-width: 640px;
-    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
-  }
-
-  .about-description {
-    font-family: "Neometric", "Inter", sans-serif;
-    font-size: clamp(12px, 1.1vw, 18px);
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 540px;
-    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .about-glow {
-      width: min(1000px, 140vw);
-      height: min(1000px, 140vw);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .about-content {
-      gap: 1.25rem;
-    }
-
-    .about-glow {
-      width: min(800px, 160vw);
-      height: min(800px, 160vw);
-      filter: blur(80px);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .about-content {
-      gap: 1rem;
-    }
-
-    .about-logo img {
-      width: 200px;
-    }
-
-    .about-description {
-      color: #ffffff;
-      font-weight: 400;
-    }
-
-    .about-glow {
-      filter: blur(60px);
-    }
-  }
-
-  /* ── Animations ── */
-  @keyframes scaleIn {
+  @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: scale(0.6);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes fadeSlideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
-    }
-  }
-
-  @keyframes glowPulse {
-    from {
-      opacity: 0.7;
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .about-logo,
-    .about-title,
-    .about-subtitle,
-    .about-description,
-    .about-glow {
-      animation: none !important;
-    }
-  }
-</style>
-
-<style is:global>
-  @media (max-width: 768px) {
-    .sobre-nosotros-page header a[href="/"] {
-      display: none !important;
     }
   }
 </style>

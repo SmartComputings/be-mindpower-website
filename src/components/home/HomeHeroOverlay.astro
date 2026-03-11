@@ -64,7 +64,7 @@ const {
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
-    padding-top: clamp(80px, 12vh, 120px);
+    padding-top: clamp(110px, 12vh, 140px);
     padding-left: 6.4%;
     padding-right: 6.4%;
     padding-bottom: clamp(60px, 8vh, 100px);
@@ -86,19 +86,30 @@ const {
   .home-hero-phone-wrap {
     flex: 0 0 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Center vertically against the hero text */
     justify-content: flex-end;
     margin-top: 0;
+    margin-left: max(3rem, 5vw); /* Added left margin to main container */
     animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
+  /* Desktop size (1663px+) remains largr */
   .home-hero-smartphone {
-    width: min(420px, 24vw);
+    width: clamp(380px, 28vw, 600px); /* Reduced significantly */
     height: auto;
-    max-height: clamp(400px, 60vh, 750px);
+    max-height: clamp(600px, 85vh, 850px); /* Reduced significantly */
     object-fit: contain;
-    object-position: top right;
-    margin-right: -1rem;
+    object-position: center right;
+    margin-right: -2rem; 
+  }
+
+  /* Laptop screens (1025px - 1662px): Reduce size a bit more per user feedback */
+  @media (min-width: 1025px) and (max-width: 1662px) {
+    .home-hero-smartphone {
+      width: clamp(330px, 27vw, 550px); /* Reduced significantly for laptops */
+      max-height: 80vh;
+      margin-right: -1.5rem;
+    }
   }
 
   @media (max-width: 1024px) {
