@@ -102,6 +102,18 @@ const {
     }
   }
 
+  /* Tablet specific adjustments */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-phone {
+      top: 45%;
+      height: 55%;
+    }
+    .hero-phone img {
+      width: clamp(600px, 75vw, 900px) !important;
+      max-width: 85vw !important;
+    }
+  }
+
   /* Mobile: new phone image takes 50% height */
   @media (max-width: 768px) {
     .hero-phone {
@@ -112,8 +124,8 @@ const {
     }
 
     .hero-phone img {
-      width: 120% !important;
-      max-width: 130% !important;
+      width: 70% !important;
+      max-width: 80% !important;
       height: auto;
       max-height: 100%;
       object-fit: contain;
@@ -127,8 +139,8 @@ const {
       margin-top: 2rem;
     }
     .hero-phone img {
-      width: 130% !important;
-      max-width: 140% !important;
+      width: 75% !important;
+      max-width: 85% !important;
     }
   }
 </style>

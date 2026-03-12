@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/common/Header.astro";
+import HomeHero from "../components/home/HomeHero.astro";
 import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 ---
 
@@ -15,6 +16,26 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       pageTitle="Una sola app"
       pageTitleKey="apps.hero.titleLine1"
     />
+
+    <!-- Layout Desktop: uses HomeHero with video and Apps phone, slider starts at Apps (index 3) -->
+    <div class="apps-desktop-layout">
+      <HomeHero
+        transitionName="phone-morph-apps"
+        videoSrc="/vedioes/an4.mp4"
+        phoneSrc="/sliderImages/s4.png"
+        titleLine1="Una sola app"
+        titleLine2="Cientos de soluciones"
+        subtitle="Una sola puerta a cientos de soluciones. Accede a todas las apps que necesitas desde un solo lugar."
+        ctaText="Ver Más"
+        ctaHref="/detailsPages/appsdetails"
+        titleLine1Key="apps.hero.titleLine1"
+        titleLine2Key="apps.hero.titleLine2"
+        subtitleKey="apps.hero.subtitle"
+        ctaKey="apps.hero.cta"
+      >
+        <FeatureSlider initialIndex={3} />
+      </HomeHero>
+    </div>
 
     <!-- Layout Mobile: estructura separada para mejor control -->
     <div class="apps-mobile-layout">
@@ -101,17 +122,41 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     overflow-x: hidden;
   }
 
-  .apps-mobile-layout {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100dvh;
-    height: 100vh;
-    overflow: hidden;
-    box-sizing: border-box;
-    background: #0b0245;
+  /* Desktop: show normal layout, hide mobile */
+  .apps-desktop-layout {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
   }
+
+  .apps-mobile-layout {
+    display: none;
+  }
+
+  /* ===== MOBILE + TABLETS TACTILE ===== */
+  @media screen and (max-width: 768px),
+    screen and (min-width: 769px) and (max-width: 1239px) and (hover: none) and (pointer: coarse),
+    screen and (min-width: 769px) and (max-width: 1239px) {
+    body.apps-page {
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+    .apps-desktop-layout {
+      display: none;
+    }
+
+    .apps-mobile-layout {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100dvh;
+      height: 100vh;
+      overflow: hidden;
+      box-sizing: border-box;
+      background: #0b0245;
+    }
 
   /* Spacer for fixed Header */
   .apps-mobile-spacer {
@@ -241,6 +286,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   .apps-store-btn img {
     height: 26px;
   }
+}
 
   @keyframes fadeUp {
     from {

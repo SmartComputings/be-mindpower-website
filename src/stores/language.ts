@@ -213,6 +213,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'comingSoon.title': '¡Próximamente!',
     'comingSoon.description': 'Nuestra aplicación para iOS estará disponible muy pronto en la App Store. ¡Mantente atento!',
     'comingSoon.button': 'Entendido',
+    'back.button': 'Atrás',
   },
   en: {
     'finanzas.hero.titleLine1': 'A.I. Finanzas',
@@ -397,6 +398,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'comingSoon.title': 'Coming Soon!',
     'comingSoon.description': 'Our iOS app will be available very soon on the App Store. Stay tuned!',
     'comingSoon.button': 'Understood',
+    'back.button': 'Back',
   },
   pt: {
 
@@ -588,6 +590,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'comingSoon.title': 'Em breve!',
     'comingSoon.description': 'Nosso aplicativo para iOS estará disponível muito em breve na App Store. Fique ligado!',
     'comingSoon.button': 'Entendi',
+    'back.button': 'Voltar',
   },
   zh: {
     'finanzas.hero.titleLine1': 'A.I. 金融',
@@ -774,6 +777,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'comingSoon.title': '即将推出！',
     'comingSoon.description': '我们的 iOS 应用程序即将登陆 App Store。敬请期待！',
     'comingSoon.button': '明白了',
+    'back.button': '返回',
   },
   ar: {
     'finanzas.hero.titleLine1': 'A.I. المالية',
@@ -959,6 +963,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'comingSoon.title': 'قريباً!',
     'comingSoon.description': 'سيكون تطبيق iOS الخاص بنا متاحاً قريباً جداً على App Store. ابق متيقظاً!',
     'comingSoon.button': 'مفهوم',
+    'back.button': 'رجوع',
   }
 };
 
