@@ -65,6 +65,13 @@ const dollarIcon = "/common/doller.png";
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
+          <!-- Mobile Back Button -->
+          <a
+            href="/chat"
+            class="back-mobile-btn w-[238px] h-[35px] md:hidden bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-[50px] flex items-center justify-center font-bold text-[14px] mb-2 transition-colors shadow-[0_0_15px_rgba(29,78,216,0.6)] border border-white/10"
+          >
+            Atrás
+          </a>
           <a
             href="#"
             onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
@@ -194,7 +201,7 @@ const dollarIcon = "/common/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="back-arrow inline-flex absolute top-[90px] md:top-[150px] left-4 md:left-[vw] lg:left-[15vw] z-[1001] text-white transition-colors p-3 rounded-full bg-[#0A0A1B] hover:bg-[#1a1a2e] shadow-lg border border-white/10"
+      class="back-arrow hidden md:inline-flex absolute md:top-[120px] lg:top-[180px] md:left-[10vw] lg:left-[22vw] z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"

@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 // Images
 const bannerImg = "/common/chat/banner.png";
 const mobileBannerImg = "/common/mobileview.png";
-const phoneImg = "/common/aifinance.png";
+const phoneImg = "/sliderImages/s9.png";
 const googlePlay = "/common/chat/googleplay.png";
 const appleStore = "/common/chat/apple.png";
 
@@ -67,6 +67,13 @@ const dollarIcon = "/common/doller.png";
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
+          <!-- Mobile Back Button -->
+          <a
+            href="/chat"
+            class="back-mobile-btn w-[238px] h-[35px] md:hidden bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-[50px] flex items-center justify-center font-bold text-[14px] mb-2 transition-colors shadow-[0_0_15px_rgba(29,78,216,0.6)] border border-white/10"
+          >
+            Atrás
+          </a>
           <a
             href="#"
             onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
@@ -98,7 +105,7 @@ const dollarIcon = "/common/doller.png";
         class="relative z-10 w-full flex flex-col items-center justify-end h-full md:h-auto md:justify-center mb-[clamp(-250px,-30vh,-50px)] max-h-[750px]:mb-[clamp(-150px,-20vh,-20px)] md:mb-0 transform scale-y-100 mt-0 md:mt-[clamp(2rem,6vh,5rem)] origin-bottom phone-detail-container"
       >
         <div
-          class="relative w-[115%] max-h-[750px]:w-[100%] md:w-[85%] lg:w-[80%] md:max-w-[520px]"
+          class="relative w-[80%] max-h-[750px]:w-[75%] md:w-[70%] lg:w-[65%] md:max-w-[420px]"
         >
           <img
             src={phoneImg}
@@ -184,7 +191,7 @@ const dollarIcon = "/common/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="hidden md:inline-flex absolute top-20 md:top-[200px] left-4 md:left-40 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      class="back-arrow hidden md:inline-flex absolute md:top-[120px] lg:top-[180px] md:left-[10vw] lg:left-[22vw] z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -323,7 +330,7 @@ const dollarIcon = "/common/doller.png";
       height: 32px !important;
     }
     .phone-detail-container {
-      max-width: 35% !important;
+      max-width: 30% !important;
       margin-top: 20px !important;
     }
   }
@@ -344,7 +351,7 @@ const dollarIcon = "/common/doller.png";
       margin-bottom: 12px !important;
     }
     .phone-detail-container {
-      max-width: 32% !important;
+      max-width: 28% !important;
     }
   }
 
@@ -370,7 +377,7 @@ const dollarIcon = "/common/doller.png";
       height: 28px !important;
     }
     .phone-detail-container {
-      max-width: 30% !important;
+      max-width: 26% !important;
       margin-top: 25px !important;
     }
   }
