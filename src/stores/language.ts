@@ -10,7 +10,7 @@ export const languages = [
   { code: 'en', label: 'English', flag: '/common/flags/us.svg', dir: 'ltr' },
   { code: 'pt', label: 'Português', flag: '/common/flags/br.svg', dir: 'ltr' },
   { code: 'zh', label: '中文', flag: '/common/flags/cn.svg', dir: 'ltr' },
-  { code: 'ar', label: 'العربية', flag: '/common/flags/sa.svg', dir: 'ltr' }
+  { code: 'ar', label: 'العربية', flag: '/common/flags/sa.svg', dir: 'rtl' }
 ] as const;
 
 // Traducciones
@@ -26,9 +26,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.musica': 'Música',
     'nav.salud-mental': 'Salud Mental',
     'nav.finance': 'Finanzas',
-    'nav.about': 'Sobre nosotros',
-    'nav.contact': 'Contacto',
-    'nav.features': 'Funcionalidades',
     'about.title': 'Creemos en una vida digital<br />más simple.',
     'about.subtitle': 'Construimos un ecosistema que conecta personas, negocios y servicios en una sola app.',
     'about.description': 'Nuestro equipo está formado por creadores, ingenieros y diseñadores que comparten una misma visión: hacer que cada mensaje, pago o interacción sea más fácil y seguro.',
@@ -38,6 +35,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'Correo electrónico',
     'contact.message': 'Mensaje',
     'contact.submit': 'Enviar',
+
     'skip': 'Omitir Intro',
     'menu.open': 'Abrir menú',
     'menu.close': 'Cerrar menú',
@@ -87,61 +85,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'home.hero.title': 'A una experiencia sin precedentes',
     'home.hero.description': '<strong>Aquí no solo tienes una app.</strong> Tienes tu red sin complicaciones: escribe, compra, paga, explora y transforma tu día… con la claridad de <strong>Be Mind Power.</strong>',
     'home.hero.cta': 'Ver Más',
-    // Hero sections for each page
-    'chat.hero.titleLine1': 'Todo empieza',
-    'chat.hero.titleLine2': 'con una conversación',
-    'chat.hero.subtitle': 'Y desde ahí: paga, vende, sana o escucha música. Sin salir del chat.',
-    'chat.hero.cta': 'Ver Más',
-    'apps.hero.titleLine1': 'Una sola app',
-    'apps.hero.titleLine2': 'Cientos de soluciones',
-    'apps.hero.subtitle': 'Una sola puerta a cientos de soluciones. Accede a todas las apps que necesitas desde un solo lugar.',
-    'apps.hero.cta': 'Ver Más',
-    'marketplace.hero.titleLine1': 'Todo lo que quieras',
-    'marketplace.hero.titleLine2': 'en un solo mercado',
-    'marketplace.hero.subtitle': 'Desde productos locales hasta servicios digitales: todo en una sola comunidad.',
-    'marketplace.hero.cta': 'Ver Más',
-    'wallet.hero.titleLine1': 'Tu billetera',
-    'wallet.hero.titleLine2': 'en el bolsillo',
-    'wallet.hero.subtitle': 'Desde productos locales hasta servicios digitales: todo en una sola comunidad.',
-    'wallet.hero.cta': 'Ver Más',
-    'finance.hero.titleLine1': 'Finanzas inteligentes',
-    'finance.hero.titleLine2': 'decisiones poderosas',
-    'finance.hero.subtitle': 'Controla, proyecta y crece con inteligencia artificial.',
-    'finance.hero.cta': 'Ver Más',
-    'nutrition.hero.titleLine1': 'Nutrición inteligente',
-    'nutrition.hero.titleLine2': 'diseñada para ti',
-    'nutrition.hero.subtitle': 'Conecta tus dispositivos, recibe recetas personalizadas.',
-    'nutrition.hero.cta': 'Ver Más',
-    'communities.hero.titleLine1': 'Conecta',
-    'communities.hero.titleLine2': 'con tu comunidad',
-    'communities.hero.subtitle': 'Donde las ideas se convierten en conexiones reales.',
-    'communities.hero.cta': 'Ver Más',
-    'music.hero.titleLine1': 'La música que amas',
-    'music.hero.titleLine2': 'contigo',
-    'music.hero.subtitle': 'El ritmo de tu vida, en tus espacios.',
-    'music.hero.cta': 'Ver Más',
-    // Alias keys used by pages (musica, saludmental, salud, finanzas)
-    'musica.hero.titleLine1': 'La música vive',
-    'musica.hero.titleLine2': 'Escúchala y comparte.',
-    'musica.hero.subtitle': 'Tus canciones, tus playlists y nuevos descubrimientos. Todo en un solo lugar.',
-    'musica.hero.cta': 'Ver Más',
-    'saludmental.hero.titleLine1': 'Salud Mental',
-    'saludmental.hero.titleLine2': 'Tu bienestar importa',
-    'saludmental.hero.subtitle': 'Cuida tu mente con herramientas inteligentes y apoyo profesional.',
-    'saludmental.hero.cta': 'Ver Más',
-    'salud.hero.titleLine1': 'Tu salud',
-    'salud.hero.titleLine2': 'en tus manos',
-    'salud.hero.subtitle': 'Conecta tus dispositivos y monitorea tu bienestar.',
-    'salud.hero.cta': 'Ver Más',
-    'finanzas.hero.titleLine1': 'A.I. Finanzas',
-    'finanzas.hero.titleLine2': 'Tu asesor personal',
-    'finanzas.hero.subtitle': 'Gestión financiera inteligente y personalizada.',
-    'finanzas.hero.cta': 'Ver Más',
-    'health.hero.titleLine1': 'Encuentra calma',
-    'health.hero.titleLine2': 'cuando más la necesitas',
-    'health.hero.subtitle': 'Bienestar emocional con apoyo inteligente.',
-    'health.hero.cta': 'Ver Más',
-    // Detail pages
     'chat.detail.title': 'Imagina tu chat con superpoderes',
     'chat.detail.subtitle': 'No solo escribes: compartes fotos, llamas, mandas archivos y hasta dinero sin salir de la conversación.',
     'chat.detail.feature1': 'Chats privados y seguros',
@@ -167,26 +110,18 @@ const translations: Record<Lang, Record<string, string>> = {
     'apps.detail.feature3': 'Integración con pagos instantáneos',
 
     'apps.detail.feature4': 'Experiencia optimizada según tu país',
-    "nutrition.detail.title": "Conecta tus dispositivos, recibe recetas.",
-    "nutrition.detail.subtitle": "Tecnología que cuida lo que comes.",
-    "nutrition.detail.feature1": "Recomendaciones según ingredientes que tienes",
+    'nutrition.detail.title': 'Conecta tus dispositivos, recibe recetas.',
+    'nutrition.detail.subtitle': '',
+    'nutrition.detail.feature1': 'Recomendaciones según ingredientes que tienes',
     "nutrition.detail.feature2": "Compra lo que falta con un clic",
     "nutrition.detail.feature3": "Planes de alimentación saludables",
-    "nutrition.detail.feature4": "Consultas con expertos",
+    "nutrition.detail.feature4": "",
 
-    "communities.detail.title": "Conéctate con tu comunidad.",
-    "communities.detail.subtitle": "Donde las ideas se convierten en conexiones reales.",
-    "communities.detail.feature1": "Grupos y foros temáticos",
-    "communities.detail.feature2": "Eventos y encuentros locales",
-    "communities.detail.feature3": "Colaboración en tiempo real",
-    "communities.detail.feature4": "Red de apoyo y crecimiento",
-
-    "finance.detail.title": "Tus decisiones, más inteligentes.",
-    "finance.detail.subtitle": "Gestión financiera inteligente y personalizada.",
-    "finance.detail.feature1": "Asistente financiero automático",
-    "finance.detail.feature2": "Ahorros y metas personalizadas",
-    "finance.detail.feature3": "Reportes fáciles de entender",
-    "finance.detail.feature4": "Control total de tus gastos",
+    "communities.detail.title": "Tus decisiones, más inteligentes.",
+    "communities.detail.subtitle": "",
+    "communities.detail.feature1": "Asistente financiero automático",
+    "communities.detail.feature2": "Ahorros y metas personalizadas",
+    "communities.detail.feature3": "Reportes fáciles de entender",
 
     'health.detail.title': 'Encuentra calma cuando más la necesitas.',
     'health.detail.subtitle': '',
@@ -221,6 +156,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'finanzas.hero.subtitle': 'Gestión financiera inteligente y personalizada.',
     'finanzas.hero.cta': 'Ver Más',
     'nav.home': 'Home',
+    'nav.about': 'About us',
+    'nav.contact': 'Contact',
+
+    'nav.features': 'Features',
     'nav.chat': 'Chat',
     'nav.wallet': 'Wallet',
     'nav.marketplace': 'Marketplace',
@@ -230,9 +169,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.musica': 'Music',
     'nav.salud-mental': 'Mental Health',
     'nav.finance': 'Finance',
-    'nav.about': 'About us',
-    'nav.contact': 'Contact',
-    'nav.features': 'Features',
     'about.title': 'We believe in a simpler<br />digital life.',
     'about.subtitle': 'We build an ecosystem that connects people, businesses and services in a single app.',
     'about.description': 'Our team consists of creators, engineers and designers who share the same vision: making every message, payment or interaction easier and safer.',
@@ -242,6 +178,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'Email',
     'contact.message': 'Message',
     'contact.submit': 'Send',
+
     'skip': 'Skip Intro',
     'menu.open': 'Open menu',
     'menu.close': 'Close menu',
@@ -258,10 +195,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'features.finance.description': 'Smart and personalized financial management.',
     'features.finance.cta': 'Manage your\nfinances',
     'features.wallet.title': 'Wallet',
-    'features.wallet.description': 'Your secure and connected digital wallet.',
+    'features.wallet.description': 'Your money, in your hands.  Administra. Envia. Protege',
     'features.wallet.cta': 'Discover your\nnew wallet',
     'features.chat.title': 'Chat',
-    'features.chat.description': 'Secure, instant, and intelligent communication.',
+    'features.chat.description': 'Comunication segura, instantanea e inteligente.',
     'features.chat.cta': 'Discover the\nnew chat',
     'chat.detail.title': 'Imagine your chat with superpowers',
     'chat.detail.subtitle': 'You don\'t just write: share photos, call, send files and even money without leaving the conversation.',
@@ -294,19 +231,23 @@ const translations: Record<Lang, Record<string, string>> = {
     'nutrition.detail.feature3': 'Healthy and easy recipes',
     'nutrition.detail.feature4': 'Expert consultations',
 
-    'communities.detail.title': 'Connect with your community.',
-    'communities.detail.subtitle': 'Where ideas turn into real connections.',
-    'communities.detail.feature1': 'Thematic groups and forums',
-    'communities.detail.feature2': 'Local events and meetups',
-    'communities.detail.feature3': 'Real-time collaboration',
-    'communities.detail.feature4': 'Support and growth network',
+    'health.detail.title': 'Find calm when you need it most.',
+    'health.detail.subtitle': '',
+    'health.detail.feature1': 'Meditation exercises',
+    'health.detail.feature2': '24/7 AI and professional support',
+    'health.detail.feature3': 'Daily content',
 
-    'finance.detail.title': 'Your decisions, made smarter.',
-    'finance.detail.subtitle': 'Intelligent and personalized financial management.',
-    'finance.detail.feature1': 'Automatic financial assistant',
-    'finance.detail.feature2': 'Personalized savings and goals',
-    'finance.detail.feature3': 'Easy-to-understand reports',
-    'finance.detail.feature4': 'Total control of your expenses',
+    'music.detail.title': 'The music you love, with you',
+    'music.detail.subtitle': 'Listen, share and save your playlists. Share what is playing in your app with a single click',
+    'music.detail.feature1': 'Streaming songs and podcasts',
+    'music.detail.feature2': 'Share music in your chats',
+    'music.detail.feature3': 'Collaborative playlists',
+    'music.detail.feature4': 'Integration with your daily activities',
+
+    "communities.detail.title": "Conecta tus dispositivos, recibe recetas.",
+    "communities.detail.feature1": "Recomendaciones según ingredientes que tienes",
+    "communities.detail.feature2": "Compra lo que falta con un clic",
+    "communities.detail.feature3": "Planes de alimentación saludables",
     'features.streaming.title': 'Streaming',
     'features.streaming.description': 'High-quality live content without interruptions.',
     'features.streaming.cta': 'Discover the\nnew streaming',
@@ -317,19 +258,19 @@ const translations: Record<Lang, Record<string, string>> = {
     'features.education.description': 'Learn and grow with personalized content.',
     'features.education.cta': 'Learn\nwith us',
     'features.marketplace.title': 'Marketplace',
-    'features.marketplace.description': 'Buy and sell securely in our global market.',
+    'features.marketplace.description': 'Todo lo gue necesitas, sin salir del ecomsistema. Compra inteligence. Acceso global.',
     'features.marketplace.cta': 'Explore the\nmarketplace',
     'features.apps.title': 'Apps',
-    'features.apps.description': 'A single gateway to hundreds of solutions.',
+    'features.apps.description': 'Uno sola puerta a cientos de solution.',
     'features.apps.cta': 'Experience\nour apps',
     'features.nutrition.title': 'Nutrition',
-    'features.nutrition.description': 'Smart nutrition for your well-being.',
+    'features.nutrition.description': 'Alimentacion inteligente, disenada para ti, Tecnologia que cuida lo que comes.',
     'features.nutrition.cta': 'Improve your\nnutrition',
     'features.communities.title': 'Communities',
-    'features.communities.description': 'Connect with people like you.',
+    'features.communities.description': 'Donede las ideas se convienten en conexiones reales. Habia, comparte y crece con otros.',
     'features.communities.cta': 'Join the\ncommunities',
     'features.music.title': 'Music',
-    'features.music.description': 'Your personalized soundtrack.',
+    'features.music.description': 'El ritmo de tu vida, en tus espacio. Escucha. Descubre. Vibra.',
     'features.music.cta': 'Listen to\nyour music',
     'home.hero.welcome': 'Welcome',
     'home.hero.title': 'To an unprecedented experience',
@@ -403,6 +344,9 @@ const translations: Record<Lang, Record<string, string>> = {
   pt: {
 
     'nav.home': 'Início',
+    'nav.about': 'Sobre nós',
+    'nav.contact': 'Contato',
+    'nav.features': 'Recursos',
     'nav.chat': 'Chat',
     'nav.wallet': 'Wallet',
     'nav.marketplace': 'Marketplace',
@@ -412,9 +356,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.musica': 'Música',
     'nav.salud-mental': 'Saúde Mental',
     'nav.finance': 'Finanças',
-    'nav.about': 'Sobre nós',
-    'nav.contact': 'Contato',
-    'nav.features': 'Recursos',
     'about.title': 'Acreditamos em uma vida digital<br />mais simples.',
     'about.subtitle': 'Construímos um ecossistema que conecta pessoas, negócios et serviços em um único aplicativo.',
     'about.description': 'Nossa equipe é formada por criadores, engenheiros e designers que compartilham a mesma visão: tornar cada mensagem, pagamento ou interação mais fácil e segura.',
@@ -597,6 +538,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'finanzas.hero.titleLine2': '你的个人顾问',
     'finanzas.hero.subtitle': '智能化个性化财务管理。',
     'nav.home': '首页',
+    'nav.about': '关于我们',
+    'nav.contact': '联系我们',
+
+    'nav.features': '功能',
     'nav.chat': '聊天',
     'nav.wallet': '钱包',
     'nav.marketplace': '市场',
@@ -606,9 +551,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.musica': '音乐',
     'nav.salud-mental': '心理健康',
     'nav.finance': '金融',
-    'nav.about': '关于我们',
-    'nav.contact': '联系我们',
-    'nav.features': '功能',
     'about.title': '我们相信更简单的<br />数字生活。',
     'about.subtitle': '我们构建了一个在单一应用程序中连接人、业务和服务的生态系统。',
     'about.description': '我们的团队由创作者、工程师和设计师组成，他们有着共同的愿景：使每条消息、付款或交互变得更加轻松和安全。',
@@ -618,6 +560,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': '电子邮件',
     'contact.message': '信息',
     'contact.submit': '发送',
+
     'skip': '跳过介绍',
     'menu.open': '打开菜单',
     'menu.close': '关闭菜单',
@@ -785,6 +728,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'finanzas.hero.subtitle': 'إدارة مالية ذكية وشخصية.',
     'finanzas.hero.cta': 'تعلم المزيد',
     'nav.home': 'الرئيسية',
+    'nav.about': 'من نحن',
+    'nav.contact': 'اتصل بنا',
+
+    'nav.features': 'المميزات',
     'nav.chat': 'الدردشة',
     'nav.wallet': 'المحفظة',
     'nav.marketplace': 'السوق',
@@ -794,9 +741,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'nav.musica': 'الموسيقى',
     'nav.salud-mental': 'الصحة النفسية',
     'nav.finance': 'المالية',
-    'nav.about': 'من نحن',
-    'nav.contact': 'اتصل بنا',
-    'nav.features': 'المميزات',
     'about.title': 'نحن نؤمن بحياة رقمية<br />أكثر بساطة.',
     'about.subtitle': 'نحن نبني نظاماً يربط الأشخاص والشركات والخدمات في تطبيق واحد.',
     'about.description': 'يتكون فريقنا من مبدعين ومهندسين ومصممين يتشاركون نفس الرؤية: جعل كل رسالة أو دفعة أو تفاعل أسهل وأكثر أماناً.',
@@ -806,6 +750,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'contact.email': 'البريد الإلكتروني',
     'contact.message': 'الرسالة',
     'contact.submit': 'إرسال',
+
     'skip': 'تخطي المقدمة',
     'menu.open': 'فتح القائمة',
     'menu.close': 'إغلاق القائمة',
@@ -974,13 +919,23 @@ const isValidLang = (lang: string): lang is Lang => {
   return ['es', 'en', 'pt', 'zh', 'ar'].includes(lang);
 };
 
+// Detectar idioma del navegador
+const detectBrowserLang = (): Lang => {
+  if (typeof window === 'undefined') return 'en';
+  const browserLang = navigator.languages?.[0] || navigator.language || 'en';
+  const langCode = browserLang.toLowerCase().split('-')[0];
+
+  if (langCode === 'es') return 'es';
+  if (langCode === 'pt') return 'pt';
+  if (langCode === 'zh') return 'zh';
+  if (langCode === 'ar') return 'ar';
+  return 'en';
+};
+
 // Store persistente para el idioma
-export const $lang = persistentAtom<Lang>('bm_lang', 'es', {
+export const $lang = persistentAtom<Lang>('lang', detectBrowserLang(), {
   encode: (value) => value,
-  decode: (value) => {
-    console.log('Decoding language from storage, value found:', value);
-    return isValidLang(value) ? value : 'es';
-  }
+  decode: (value) => (isValidLang(value) ? value : 'en')
 });
 
 // Obtiene traducción
@@ -1000,7 +955,6 @@ export const getCurrentLanguage = () => {
 
 // Acciones del store
 export const setLanguage = (lang: Lang): void => {
-  console.log('setLanguage called with:', lang);
   if (isValidLang(lang)) {
     $lang.set(lang);
     // Actualizar atributo lang del documento (sin cambiar dirección)
@@ -1012,106 +966,30 @@ export const setLanguage = (lang: Lang): void => {
   }
 };
 
-// Función para aplicar traducciones a todos los elementos del DOM
-export const refreshTranslations = (lang: Lang = $lang.get()): void => {
-  if (typeof document === 'undefined') return;
-
-  console.log('[i18n] refreshTranslations called with lang:', lang);
-
-  // Actualizar lang del documento
-  document.documentElement.lang = lang;
-  document.documentElement.dir = 'ltr';
-
-  // Actualizar elementos con data-i18n (texto plano)
-  document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-    const key = el.getAttribute('data-i18n');
-    const fallback = el.getAttribute('data-fallback');
-
-    // Debug logging
-    if (el.id === 'mobile-page-title') {
-      console.log('Header title element found:', { key, lang, fallback, hasTranslation: !!(key && translations[lang]?.[key]) });
-    }
-
-    if (key && translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    } else if (fallback) {
-      el.textContent = fallback;
-    }
-    // Reveal hidden elements after translation
-    if (el.classList.contains('opacity-0')) {
-      el.classList.remove('opacity-0');
-      el.classList.add('opacity-100');
-    }
-  });
-
-  // Actualizar elementos con HTML
-  document.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-html');
-    if (key && translations[lang] && translations[lang][key]) {
-      el.innerHTML = translations[lang][key];
-    }
-  });
-
-  // Actualizar placeholders
-  document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-i18n-placeholder]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (key && translations[lang] && translations[lang][key]) {
-      el.placeholder = translations[lang][key];
-    }
-  });
-
-  // Actualizar opciones de idioma seleccionadas (aria-selected)
-  document.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
-    const elLang = el.getAttribute('data-lang');
-    el.setAttribute('aria-selected', String(elLang === lang));
-  });
-
-  // Emitir evento personalizado para otros componentes
-  window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
-};
-
-// Inicialización global
+// Inicialización (actualiza el DOM cuando el store cambia)
 if (typeof window !== 'undefined') {
-  // Expose translations to window for early inline scripts
-  // @ts-ignore
-  window.__bmTranslations = translations;
-
-  // Suscribirse a cambios del store para re-traducir dinámicamente
+  // Suscribirse a cambios del idioma
   $lang.subscribe((lang) => {
-    console.log('[i18n] $lang.subscribe fired with:', lang);
-    refreshTranslations(lang);
+    // Actualizar lang del documento (mantener siempre LTR)
+    document.documentElement.lang = lang;
+    document.documentElement.dir = 'ltr';
+
+    // Actualizar todos los elementos con data-i18n
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (key && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    // Actualizar opciones de idioma seleccionadas
+    document.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
+      const elLang = el.getAttribute('data-lang');
+      const isActive = elLang === lang;
+      el.setAttribute('aria-selected', String(isActive));
+    });
+
+    // Emitir evento personalizado
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
   });
-
-  // IMPORTANTE: Re-traducir al cargar cada pág (necesario para View Transitions)
-  document.addEventListener('astro:page-load', () => {
-    console.log('[i18n] astro:page-load fired, current lang:', $lang.get());
-    refreshTranslations();
-  });
-
-  // Helper global para elementos inyectados dinámicamente después del load
-  // @ts-ignore
-  window.__translateElement = (el: HTMLElement) => {
-    const lang = $lang.get();
-    const key = el.getAttribute('data-i18n');
-    const htmlKey = el.getAttribute('data-i18n-html');
-    const placeholderKey = el.getAttribute('data-i18n-placeholder');
-
-    if (key && translations[lang]?.[key]) {
-      el.textContent = translations[lang][key];
-    } else if (key && translations.en[key]) {
-      el.textContent = translations.en[key];
-    }
-
-    if (htmlKey && translations[lang]?.[htmlKey]) {
-      el.innerHTML = translations[lang][htmlKey];
-    } else if (htmlKey && translations.en[htmlKey]) {
-      el.innerHTML = translations.en[htmlKey];
-    }
-
-    if (placeholderKey && translations[lang]?.[placeholderKey]) {
-      (el as HTMLInputElement).placeholder = translations[lang][placeholderKey];
-    } else if (placeholderKey && translations.en[placeholderKey]) {
-      (el as HTMLInputElement).placeholder = translations.en[placeholderKey];
-    }
-  };
 }
