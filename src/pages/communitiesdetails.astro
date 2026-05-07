@@ -5,10 +5,10 @@ import Layout from "../layouts/Layout.astro";
 // Images
 const bannerImg = "/common/chat/banner.png";
 const mobileBannerImg = "/common/mobileview.png";
-const phoneImg = "/common/smartphonecomunicadae.png";
+const phoneImg = "/sliderImages/s6.png";
 
 const heartIcon = "/common/heartLogo.png";
-const dollarIcon = "/common/icons/doller.png";
+const dollarIcon = "/common/doller.png";
 ---
 
 <Layout
@@ -17,7 +17,7 @@ const dollarIcon = "/common/icons/doller.png";
   bodyClass="communities-detail-page"
 >
   <div
-    class="communities-detail-wrap relative min-h-screen w-full overflow-x-hidden bg-[#0A0A1B]"
+    class="communities-detail-wrap relative h-[100dvh] w-full overflow-hidden bg-[#0A0A1B]"
   >
     <Header
       currentPath="/communitiesdetails"
@@ -26,7 +26,7 @@ const dollarIcon = "/common/icons/doller.png";
     />
 
     <main
-      class="relative w-full md:min-h-screen md:h-auto pt-24 max-h-[750px]:pt-20 md:pt-4 px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end md:justify-center gap-auto md:gap-20 z-10 overflow-hidden md:overflow-visible max-h-[750px]:h-auto max-h-[750px]:overflow-y-auto"
+      class="relative w-full h-[100dvh] pt-[70px] md:pt-[180px] px-0 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-end justify-between md:justify-center gap-auto md:gap-10 lg:gap-20 z-10 overflow-hidden"
     >
       <!-- Background Effect -->
       <div class="absolute inset-0 z-0">
@@ -38,7 +38,7 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Helper Icons (Mobile Only) -->
       <div
-        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-hidden"
+        class="absolute inset-x-0 bottom-0 top-0 z-20 pointer-events-none md:hidden overflow-visible"
       >
         <!-- Heart Icon (Left) - Overlapping phone, blurred -->
         <img
@@ -51,7 +51,7 @@ const dollarIcon = "/common/icons/doller.png";
         <img
           src={dollarIcon}
           alt=""
-          class="absolute bottom-[-20px] right-[-20px] w-20 z-5 h-auto blur-[3px] scale-190"
+          class="absolute bottom-[-20px] right-[-20px] w-20 z-[5] h-auto blur-[3px] scale-190"
         />
 
         <!-- Overlay for Phone & Icons -->
@@ -61,14 +61,23 @@ const dollarIcon = "/common/icons/doller.png";
           class="absolute bottom-[-0px] left-1/2 -translate-x-1/2 w-[150%] max-w-[600px] h-auto z-10 pointer-events-none mix-blend-screen"
         />
 
-        <!-- Mobile Buttons (Moved here for z-index visibility) -->
+        <!-- Mobile Buttons -->
         <div
           class="absolute bottom-[5%] max-h-[750px]:bottom-[2%] left-0 right-0 flex flex-col items-center gap-[8px] md:hidden z-30 pointer-events-auto"
         >
+          <!-- Mobile Back Button -->
+          <a
+            href="/chat"
+            class="back-mobile-btn w-[238px] h-[35px] md:hidden bg-[#1D4ED8] hover:bg-[#1E40AF] text-white rounded-[50px] flex items-center justify-center font-bold text-[14px] mb-2 transition-colors shadow-[0_0_15px_rgba(29,78,216,0.6)] border border-white/10"
+            data-i18n="back.button"
+          >
+            Atrás
+          </a>
           <a
             href="#"
-            class="apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
             aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
           >
             <img
               src="/detailPageImages/app-store-badge.svg"
@@ -77,7 +86,7 @@ const dollarIcon = "/common/icons/doller.png";
             />
           </a>
           <a
-            href="#"
+            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
             class="apps-store-btn w-[238px] h-[30px] !bg-black/90 !border-white/20 !backdrop-blur-xl"
             aria-label="Get it on Google Play"
           >
@@ -92,23 +101,23 @@ const dollarIcon = "/common/icons/doller.png";
 
       <!-- Left Content: Smartphone -->
       <div
-        class="relative z-10 w-full flex flex-col items-center ml-0 md:ml-12 mt-0 md:mt-16 justify-end h-full md:h-auto md:justify-center mb-[-230px] max-h-[750px]:mb-[-50px] md:mb-0 transform scale-y-100 origin-bottom phone-detail-container"
+        class="relative z-10 w-full flex flex-col items-center justify-end h-full md:h-auto md:justify-center mb-[clamp(-250px,-30vh,-50px)] max-h-[750px]:mb-[clamp(-150px,-20vh,-20px)] md:mb-20 transform scale-y-100 mt-0 md:mt-[clamp(2rem,6vh,5rem)] origin-bottom phone-detail-container"
       >
         <div
-          class="relative w-[112%] max-h-[750px]:w-[110%] md:w-full md:max-w-[800px]"
+          class="relative w-[80%] max-h-[750px]:w-[75%] md:w-[70%] lg:w-[65%] md:max-w-[420px]"
         >
           <img
             src={phoneImg}
             alt="Communities Interface"
             class="w-full h-auto drop-shadow-2xl"
-            transition:name="phone-morph"
+            transition:name="phone-morph-communities"
           />
         </div>
       </div>
 
       <!-- Right Content: Text & Buttons -->
       <div
-        class="relative z-10 w-full md:max-w-2xl text-white flex flex-col items-center md:items-start mr-0 md:mr-16 mt-[30px] max-h-[750px]:mt-6 md:mt-0 text-left md:text-left px-6 md:px-0"
+        class="relative z-10 w-full md:max-w-xl lg:max-w-2xl text-white flex flex-col items-start md:items-start ml-0 md:ml-4 lg:ml-12 mr-0 md:mr-10 lg:mr-0 mt-0 md:mt-0 text-left md:text-left px-6 md:px-0"
       >
         <h1 class="mb-6 tracking-tight text-white communities-heading">
           <span data-i18n="communities.detail.title"
@@ -118,7 +127,7 @@ const dollarIcon = "/common/icons/doller.png";
 
         <!-- Features List -->
         <ul
-          class="space-y-1 md:space-y-3 mb-10 w-[259px] md:w-full flex flex-col items-start md:items-start pl-0 md:pl-2 communities-list"
+          class="space-y-1 md:space-y-3 mb-10 w-full md:w-full flex flex-col items-start md:items-start pl-0 md:pl-2 communities-list"
         >
           <li class="flex items-center gap-3 text-white">
             <span class="text-white text-xl md:hidden">•</span>
@@ -150,21 +159,26 @@ const dollarIcon = "/common/icons/doller.png";
           </li>
         </ul>
 
-        <!-- Download Buttons (Desktop) -->
+        <!-- Download Buttons -->
         <div
           class="apps-badges w-full hidden md:flex flex-col items-center md:items-center gap-6"
         >
           <a
             href="#"
-            class="apps-store-btn"
+            onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
             aria-label="Download on the App Store"
+            class="coming-soon-trigger apps-store-btn"
           >
             <img
               src="/detailPageImages/app-store-badge.svg"
               alt="Download on the App Store"
             />
           </a>
-          <a href="#" class="apps-store-btn" aria-label="Get it on Google Play">
+          <a
+            href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
+            class="apps-store-btn"
+            aria-label="Get it on Google Play"
+          >
             <img
               src="/detailPageImages/google-play-badge.svg"
               alt="Get it on Google Play"
@@ -177,7 +191,7 @@ const dollarIcon = "/common/icons/doller.png";
     <!-- Back Arrow Icon -->
     <a
       href="/chat"
-      class="back-arrow hidden md:inline-flex absolute top-[120px] md:top-[160px] left-4 md:left-48 z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
+      class="back-arrow hidden md:inline-flex absolute md:top-[280px] md:left-[8vw] lg:left-[12vw] z-[1001] text-white hover:text-[#4F46E5] transition-colors p-3 border border-transparent hover:border-[#4F46E5]/50 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20"
     >
       <svg
         width="24"
@@ -261,8 +275,6 @@ const dollarIcon = "/common/icons/doller.png";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 238px;
-    height: 30px;
     padding: 0 18px;
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -275,15 +287,25 @@ const dollarIcon = "/common/icons/doller.png";
     animation: blink-shadow 2s infinite;
   }
 
+  @media (min-width: 768px) {
+    .apps-store-btn {
+      width: 250px;
+      height: 70px;
+    }
+    .apps-store-btn img {
+      height: 50px;
+    }
+  }
+
   .apps-store-btn:hover,
   .apps-store-btn:active {
     transform: scale(1.05);
-    animation: none; /* Stop blinking on hover */
+    animation: none;
     box-shadow: 0 6px 20px rgba(55, 27, 190, 0.8);
   }
 
   .apps-store-btn img {
-    height: 12px;
+    height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -321,7 +343,7 @@ const dollarIcon = "/common/icons/doller.png";
     .communities-heading {
       width: 100%;
       font-family: "OPTIFutura-ExtraBlackCond", sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
+      font-size: clamp(24px, 5vw, 64px);
       line-height: 1.1;
       font-weight: 500;
     }
@@ -335,6 +357,80 @@ const dollarIcon = "/common/icons/doller.png";
       font-size: clamp(16px, 2vw, 24px);
       line-height: 100%;
       font-weight: 400;
+    }
+  }
+
+  /* ===== Tablets & Small Laptops (Landscape) ===== */
+  @media (min-width: 768px) and (max-width: 1280px) {
+    .communities-heading {
+      font-size: clamp(30px, 4vw, 44px) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 12px !important;
+    }
+    .communities-list {
+      font-size: clamp(13px, 1.6vw, 17px) !important;
+      margin-bottom: 12px !important;
+      gap: 5px !important;
+    }
+    .communities-detail-wrap .apps-badges {
+      gap: 12px !important;
+    }
+    .apps-store-btn {
+      width: 190px !important;
+      height: 52px !important;
+    }
+    .apps-store-btn img {
+      height: 32px !important;
+    }
+    .phone-detail-container {
+      max-width: 30% !important;
+      margin-top: 20px !important;
+    }
+  }
+
+  /* Medium height reduction (e.g., 700px - 900px) */
+  @media (min-width: 768px) and (max-height: 900px) {
+    .communities-detail-wrap main {
+      padding-top: 160px !important;
+    }
+    .communities-heading {
+      font-size: clamp(28px, 3.5vw, 48px) !important;
+    }
+    .communities-list {
+      font-size: clamp(14px, 1.6vw, 18px) !important;
+      margin-bottom: 12px !important;
+    }
+    .phone-detail-container {
+      max-width: 28% !important;
+    }
+  }
+
+  /* Aggressive height reduction for short landscapes */
+  @media (min-width: 768px) and (max-height: 700px) {
+    .communities-heading {
+      font-size: clamp(26px, 3.5vw, 36px) !important;
+      margin-bottom: 8px !important;
+    }
+    .communities-list {
+      font-size: clamp(12px, 1.4vw, 14px) !important;
+      margin-bottom: 8px !important;
+    }
+    .apps-store-btn {
+      width: 160px !important;
+      height: 45px !important;
+    }
+    .apps-store-btn img {
+      height: 28px !important;
+    }
+    .phone-detail-container {
+      max-width: 26% !important;
+      margin-top: 25px !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-height: 600px) {
+    .communities-detail-wrap main {
+      padding-top: 120px !important;
     }
   }
 </style>

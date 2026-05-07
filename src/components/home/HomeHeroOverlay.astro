@@ -1,6 +1,6 @@
 ---
 // Capa delantera del home: bloque izquierdo (título, CTA, tiendas) + smartphone. Inspeccionable por separado.
-import HeroHomeLeft from '../welcome/HeroHomeLeft.astro';
+import HeroHomeLeft from "../welcome/HeroHomeLeft.astro";
 
 interface Props {
   phoneSrc?: string;
@@ -13,15 +13,44 @@ interface Props {
   titleLine2Key?: string;
   subtitleKey?: string;
   ctaKey?: string;
+  transitionName?: string;
 }
 
-const { phoneSrc = "/common/smartphone_2%201.png", titleLine1, titleLine2, subtitle, ctaText, ctaHref, titleLine1Key, titleLine2Key, subtitleKey, ctaKey } = Astro.props;
+const {
+  phoneSrc = "/common/smartphone_2%201.png",
+  titleLine1,
+  titleLine2,
+  subtitle,
+  ctaText,
+  ctaHref,
+  titleLine1Key,
+  titleLine2Key,
+  subtitleKey,
+  ctaKey,
+  transitionName = "phone-morph-chat",
+} = Astro.props;
 ---
 
 <div class="home-hero-overlay">
-  <HeroHomeLeft titleLine1={titleLine1} titleLine2={titleLine2} subtitle={subtitle} ctaText={ctaText} ctaHref={ctaHref} titleLine1Key={titleLine1Key} titleLine2Key={titleLine2Key} subtitleKey={subtitleKey} ctaKey={ctaKey} />
+  <HeroHomeLeft
+    titleLine1={titleLine1}
+    titleLine2={titleLine2}
+    subtitle={subtitle}
+    ctaText={ctaText}
+    ctaHref={ctaHref}
+    titleLine1Key={titleLine1Key}
+    titleLine2Key={titleLine2Key}
+    subtitleKey={subtitleKey}
+    ctaKey={ctaKey}
+  />
   <div class="home-hero-phone-wrap">
-    <img id="hero-phone-image" src={phoneSrc} alt="BeMind Power app" class="home-hero-smartphone" transition:name="phone-morph" />
+    <img
+      id="hero-phone-image"
+      src={phoneSrc}
+      alt="BeMind Power app"
+      class="home-hero-smartphone"
+      style={`view-transition-name: ${transitionName}`}
+    />
   </div>
 </div>
 
@@ -35,10 +64,10 @@ const { phoneSrc = "/common/smartphone_2%201.png", titleLine1, titleLine2, subti
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
-    padding-top: max(100px, 12vh);
+    padding-top: clamp(110px, 12vh, 140px);
     padding-left: 6.4%;
     padding-right: 6.4%;
-    padding-bottom: max(80px, 8vh);
+    padding-bottom: clamp(60px, 8vh, 100px);
     max-width: 1728px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -57,18 +86,30 @@ const { phoneSrc = "/common/smartphone_2%201.png", titleLine1, titleLine2, subti
   .home-hero-phone-wrap {
     flex: 0 0 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Center vertically against the hero text */
     justify-content: flex-end;
     margin-top: 0;
+    margin-left: max(3rem, 5vw); /* Added left margin to main container */
     animation: slideFromRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
   }
 
+  /* Desktop size (1663px+) remains largr */
   .home-hero-smartphone {
-    width: min(579px, 33.5vw);
+    width: clamp(380px, 28vw, 600px); /* Reduced significantly */
     height: auto;
-    max-height: min(908px, 81.3vh);
+    max-height: clamp(600px, 85vh, 850px); /* Reduced significantly */
     object-fit: contain;
-    object-position: top right;
+    object-position: center right;
+    margin-right: -2rem; 
+  }
+
+  /* Laptop screens (1025px - 1662px): Reduce size a bit more per user feedback */
+  @media (min-width: 1025px) and (max-width: 1662px) {
+    .home-hero-smartphone {
+      width: clamp(330px, 27vw, 550px); /* Reduced significantly for laptops */
+      max-height: 80vh;
+      margin-right: -1.5rem;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -79,10 +120,6 @@ const { phoneSrc = "/common/smartphone_2%201.png", titleLine1, titleLine2, subti
       padding-left: 5%;
       padding-right: 5%;
       padding-bottom: max(70px, 7vh);
-    }
-
-    .home-hero-phone-wrap {
-      display: none;
     }
 
     .home-hero-overlay :global(.hero-home-left) {
@@ -96,6 +133,10 @@ const { phoneSrc = "/common/smartphone_2%201.png", titleLine1, titleLine2, subti
       padding-top: max(80px, 8vh);
       padding-left: 5%;
       padding-right: 5%;
+    }
+
+    .home-hero-phone-wrap {
+      display: none;
     }
   }
 

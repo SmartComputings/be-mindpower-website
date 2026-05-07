@@ -21,6 +21,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     <!-- Layout Desktop: usa HomeHero con video y phone de Marketplace, slider inicia en Marketplace (index 2) -->
     <div class="marketplace-desktop-layout">
       <HomeHero
+        transitionName="phone-morph-marketplace"
         videoSrc="/vedioes/an3.mp4"
         phoneSrc="/sliderImages/s3.png"
         titleLine1="Compra y vende"
@@ -56,44 +57,71 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
         <div class="marketplace-mobile-glow"></div>
       </div>
 
-      <!-- Slider arriba, inicia en Marketplace (index 2) -->
-      <div class="marketplace-mobile-slider" id="slider">
-        <FeatureSlider initialIndex={2} />
-      </div>
+      <!-- Spacer for Header Clearance -->
+      <div class="marketplace-mobile-spacer"></div>
 
-      <!-- Contenido inferior: título + botones -->
-      <div class="marketplace-mobile-content">
-        <div class="marketplace-mobile-text">
-          <h1 class="marketplace-m-title">
-            <span class="marketplace-m-title-line1">Compra y vende</span>
-            <span class="marketplace-m-title-line2">sin salir del chat</span>
-          </h1>
-          <p class="marketplace-m-subtitle">Desde productos locales hasta servicios digitales: todo en una sola comunidad.</p>
+      <!-- Main centered content -->
+      <div class="marketplace-mobile-main">
+        <!-- Slider arriba, inicia en Marketplace (index 2) -->
+        <div class="marketplace-mobile-slider" id="slider">
+          <FeatureSlider initialIndex={2} />
         </div>
 
-        <div class="marketplace-mobile-buttons">
-          <a href="/app/marketplacedetails" class="marketplace-m-cta">Ver Más</a>
-          <div class="marketplace-m-badges">
-            <a
-              href="#"
-              class="marketplace-m-store-btn"
-              aria-label="Download on the App Store"
+        <!-- Contenido inferior: título + botones -->
+        <div class="marketplace-mobile-content">
+          <div class="marketplace-mobile-text">
+            <h1 class="marketplace-m-title">
+              <span
+                id="hero-title-line1"
+                class="marketplace-m-title-line1"
+                data-i18n="marketplace.hero.titleLine1">Compra y vende</span
+              >
+              <span
+                id="hero-title-line2"
+                class="marketplace-m-title-line2"
+                data-i18n="marketplace.hero.titleLine2">sin salir del chat</span
+              >
+            </h1>
+            <p
+              id="hero-subtitle"
+              class="marketplace-m-subtitle"
+              data-i18n="marketplace.hero.subtitle"
             >
-              <img
-                src="/detailPageImages/app-store-badge.svg"
-                alt="Download on the App Store"
-              />
-            </a>
+              Desde productos locales hasta servicios digitales: todo en una sola
+              comunidad.
+            </p>
+          </div>
+
+          <div class="marketplace-mobile-buttons">
             <a
-              href="#"
-              class="marketplace-m-store-btn"
-              aria-label="Get it on Google Play"
+              id="hero-cta-button"
+              href="/detailsPages/marketplacedetails"
+              class="marketplace-m-cta"
+              data-i18n="marketplace.hero.cta">Ver Más</a
             >
-              <img
-                src="/detailPageImages/google-play-badge.svg"
-                alt="Get it on Google Play"
-              />
-            </a>
+            <div class="marketplace-m-badges">
+              <a
+                href="#"
+                onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+                aria-label="Download on the App Store"
+                class="coming-soon-trigger marketplace-m-store-btn"
+              >
+                <img
+                  src="/detailPageImages/app-store-badge.svg"
+                  alt="Download on the App Store"
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat"
+                class="marketplace-m-store-btn"
+                aria-label="Get it on Google Play"
+              >
+                <img
+                  src="/detailPageImages/google-play-badge.svg"
+                  alt="Get it on Google Play"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -119,10 +147,11 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   }
 
   /* ===== MOBILE + TABLETS TÁCTILES ===== */
-  @media (max-width: 768px),
-    (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
+  @media screen and (max-width: 768px),
+    screen and (min-width: 769px) and (max-width: 1339px) and (hover: none) and (pointer: coarse),
+    screen and (min-width: 769px) and (max-width: 1339px) {
     body.marketplace-page {
-      overflow-x: hidden;
+      overflow: hidden;
       overscroll-behavior: none;
     }
 
@@ -139,9 +168,29 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       width: 100%;
       height: 100dvh;
       height: 100vh;
-      overflow: clip;
+      overflow: hidden;
       box-sizing: border-box;
-      padding-top: calc(70px + env(safe-area-inset-top));
+      background: #0b0245;
+    }
+
+    /* Spacer for fixed Header */
+    .marketplace-mobile-spacer {
+      flex: 0 0 auto;
+      height: clamp(120px, 15vh, 180px);
+      width: 100%;
+    }
+
+    /* Main box that centers its children vertically */
+    .marketplace-mobile-main {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 0;
+      position: relative;
+      z-index: 10;
       padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
     }
 
@@ -157,7 +206,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     /* Video de fondo - solo en area media */
     .marketplace-mobile-bg {
       position: absolute;
-      top: calc(70px + env(safe-area-inset-top));
+      top: calc(0px + env(safe-area-inset-top));
       left: 0;
       right: 0;
       height: clamp(280px, 45vh, 400px);
@@ -167,11 +216,10 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     .marketplace-mobile-video {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      transform: translate(-50%, -50%);
       object-fit: cover;
       object-position: center top;
       opacity: 0.9;
@@ -217,7 +265,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       flex: 0 0 auto;
       min-height: 0;
       padding: 0 5%;
-      gap: clamp(0.8rem, 1.5vh, 1rem);
+      gap: clamp(0.5rem, 1vh, 1rem);
     }
 
     /* Título */
@@ -241,16 +289,16 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       width: 100%;
     }
 
-    .marketplace-m-title-line1 {
+    .marketplace-title-line1 {
       font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-size: clamp(24px, 7vw, 40px);
+      font-size: clamp(20px, 6vw, 40px);
       font-weight: 900;
       letter-spacing: 0.01em;
     }
 
-    .marketplace-m-title-line2 {
+    .marketplace-title-line2 {
       font-family: "Neometric", "Inter", sans-serif;
-      font-size: clamp(14px, 4vw, 24px);
+      font-size: clamp(12px, 3.5vw, 24px);
       font-weight: 700;
       letter-spacing: 0.01em;
     }
@@ -277,18 +325,18 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       width: 100%;
     }
 
-    .marketplace-m-cta {
+    .marketplace-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 2rem;
       width: min(260px, 68vw);
       background: #1929ff;
       color: #fff;
-      font-family: "OPTIFutura-ExtraBlackCond", "Inter", sans-serif;
-      font-weight: 900;
-      font-size: clamp(14px, 3.8vw, 16px);
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: clamp(12px, 3vw, 16px);
       letter-spacing: 0.02em;
       border-radius: 999px;
       text-decoration: none;
@@ -310,12 +358,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
       gap: clamp(0.3rem, 0.6vh, 0.5rem);
     }
 
-    .marketplace-m-store-btn {
+    .marketplace-store-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: min(260px, 68vw);
-      height: clamp(42px, 5.5vh, 50px);
+      height: clamp(38px, 5vh, 50px);
       padding: 0 18px;
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -390,7 +438,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   /* ===== TABLETS TÁCTILES (iPad, etc.) ===== */
   @media (hover: none) and (pointer: coarse) and (min-width: 769px) and (max-width: 1366px) {
     .marketplace-mobile-layout {
-      padding-top: calc(90px + env(safe-area-inset-top));
+      padding-top: calc(0px + env(safe-area-inset-top));
     }
 
     .marketplace-mobile-text {
@@ -409,7 +457,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   /* ===== TABLETS PEQUEÑAS / MÓVILES GRANDES (601-768px) ===== */
   @media (max-width: 768px) and (min-width: 601px) {
     .marketplace-mobile-layout {
-      padding-top: calc(80px + env(safe-area-inset-top));
+      padding-top: calc(0px + env(safe-area-inset-top));
     }
 
     .marketplace-m-title-line1 {
@@ -443,7 +491,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   /* ===== MÓVILES PEQUEÑOS (<=374px) - iPhone SE ===== */
   @media (max-width: 374px) {
     .marketplace-mobile-layout {
-      padding-top: calc(62px + env(safe-area-inset-top));
+      padding-top: calc(0px + env(safe-area-inset-top));
     }
 
     .marketplace-mobile-content {
@@ -485,7 +533,7 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
   /* ===== PANTALLAS MUY CORTAS ===== */
   @media (max-width: 768px) and (max-height: 650px) {
     .marketplace-mobile-layout {
-      padding-top: calc(60px + env(safe-area-inset-top));
+      padding-top: calc(0px + env(safe-area-inset-top));
     }
 
     .marketplace-m-title-line1 {
@@ -547,7 +595,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
     }
 
     .marketplace-m-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       margin-bottom: 0.3rem;
+      gap: 0.1rem;
     }
 
     .marketplace-m-title-line1 {
@@ -593,8 +646,12 @@ import FeatureSlider from "../components/sliders/FeatureSlider.astro";
 
     .marketplace-mobile-slider {
       width: 100%;
-      min-height: 150px;
-      max-height: 200px;
+      height: clamp(160px, 30vh, 260px);
+      margin-bottom: clamp(2.5rem, 8vh, 5.5rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
     }
   }
 </style>

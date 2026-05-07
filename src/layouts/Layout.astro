@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import ComingSoonModal from "../components/common/ComingSoonModal.astro";
 
 interface Props {
   title: string;
@@ -23,6 +24,7 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/common/logos/favicon.ico" />
     <link
       rel="icon"
       type="image/png"
@@ -145,55 +147,48 @@ const { title, description = "BeMind Power", bodyClass = "" } = Astro.props;
     <title>{title}</title>
 
     <style is:global>
-      /* Custom view transition animations for phone-morph */
-      ::view-transition-old(phone-morph),
-      ::view-transition-new(phone-morph) {
-        /* Use default morph animation for forward navigation - 
-           browser smoothly moves phone from old position to new position */
-        animation-duration: 0.3s;
-        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      /* Custom view transition animations for phone morphing between features */
+      ::view-transition-group(phone-morph-chat),
+      ::view-transition-group(phone-morph-wallet),
+      ::view-transition-group(phone-morph-marketplace),
+      ::view-transition-group(phone-morph-apps),
+      ::view-transition-group(phone-morph-nutrition),
+      ::view-transition-group(phone-morph-communities),
+      ::view-transition-group(phone-morph-music),
+      ::view-transition-group(phone-morph-health),
+      ::view-transition-group(phone-morph-finance) {
+        animation-duration: 0.8s;
+        animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
       }
 
-      /* Forward navigation: slide from right */
-      html:not([data-nav-back]) ::view-transition-old(phone-morph) {
-        animation-name: slideOutLeft;
-      }
-
-      html:not([data-nav-back]) ::view-transition-new(phone-morph) {
-        animation-name: slideInFromRight;
-      }
-
-      /* Back navigation: no animation, instant switch */
-      html[data-nav-back] ::view-transition-old(phone-morph),
-      html[data-nav-back] ::view-transition-new(phone-morph) {
-        animation: none;
-      }
-
-      @keyframes slideOutLeft {
-        from {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        to {
-          transform: translateX(-100px);
-          opacity: 0;
-        }
-      }
-
-      @keyframes slideInFromRight {
-        from {
-          transform: translateX(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
+      /* Ensure images scale proportionally during morph without distortion */
+      ::view-transition-old(phone-morph-chat),
+      ::view-transition-old(phone-morph-wallet),
+      ::view-transition-old(phone-morph-marketplace),
+      ::view-transition-old(phone-morph-apps),
+      ::view-transition-old(phone-morph-nutrition),
+      ::view-transition-old(phone-morph-communities),
+      ::view-transition-old(phone-morph-music),
+      ::view-transition-old(phone-morph-health),
+      ::view-transition-old(phone-morph-finance),
+      ::view-transition-new(phone-morph-chat),
+      ::view-transition-new(phone-morph-wallet),
+      ::view-transition-new(phone-morph-marketplace),
+      ::view-transition-new(phone-morph-apps),
+      ::view-transition-new(phone-morph-nutrition),
+      ::view-transition-new(phone-morph-communities),
+      ::view-transition-new(phone-morph-music),
+      ::view-transition-new(phone-morph-health),
+      ::view-transition-new(phone-morph-finance) {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
       }
     </style>
   </head>
   <body class={bodyClass}>
     <slot />
+    <ComingSoonModal />
 
     <!-- SupportButton removed: floating support button hidden globally -->
 

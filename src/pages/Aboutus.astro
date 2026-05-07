@@ -1,10 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/common/Header.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/common/Header.astro";
 ---
 
-<Layout title="BeMind Power - Sobre Nosotros" description="Conoce al equipo detrás de BeMind Power. Creemos en una vida digital más simple." bodyClass="sobre-nosotros-page">
-  <Header currentPath="/sobre-nosotros" />
+<Layout
+  title="BeMind Power - Sobre Nosotros"
+  description="Conoce al equipo detrás de BeMind Power. Creemos en una vida digital más simple."
+  bodyClass="sobre-nosotros-page"
+>
+  <Header currentPath="/Aboutus" />
 
   <section class="about-hero">
     <!-- Background -->
@@ -12,9 +16,6 @@ import Header from '../components/common/Header.astro';
       <div class="about-bg-base"></div>
       <div class="about-glow"></div>
     </div>
-
-
-
 
     <!-- Logo -->
     <div class="about-logo">
@@ -26,15 +27,16 @@ import Header from '../components/common/Header.astro';
       <h1 class="about-title">
         Creemos en una vida digital<br />más simple.
       </h1>
-      <p class="about-subtitle">
-        Construimos un ecosistema que conecta personas, negocios y servicios en una sola app.
+      <p class="about-subtitle" data-i18n="about.subtitle">
+        Construimos un ecosistema que conecta personas, negocios y servicios en
+        una sola app.
       </p>
-      <p class="about-description">
-        Nuestro equipo está formado por creadores, ingenieros y diseñadores que comparten una misma visión: hacer que cada mensaje, pago o interacción sea más fácil y seguro.
+      <p class="about-description" data-i18n="about.description">
+        Nuestro equipo está formado por creadores, ingenieros y diseñadores que
+        comparten una misma visión: hacer que cada mensaje, pago o interacción
+        sea más fácil y seguro.
       </p>
     </div>
-
-
   </section>
 </Layout>
 
@@ -74,7 +76,7 @@ import Header from '../components/common/Header.astro';
     position: absolute;
     inset: 0;
     background-color: #000000;
-    background-image: url('/common/welcomebg.png');
+    background-image: url("/common/welcomebg.png");
     background-size: 100% 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -83,7 +85,7 @@ import Header from '../components/common/Header.astro';
 
   @media (max-width: 1024px) {
     .about-bg-base {
-      background-image: url('/common/contactbgr.png');
+      background-image: url("/common/contactbgr.png");
     }
   }
 
@@ -105,14 +107,11 @@ import Header from '../components/common/Header.astro';
     animation: glowPulse 4s ease-in-out infinite alternate;
   }
 
-
-
-
   /* ── Logo ── */
   .about-logo {
     position: relative;
     z-index: 10;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1rem, 4vh, 2rem);
     animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
@@ -131,11 +130,11 @@ import Header from '../components/common/Header.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vh, 1.5rem);
   }
 
   .about-title {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(24px, 3.2vw, 44px);
     font-weight: 600;
     color: #fff;
@@ -146,8 +145,8 @@ import Header from '../components/common/Header.astro';
   }
 
   .about-subtitle {
-    font-family: 'Neometric', 'Inter', sans-serif;
-    font-size: clamp(16px, 1.8vw, 28px);
+    font-family: "Neometric", "Inter", sans-serif;
+    font-size: clamp(14px, 1.8vw, 28px);
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.5;
@@ -157,7 +156,7 @@ import Header from '../components/common/Header.astro';
   }
 
   .about-description {
-    font-family: 'Neometric', 'Inter', sans-serif;
+    font-family: "Neometric", "Inter", sans-serif;
     font-size: clamp(12px, 1.1vw, 18px);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.55);
@@ -166,8 +165,6 @@ import Header from '../components/common/Header.astro';
     max-width: 540px;
     animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
   }
-
-
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
@@ -187,8 +184,6 @@ import Header from '../components/common/Header.astro';
       height: min(800px, 160vw);
       filter: blur(80px);
     }
-
-
   }
 
   @media (max-width: 480px) {
@@ -208,8 +203,6 @@ import Header from '../components/common/Header.astro';
     .about-glow {
       filter: blur(60px);
     }
-
-
   }
 
   /* ── Animations ── */

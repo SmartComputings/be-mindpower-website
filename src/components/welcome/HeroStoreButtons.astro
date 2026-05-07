@@ -7,63 +7,137 @@ interface Props {
   ctaText?: string;
 }
 
-const { 
-  appStoreUrl = "#", 
-  googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat&hl=es_US",
-  ctaUrl = "/app",
-  ctaText = "Ver Más"
+const {
+  appStoreUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat",
+  googlePlayUrl = "https://play.google.com/store/apps/details?id=chat.bemindepower.bmpchat",
+  ctaUrl = "/chat",
+  ctaText = "Ver Más",
 } = Astro.props;
 ---
 
 <div class="hero-store-buttons">
-  <a href={appStoreUrl} class="store-btn" aria-label="Download on App Store">
-    <img src="/detailPageImages/app-store-badge.svg" alt="Download on App Store" />
+  <a
+    href="#"
+    onclick="event.preventDefault(); window.dispatchEvent(new Event('open-coming-soon'));"
+    class="store-btn store-btn-app coming-soon-trigger"
+    aria-label="Download on App Store"
+  >
+    <img
+      src="/detailPageImages/app-store-badge.svg"
+      alt="Download on App Store"
+    />
   </a>
-  <a href={googlePlayUrl} class="store-btn" aria-label="Get it on Google Play">
-    <img src="/detailPageImages/google-play-badge.svg" alt="Get it on Google Play" />
+  <a
+    href={googlePlayUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="store-btn store-btn-google"
+    aria-label="Get it on Google Play"
+  >
+    <img
+      src="/detailPageImages/google-play-badge.svg"
+      alt="Get it on Google Play"
+    />
   </a>
-  <a id="hero-cta-button" href={ctaUrl} class="ver-mas-btn">{ctaText}</a>
+  <a
+    id="hero-cta-button"
+    href={ctaUrl}
+    class="ver-mas-btn"
+    data-i18n="home.hero.cta">{ctaText}</a
+  >
 </div>
+
+<script>
+  function initStoreButtons() {
+    // Query all instances of store buttons (in case there are multiple on the page)
+    const googlePlayBtns = document.querySelectorAll(".store-btn-google");
+
+    googlePlayBtns.forEach((googlePlayBtn) => {
+      if (googlePlayBtn) {
+        const newBtn = googlePlayBtn.cloneNode(true) as HTMLElement;
+        googlePlayBtn.parentNode?.replaceChild(newBtn, googlePlayBtn);
+
+        newBtn.addEventListener(
+          "click",
+          (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            const url = newBtn.getAttribute("href");
+            if (url) window.open(url, "_blank", "noopener,noreferrer");
+          },
+          { capture: true },
+        );
+
+        newBtn.addEventListener(
+          "mousedown",
+          (e) => {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+          },
+          { capture: true },
+        );
+      }
+    });
+  }
+
+  // Run on load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initStoreButtons);
+  } else {
+    initStoreButtons();
+  }
+
+  // Run on Astro page transitions
+  document.addEventListener("astro:page-load", initStoreButtons);
+</script>
 
 <style>
   .hero-store-buttons {
     display: flex;
-    gap: clamp(18px, 2vw, 28px);
+    gap: clamp(14px, 1.8vw, 22px);
     position: relative;
-    z-index: 18;
+    z-index: 100;
+    pointer-events: auto;
   }
 
   .store-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(160px, 15vw, 200px);
-    height: clamp(48px, 5vh, 60px);
+    width: clamp(140px, 13vw, 175px);
+    height: clamp(42px, 4.5vh, 52px);
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50px;
-    box-shadow: 
+    box-shadow:
       0 0 25px 0px rgba(59, 130, 246, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
     overflow: hidden;
     text-decoration: none;
+    position: relative;
+    z-index: 101;
+    pointer-events: auto;
   }
 
   .store-btn:hover {
     transform: scale(1.03);
-    box-shadow: 
+    box-shadow:
       0 0 35px 0px rgba(59, 130, 246, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
   .store-btn img {
-    height: clamp(36px, 4.2vh, 46px);
+    height: clamp(32px, 3.8vh, 40px);
     width: auto;
     object-fit: contain;
     margin-left: 5px; /* Visual correction to center content */
+    pointer-events: none;
   }
 
   .ver-mas-btn {
@@ -79,13 +153,15 @@ const {
       height: 38px;
       background: #1929ff;
       color: #fff;
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       font-weight: 300;
       font-size: 14px;
       letter-spacing: 0.02em;
       border-radius: 387.19px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
       border: none;
     }
 
@@ -97,31 +173,31 @@ const {
 
   @media (min-width: 1440px) {
     .hero-store-buttons {
-      gap: clamp(22px, 2.2vw, 32px);
+      gap: clamp(18px, 2vw, 26px);
     }
 
     .store-btn {
-      width: clamp(180px, 16vw, 220px);
-      height: clamp(54px, 5.5vh, 64px);
+      width: clamp(160px, 14vw, 195px);
+      height: clamp(48px, 5vh, 58px);
     }
 
     .store-btn img {
-      height: clamp(40px, 4.5vh, 50px);
+      height: clamp(36px, 4vh, 45px);
     }
   }
 
   @media (min-width: 1920px) {
     .hero-store-buttons {
-      gap: clamp(26px, 2.4vw, 36px);
+      gap: clamp(22px, 2.2vw, 30px);
     }
 
     .store-btn {
-      width: clamp(200px, 17vw, 240px);
-      height: clamp(58px, 6vh, 68px);
+      width: clamp(180px, 15vw, 215px);
+      height: clamp(52px, 5.5vh, 62px);
     }
 
     .store-btn img {
-      height: clamp(44px, 5vh, 54px);
+      height: clamp(40px, 4.5vh, 50px);
     }
   }
 
@@ -151,9 +227,9 @@ const {
       border-radius: 387.19px;
       background: rgba(0, 0, 0, 0.85);
       border: none;
-      box-shadow: 
-        2.11px 2.11px 8.43px 0px #371BBE,
-        -2.11px -2.11px 8.43px 0px #1929FF;
+      box-shadow:
+        2.11px 2.11px 8.43px 0px #371bbe,
+        -2.11px -2.11px 8.43px 0px #1929ff;
     }
 
     .store-btn img {

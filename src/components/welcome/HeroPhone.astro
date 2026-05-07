@@ -13,27 +13,44 @@ const {
 } = Astro.props;
 ---
 
-<a href="/chat" class="hero-phone" style={`--rotation: ${rotation}deg`} aria-label="Ir al chat">
-  <picture>
-    <source media="(max-width: 768px)" srcset={mobileSrc} />
-    <img id="hero-phone-image" src={src} alt="Teléfono BeMind" />
-  </picture>
-</a>
+<div class="hero-phone" style={`--rotation: ${rotation}deg`}>
+  <a href="/chat" class="phone-link" aria-label="Ir al chat">
+    <picture>
+      <source media="(max-width: 768px)" srcset={mobileSrc} />
+      <img
+        id="hero-phone-image"
+        src={src}
+        alt="Teléfono BeMind"
+        transition:name="phone-morph-chat"
+      />
+    </picture>
+  </a>
+</div>
 
 <style>
   .hero-phone {
     position: absolute;
-    left: 0;
-    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15%; /* Deeply buried explicitly to guarantee the gap vanishes entirely */
+    top: auto;
     width: 100%;
-    height: 50%;
-    z-index: 25;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+  }
+
+  .phone-link {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     pointer-events: auto;
     cursor: pointer;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: fit-content;
   }
 
   .hero-phone picture {
@@ -41,62 +58,85 @@ const {
   }
 
   .hero-phone img {
-    width: clamp(900px, 95vw, 1800px);
+    width: clamp(320px, 32vw, 500px);
+    max-height: 55vh; 
     height: auto;
     transform: rotate(var(--rotation, -10deg));
-    max-height: 150%;
     object-fit: contain;
+    object-position: bottom center;
+  }
+
+  /* Laptop screens */
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    .hero-phone img {
+      width: clamp(350px, 32vw, 480px);
+      max-height: 50vh;
+    }
   }
 
   /* Desktop breakpoints */
   @media (min-width: 1280px) and (max-height: 900px) {
+    .hero-phone {
+      bottom: -18%; /* Push down extremely far */
+    }
     .hero-phone img {
-      width: clamp(800px, 85vw, 1400px);
+      width: clamp(320px, 30vw, 440px);
+      max-height: 55vh;
     }
   }
 
   @media (min-width: 1440px) {
     .hero-phone img {
-      width: clamp(1000px, 90vw, 1800px);
+      width: clamp(380px, 32vw, 550px);
+      max-height: 55vh;
     }
   }
 
   @media (min-width: 1920px) {
+    .hero-phone {
+      bottom: -12%; /* Pull down ultra-wide */
+    }
     .hero-phone img {
-      width: clamp(1200px, 95vw, 2000px);
+      width: clamp(450px, 28vw, 700px);
+      max-height: 55vh;
+      transform: rotate(var(--rotation, -12deg));
     }
   }
 
   @media (max-width: 1024px) {
+    .hero-phone {
+      bottom: -10%;
+    }
     .hero-phone img {
-      width: min(900px, 90vw);
+      width: clamp(380px, 45vw, 580px);
+      max-height: 52vh;
     }
   }
 
-  /* Mobile: new phone image takes 50% height */
+  /* Tablet specific adjustments */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-phone img {
+      width: clamp(450px, 60vw, 700px) !important;
+      max-height: 50vh;
+    }
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
     .hero-phone {
-      top: 40%;
-      height: 60%;
-      overflow: hidden;
+      bottom: 0%;
     }
-
     .hero-phone img {
-      width: 100% !important;
-      max-width: 100% !important;
-      height: 100%;
-      max-height: 100%;
-      object-fit: cover;
-      object-position: top center;
+      width: clamp(280px, 70vw, 500px) !important;
+      max-height: 45vh;
       transform: rotate(0deg);
     }
   }
 
   @media (max-width: 480px) {
     .hero-phone img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      max-height: 40vh;
+      width: clamp(220px, 80vw, 350px) !important;
     }
   }
 </style>

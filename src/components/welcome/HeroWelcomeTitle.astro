@@ -7,60 +7,66 @@ interface Props {
 const { text = "Te Damos La Bienvenida" } = Astro.props;
 ---
 
-<div id="hero-title-line1" class="hero-welcome-title">{text}</div>
+<div
+  id="hero-title-line1"
+  class="hero-welcome-title"
+  data-i18n="home.hero.welcome"
+>
+  {text}
+</div>
 
 <style>
   .hero-welcome-title {
     color: #ffffff;
-    font-family: 'OPTIFutura', 'Inter', sans-serif;
-    font-size: clamp(20px, 2.8vw, 42px);
+    font-family: "OPTIFutura", "Inter", sans-serif;
+    font-size: clamp(17px, 2.4vw, 36px);
     font-weight: 800;
     text-align: center;
-    margin: 0 0 clamp(8px, 1vh, 14px) 0;
+    margin: 0 0 clamp(6px, 0.8vh, 12px) 0;
     padding: 0 5vw;
 
-    letter-spacing: clamp(1.2px, 0.12vw, 2px);
+    letter-spacing: clamp(1px, 0.1vw, 1.8px);
   }
 
   @media (min-width: 1440px) {
     .hero-welcome-title {
-      font-size: clamp(28px, 3vw, 46px);
-      margin-bottom: clamp(10px, 1.1vh, 16px);
+      font-size: clamp(24px, 2.6vw, 40px);
+      margin-bottom: clamp(8px, 1vh, 14px);
     }
   }
 
   @media (min-width: 1920px) {
     .hero-welcome-title {
-      font-size: clamp(32px, 3.2vw, 52px);
-      margin-bottom: clamp(12px, 1.2vh, 18px);
+      font-size: clamp(28px, 2.8vw, 45px);
+      margin-bottom: clamp(10px, 1.1vh, 16px);
     }
   }
 
   @media (max-width: 768px) {
     .hero-welcome-title {
-      font-size: 34px;
+      font-size: 29px;
       line-height: 1.15;
-      letter-spacing: 1.1px;
-      margin-bottom: 1vh;
+      letter-spacing: 1px;
+      margin-bottom: 0.8vh;
     }
   }
 
   @media (max-width: 480px) {
     .hero-welcome-title {
-      font-size: 30px;
+      font-size: 26px;
       line-height: 1.15;
-      letter-spacing: 0.9px;
-      margin-bottom: 1vh;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.8vh;
     }
   }
 
   /* iPhone SE y pantallas muy pequeñas */
   @media (max-width: 375px) {
     .hero-welcome-title {
-      font-size: 26px;
+      font-size: 22px;
       line-height: 1.15;
-      letter-spacing: 0.7px;
-      margin-bottom: 1vh;
+      letter-spacing: 0.6px;
+      margin-bottom: 0.8vh;
     }
   }
 </style>

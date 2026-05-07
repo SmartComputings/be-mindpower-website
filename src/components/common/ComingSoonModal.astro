@@ -1,0 +1,110 @@
+---
+// src/components/common/ComingSoonModal.astro
+---
+
+<div
+    id="coming-soon-modal"
+    class="fixed inset-0 z-[99999] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+>
+    <div
+        class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        id="coming-soon-backdrop"
+    >
+    </div>
+    <div
+        class="relative bg-[#0A0A1B] border border-white/10 rounded-3xl p-8 max-w-sm w-[90%] mx-auto shadow-[0_0_40px_rgba(79,70,229,0.3)] transform scale-95 transition-transform duration-300 flex flex-col items-center text-center"
+    >
+        <button
+            id="coming-soon-close"
+            class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+            aria-label="Cerrar"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="w-16 h-16 mb-4">
+            <img src="/common/logos/appleicon.png" alt="Apple" class="w-full h-full object-contain" />
+        </div>
+        <h3
+            class="text-2xl font-bold text-white mb-2"
+            style="font-family: 'OPTIFuturaDemiBold', sans-serif;"
+            data-i18n="comingSoon.title"
+        >
+            ¡Próximamente!
+        </h3>
+        <p
+            class="text-white/70 text-sm md:text-base leading-relaxed"
+            style="font-family: 'Neometric', sans-serif;"
+            data-i18n="comingSoon.description"
+        >
+            Nuestra aplicación para iOS estará disponible muy pronto en la App
+            Store. ¡Mantente atento!
+        </p>
+        <button
+            id="coming-soon-ok"
+            class="mt-8 px-8 py-3 bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] text-white rounded-full transition-all font-medium w-full shadow-lg shadow-indigo-500/25"
+            data-i18n="comingSoon.button">Entendido</button
+        >
+    </div>
+</div>
+
+<script>
+    function setupComingSoonModal() {
+        const modal = document.getElementById("coming-soon-modal");
+        const backdrop = document.getElementById("coming-soon-backdrop");
+        const closeBtn = document.getElementById("coming-soon-close");
+        const okBtn = document.getElementById("coming-soon-ok");
+
+        if (!modal) return;
+
+        function openModal(e?: Event) {
+            if (e) e.preventDefault();
+            if (!modal) return;
+            modal.classList.remove("opacity-0", "pointer-events-none");
+            const innerContent = modal.querySelector("div.relative");
+            if (innerContent) {
+                innerContent.classList.remove("scale-95");
+                innerContent.classList.add("scale-100");
+            }
+        }
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.add("opacity-0", "pointer-events-none");
+            const innerContent = modal.querySelector("div.relative");
+            if (innerContent) {
+                innerContent.classList.remove("scale-100");
+                innerContent.classList.add("scale-95");
+            }
+        }
+
+        if (closeBtn) closeBtn.addEventListener("click", closeModal);
+        if (okBtn) okBtn.addEventListener("click", closeModal);
+        if (backdrop) backdrop.addEventListener("click", closeModal);
+
+        // Listen for custom event triggered by buttons
+        window.addEventListener("open-coming-soon", openModal);
+    }
+
+    // Setup on initial load and view transitions
+    document.addEventListener("astro:page-load", () => {
+        // Remove old listeners to prevent duplicates if any
+        window.removeEventListener("open-coming-soon", () => {});
+        setupComingSoonModal();
+    });
+
+    // Also run immediately if script runs
+    setupComingSoonModal();
+</script>
